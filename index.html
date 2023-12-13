@@ -1,124 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SOS Pharma : Livraison de médicaments online</title>
-    <meta name="description"
-        content="Rapide, sécurisé, et efficace, SOS Pharma est un service de livraison de medicaments en ligne.">
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="css/style.css?i=14151246512">
+    <meta name="description" content="Rapide, sécurisé, et efficace, SOS Pharma est un service de livraison de medicaments en ligne."/>
 
-    <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" href="./images/icons/favicon.ico">
-    <link rel="apple-touch-icon" sizes="72x72" href="./images/icons/sos-pharma_favicon_72.png">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="icon" type="image/png" href="/images/icons/sos-pharma_favicon_196.png" sizes="196x196" />
-    <link rel="icon" type="image/png" href="/images/icons/sos-pharma_favicon_96.png" sizes="96x96" />
-    <link rel="icon" type="image/png" href="/images/icons/sos-pharma_favicon_32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="/images/icons/sos-pharma_favicon_16.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="/images/icons/sos-pharma_favicon_128.png" sizes="128x128" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="css/styles.css?i=14151246512" />
 
-    <meta name="application-name" content="SOS Pharma">
+    <meta name="application-name" content="SOS Pharma" />
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/body.css">
-    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/body.css" />
+    <link rel="stylesheet" href="css/chat.css" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="SOS Pharma : Livraison de médicaments online" />
-    <meta property="og:description" content="SOS Pharma est un service de livraison de medicaments en ligne." />
+    <meta
+      property="og:title"
+      content="SOS Pharma : Livraison de médicaments online"
+    />
+    <meta
+      property="og:description"
+      content="SOS Pharma est un service de livraison de medicaments en ligne."
+    />
     <meta property="og:locale" content="fr_FR" />
     <meta property="og:site_name" content="SOS Pharma" />
     <meta property="og:image" content="images/logo.jpg" />
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2BXJ70XZ48"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-2BXJ70XZ48"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-        gtag('config', 'G-2BXJ70XZ48');
+      gtag("config", "G-2BXJ70XZ48");
     </script>
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-58924RN');</script>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-58924RN");
+    </script>
     <!-- End Google Tag Manager -->
+  </head>
 
-</head>
-
-
-<body>
-<div class="container">
-
-    <div class="topnav">
-        <div class="logo">
-            <img src="images/logo-sm.jpg" alt="SOS Pharma logo">
+  <body>
+    <div class="container">
+      <div class="page-content">
+        
+        <div class="topnav">
+          <div class="logo">
+            <img src="images/logo-sm.jpg" alt="SOS Pharma logo" />
+          </div>
+          <div class="name">SOS Pharma</div>
         </div>
-        <div class="name">SOS Pharma</div>
-    </div>
 
-    <div class="content">
-        <h1>
-            Faites-vous <br>
+        <div class="content">
+          <h1>
+            Faites-vous <br />
             <span>livrer vos médicaments</span>
-        </h1>
-        <p>
-            Rapide, sécurisé, et efficace, <b>SOS Pharma</b> est un service de livraison de
-            medicaments en ligne. Passez une commande et faites-vous livrer dans de brefs delais.
-        </p>
+          </h1>
+          <p>
+            Rapide, sécurisé, et efficace, <b>SOS Pharma</b> est un service de
+            livraison de medicaments en ligne. Passez une commande et
+            faites-vous livrer dans de brefs delais.
+          </p>
 
-        <div class="buttons">
+          <div class="buttons">
+            <a
+              href="chat.html"
+              id="start"
+              class="start-button button loading chatbox__button"
+              name="startBot"
+              onclick="gtag('send','event','start_chat', 'hello','entree du chat');"
+            >
+              <!-- <span class="spinner --visible"></span> -->
+              <span class="text">Commander maintenant</span>
+            </a>
 
-            <button id="start" class="start-button button loading chatbox__button" name="startBot" 
-                onclick="gtag('send','event','start_chat', 'hello','entree du chat');"
-                >
-                <span class="spinner --visible"></span>
-                <span class="text">Commander maintenant</span>
-            </button>
-
-            <a href="tel:+237653080072" id="callCenter" class="call-center-button button">Infoline Santé: (+237) 653 080 072</a>
+            <a
+              href="tel:+237653080072"
+              id="callCenter"
+              class="call-center-button button"
+              >Infoline Santé: (+237) 653 080 072</a
+            >
+          </div>
         </div>
-
+      </div>
     </div>
 
-
-
-    <div class="chatbox">
-
-        <div class="chatbox__support">
-            <div class="chatbox__header">
-                <div class="chatbox__image--header">
-                    <img src="images/logo-sm.jpg" alt="SOS Pharma logo" height="20" >
-                </div>
-                <div class="chatbox__content--header">
-                    <h4 class="chatbox__heading--header">Chat support</h4>
-                    <p class="chatbox__description--header">Hi. My name is Sam. How can I help you?</p>
-                </div>
-            </div>
-            <div class="chatbox__messages">
-                <div></div>
-            </div>
-            <div class="chatbox__footer">
-                <input type="text" placeholder="Write a message...">
-                <button class="chatbox__send--footer send__button">Send</button>
-            </div>
-        </div>
-        <!-- <div class="chatbox__button">
-            <button><img src="./images/chatbox-icon.svg" /></button>
-        </div> -->
-
-    </div>
-</div>
-
-    <script src="js/app.js"></script>
-
-</body>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

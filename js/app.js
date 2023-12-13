@@ -1,91 +1,99 @@
-class Chatbox {
-    constructor() {
-        this.args = {
-            openButton: document.querySelector('.chatbox__button'),
-            chatBox: document.querySelector('.chatbox__support'),
-            sendButton: document.querySelector('.send__button')
-        }
+var chatBox = document.querySelector(".chatbox__support");
+var sendButton = document.querySelector(".chatbox__send__button");
+var restartChatButton = document.querySelector(".chatbox__restart");
+var messages = []; 
 
-        this.state = false;
-        this.messages = [];
-    }
+sendButton.addEventListener("click", () => onSendButton(chatBox));
 
-    display() {
-        const {openButton, chatBox, sendButton} = this.args;
+restartChatButton.addEventListener("click", () => restartConversation());
 
-        openButton.addEventListener('click', () => this.toggleState(chatBox))
+const inputBox = chatBox.querySelector(".chatbox__message__input");
 
-        sendButton.addEventListener('click', () => this.onSendButton(chatBox))
+inputBox.addEventListener("keyup", ({ key }) => {
+  if (key === "Enter") {
+    onSendButton(chatBox);
+  }
+});
 
-        const node = chatBox.querySelector('input');
-        node.addEventListener("keyup", ({key}) => {
-            if (key === "Enter") {
-                this.onSendButton(chatBox)
-            }
-        })
-    }
 
-    toggleState(chatbox) {
-        this.state = !this.state;
+async function onStart(chatbox) {
 
-        // show or hides the box
-        if(this.state) {
-            chatbox.classList.add('chatbox--active')
-        } else {
-            chatbox.classList.remove('chatbox--active')
-        }
-    }
+  try {
+    const response = await axios.get("http://127.0.0.1:5000/",{
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
+        "Access-Control-Allow-Credentials": "true",
+        "Accept": "application/json",
+      },
+    });
 
-    onSendButton(chatbox) {
-        var textField = chatbox.querySelector('input');
-        let text1 = textField.value
-        if (text1 === "") {
-            return;
-        }
-
-        let msg1 = { name: "User", message: text1 }
-        this.messages.push(msg1);
-
-        fetch('http://127.0.0.1:5000/predict', {
-            method: 'POST',
-            body: JSON.stringify({ message: text1 }),
-            mode: 'cors',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-          })
-          .then(r => r.json())
-          .then(r => {
-            let msg2 = { name: "Sam", message: r.answer };
-            this.messages.push(msg2);
-            this.updateChatText(chatbox)
-            textField.value = ''
-
-        }).catch((error) => {
-            console.error('Error:', error);
-            this.updateChatText(chatbox)
-            textField.value = ''
-          });
-    }
-
-    updateChatText(chatbox) {
-        var html = '';
-        this.messages.slice().reverse().forEach(function(item, index) {
-            if (item.name === "Sam")
-            {
-                html += '<div class="messages__item messages__item--visitor">' + item.message + '</div>'
-            }
-            else
-            {
-                html += '<div class="messages__item messages__item--operator">' + item.message + '</div>'
-            }
-          });
-
-        const chatmessage = chatbox.querySelector('.chatbox__messages');
-        chatmessage.innerHTML = html;
-    }
+    const r = response.data;
+    console.log(r);
+    // let msg2 = { name: "Sam", message: r.answer };
+    // messages.push(msg2);
+    // updateChatText(chatbox, messages);
+    textField.value = "";
+  } catch (error) {
+    console.error("Error:", error);
+    // updateChatText(chatbox, messages);
+    textField.value = "";
+  }
 }
 
 
-const chatbox = new Chatbox();
-chatbox.display();
+async function onSendButton(chatbox) {
+  var textField = chatbox.querySelector("textarea");
+  let text1 = textField.value;
+  if (text1 === "") {
+    return;
+  }
+
+  let msg1 = { name: "User", message: text1 };
+  messages.push(msg1); // Adding new messages to the existing array
+
+  try {
+    const response = await axios.post("http://127.0.0.1:5000/chat", { message: text1 }, {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
+        "Access-Control-Allow-Credentials": "true",
+        "Accept": "application/json",
+      },
+    });
+    const r = response.data;
+    console.log(r);
+    let msg2 = { name: "Sam", message: r.answer };
+    messages.push(msg2); // Adding the response message to the existing array
+    updateChatText(chatbox, messages);
+    textField.value = "";
+  } catch (error) {
+    console.error("Error:", error);
+    updateChatText(chatbox, messages);
+    textField.value = "";
+  }
+}
+
+
+function updateChatText(chatbox, messages) {
+  var html = "";
+  messages.slice().reverse().forEach(function (item, index) {
+    if (item.name === "Sam") {
+      html += '<div class="messages__item messages__item--visitor">' + item.message + "</div>";
+    } else {
+      html += '<div class="messages__item messages__item--operator">' + item.message + "</div>";
+    }
+  });
+
+  const chatmessage = chatbox.querySelector(".chatbox__messages");
+  chatmessage.innerHTML = html;
+}
+
+
+function restartConversation() {
+  const chatmessage = chatBox.querySelector(".chatbox__messages");
+  chatmessage.innerHTML = "";
+  messages = [];
+}
