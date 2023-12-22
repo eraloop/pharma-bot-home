@@ -95,7 +95,7 @@ a{
 .messages__item--visitor {
     margin-right: auto;
     background: grey !important;
-    color: grey !important;
+    color: #fff !important;
 }
 
 
@@ -206,6 +206,7 @@ a{
     resize: vertical;
     min-height: 50px;
     height: auto;
+    resize:none;
 }
 
 .chatbox__send--footer {
@@ -224,6 +225,24 @@ a{
     border-bottom-left-radius: 50px;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+}
+
+.start-button > .spinner {
+    display: none;
+    width: 20px; 
+    height: 20px;
+    margin-right: 1rem;
+    animation: spinSpinner 1s cubic-bezier(0.66, 0.21, 0.33, 1) infinite;
+    border-width: 2px;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: transparent;
+    border-top-color: white;
+}
+
+@keyframes spinSpinner {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
 }
 
 

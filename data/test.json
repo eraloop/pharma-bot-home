@@ -1,0 +1,4253 @@
+[
+    
+    {
+       "id": 1,
+       "name": "A CERUMEN 2ML DOSE B 10",
+       "cm_price": 2900
+     },
+     {
+       "id": 2,
+       "name": "ACARILBIAL SOL EXT F 200ML",
+       "cm_price": 2825
+     },
+     {
+       "id": 3,
+       "name": "ACCUZON 1G SOL INJ B 1",
+       "cm_price": 2990
+     },
+     {
+       "id": 4,
+       "name": "ACCUZON 250MG SOL INJ B 1",
+       "cm_price": 2090
+     },
+     {
+       "id": 5,
+       "name": "ACEFLAMEX 100MG CPR B 20",
+       "cm_price": 2350
+     },
+     {
+       "id": 6,
+       "name": "ACFRAN SP F 200ML",
+       "cm_price": 2820
+     },
+     {
+       "id": 7,
+       "name": "ACIDE ACETYLSAL UBI 500MG CPR",
+       "cm_price": 10790
+     },
+     {
+       "id": 8,
+       "name": "ACINET 1,2G SOL INJ F 5ML",
+       "cm_price": 1945
+     },
+     {
+       "id": 9,
+       "name": "ACINET 1G CPR B 10",
+       "cm_price": 4595
+     },
+     {
+       "id": 10,
+       "name": "ACLAV 100MG 12,5MG F 60ML",
+       "cm_price": 4065
+     },
+     {
+       "id": 11,
+       "name": "ACLAV 1G 125MG SACH B 12",
+       "cm_price": 4385
+     },
+     {
+       "id": 12,
+       "name": "ACLAV 500MG 62,5MG SACH B 12",
+       "cm_price": 4350
+     },
+     {
+       "id": 13,
+       "name": "ACLIN GEL T 15G",
+       "cm_price": 3325
+     },
+     {
+       "id": 14,
+       "name": "ACTAPULGITE 3G PDRE SUSP BUV S",
+       "cm_price": 3615
+     },
+     {
+       "id": 15,
+       "name": "ACTAPULGITE PED 1G PDRE SACH B",
+       "cm_price": 1640
+     },
+     {
+       "id": 16,
+       "name": "ACTIFED BUV SOL FL 100ML",
+       "cm_price": 1885
+     },
+     {
+       "id": 17,
+       "name": "ACTIFED CPR B 18",
+       "cm_price": 1225
+     },
+     {
+       "id": 18,
+       "name": "ACTINAC 100MG CPR B 10",
+       "cm_price": 1940
+     },
+     {
+       "id": 19,
+       "name": "ACTINAC 100MG CPR B 30",
+       "cm_price": 5805
+     },
+     {
+       "id": 20,
+       "name": "ACTINAC PLUS 100MG 500MG CPR 1",
+       "cm_price": 2245
+     },
+     {
+       "id": 21,
+       "name": "ACTINAC PLUS 100MG 500MG CPR B",
+       "cm_price": 4585
+     },
+     {
+       "id": 22,
+       "name": "ACUDROX 250MG SUSP BUV F 60ML",
+       "cm_price": 2945
+     },
+     {
+       "id": 23,
+       "name": "ACUILIX 20MG 12,5MG CPR SEC B ",
+       "cm_price": 6850
+     },
+     {
+       "id": 24,
+       "name": "ACUPAN INJ SOL 2ML B 5 AFR",
+       "cm_price": 3130
+     },
+     {
+       "id": 25,
+       "name": "ACUPAN INJ SOL 2ML B 5 DT",
+       "cm_price": 3130
+     },
+     {
+       "id": 26,
+       "name": "ACYCLOVIR DENK 200MG CPR B 25",
+       "cm_price": 7470
+     },
+     {
+       "id": 27,
+       "name": "ACYCLOVIR DENK 5% CR T 5G",
+       "cm_price": 4435
+     },
+     {
+       "id": 28,
+       "name": "ACYCLOVIR DENK 5% CR T 7G",
+       "cm_price": 4435
+     },
+     {
+       "id": 29,
+       "name": "ADALAT LA 30MG CPR B 30",
+       "cm_price": 10250
+     },
+     {
+       "id": 30,
+       "name": "ADALATE 10MG CAPS ANF B 30",
+       "cm_price": 3585
+     },
+     {
+       "id": 31,
+       "name": "ADALATE 10MG CAPSULE BT 30",
+       "cm_price": 3480
+     },
+     {
+       "id": 32,
+       "name": "ADALATE LP 20MG CPR ANF B 30",
+       "cm_price": 6720
+     },
+     {
+       "id": 33,
+       "name": "ADALATE LP 20MG CPR BT 30",
+       "cm_price": 6720
+     },
+     {
+       "id": 34,
+       "name": "ADEPAL CPR DRG PLQ 1X21",
+       "cm_price": 1355
+     },
+     {
+       "id": 35,
+       "name": "ADEPAL CPR DRG PLQ 3X21",
+       "cm_price": 2935
+     },
+     {
+       "id": 36,
+       "name": "ADRIBLASTINE 10MG INJ F 5ML",
+       "cm_price": 7080
+     },
+     {
+       "id": 37,
+       "name": "ADRIBLASTINE 50MG LYO INJ F 1",
+       "cm_price": 33100
+     },
+     {
+       "id": 38,
+       "name": "ADRIDE 2MG CPR SEC B 30",
+       "cm_price": 4400
+     },
+     {
+       "id": 39,
+       "name": "ADRIDE 4MG CPR SEC B 30",
+       "cm_price": 6275
+     },
+     {
+       "id": 40,
+       "name": "ADRIDE M 2MG 500MG CPR B 30",
+       "cm_price": 4630
+     },
+     {
+       "id": 41,
+       "name": "ADVIL 20MG ML SUSP PEDIA F 200",
+       "cm_price": 3100
+     },
+     {
+       "id": 42,
+       "name": "ADVILMED 20MG ML SUSP PEDIA F ",
+       "cm_price": 3105
+     },
+     {
+       "id": 43,
+       "name": "AERIUS 5MG CPR PELL B 15",
+       "cm_price": 5080
+     },
+     {
+       "id": 44,
+       "name": "AERIUS 5MG CPR PELL B 7",
+       "cm_price": 2560
+     },
+     {
+       "id": 45,
+       "name": "AERIUS SP F 60ML + CUIL 1",
+       "cm_price": 3655
+     },
+     {
+       "id": 46,
+       "name": "AGRAM 125MG BUV POUDRE FL 60ML",
+       "cm_price": 1015
+     },
+     {
+       "id": 47,
+       "name": "AGRAM 250MG BUV POUDRE FL 60ML",
+       "cm_price": 1345
+     },
+     {
+       "id": 48,
+       "name": "AGRAM 500MG BUV POUDRE FL 60ML",
+       "cm_price": 1740
+     },
+     {
+       "id": 49,
+       "name": "AGRAM 500MG GELULE BT 12",
+       "cm_price": 1265
+     },
+     {
+       "id": 50,
+       "name": "AIRTAL 100MG CPR BT 10",
+       "cm_price": 2975
+     },
+     {
+       "id": 51,
+       "name": "AIRTAL 100MG CPR BT 40",
+       "cm_price": 10460
+     },
+     {
+       "id": 52,
+       "name": "ALBEN 4% SUSP.10ML FL 1",
+       "cm_price": 1340
+     },
+     {
+       "id": 53,
+       "name": "ALBEN 400MG COMP BTE 1",
+       "cm_price": 1200
+     },
+     {
+       "id": 54,
+       "name": "ALBEN 400MG CPR B 1 SD",
+       "cm_price": 1215
+     },
+     {
+       "id": 55,
+       "name": "ALBENDAPHAR COMP BT 1",
+       "cm_price": 1085
+     },
+     {
+       "id": 56,
+       "name": "ALBENDAZOLE 200MG 5ML SUSP BUV",
+       "cm_price": 855
+     },
+     {
+       "id": 57,
+       "name": "ALBENDAZOLE 200MG 5ML SUSP BUV",
+       "cm_price": 1980
+     },
+     {
+       "id": 58,
+       "name": "ALBENDAZOLE 400MG CPR PELL B 2",
+       "cm_price": 6300
+     },
+     {
+       "id": 59,
+       "name": "ALBENDAZOLE 400MG SUSP BUV F 1",
+       "cm_price": 705
+     },
+     {
+       "id": 60,
+       "name": "ALBENDAZOLE TM 400MG CPR B 1",
+       "cm_price": 380
+     },
+     {
+       "id": 61,
+       "name": "ALBENDAZOLE UBI 400MG CPR 50BL",
+       "cm_price": 5270
+     },
+     {
+       "id": 62,
+       "name": "ALBENDOL 4% SUSP BUV 10ML",
+       "cm_price": 865
+     },
+     {
+       "id": 63,
+       "name": "ALBENDOL 400MG CPR B 1",
+       "cm_price": 675
+     },
+     {
+       "id": 64,
+       "name": "ALCER 40MG CPR B 30",
+       "cm_price": 6960
+     },
+     {
+       "id": 65,
+       "name": "ALCER 40MG PDRE INJ B 1 + SOLV",
+       "cm_price": 4045
+     },
+     {
+       "id": 66,
+       "name": "ALCIPRO 500MG CPR PELL B 10",
+       "cm_price": 2550
+     },
+     {
+       "id": 67,
+       "name": "ALDACTAZINE CPR B 20",
+       "cm_price": 3785
+     },
+     {
+       "id": 68,
+       "name": "ALDACTONE 50MG CPR B 20",
+       "cm_price": 4375
+     },
+     {
+       "id": 69,
+       "name": "ALDACTONE 50MG CPR B 30",
+       "cm_price": 8035
+     },
+     {
+       "id": 70,
+       "name": "ALDACTONE 75MG CPR B 20",
+       "cm_price": 6560
+     },
+     {
+       "id": 71,
+       "name": "ALDACTONE 75MG CPR B 30",
+       "cm_price": 11810
+     },
+     {
+       "id": 72,
+       "name": "ALDOMET 250MG CPR B 30",
+       "cm_price": 2140
+     },
+     {
+       "id": 73,
+       "name": "ALDOMET 500MG CPR B 30",
+       "cm_price": 3810
+     },
+     {
+       "id": 74,
+       "name": "ALEPSAL 100MG CPR BT 30",
+       "cm_price": 2315
+     },
+     {
+       "id": 75,
+       "name": "ALEPSAL 50MG CPR BT 30",
+       "cm_price": 1390
+     },
+     {
+       "id": 76,
+       "name": "ALERCHEK 0,1% COLL F 5ML",
+       "cm_price": 3540
+     },
+     {
+       "id": 77,
+       "name": "ALEVO 500MG CPR B 5",
+       "cm_price": 2965
+     },
+     {
+       "id": 78,
+       "name": "ALFAMOX 1G PDRE SUSP BUV SACH",
+       "cm_price": 3930
+     },
+     {
+       "id": 79,
+       "name": "ALFAMOX 500MG PDRE SUSP BUV SA",
+       "cm_price": 2795
+     },
+     {
+       "id": 80,
+       "name": "ALFENAC 100MG CPR B 10",
+       "cm_price": 2055
+     },
+     {
+       "id": 81,
+       "name": "ALGESAL BAUME TB 40G",
+       "cm_price": 2505
+     },
+     {
+       "id": 82,
+       "name": "ALGESAL SURACTIVE CREME TB 40G",
+       "cm_price": 2505
+     },
+     {
+       "id": 83,
+       "name": "ALGISEDAL CPR 500MG BT 16",
+       "cm_price": 1555
+     },
+     {
+       "id": 84,
+       "name": "ALLERCET 10MG CPR B 10",
+       "cm_price": 1940
+     },
+     {
+       "id": 85,
+       "name": "ALLERCET 5MG 5ML SP F 100ML",
+       "cm_price": 1295
+     },
+     {
+       "id": 86,
+       "name": "ALLERGINE 10MG CPR B 15",
+       "cm_price": 3565
+     },
+     {
+       "id": 87,
+       "name": "ALLERGODIL 0.127MG PUL NAS10ML",
+       "cm_price": 4500
+     },
+     {
+       "id": 88,
+       "name": "ALLERGODIL COLL F 6ML",
+       "cm_price": 4615
+     },
+     {
+       "id": 89,
+       "name": "ALLERGOSONE SOL BUV FL 30ML",
+       "cm_price": 3280
+     },
+     {
+       "id": 90,
+       "name": "ALMAX 1G 7,5ML SUSP BUV F 225M",
+       "cm_price": 4050
+     },
+     {
+       "id": 91,
+       "name": "ALMAX FORTE 1,5G SUSP BUV SACH",
+       "cm_price": 4550
+     },
+     {
+       "id": 92,
+       "name": "ALMIDE COLLYRE FL 5ML",
+       "cm_price": 3095
+     },
+     {
+       "id": 93,
+       "name": "ALODONT BAIN BCHE FL 200ML",
+       "cm_price": 2000
+     },
+     {
+       "id": 94,
+       "name": "ALOFACT 100 500MG CPR B 20",
+       "cm_price": 3435
+     },
+     {
+       "id": 95,
+       "name": "ALOX SUSP BUV F 200ML",
+       "cm_price": 2160
+     },
+     {
+       "id": 96,
+       "name": "ALTRAFLAM 100MG CPR B 10",
+       "cm_price": 2860
+     },
+     {
+       "id": 97,
+       "name": "ALUMINIUM HYDROX 500MG CPR B20",
+       "cm_price": 540
+     },
+     {
+       "id": 98,
+       "name": "ALVIR 200MG CPR DISP B 30",
+       "cm_price": 6835
+     },
+     {
+       "id": 99,
+       "name": "ALVIR 5% CR T 5G",
+       "cm_price": 2850
+     },
+     {
+       "id": 100,
+       "name": "ALZOL 400MG CPR B 1",
+       "cm_price": 920
+     },
+     {
+       "id": 101,
+       "name": "ALZOL 400MG SUSP BUV F 10ML",
+       "cm_price": 1430
+     },
+     {
+       "id": 102,
+       "name": "AMADAY 10MG B 30",
+       "cm_price": 8070
+     },
+     {
+       "id": 103,
+       "name": "AMADAY 5MG CPR B 30",
+       "cm_price": 6600
+     },
+     {
+       "id": 104,
+       "name": "AMALAR 525MG CPR  B 150",
+       "cm_price": 26540
+     },
+     {
+       "id": 105,
+       "name": "AMALAR SUSP F 10ML",
+       "cm_price": 1780
+     },
+     {
+       "id": 106,
+       "name": "AMAPINE 10MG CPR B 10",
+       "cm_price": 3995
+     },
+     {
+       "id": 107,
+       "name": "AMAPINE 10MG CPR B 30",
+       "cm_price": 5010
+     },
+     {
+       "id": 108,
+       "name": "AMAPINE 5MG CPR B 10",
+       "cm_price": 2665
+     },
+     {
+       "id": 109,
+       "name": "AMAPINE 5MG CPR B 30",
+       "cm_price": 5485
+     },
+     {
+       "id": 110,
+       "name": "AMAPINE H 5 12,5MG CPR B 30",
+       "cm_price": 5170
+     },
+     {
+       "id": 111,
+       "name": "AMAREL 1MG CPR BTE 30",
+       "cm_price": 3490
+     },
+     {
+       "id": 112,
+       "name": "AMAREL 2MG CPR BTE 30",
+       "cm_price": 5230
+     },
+     {
+       "id": 113,
+       "name": "AMAREL 3MG CPR BTE 30",
+       "cm_price": 6825
+     },
+     {
+       "id": 114,
+       "name": "AMAREL 4MG CPR BTE 30",
+       "cm_price": 11020
+     },
+     {
+       "id": 115,
+       "name": "AMARYL M  SR 2MG 500MG CPR B 3",
+       "cm_price": 5785
+     },
+     {
+       "id": 116,
+       "name": "AMARYL M 2MG 500MG CPR B 30",
+       "cm_price": 6750
+     },
+     {
+       "id": 117,
+       "name": "AMBROX DENK 60MG CPR B 10",
+       "cm_price": 2315
+     },
+     {
+       "id": 118,
+       "name": "AMBROX DENK 60MG CPR B 20",
+       "cm_price": 3585
+     },
+     {
+       "id": 119,
+       "name": "AMCARD 10MG CPR B 28",
+       "cm_price": 6435
+     },
+     {
+       "id": 120,
+       "name": "AMCARD 10MG CPR B 28 CAM",
+       "cm_price": 6840
+     },
+     {
+       "id": 121,
+       "name": "AMCARD 5MG CPR B 28",
+       "cm_price": 3230
+     },
+     {
+       "id": 122,
+       "name": "AMCARD 5MG CPR B 28 CAM",
+       "cm_price": 3415
+     },
+     {
+       "id": 123,
+       "name": "AMEP 10MG CPR B 14",
+       "cm_price": 3495
+     },
+     {
+       "id": 124,
+       "name": "AMEP 10MG CPR B 28",
+       "cm_price": 6315
+     },
+     {
+       "id": 125,
+       "name": "AMEP 5MG CPR B 14",
+       "cm_price": 2225
+     },
+     {
+       "id": 126,
+       "name": "AMEP 5MG CPR B 28",
+       "cm_price": 3820
+     },
+     {
+       "id": 127,
+       "name": "AMEP 5MG CPR B 56",
+       "cm_price": 6290
+     },
+     {
+       "id": 128,
+       "name": "AMIDERM CR T 30G",
+       "cm_price": 1855
+     },
+     {
+       "id": 129,
+       "name": "AMILIP 10MG CPR B 30",
+       "cm_price": 6040
+     },
+     {
+       "id": 130,
+       "name": "AMILIP 5MG CPR B 30",
+       "cm_price": 4540
+     },
+     {
+       "id": 131,
+       "name": "AMILO 5MG CPR B 14",
+       "cm_price": 2060
+     },
+     {
+       "id": 132,
+       "name": "AMILO 5MG CPR B 28",
+       "cm_price": 3655
+     },
+     {
+       "id": 133,
+       "name": "AMITRON 250MG SUSP BUV F 60ML",
+       "cm_price": 1125
+     },
+     {
+       "id": 134,
+       "name": "AMITRON 500MG GEL B 12",
+       "cm_price": 1280
+     },
+     {
+       "id": 135,
+       "name": "AMLIBON 10MG CPR B 30",
+       "cm_price": 5175
+     },
+     {
+       "id": 136,
+       "name": "AMLIBON 5MG CPR B 30",
+       "cm_price": 3215
+     },
+     {
+       "id": 137,
+       "name": "AMLO DENK 10MG CPR B 50",
+       "cm_price": 9135
+     },
+     {
+       "id": 138,
+       "name": "AMLO DENK 5MG CPR B 50",
+       "cm_price": 7525
+     },
+     {
+       "id": 139,
+       "name": "AMLOAS-AT 5MG 50MG CPR B 30",
+       "cm_price": 7890
+     },
+     {
+       "id": 140,
+       "name": "AMLODIPINE PFIZER 10MG GEL B 9",
+       "cm_price": 18180
+     },
+     {
+       "id": 141,
+       "name": "AMLODIPINE PFIZER 5MG GEL B 30",
+       "cm_price": 5810
+     },
+     {
+       "id": 142,
+       "name": "AMLODIPINE TABRAD 10MG CPR B 1",
+       "cm_price": 15307
+     },
+     {
+       "id": 143,
+       "name": "AMLONG 10MG CPR B 30",
+       "cm_price": 6830
+     },
+     {
+       "id": 144,
+       "name": "AMLONG 5MG CPR B 30",
+       "cm_price": 4005
+     },
+     {
+       "id": 145,
+       "name": "AMLOR 10MG GEL B 30",
+       "cm_price": 13102
+     },
+     {
+       "id": 146,
+       "name": "AMLOR 5MG CPR B 14",
+       "cm_price": 6170
+     },
+     {
+       "id": 147,
+       "name": "AMLOR 5MG CPR B 56",
+       "cm_price": 10235
+     },
+     {
+       "id": 148,
+       "name": "AMLOR 5MG GEL B 30",
+       "cm_price": 10490
+     },
+     {
+       "id": 149,
+       "name": "AMLOSTAR 10MG CPR B 30",
+       "cm_price": 5705
+     },
+     {
+       "id": 150,
+       "name": "AMLOSTAR 5MG CPR B 30",
+       "cm_price": 4570
+     },
+     {
+       "id": 151,
+       "name": "AMLOTENSINE 5MG CPR B 30",
+       "cm_price": 3760
+     },
+     {
+       "id": 152,
+       "name": "AMLOWIN 10MG CPR B 30",
+       "cm_price": 4815
+     },
+     {
+       "id": 153,
+       "name": "AMOCLAN 625MG CPR B 15",
+       "cm_price": 5060
+     },
+     {
+       "id": 154,
+       "name": "AMOCLAN BID 1G FCT CPR B 14",
+       "cm_price": 5870
+     },
+     {
+       "id": 155,
+       "name": "AMOCLAN BID 200MG 28,5MG PDRE",
+       "cm_price": 3035
+     },
+     {
+       "id": 156,
+       "name": "AMOCLAN BID400MG 57MG PDRE SUS",
+       "cm_price": 4350
+     },
+     {
+       "id": 157,
+       "name": "AMOCLAN FORTE 312MG SUSP BUV F",
+       "cm_price": 3705
+     },
+     {
+       "id": 158,
+       "name": "AMODEX 250MG PDRE SUSP F 30G",
+       "cm_price": 1305
+     },
+     {
+       "id": 159,
+       "name": "AMODEX 500MG GELULE BT 12",
+       "cm_price": 1205
+     },
+     {
+       "id": 160,
+       "name": "AMOKOD 125MG PDRE SP FL 60ML",
+       "cm_price": 1035
+     },
+     {
+       "id": 161,
+       "name": "AMOKOD 250MG PDRE SP FL 60ML",
+       "cm_price": 1545
+     },
+     {
+       "id": 162,
+       "name": "AMOXI DENK 1000MG CPR B 10",
+       "cm_price": 2590
+     },
+     {
+       "id": 163,
+       "name": "AMOXI-DENK 500MG CPR 2BL10",
+       "cm_price": 2545
+     },
+     {
+       "id": 164,
+       "name": "AMOXICILL AC CLAV 500 125MG CP",
+       "cm_price": 11867
+     },
+     {
+       "id": 165,
+       "name": "AMOXICILLIN SANDOZ 500MG CPR B",
+       "cm_price": 6695
+     },
+     {
+       "id": 166,
+       "name": "AMOXICILLINE 250MG PPS 60ML",
+       "cm_price": 505
+     },
+     {
+       "id": 167,
+       "name": "AMOXICILLINE 250MG SUSP F100ML",
+       "cm_price": 1107
+     },
+     {
+       "id": 168,
+       "name": "AMOXICILLINE 500MG CPR 2BL10",
+       "cm_price": 1590
+     },
+     {
+       "id": 169,
+       "name": "AMOXICILLINE ALICE 500MG 10BL1",
+       "cm_price": 4320
+     },
+     {
+       "id": 170,
+       "name": "AMOXICILLINE BMS 250MG 60ML SP",
+       "cm_price": 910
+     },
+     {
+       "id": 171,
+       "name": "AMOXICILLINE BMS 500MG 50BL10",
+       "cm_price": 34440
+     },
+     {
+       "id": 172,
+       "name": "AMOXICILLINE UBI 500MG GEL 10",
+       "cm_price": 8270
+     },
+     {
+       "id": 173,
+       "name": "AMOXICLAV DENK 1000 125MG SACH",
+       "cm_price": 5665
+     },
+     {
+       "id": 174,
+       "name": "AMOXICLAV DENK 1000MG PDR SACH",
+       "cm_price": 3935
+     },
+     {
+       "id": 175,
+       "name": "AMOXICLAV DENK 500MG 62,5MG CP",
+       "cm_price": 3915
+     },
+     {
+       "id": 176,
+       "name": "AMOXICLAV TABRAD 500MG 125MG A",
+       "cm_price": 4245
+     },
+     {
+       "id": 177,
+       "name": "AMOXICO 500MG GEL B 100",
+       "cm_price": 4675
+     },
+     {
+       "id": 178,
+       "name": "AMOXIREX 500MG GEL B 12",
+       "cm_price": 1195
+     },
+     {
+       "id": 179,
+       "name": "AMPICILLINE PPI 1G F 50",
+       "cm_price": 15360
+     },
+     {
+       "id": 180,
+       "name": "AMPICILLINE UBI 1G PDRE SOL IN",
+       "cm_price": 303
+     },
+     {
+       "id": 181,
+       "name": "AMPICILLINE UBI 1G PDRE SOL IN",
+       "cm_price": 18420
+     },
+     {
+       "id": 182,
+       "name": "AMPICILLINE UBI 500MG GEL 10 B",
+       "cm_price": 8270
+     },
+     {
+       "id": 183,
+       "name": "AMTIBA 500MG CPR B 4",
+       "cm_price": 805
+     },
+     {
+       "id": 184,
+       "name": "AMUSTIL CREME TB 30G",
+       "cm_price": 2485
+     },
+     {
+       "id": 185,
+       "name": "ANAFRANIL 10MG CPR BT 60",
+       "cm_price": 2760
+     },
+     {
+       "id": 186,
+       "name": "ANAFRANIL 25MG CPR BT 50",
+       "cm_price": 5420
+     },
+     {
+       "id": 187,
+       "name": "ANAFRANIL 25MG INJ AMP2ML BT 5",
+       "cm_price": 1930
+     },
+     {
+       "id": 188,
+       "name": "ANAFRANIL FORT 75MG CPR BT 20",
+       "cm_price": 6485
+     },
+     {
+       "id": 189,
+       "name": "ANALGIN 500MG CPR B 10",
+       "cm_price": 715
+     },
+     {
+       "id": 190,
+       "name": "ANASTROZOLE DENK 1MG CPR B 30",
+       "cm_price": 22700
+     },
+     {
+       "id": 191,
+       "name": "ANGINOVAG AERO 10ML",
+       "cm_price": 2360
+     },
+     {
+       "id": 192,
+       "name": "ANGISPRAY COLLUT SOL PULV BUC",
+       "cm_price": 3550
+     },
+     {
+       "id": 193,
+       "name": "ANGISPRAY COLLUTOIRE FL 40ML",
+       "cm_price": 3550
+     },
+     {
+       "id": 194,
+       "name": "ANOMEX SUPPO B 10",
+       "cm_price": 4625
+     },
+     {
+       "id": 195,
+       "name": "ANTADYS 100MG CPR BT 15",
+       "cm_price": 2600
+     },
+     {
+       "id": 196,
+       "name": "ANTALGEX GEL B 20",
+       "cm_price": 1070
+     },
+     {
+       "id": 197,
+       "name": "ANTALGEX T GEL 1BL20",
+       "cm_price": 1715
+     },
+     {
+       "id": 198,
+       "name": "ANTARENE CODEINE 200 30MG CPR",
+       "cm_price": 2890
+     },
+     {
+       "id": 199,
+       "name": "ANTARENE CODEINE 400MG 60MG CP",
+       "cm_price": 2890
+     },
+     {
+       "id": 200,
+       "name": "ANTIBIO SYNALAR GTT AURIC 10ML",
+       "cm_price": 1655
+     },
+     {
+       "id": 201,
+       "name": "ANTIDOL CPR B 20",
+       "cm_price": 570
+     },
+     {
+       "id": 202,
+       "name": "ANTIFLAM T3A POT TABS 25MG",
+       "cm_price": 875
+     },
+     {
+       "id": 203,
+       "name": "ANTIFLAM T3A POT TABS 50MG",
+       "cm_price": 1570
+     },
+     {
+       "id": 204,
+       "name": "ANTIGRIPPINE VIT C CPR BT 12",
+       "cm_price": 1555
+     },
+     {
+       "id": 205,
+       "name": "ANTIHEMORROIDAIRE CR T30G",
+       "cm_price": 750
+     },
+     {
+       "id": 206,
+       "name": "ANTIHEMORROIDAIRE SUPPO B 100",
+       "cm_price": 11160
+     },
+     {
+       "id": 207,
+       "name": "ANTIHEMORROIDAL PDE T 30G",
+       "cm_price": 2925
+     },
+     {
+       "id": 208,
+       "name": "ANTIPLATT 75MG CPR B 30",
+       "cm_price": 15910
+     },
+     {
+       "id": 209,
+       "name": "ANUSOL POMMADE TB 33G",
+       "cm_price": 2950
+     },
+     {
+       "id": 210,
+       "name": "ANUSOL SUPPO BT 24",
+       "cm_price": 3595
+     },
+     {
+       "id": 211,
+       "name": "APAZIDE 200MG GEL B 16",
+       "cm_price": 1420
+     },
+     {
+       "id": 212,
+       "name": "APAZIDE 4% SUSP F 100ML",
+       "cm_price": 1860
+     },
+     {
+       "id": 213,
+       "name": "APDROPS COLL F 3ML",
+       "cm_price": 2600
+     },
+     {
+       "id": 214,
+       "name": "APDYL-H SIROP 100ML",
+       "cm_price": 1800
+     },
+     {
+       "id": 215,
+       "name": "APFLU PDRE EFFV SACH B 10",
+       "cm_price": 2325
+     },
+     {
+       "id": 216,
+       "name": "APIFEN 400 CPR B 30",
+       "cm_price": 1705
+     },
+     {
+       "id": 217,
+       "name": "APOTEL 1G 6,7ML SOL PERF IV AM",
+       "cm_price": 4870
+     },
+     {
+       "id": 218,
+       "name": "APOTEL PLUS 600 20MG SOL INJ A",
+       "cm_price": 4095
+     },
+     {
+       "id": 219,
+       "name": "APRAMOL 500MG CPR B 20",
+       "cm_price": 705
+     },
+     {
+       "id": 220,
+       "name": "APRAMOL 500MG CPR EFFV B 16",
+       "cm_price": 1100
+     },
+     {
+       "id": 221,
+       "name": "APRANAX 275 MG CPR BT 10",
+       "cm_price": 1450
+     },
+     {
+       "id": 222,
+       "name": "APRANAX 550MG CPR B 10",
+       "cm_price": 2605
+     },
+     {
+       "id": 223,
+       "name": "APROVASC 150 5MG CPR B 28",
+       "cm_price": 15915
+     },
+     {
+       "id": 224,
+       "name": "APROVASC 150MG 10MG CPR B 28",
+       "cm_price": 16485
+     },
+     {
+       "id": 225,
+       "name": "APROVASC 300 10MG CPR B 28",
+       "cm_price": 18195
+     },
+     {
+       "id": 226,
+       "name": "APROVASC 300 5MG CPR B 28",
+       "cm_price": 17060
+     },
+     {
+       "id": 227,
+       "name": "APROVEL 150MG CPR BTE 28",
+       "cm_price": 15525
+     },
+     {
+       "id": 228,
+       "name": "APROVEL 300MG CPR BTE 28",
+       "cm_price": 16375
+     },
+     {
+       "id": 229,
+       "name": "APURONE CPR 400MG BT 30",
+       "cm_price": 9030
+     },
+     {
+       "id": 230,
+       "name": "ARBITEL 40 MG CPR B 30",
+       "cm_price": 5125
+     },
+     {
+       "id": 231,
+       "name": "ARCALION 200 CPR DRAG B 20",
+       "cm_price": 3605
+     },
+     {
+       "id": 232,
+       "name": "ARCO 125MG 50MG CPR B 8",
+       "cm_price": 3815
+     },
+     {
+       "id": 233,
+       "name": "ARCONIFED SR 20MG CPR B 30",
+       "cm_price": 2790
+     },
+     {
+       "id": 234,
+       "name": "ARCOXIA 120MG CPR B 7",
+       "cm_price": 5625
+     },
+     {
+       "id": 235,
+       "name": "ARCOXIA 60MG CPR B 7",
+       "cm_price": 4445
+     },
+     {
+       "id": 236,
+       "name": "ARCOXIA 90MG CPR B 7",
+       "cm_price": 5570
+     },
+     {
+       "id": 237,
+       "name": "AREMIC 10MG CPR B 7",
+       "cm_price": 3265
+     },
+     {
+       "id": 238,
+       "name": "ARENAX 100MG 300MG CPR B 6",
+       "cm_price": 2855
+     },
+     {
+       "id": 239,
+       "name": "ARGYROL 1% FAURE COLLY FL 10ML",
+       "cm_price": 1065
+     },
+     {
+       "id": 240,
+       "name": "ARIMIDEX 1MG CPR PELL B 30",
+       "cm_price": 87170
+     },
+     {
+       "id": 241,
+       "name": "ARNICAN CREME DERMIQUE TB 50G",
+       "cm_price": 1975
+     },
+     {
+       "id": 242,
+       "name": "ARSIQUINOFORME 250MG CPR B 15",
+       "cm_price": 2485
+     },
+     {
+       "id": 243,
+       "name": "ARSUAMOON 50MG 150MG CPR B 24",
+       "cm_price": 2802
+     },
+     {
+       "id": 244,
+       "name": "ARTANE 2MG CPR BT 50",
+       "cm_price": 1795
+     },
+     {
+       "id": 245,
+       "name": "ARTANE 5MG CPR BT 20",
+       "cm_price": 1780
+     },
+     {
+       "id": 246,
+       "name": "ARTECOM CPR B 8",
+       "cm_price": 4000
+     },
+     {
+       "id": 247,
+       "name": "ARTEDAR 100MG CPR B 6 + 3",
+       "cm_price": 3485
+     },
+     {
+       "id": 248,
+       "name": "ARTEDIAM 400MG CPR COBL6+6 B 1",
+       "cm_price": 3320
+     },
+     {
+       "id": 249,
+       "name": "ARTEDIAM 75MG 5ML PDRE SUSP BU",
+       "cm_price": 2700
+     },
+     {
+       "id": 250,
+       "name": "ARTEFAN 20 120MG CPR B 24",
+       "cm_price": 2380
+     },
+     {
+       "id": 251,
+       "name": "ARTEFAN 20 120MG CPR DISP B 6",
+       "cm_price": 1185
+     },
+     {
+       "id": 252,
+       "name": "ARTEFAN 40 240MG CPR B 12",
+       "cm_price": 2855
+     },
+     {
+       "id": 253,
+       "name": "ARTEFAN 40 240MG CPR B 6",
+       "cm_price": 1730
+     },
+     {
+       "id": 254,
+       "name": "ARTEFAN 60 360MG CPR B 6",
+       "cm_price": 2300
+     },
+     {
+       "id": 255,
+       "name": "ARTEFAN 80 480MG CPR B 6",
+       "cm_price": 2860
+     },
+     {
+       "id": 256,
+       "name": "ARTEFAN PDRE SUSP AVEC PHOTO F",
+       "cm_price": 3885
+     },
+     {
+       "id": 257,
+       "name": "ARTEFAN PDRE SUSP F 60ML",
+       "cm_price": 3285
+     },
+     {
+       "id": 258,
+       "name": "ARTELAC COLL F 10ML",
+       "cm_price": 2945
+     },
+     {
+       "id": 259,
+       "name": "ARTEM 80MG 1ML AMP INJ B 6",
+       "cm_price": 4885
+     },
+     {
+       "id": 260,
+       "name": "ARTEMAL 50 200MG CPR B 24",
+       "cm_price": 3440
+     },
+     {
+       "id": 261,
+       "name": "ARTEME LUMEFA 180 1080G SUSP B",
+       "cm_price": 1500
+     },
+     {
+       "id": 262,
+       "name": "ARTEMETHER LUMEFANTRINE 80 480",
+       "cm_price": 2095
+     },
+     {
+       "id": 263,
+       "name": "ARTEMETHER UBI 20MG AMP INJ B ",
+       "cm_price": 4595
+     },
+     {
+       "id": 264,
+       "name": "ARTEMETHER UBI 40MG IM AMP INJ",
+       "cm_price": 6860
+     },
+     {
+       "id": 265,
+       "name": "ARTEMETHER UBI 80MG AMP INJ B ",
+       "cm_price": 8220
+     },
+     {
+       "id": 266,
+       "name": "ARTEMETHER+LUMEFANTRIN20 120MG",
+       "cm_price": 13960
+     },
+     {
+       "id": 267,
+       "name": "ARTEMETHER+LUMEFANTRIN20 120MG",
+       "cm_price": 23195
+     },
+     {
+       "id": 268,
+       "name": "ARTEMETHER+LUMEFANTRIN20 120MG",
+       "cm_price": 24900
+     },
+     {
+       "id": 269,
+       "name": "ARTEMON KIT COMP AD B 24",
+       "cm_price": 3005
+     },
+     {
+       "id": 270,
+       "name": "ARTENAM 100MG AMP B 7",
+       "cm_price": 7410
+     },
+     {
+       "id": 271,
+       "name": "ARTENAM 40MG AMP B 5",
+       "cm_price": 4310
+     },
+     {
+       "id": 272,
+       "name": "ARTEQUIN 300 375 CPR B 6",
+       "cm_price": 2850
+     },
+     {
+       "id": 273,
+       "name": "ARTEQUIN 600 750 LACTAB B 6",
+       "cm_price": 3760
+     },
+     {
+       "id": 274,
+       "name": "ARTEQUIN PED SACH B 3",
+       "cm_price": 3415
+     },
+     {
+       "id": 275,
+       "name": "ARTEROPIRINE 75MG CPR  B 30",
+       "cm_price": 4275
+     },
+     {
+       "id": 276,
+       "name": "ARTESIANE 40MG ML AMP INJ B 10",
+       "cm_price": 7415
+     },
+     {
+       "id": 277,
+       "name": "ARTESIANE 40MG SUPPOGEL B 6",
+       "cm_price": 2875
+     },
+     {
+       "id": 278,
+       "name": "ARTESIANE 80MG AMP INJ B 5",
+       "cm_price": 5220
+     },
+     {
+       "id": 279,
+       "name": "ARTESUN 120MG IM IV SOL INJ B ",
+       "cm_price": 2610
+     },
+     {
+       "id": 280,
+       "name": "ARTESUN 30MG IV SOL INJ B 1",
+       "cm_price": 855
+     },
+     {
+       "id": 281,
+       "name": "ARTESUN 60MG SOL INJ B 1",
+       "cm_price": 1315
+     },
+     {
+       "id": 282,
+       "name": "ARTESUNATE  60MG ML INJ B 1",
+       "cm_price": 1360
+     },
+     {
+       "id": 283,
+       "name": "ARTHELERIA L CPR B 24",
+       "cm_price": 3505
+     },
+     {
+       "id": 284,
+       "name": "ARTHEPA-1 80MG ML AMP INJ 1ML",
+       "cm_price": 5255
+     },
+     {
+       "id": 285,
+       "name": "ARTHROCINE 200MG CPR BT 30",
+       "cm_price": 7425
+     },
+     {
+       "id": 286,
+       "name": "ARTIMED 50MG CPR B 10",
+       "cm_price": 1150
+     },
+     {
+       "id": 287,
+       "name": "ARTIZ DP 80 480MG CPR B 6",
+       "cm_price": 2855
+     },
+     {
+       "id": 288,
+       "name": "ARTIZ FORTE 40MG 240MG CPR B 1",
+       "cm_price": 2870
+     },
+     {
+       "id": 289,
+       "name": "ARTIZ SUSP BUV F 60ML",
+       "cm_price": 2890
+     },
+     {
+       "id": 290,
+       "name": "ARTOTEC 50MG CPR B 30",
+       "cm_price": 6165
+     },
+     {
+       "id": 291,
+       "name": "ARTRIM 15 90MG SUSP BUV F 60ML",
+       "cm_price": 2890
+     },
+     {
+       "id": 292,
+       "name": "ARTRIM 40 240MG CPR B 12",
+       "cm_price": 3425
+     },
+     {
+       "id": 293,
+       "name": "ASAQ DENK FIXED DOSE CPR B 6",
+       "cm_price": 2640
+     },
+     {
+       "id": 294,
+       "name": "ASCABIOL EMUL EXT FL 125ML",
+       "cm_price": 3685
+     },
+     {
+       "id": 295,
+       "name": "ASMOXIME 200MG CPR PELL SEC B ",
+       "cm_price": 5635
+     },
+     {
+       "id": 296,
+       "name": "ASPEGIC 0,5G INJ AMP BT 20 MH",
+       "cm_price": 10595
+     },
+     {
+       "id": 297,
+       "name": "ASPEGIC 0,5G INJ AMP BT 6",
+       "cm_price": 3445
+     },
+     {
+       "id": 298,
+       "name": "ASPEGIC 1000 PDR ORAL SAC.BT20",
+       "cm_price": 2415
+     },
+     {
+       "id": 299,
+       "name": "ASPEGIC 100MG NN PDRE SOL BUV",
+       "cm_price": 1215
+     },
+     {
+       "id": 300,
+       "name": "ASPEGIC 1G INJ AMP BT 20 MH",
+       "cm_price": 18320
+     },
+     {
+       "id": 301,
+       "name": "ASPEGIC 1G INJ AMP BT 6",
+       "cm_price": 5335
+     },
+     {
+       "id": 302,
+       "name": "ASPEGIC 250 PDR ORAL SACH BT20",
+       "cm_price": 1310
+     },
+     {
+       "id": 303,
+       "name": "ASPEGIC 500 PDR ORAL SACH BT20",
+       "cm_price": 1620
+     },
+     {
+       "id": 304,
+       "name": "ASPEGIC VITC 500MG PDRE SACH B",
+       "cm_price": 1850
+     },
+     {
+       "id": 305,
+       "name": "ASPIRIN CARDIO CPR GASTRO RESI",
+       "cm_price": 1365
+     },
+     {
+       "id": 306,
+       "name": "ASPIRINE DU RHONE 0,5G CPR B30",
+       "cm_price": 1130
+     },
+     {
+       "id": 307,
+       "name": "ASPIRINE UPSA 1G CPR EFFV B 20",
+       "cm_price": 2615
+     },
+     {
+       "id": 308,
+       "name": "ASPIRINE UPSA VIT C CPR EFFV T",
+       "cm_price": 1215
+     },
+     {
+       "id": 309,
+       "name": "ASPRO 500MG CPR EFFV B 20",
+       "cm_price": 1815
+     },
+     {
+       "id": 310,
+       "name": "ASTAPH 250MG 5ML PDRE SUSP BUV",
+       "cm_price": 4265
+     },
+     {
+       "id": 311,
+       "name": "ASTAPH 250MG SP F 60ML",
+       "cm_price": 3145
+     },
+     {
+       "id": 312,
+       "name": "ASTAPH 500MG GEL B 12",
+       "cm_price": 3435
+     },
+     {
+       "id": 313,
+       "name": "ASTAPH 500MG GEL B 24",
+       "cm_price": 4625
+     },
+     {
+       "id": 314,
+       "name": "ATACAND 16MG CPR B 28",
+       "cm_price": 19490
+     },
+     {
+       "id": 315,
+       "name": "ATACAND 16MG CPR SEC B 30",
+       "cm_price": 19490
+     },
+     {
+       "id": 316,
+       "name": "ATACAND 4MG CPR SEC B 30",
+       "cm_price": 12990
+     },
+     {
+       "id": 317,
+       "name": "ATACAND 8MG B 28 COMP",
+       "cm_price": 18085
+     },
+     {
+       "id": 318,
+       "name": "ATACAND 8MG CPR SEC B 30",
+       "cm_price": 18085
+     },
+     {
+       "id": 319,
+       "name": "ATARAX 25MG CPR B 30",
+       "cm_price": 2310
+     },
+     {
+       "id": 320,
+       "name": "ATARAX 2MG ML SP FV 200ML",
+       "cm_price": 2260
+     },
+     {
+       "id": 321,
+       "name": "ATENOLOL DENK 50MG CPR 100BL",
+       "cm_price": 7805
+     },
+     {
+       "id": 322,
+       "name": "ATEPADENE 30MG GEL T 30",
+       "cm_price": 4590
+     },
+     {
+       "id": 323,
+       "name": "ATEPADENE 30MG GELU BT 30",
+       "cm_price": 4435
+     },
+     {
+       "id": 324,
+       "name": "ATORFIT 10MG CPR B 30",
+       "cm_price": 5245
+     },
+     {
+       "id": 325,
+       "name": "ATORFIT 20MG CPR B 30",
+       "cm_price": 7650
+     },
+     {
+       "id": 326,
+       "name": "ATORFIT AM 10MG 10MG CPR B 30",
+       "cm_price": 8255
+     },
+     {
+       "id": 327,
+       "name": "ATORFIT AM 10MG 5MG CPR B 30",
+       "cm_price": 7120
+     },
+     {
+       "id": 328,
+       "name": "ATORVASTATINE SP 20MG CPR PELL",
+       "cm_price": 5700
+     },
+     {
+       "id": 329,
+       "name": "ATORVASTATINE SP 40MG CPR PELL",
+       "cm_price": 9105
+     },
+     {
+       "id": 330,
+       "name": "ATRICAN 250MG  CAPSULE BT 8.",
+       "cm_price": 3365
+     },
+     {
+       "id": 331,
+       "name": "ATURGYL NAS SOL FL NEB 15ML",
+       "cm_price": 1185
+     },
+     {
+       "id": 332,
+       "name": "AUGMACILLIN 200MG PDRE SUSP F ",
+       "cm_price": 2435
+     },
+     {
+       "id": 333,
+       "name": "AUGMACILLIN 400MG PDRE SUSP F ",
+       "cm_price": 3995
+     },
+     {
+       "id": 334,
+       "name": "AUGMENTIN 1000MG 200MG IV PDRE",
+       "cm_price": 3015
+     },
+     {
+       "id": 335,
+       "name": "AUGMENTIN 100MG BB PDR SP 30ML",
+       "cm_price": 2260
+     },
+     {
+       "id": 336,
+       "name": "AUGMENTIN 100MG ENF PDRSP 60ML",
+       "cm_price": 4140
+     },
+     {
+       "id": 337,
+       "name": "AUGMENTIN 1G PDRE SUSP BUV SAC",
+       "cm_price": 6480
+     },
+     {
+       "id": 338,
+       "name": "AUGMENTIN 500 50MG IV SOL INJ",
+       "cm_price": 1795
+     },
+     {
+       "id": 339,
+       "name": "AUGMENTIN 500MG CPR PELL B 16",
+       "cm_price": 4507
+     },
+     {
+       "id": 340,
+       "name": "AUREOMYCIN SPECIA3% PDE T 15G",
+       "cm_price": 1160
+     },
+     {
+       "id": 341,
+       "name": "AUREOMYCINE MONOT 3% DRQ.TB15G",
+       "cm_price": 1185
+     },
+     {
+       "id": 342,
+       "name": "AUREOMYCINE VALDA 1% PDE OPHT",
+       "cm_price": 355
+     },
+     {
+       "id": 343,
+       "name": "AUREOMYCINE VALDA 3% PDE DERM",
+       "cm_price": 545
+     },
+     {
+       "id": 344,
+       "name": "AURICULARUM SUSP AURIC PDRE +",
+       "cm_price": 5655
+     },
+     {
+       "id": 345,
+       "name": "AURIPAX SOLUT AURICULAIRE 15ML",
+       "cm_price": 1635
+     },
+     {
+       "id": 346,
+       "name": "AUROMETFORMIN 850MG CPR B 140",
+       "cm_price": 7660
+     },
+     {
+       "id": 347,
+       "name": "AUROTHER 80MG 480MG CPR B 6",
+       "cm_price": 2355
+     },
+     {
+       "id": 348,
+       "name": "AUROTHRIN 500MG CPR PELL B 3",
+       "cm_price": 4250
+     },
+     {
+       "id": 349,
+       "name": "AUROXETIL 750MG AMP SOL INJ B ",
+       "cm_price": 2145
+     },
+     {
+       "id": 350,
+       "name": "AVAMYS 27,5MCG PULV SUSP NAS F",
+       "cm_price": 2395
+     },
+     {
+       "id": 351,
+       "name": "AVANDIA 4MG CPR PELL B 14",
+       "cm_price": 3540
+     },
+     {
+       "id": 352,
+       "name": "AVAS 10MG CPR B 30",
+       "cm_price": 4345
+     },
+     {
+       "id": 353,
+       "name": "AVAS 10MG CPR PELL B 30",
+       "cm_price": 4345
+     },
+     {
+       "id": 354,
+       "name": "AVAS 20MG CPR B 30",
+       "cm_price": 6845
+     },
+     {
+       "id": 355,
+       "name": "AVAS 20MG CPR PELL B 30",
+       "cm_price": 6845
+     },
+     {
+       "id": 356,
+       "name": "AVELOX 400MG CPR B 5",
+       "cm_price": 9675
+     },
+     {
+       "id": 357,
+       "name": "AVLOCARDYL 160MG LP GEL B 30",
+       "cm_price": 6115
+     },
+     {
+       "id": 358,
+       "name": "AVLOCARDYL 40MG CPR B 50",
+       "cm_price": 2435
+     },
+     {
+       "id": 359,
+       "name": "AVLOCARDYL LP 160 GELULE BT 28",
+       "cm_price": 6110
+     },
+     {
+       "id": 360,
+       "name": "AXOL PROCTO CR AVEC APPLICAT T",
+       "cm_price": 3115
+     },
+     {
+       "id": 361,
+       "name": "AZANTAC 150MG COMP.EFF.BTE 30",
+       "cm_price": 10225
+     },
+     {
+       "id": 362,
+       "name": "AZANTAC 150MG CPR BT 30",
+       "cm_price": 13505
+     },
+     {
+       "id": 363,
+       "name": "AZANTAC 150MG CPR EFF BT 20",
+       "cm_price": 11780
+     },
+     {
+       "id": 364,
+       "name": "AZANTAC 300MG CPR BT 14",
+       "cm_price": 12365
+     },
+     {
+       "id": 365,
+       "name": "AZANTAC 300MG CPR EFFV BT 14",
+       "cm_price": 16425
+     },
+     {
+       "id": 366,
+       "name": "AZANTAC 50MG INJ AMP 2ML BT 5",
+       "cm_price": 4635
+     },
+     {
+       "id": 367,
+       "name": "AZANTAC 75MG COMP EFF B 14",
+       "cm_price": 2485
+     },
+     {
+       "id": 368,
+       "name": "AZARGA 10MG ML 5MG ML COLL F 5",
+       "cm_price": 14260
+     },
+     {
+       "id": 369,
+       "name": "AZIBAC 500MG CPR B 3",
+       "cm_price": 4665
+     },
+     {
+       "id": 370,
+       "name": "AZIBACT 500MG CPR B 3",
+       "cm_price": 4125
+     },
+     {
+       "id": 371,
+       "name": "AZIBIO 500MG CPR PELL B 3",
+       "cm_price": 3975
+     },
+     {
+       "id": 372,
+       "name": "AZICURE 200MG 5ML SUSP ORAL F ",
+       "cm_price": 3880
+     },
+     {
+       "id": 373,
+       "name": "AZICURE 250MG CPR B 6",
+       "cm_price": 4185
+     },
+     {
+       "id": 374,
+       "name": "AZICURE 500MG CPR B 3",
+       "cm_price": 4185
+     },
+     {
+       "id": 375,
+       "name": "AZIDERM CR T 15G",
+       "cm_price": 2975
+     },
+     {
+       "id": 376,
+       "name": "AZITHRIN 250MG GEL B 6",
+       "cm_price": 2635
+     },
+     {
+       "id": 377,
+       "name": "AZITHRIN 500MG GEL B 3",
+       "cm_price": 3190
+     },
+     {
+       "id": 378,
+       "name": "AZITHRIN DRY PDRE SUSP BUV F 1",
+       "cm_price": 2335
+     },
+     {
+       "id": 379,
+       "name": "AZITHRO 100MG PDRE SUSP BUV SA",
+       "cm_price": 1610
+     },
+     {
+       "id": 380,
+       "name": "AZITHRO 200MG PDRE SUSP BUV SA",
+       "cm_price": 2290
+     },
+     {
+       "id": 381,
+       "name": "AZITRINE 250MG CPR B 6",
+       "cm_price": 2290
+     },
+     {
+       "id": 382,
+       "name": "AZITRINE 500MG CPR B 3",
+       "cm_price": 4555
+     },
+     {
+       "id": 383,
+       "name": "AZITRINE SUSP F 15ML",
+       "cm_price": 2565
+     },
+     {
+       "id": 384,
+       "name": "AZITRO ACINO 250MG CPR B 3",
+       "cm_price": 2850
+     },
+     {
+       "id": 385,
+       "name": "AZITRO ACINO 500MG CPR B 3",
+       "cm_price": 4555
+     },
+     {
+       "id": 386,
+       "name": "AZITRO MEPHA 250MG CPR B 3",
+       "cm_price": 2850
+     },
+     {
+       "id": 387,
+       "name": "AZITRO MEPHA 500MG CPR B 3",
+       "cm_price": 4555
+     },
+     {
+       "id": 388,
+       "name": "AZIWOK 250MG GEL B 6",
+       "cm_price": 6070
+     },
+     {
+       "id": 389,
+       "name": "AZIX 500MG CPR B 3",
+       "cm_price": 5490
+     },
+     {
+       "id": 390,
+       "name": "AZOLE 4% SUSP BUV F 10ML",
+       "cm_price": 1110
+     },
+     {
+       "id": 391,
+       "name": "AZOLE 400MG CPR B 1",
+       "cm_price": 1055
+     },
+     {
+       "id": 392,
+       "name": "AZOPT 10MG COLL F 5ML",
+       "cm_price": 11515
+     },
+     {
+       "id": 393,
+       "name": "AZOTIK 500MG CPR B 3",
+       "cm_price": 4490
+     },
+     {
+       "id": 394,
+       "name": "AZYTER 15MG G COLL SOL UNID B ",
+       "cm_price": 4580
+     },
+     {
+       "id": 395,
+       "name": "BACICOLINE BACITR.COLLY FL 5ML",
+       "cm_price": 1895
+     },
+     {
+       "id": 396,
+       "name": "BACQURE 500MG INJ AMP B 1",
+       "cm_price": 9115
+     },
+     {
+       "id": 397,
+       "name": "BACTEO APAISYL GEL ANTIBACT T ",
+       "cm_price": 1795
+     },
+     {
+       "id": 398,
+       "name": "BACTIFLOX 250MG LACTAB BTE 10",
+       "cm_price": 4905
+     },
+     {
+       "id": 399,
+       "name": "BACTIFLOX 500MG LACTAB B 10",
+       "cm_price": 6270
+     },
+     {
+       "id": 400,
+       "name": "BACTIFLOX 750MG CPR B 10",
+       "cm_price": 7410
+     },
+     {
+       "id": 401,
+       "name": "BACTIGRAM 250MG 5ML SUSP BUV F",
+       "cm_price": 6125
+     },
+     {
+       "id": 402,
+       "name": "BACTIGRAM 500MG GEL B 8",
+       "cm_price": 4490
+     },
+     {
+       "id": 403,
+       "name": "BACTOCLAV 125MG PDRE SUSP BUV",
+       "cm_price": 2980
+     },
+     {
+       "id": 404,
+       "name": "BACTOCLAV 1G CPR B 12",
+       "cm_price": 5730
+     },
+     {
+       "id": 405,
+       "name": "BACTOCLAV 625MG CPR B 12",
+       "cm_price": 3915
+     },
+     {
+       "id": 406,
+       "name": "BACTOPOUMON SUSP BUV F 100ML",
+       "cm_price": 2115
+     },
+     {
+       "id": 407,
+       "name": "BACTOX 125MG 5ML PDRE SUSP BUV",
+       "cm_price": 1230
+     },
+     {
+       "id": 408,
+       "name": "BACTOX 1G IM FL+AMP BT 1",
+       "cm_price": 1355
+     },
+     {
+       "id": 409,
+       "name": "BACTOX 250MG 5ML PDRE SUSP BUV",
+       "cm_price": 1585
+     },
+     {
+       "id": 410,
+       "name": "BACTOX 500MG GEL B 100",
+       "cm_price": 6175
+     },
+     {
+       "id": 411,
+       "name": "BACTOX 500MG GELULE BT 12",
+       "cm_price": 1880
+     },
+     {
+       "id": 412,
+       "name": "BACTOX 500MG PDRE SIROP SS FL",
+       "cm_price": 2635
+     },
+     {
+       "id": 413,
+       "name": "BACTRIM ADULTE CPR B 20",
+       "cm_price": 1985
+     },
+     {
+       "id": 414,
+       "name": "BACTRIM FORTE AD CPR B 10",
+       "cm_price": 2285
+     },
+     {
+       "id": 415,
+       "name": "BACTRIM PEDIAT BUV F 100ML",
+       "cm_price": 2180
+     },
+     {
+       "id": 416,
+       "name": "BACTRIM PERF AMP 5ML B 6 MH",
+       "cm_price": 3350
+     },
+     {
+       "id": 417,
+       "name": "BACTROBAN POMMADE TB 15G",
+       "cm_price": 4185
+     },
+     {
+       "id": 418,
+       "name": "BANDE VELPEAU 5X4 CM",
+       "cm_price": 500
+     },
+     {
+       "id": 419,
+       "name": "BANDE VELPEAU 7X4 CM",
+       "cm_price": 600
+     },
+     {
+       "id": 420,
+       "name": "BANEOCIN POMMADE TB 20G",
+       "cm_price": 1410
+     },
+     {
+       "id": 421,
+       "name": "BANEOCIN POUDRE FL 10G",
+       "cm_price": 1325
+     },
+     {
+       "id": 422,
+       "name": "BAUME DE TOLU POT 250G",
+       "cm_price": 71195
+     },
+     {
+       "id": 423,
+       "name": "BAUME EHRLICH TUBES 75ML",
+       "cm_price": 3550
+     },
+     {
+       "id": 424,
+       "name": "BAUME SAINT-BERNARD TB 100G",
+       "cm_price": 2545
+     },
+     {
+       "id": 425,
+       "name": "BAUME SAINT-BERNARD TB 42G",
+       "cm_price": 1955
+     },
+     {
+       "id": 426,
+       "name": "BECLAV 1000MG 200MG IV PDRE SO",
+       "cm_price": 1990
+     },
+     {
+       "id": 427,
+       "name": "BECLAV 625MG CPR B 20",
+       "cm_price": 4315
+     },
+     {
+       "id": 428,
+       "name": "BECOACTIN SP F 200ML",
+       "cm_price": 2340
+     },
+     {
+       "id": 429,
+       "name": "BECOZYME CPR ENR B 20",
+       "cm_price": 810
+     },
+     {
+       "id": 430,
+       "name": "BECTACEF 1000MG 500MG PDR PPI+",
+       "cm_price": 2340
+     },
+     {
+       "id": 431,
+       "name": "BEDELIX 3G PDRE SUSP BUV SACH",
+       "cm_price": 3900
+     },
+     {
+       "id": 432,
+       "name": "BENDACEL 200MG 5ML SUSP BUV F ",
+       "cm_price": 525
+     },
+     {
+       "id": 433,
+       "name": "BENDEX 200MG 5ML SUSP BUV F 10",
+       "cm_price": 610
+     },
+     {
+       "id": 434,
+       "name": "BENDEX 400MG CPR SACH 1 B 20 H",
+       "cm_price": 4745
+     },
+     {
+       "id": 435,
+       "name": "BENGUE BAUME PDE TB 40G",
+       "cm_price": 3380
+     },
+     {
+       "id": 436,
+       "name": "BENZATHINE BENZYLPENI UBI 2,4M",
+       "cm_price": 1155
+     },
+     {
+       "id": 437,
+       "name": "BENZOLE 200MG 5ML SUSP BUV10ML",
+       "cm_price": 730
+     },
+     {
+       "id": 438,
+       "name": "BENZOLE 400MG CPR B 1",
+       "cm_price": 715
+     },
+     {
+       "id": 439,
+       "name": "BEPANTHENE 5% ONGUENT PDE T 30",
+       "cm_price": 2695
+     },
+     {
+       "id": 440,
+       "name": "BEPANTHENE ONGUENT 5% TB 30G",
+       "cm_price": 2690
+     },
+     {
+      "id": 441,
+      "name": "BERLOCID 240MG SP F 100ML",
+      "cm_price": 2080
+    },
+    {
+      "id": 442,
+      "name": "BERLOCID 480MG CPR B 20",
+      "cm_price": 1760
+    },
+    {
+      "id": 443,
+      "name": "BERLOCID 960MG CPR B 10",
+      "cm_price": 1760
+    },
+    {
+      "id": 444,
+      "name": "BETACLOX GELULE B 12",
+      "cm_price": 4355
+    },
+    {
+      "id": 445,
+      "name": "BETADINE 10% SOL VAG F 125ML",
+      "cm_price": 1420
+    },
+    {
+      "id": 446,
+      "name": "BETADINE DERMQ FP 125ML JAUNE",
+      "cm_price": 1530
+    },
+    {
+      "id": 447,
+      "name": "BETADINE GARG BAIN BCHE F125ML",
+      "cm_price": 1610
+    },
+    {
+      "id": 448,
+      "name": "BETADINE GEL DERMIQ TB 30G",
+      "cm_price": 1110
+    },
+    {
+      "id": 449,
+      "name": "BETADINE OVULES B 8",
+      "cm_price": 1450
+    },
+    {
+      "id": 450,
+      "name": "BETADINE SCRUB FL 500ML ROUGE",
+      "cm_price": 5070
+    },
+    {
+      "id": 451,
+      "name": "BETADINE SCRUB FP 125ML ROUGE",
+      "cm_price": 1430
+    },
+    {
+      "id": 452,
+      "name": "BETADINE SOL.DERMQ 500ML JAUNE",
+      "cm_price": 5255
+    },
+    {
+      "id": 453,
+      "name": "BETADINE VAG+NEC F 125ML",
+      "cm_price": 3910
+    },
+    {
+      "id": 454,
+      "name": "BETASERC 24MG CPR B 60",
+      "cm_price": 7841
+    },
+    {
+      "id": 455,
+      "name": "BETASTENE 0,05% SOL BUV F 30ML",
+      "cm_price": 2705
+    },
+    {
+      "id": 456,
+      "name": "BETAZIDIM 1G AMP INJ B 1",
+      "cm_price": 10100
+    },
+    {
+      "id": 457,
+      "name": "BETNEVAL 0,1% CREME DERM TB10G",
+      "cm_price": 1060
+    },
+    {
+      "id": 458,
+      "name": "BETNEVAL 0,1% CREME DERM TB30G",
+      "cm_price": 1905
+    },
+    {
+      "id": 459,
+      "name": "BETNEVAL 0,1% POMMADE TB 10G",
+      "cm_price": 1060
+    },
+    {
+      "id": 460,
+      "name": "BETNEVAL 0,1% POMMADE TB 30G",
+      "cm_price": 1895
+    },
+    {
+      "id": 461,
+      "name": "BETNEVAL 0,1%LOTION DERQ FL15G",
+      "cm_price": 1405
+    },
+    {
+      "id": 462,
+      "name": "BETNEVAL NEOMYCINE CREME TB10G",
+      "cm_price": 1110
+    },
+    {
+      "id": 463,
+      "name": "BETNEVAL NEOMYCINE PDE TB 10G",
+      "cm_price": 1110
+    },
+    {
+      "id": 464,
+      "name": "BETOPTIC 0,5% COLL F 3ML",
+      "cm_price": 3660
+    },
+    {
+      "id": 465,
+      "name": "BETOPTIC 0.25% COLL F 3ML",
+      "cm_price": 3660
+    },
+    {
+      "id": 466,
+      "name": "BGLAU 2MG ML COLL F 5ML",
+      "cm_price": 6350
+    },
+    {
+      "id": 467,
+      "name": "BI PROFENID 150MG CPR LP BT 20",
+      "cm_price": 4358
+    },
+    {
+      "id": 468,
+      "name": "BI PROFENID LP 100MG CPR SEC B",
+      "cm_price": 3435
+    },
+    {
+      "id": 469,
+      "name": "BIAFINE EMULSION T 186G",
+      "cm_price": 3475
+    },
+    {
+      "id": 470,
+      "name": "BIAFINE EMULSION T 93G",
+      "cm_price": 1970
+    },
+    {
+      "id": 471,
+      "name": "BIAKOF SP TOUX F 200ML",
+      "cm_price": 2130
+    },
+    {
+      "id": 472,
+      "name": "BIBA SP F 100ML",
+      "cm_price": 2765
+    },
+    {
+      "id": 473,
+      "name": "BICARBONATE NA 1,4% FRES 250ML",
+      "cm_price": 1400
+    },
+    {
+      "id": 474,
+      "name": "BICARBONATE NA 1,4% FRES 500ML",
+      "cm_price": 1975
+    },
+    {
+      "id": 475,
+      "name": "BICARBONATE SODIUM B 250G",
+      "cm_price": 1050
+    },
+    {
+      "id": 476,
+      "name": "BICARBONATE SODIUM PQ250G GILB",
+      "cm_price": 1070
+    },
+    {
+      "id": 477,
+      "name": "BICLINOCILLINE 1M FL INJ BT 1",
+      "cm_price": 1645
+    },
+    {
+      "id": 478,
+      "name": "BIDCEF 500MG CPR B 20",
+      "cm_price": 4290
+    },
+    {
+      "id": 479,
+      "name": "BIDONTOGYL 1,5MUI 250MG CPR B ",
+      "cm_price": 5710
+    },
+    {
+      "id": 480,
+      "name": "BIFOSA 35MG CPR B 4",
+      "cm_price": 5195
+    },
+    {
+      "id": 481,
+      "name": "BIFOSA 70MG CPR B 4",
+      "cm_price": 6425
+    },
+    {
+      "id": 482,
+      "name": "BILAXTEN 20MG CPR B 10",
+      "cm_price": 3570
+    },
+    {
+      "id": 483,
+      "name": "BILOR 10MG CPR B 10",
+      "cm_price": 2395
+    },
+    {
+      "id": 484,
+      "name": "BILTRICIDE 600MG CPR BT * 4 *",
+      "cm_price": 8085
+    },
+    {
+      "id": 485,
+      "name": "BIMALARIL 80 480MG CPR B 6",
+      "cm_price": 2610
+    },
+    {
+      "id": 486,
+      "name": "BIMALARIL ADO SUSP F 30ML",
+      "cm_price": 2590
+    },
+    {
+      "id": 487,
+      "name": "BIMALARIL BB SUSP F 30ML",
+      "cm_price": 1340
+    },
+    {
+      "id": 488,
+      "name": "BIMALARIL ENF SUSP F 30ML",
+      "cm_price": 2260
+    },
+    {
+      "id": 489,
+      "name": "BINOCLAR 250MG CPR B 10",
+      "cm_price": 3425
+    },
+    {
+      "id": 490,
+      "name": "BINOCLAR 500MG CPR B 14",
+      "cm_price": 6785
+    },
+    {
+      "id": 491,
+      "name": "BINOZYT 200MG 5ML SUSP BUV15ML",
+      "cm_price": 3745
+    },
+    {
+      "id": 492,
+      "name": "BINOZYT 250MG CPR B 6",
+      "cm_price": 7625
+    },
+    {
+      "id": 493,
+      "name": "BINOZYT 500MG CPR B 3",
+      "cm_price": 4495
+    },
+    {
+      "id": 494,
+      "name": "BIOCALYPTOL SIROP FL 200ML",
+      "cm_price": 2835
+    },
+    {
+      "id": 495,
+      "name": "BIODERMINE CREME DERMQUE TB24G",
+      "cm_price": 1770
+    },
+    {
+      "id": 496,
+      "name": "BIODROXIL 500MG GEL BTE 12",
+      "cm_price": 4560
+    },
+    {
+      "id": 497,
+      "name": "BIODROXIL CPR 1000MG BTE 12",
+      "cm_price": 8305
+    },
+    {
+      "id": 498,
+      "name": "BIODROXIL SUSP 125MG 5ML F60ML",
+      "cm_price": 1765
+    },
+    {
+      "id": 499,
+      "name": "BIODROXIL SUSP 250MG 5ML F60ML",
+      "cm_price": 2880
+    },
+    {
+      "id": 500,
+      "name": "BIODROXIL SUSP 500MG 5ML F60ML",
+      "cm_price": 4810
+    },
+    {
+      "id": 501,
+      "name": "BIORIN 125MG SUSP BUV F 100ML",
+      "cm_price": 1225
+    },
+    {
+      "id": 502,
+      "name": "BIPERIDYS 20MG CPR B 40",
+      "cm_price": 4425
+    },
+    {
+      "id": 503,
+      "name": "BIPERIDYS 20MG CPR PELL SEC PL",
+      "cm_price": 2510
+    },
+    {
+      "id": 504,
+      "name": "BIPRETERAX 10 MG 2,5 MG CPR PE",
+      "cm_price": 17330
+    },
+    {
+      "id": 505,
+      "name": "BIPRETERAX 5MG 1,25MG CPR PELL",
+      "cm_price": 12500
+    },
+    {
+      "id": 506,
+      "name": "BIPRETERAX COMP BT 30",
+      "cm_price": 12500
+    },
+    {
+      "id": 507,
+      "name": "BISEDAL GEL B 20",
+      "cm_price": 1420
+    },
+    {
+      "id": 508,
+      "name": "BISPIRAZOLE 1,5 MUI 250MG CPR",
+      "cm_price": 3765
+    },
+    {
+      "id": 509,
+      "name": "BLEOMYCINE 15MG INJ  FL  BTE 1",
+      "cm_price": 26100
+    },
+    {
+      "id": 510,
+      "name": "BLEOMYCINE 15UI AMP B 1",
+      "cm_price": 16075
+    },
+    {
+      "id": 511,
+      "name": "BLOCOLD 500MG 30MG 10MG CPR B ",
+      "cm_price": 4135
+    },
+    {
+      "id": 512,
+      "name": "BLOKIUM 100MG CPR B 30",
+      "cm_price": 5740
+    },
+    {
+      "id": 513,
+      "name": "BLOKIUM 100MG CPR BT 15",
+      "cm_price": 3215
+    },
+    {
+      "id": 514,
+      "name": "BLOKIUM 50MG CPR B 30",
+      "cm_price": 4185
+    },
+    {
+      "id": 515,
+      "name": "BLOKIUM 50MG CPR BT 15",
+      "cm_price": 2325
+    },
+    {
+      "id": 516,
+      "name": "BLOKIUM DIU CPR BT 20",
+      "cm_price": 3565
+    },
+    {
+      "id": 517,
+      "name": "BOLINAN CPR BT 15",
+      "cm_price": 2365
+    },
+    {
+      "id": 518,
+      "name": "BOLINAN CPR BT 40",
+      "cm_price": 5900
+    },
+    {
+      "id": 519,
+      "name": "BONCIPRO 500MG CPR B 20",
+      "cm_price": 4005
+    },
+    {
+      "id": 520,
+      "name": "BONCIPRO 750MG CPR B 20",
+      "cm_price": 5720
+    },
+    {
+      "id": 521,
+      "name": "BONDRONAT 6MG AMP F 6ML",
+      "cm_price": 188136
+    },
+    {
+      "id": 522,
+      "name": "BONVIVA 150MG CPR PELL B 1",
+      "cm_price": 31825
+    },
+    {
+      "id": 523,
+      "name": "BOROCLARINE MART.COLLY FL 10ML",
+      "cm_price": 785
+    },
+    {
+      "id": 524,
+      "name": "BRICANYL 0,5MG INJ AMP1ML B 10",
+      "cm_price": 2145
+    },
+    {
+      "id": 525,
+      "name": "BRICANYL 0,5MG INJ AMP1ML BT 8",
+      "cm_price": 2130
+    },
+    {
+      "id": 526,
+      "name": "BRICANYL L.P 5MG CPR B 30",
+      "cm_price": 2900
+    },
+    {
+      "id": 527,
+      "name": "BRICANYL LP 5MG CPR F 60",
+      "cm_price": 4985
+    },
+    {
+      "id": 528,
+      "name": "BRIMO 0,2% COLL F 5ML",
+      "cm_price": 5965
+    },
+    {
+      "id": 529,
+      "name": "BRISTAMOX 500MG SIR PDR FL60ML",
+      "cm_price": 2855
+    },
+    {
+      "id": 530,
+      "name": "BRISTOPEN 1G IV PDR INJ F 1+SO",
+      "cm_price": 1695
+    },
+    {
+      "id": 531,
+      "name": "BRISTOPEN 250MG SIR PDR FL60ML",
+      "cm_price": 2325
+    },
+    {
+      "id": 532,
+      "name": "BRISTOPEN 500MG GELULE BT 12",
+      "cm_price": 4165
+    },
+    {
+      "id": 533,
+      "name": "BROMOXCIN 500 8MG GEL B 12",
+      "cm_price": 2375
+    },
+    {
+      "id": 534,
+      "name": "BROMOXCIN 500 8MG GEL B 120",
+      "cm_price": 11485
+    },
+    {
+      "id": 535,
+      "name": "BROMOXCIN 500 8MG GEL B 1200",
+      "cm_price": 57415
+    },
+    {
+      "id": 536,
+      "name": "BRONCALENE ADULTE SP FL 150ML",
+      "cm_price": 2880
+    },
+    {
+      "id": 537,
+      "name": "BRONCALENE BEBE SP FL 125ML",
+      "cm_price": 2275
+    },
+    {
+      "id": 538,
+      "name": "BRONCALENE ENFANT SIR FL150ML",
+      "cm_price": 2640
+    },
+    {
+      "id": 539,
+      "name": "BRONCALENE NN SP F 150ML",
+      "cm_price": 2275
+    },
+    {
+      "id": 540,
+      "name": "BRONCATHIOL ADULTE SP FL 150ML",
+      "cm_price": 2605
+    },
+    {
+      "id": 541,
+      "name": "BRONCATHIOL BB ENFT SP FL125ML",
+      "cm_price": 2290
+    },
+    {
+      "id": 542,
+      "name": "BRONCATHIOL ENF SP F 125ML",
+      "cm_price": 2290
+    },
+    {
+      "id": 543,
+      "name": "BRONCHALENE ADULT SIR FL 150ML",
+      "cm_price": 2880
+    },
+    {
+      "id": 544,
+      "name": "BRONCHALENE BEBE SIROP FL125ML",
+      "cm_price": 2275
+    },
+    {
+      "id": 545,
+      "name": "BRONCHATHIOL ADULT SIR FL150ML",
+      "cm_price": 2605
+    },
+    {
+      "id": 546,
+      "name": "BRONCHATHIOL ENF BB SP FL125ML",
+      "cm_price": 2290
+    },
+    {
+      "id": 547,
+      "name": "BRONCHO SP F 120ML",
+      "cm_price": 2350
+    },
+    {
+      "id": 548,
+      "name": "BRONCHOBOS 2,5% SP F 200ML",
+      "cm_price": 2950
+    },
+    {
+      "id": 549,
+      "name": "BRONCHOBOS 5% SP F 200ML",
+      "cm_price": 3400
+    },
+    {
+      "id": 550,
+      "name": "BRONCHODERMINE BEBE SUPPO BT10",
+      "cm_price": 1430
+    },
+    {
+      "id": 551,
+      "name": "BRONCHODERMINE ENF SUPPO BT 10",
+      "cm_price": 1545
+    },
+    {
+      "id": 552,
+      "name": "BRONCHODERMINE POMMADE TB 60G",
+      "cm_price": 1525
+    },
+    {
+      "id": 553,
+      "name": "BRONCHOKOD ADULTE SIR FL 300ML",
+      "cm_price": 3465
+    },
+    {
+      "id": 554,
+      "name": "BRONCHOKOD ENFANT SIR FL 125ML",
+      "cm_price": 1445
+    },
+    {
+      "id": 555,
+      "name": "BRONCOXIL 45MG 5ML SP F 120ML",
+      "cm_price": 1785
+    },
+    {
+      "id": 556,
+      "name": "BRONKIREX 5% SP AD F 125ML",
+      "cm_price": 1965
+    },
+    {
+      "id": 557,
+      "name": "BRONQUIDIAZINA C.R. SP F 150ML",
+      "cm_price": 2995
+    },
+    {
+      "id": 558,
+      "name": "BROXOL SP F 100ML",
+      "cm_price": 2190
+    },
+    {
+      "id": 559,
+      "name": "BRUFEN 400MG CPR DRG BT 30",
+      "cm_price": 2280
+    },
+    {
+      "id": 560,
+      "name": "BRUFEN SIROP PEDIAT FL100ML",
+      "cm_price": 3025
+    },
+    {
+      "id": 561,
+      "name": "BRULEX POMMADE DERM TB 30G",
+      "cm_price": 1845
+    },
+    {
+      "id": 562,
+      "name": "BRUMED 100MG 5ML SUSP BUV F 10",
+      "cm_price": 1020
+    },
+    {
+      "id": 563,
+      "name": "BRUPAL 300MG 325MG CPR B 100",
+      "cm_price": 4155
+    },
+    {
+      "id": 564,
+      "name": "BRUSTAN CPR B 20",
+      "cm_price": 1805
+    },
+    {
+      "id": 565,
+      "name": "BRUSTAN CPR BT 10",
+      "cm_price": 1140
+    },
+    {
+      "id": 566,
+      "name": "BRUSTAN SUSP PDRE F 100ML",
+      "cm_price": 2125
+    },
+    {
+      "id": 567,
+      "name": "BUCCOTHYMOL BAIN BCHE F 150ML",
+      "cm_price": 1545
+    },
+    {
+      "id": 568,
+      "name": "BUFALGAN 100MG 5ML SUSP BUV F ",
+      "cm_price": 2280
+    },
+    {
+      "id": 569,
+      "name": "BUFALGAN 400MG CPR B 30",
+      "cm_price": 2275
+    },
+    {
+      "id": 570,
+      "name": "BURNCOOL CR T 15G",
+      "cm_price": 2195
+    },
+    {
+      "id": 571,
+      "name": "BUTO-ASMA 2MG CPR BTE 40",
+      "cm_price": 2010
+    },
+    {
+      "id": 572,
+      "name": "BUTO-ASMA AEROSOL",
+      "cm_price": 2730
+    },
+    {
+      "id": 573,
+      "name": "BUTO-ASMA SIROP FL100ML",
+      "cm_price": 1810
+    },
+    {
+      "id": 574,
+      "name": "C-TRI 1G INJ B 1",
+      "cm_price": 2350
+    },
+    {
+      "id": 575,
+      "name": "C-TRI 1G INJ B 1",
+      "cm_price": 2355
+    },
+    {
+      "id": 576,
+      "name": "CACEF 200MG CPR B 6",
+      "cm_price": 2754
+    },
+    {
+      "id": 577,
+      "name": "CACEF 50MG PDRE SUSP ORAL F 30",
+      "cm_price": 1615
+    },
+    {
+      "id": 578,
+      "name": "CACHART 20MG 120MG CPR B 24",
+      "cm_price": 2620
+    },
+    {
+      "id": 579,
+      "name": "CACHART 80MG 480MG CPR B 6",
+      "cm_price": 2620
+    },
+    {
+      "id": 580,
+      "name": "CACHEWORM CPR B 6",
+      "cm_price": 1150
+    },
+    {
+      "id": 581,
+      "name": "CACHEWORM SUSP BUV F 30ML",
+      "cm_price": 1220
+    },
+    {
+      "id": 582,
+      "name": "CACHNERVE CPR B 10",
+      "cm_price": 2850
+    },
+    {
+      "id": 583,
+      "name": "CADUET 10MG 10MG CPR B 30",
+      "cm_price": 13630
+    },
+    {
+      "id": 584,
+      "name": "CADUET 5MG 10MG CPR B 30",
+      "cm_price": 13630
+    },
+    {
+      "id": 585,
+      "name": "CALMIXENE SP F 150ML",
+      "cm_price": 2425
+    },
+    {
+      "id": 586,
+      "name": "CALMIXENE SP F 150ML",
+      "cm_price": 2425
+    },
+    {
+      "id": 587,
+      "name": "CALMZ 20MG CPR B 30",
+      "cm_price": 5020
+    },
+    {
+      "id": 588,
+      "name": "CAMOQUIN PLUS AD 600MG 200MG C",
+      "cm_price": 4000
+    },
+    {
+      "id": 589,
+      "name": "CAMOQUIN PLUS ENF 300MG 100MG",
+      "cm_price": 2785
+    },
+    {
+      "id": 590,
+      "name": "CAMOQUIN PLUS PED SUSP F60ML+P",
+      "cm_price": 2895
+    },
+    {
+      "id": 591,
+      "name": "CANDI 150MG GEL B 4",
+      "cm_price": 4640
+    },
+    {
+      "id": 592,
+      "name": "CANDID COLLUT F 15ML",
+      "cm_price": 1390
+    },
+    {
+      "id": 593,
+      "name": "CANDID CR T 20G",
+      "cm_price": 1515
+    },
+    {
+      "id": 594,
+      "name": "CANDID MOUTH 15ML",
+      "cm_price": 1390
+    },
+    {
+      "id": 595,
+      "name": "CANDID PDRE F 30G",
+      "cm_price": 1740
+    },
+    {
+      "id": 596,
+      "name": "CANDID V6 COMBI T20G+CPR VAG 6",
+      "cm_price": 3335
+    },
+    {
+      "id": 597,
+      "name": "CANDID V6 CPR GYNECO B 6",
+      "cm_price": 3370
+    },
+    {
+      "id": 598,
+      "name": "CANDIDERM CR T 15G",
+      "cm_price": 2035
+    },
+    {
+      "id": 599,
+      "name": "CANDITRAL 100MG CAPS B 4",
+      "cm_price": 4265
+    },
+    {
+      "id": 600,
+      "name": "CANESTENE CPR GYNECO BT 6",
+      "cm_price": 4070
+    },
+    {
+      "id": 601,
+      "name": "CANESTENE CREME TB 20G",
+      "cm_price": 3585
+    },
+    {
+      "id": 602,
+      "name": "CAPOCARD 25MG CPR B 30",
+      "cm_price": 3440
+    },
+    {
+      "id": 603,
+      "name": "CAPOCARD 50MG CPR B 30",
+      "cm_price": 5700
+    },
+    {
+      "id": 604,
+      "name": "CAPTOPRIL DENK 25MG CPR B 100",
+      "cm_price": 7985
+    },
+    {
+      "id": 605,
+      "name": "CAPTOPRIL DENK 25MG CPR B 20",
+      "cm_price": 1885
+    },
+    {
+      "id": 606,
+      "name": "CAPTOPRIL+HCT DENK 50 25MG CPR",
+      "cm_price": 4410
+    },
+    {
+      "id": 607,
+      "name": "CAPTOPRIL+HCT DENK 50 25MG CPR",
+      "cm_price": 9945
+    },
+    {
+      "id": 608,
+      "name": "CARBOCISTEINE AFRI 5% AD SP F ",
+      "cm_price": 2700
+    },
+    {
+      "id": 609,
+      "name": "CARBOCYSTEINE 2% SOL BUV F 100",
+      "cm_price": 1000
+    },
+    {
+      "id": 610,
+      "name": "CARBOCYSTEINE 5% SP F 100ML",
+      "cm_price": 1225
+    },
+    {
+      "id": 611,
+      "name": "CARBOCYSTEINE GENMARK 2% SP F ",
+      "cm_price": 1125
+    },
+    {
+      "id": 612,
+      "name": "CARBOCYSTEINE GENMARK 5% SP F ",
+      "cm_price": 1125
+    },
+    {
+      "id": 613,
+      "name": "CARBOLEVURE ADULTE GELULE BT20",
+      "cm_price": 1315
+    },
+    {
+      "id": 614,
+      "name": "CARBOLEVURE ENFANT GELULE BT20",
+      "cm_price": 915
+    },
+    {
+      "id": 615,
+      "name": "CARBOMUC 2% ENF SP F 125ML",
+      "cm_price": 1885
+    },
+    {
+      "id": 616,
+      "name": "CARBOMUC 5% AD SP F 125ML",
+      "cm_price": 2720
+    },
+    {
+      "id": 617,
+      "name": "CARBOPHOS CPR CROQ BT 40",
+      "cm_price": 3710
+    },
+    {
+      "id": 618,
+      "name": "CARBOSYLANE 24DOSE DE 2 GELULE",
+      "cm_price": 2655
+    },
+    {
+      "id": 619,
+      "name": "CARBOTOUX 375MG GEL B 20",
+      "cm_price": 1740
+    },
+    {
+      "id": 620,
+      "name": "CARBOTOUX 5% SP F 100ML",
+      "cm_price": 1780
+    },
+    {
+      "id": 621,
+      "name": "CARCEL 2% SP F 100ML",
+      "cm_price": 900
+    },
+    {
+      "id": 622,
+      "name": "CARCEL 5% SP F 100ML",
+      "cm_price": 1085
+    },
+    {
+      "id": 623,
+      "name": "CARDIO ASPIRINE 100MG CPR B 30",
+      "cm_price": 1365
+    },
+    {
+      "id": 624,
+      "name": "CARDIURINE CPR B 30",
+      "cm_price": 3425
+    },
+    {
+      "id": 625,
+      "name": "CARDOX 1MG CPR B 30",
+      "cm_price": 5700
+    },
+    {
+      "id": 626,
+      "name": "CARDOX 4MG CPR B 30",
+      "cm_price": 12145
+    },
+    {
+      "id": 627,
+      "name": "CARDULAR URO 2MG CPR B 20",
+      "cm_price": 11440
+    },
+    {
+      "id": 628,
+      "name": "CARPILO COLLYRE FL 3ML",
+      "cm_price": 2435
+    },
+    {
+      "id": 629,
+      "name": "CARTEF 20 120MG CPR B 24",
+      "cm_price": 2295
+    },
+    {
+      "id": 630,
+      "name": "CARTEF DS 80 480MG CPR B 6",
+      "cm_price": 2295
+    },
+    {
+      "id": 631,
+      "name": "CARTEOL 1% COLLYRE FP 3ML",
+      "cm_price": 3035
+    },
+    {
+      "id": 632,
+      "name": "CARTEOL 1% LP COLL F 3ML",
+      "cm_price": 6100
+    },
+    {
+      "id": 633,
+      "name": "CARTEOL 2% COLLYRE FP 3ML",
+      "cm_price": 3275
+    },
+    {
+      "id": 634,
+      "name": "CARTEOL 2% LP COLL F 3ML",
+      "cm_price": 6095
+    },
+    {
+      "id": 635,
+      "name": "CARTEOL LP 1% COLL UNID B 30",
+      "cm_price": 6100
+    },
+    {
+      "id": 636,
+      "name": "CARTEOL LP 2% COLL UNID B 30",
+      "cm_price": 6135
+    },
+    {
+      "id": 637,
+      "name": "CARVEDI DENK 25MG CPR B 30",
+      "cm_price": 6285
+    },
+    {
+      "id": 638,
+      "name": "CARVEDI DENK 6,25MG CPR B 30",
+      "cm_price": 4005
+    },
+    {
+      "id": 639,
+      "name": "CATACOL COLLYRE FL 10ML",
+      "cm_price": 1130
+    },
+    {
+      "id": 640,
+      "name": "CATAFLAM * 25MG * CPR BT 20",
+      "cm_price": 1640
+    },
+    {
+      "id": 641,
+      "name": "CATAFLAM 1,5% GOUTTES FL 15ML",
+      "cm_price": 2330
+    },
+    {
+      "id": 642,
+      "name": "CATAFLAM 50MG CPR BT 20",
+      "cm_price": 3250
+    },
+    {
+      "id": 643,
+      "name": "CATAFLAM SUSP 1,8MG ML F 120ML",
+      "cm_price": 3180
+    },
+    {
+      "id": 644,
+      "name": "CATALGINE 0,1G PDR SACH 20ROSE",
+      "cm_price": 1385
+    },
+    {
+      "id": 645,
+      "name": "CATALGINE 0,25G PDR SACH 20 MV",
+      "cm_price": 1440
+    },
+    {
+      "id": 646,
+      "name": "CATALGINE 0,5G PDR SACH 20BLEU",
+      "cm_price": 1590
+    },
+    {
+      "id": 647,
+      "name": "CATALGINE FORTE 1G PDR SACH 20",
+      "cm_price": 1910
+    },
+    {
+      "id": 648,
+      "name": "CATARSTAT COLLYRE FL 10ML",
+      "cm_price": 1620
+    },
+    {
+      "id": 649,
+      "name": "CATHETER 18G",
+      "cm_price": 500
+    },
+    {
+      "id": 650,
+      "name": "CATHETER 20G",
+      "cm_price": 50
+    },
+    {
+      "id": 651,
+      "name": "CATHETER 22G",
+      "cm_price": 50
+    },
+    {
+      "id": 652,
+      "name": "CATHETER 24G",
+      "cm_price": 500
+    },
+    {
+      "id": 653,
+      "name": "CAZITHRO 500MG CPR PELL B 3",
+      "cm_price": 4320
+    },
+    {
+      "id": 654,
+      "name": "CAZITHRO SUSP BUV 200MG 5ML F ",
+      "cm_price": 2605
+    },
+    {
+      "id": 655,
+      "name": "CEBEDEXACOL COLLYRE FL 5ML",
+      "cm_price": 1785
+    },
+    {
+      "id": 656,
+      "name": "CEBEMYXINE COLLYRE FL 10ML",
+      "cm_price": 1440
+    },
+    {
+      "id": 657,
+      "name": "CEBEMYXINE POMMADE OPHT TB 5G",
+      "cm_price": 925
+    },
+    {
+      "id": 658,
+      "name": "CEDROX 1G CPR B 12",
+      "cm_price": 6970
+    },
+    {
+      "id": 659,
+      "name": "CEDROX 250MG PDR SIROP F 60ML",
+      "cm_price": 2635
+    },
+    {
+      "id": 660,
+      "name": "CEDROX 500MG GEL B 12",
+      "cm_price": 3750
+    },
+    {
+      "id": 661,
+      "name": "CEFALINE HAUTH PDRE SACH BT 10",
+      "cm_price": 2030
+    },
+    {
+      "id": 662,
+      "name": "CEFALORAL 100MG CPR DISP B 10",
+      "cm_price": 3640
+    },
+    {
+      "id": 663,
+      "name": "CEFALORAL 200MG CPR B 10",
+      "cm_price": 4175
+    },
+    {
+      "id": 664,
+      "name": "CEFIDIS 200MG CPR B 10",
+      "cm_price": 3140
+    },
+    {
+      "id": 665,
+      "name": "CEFIM 100MG SUSP F 60ML",
+      "cm_price": 5765
+    },
+    {
+      "id": 666,
+      "name": "CEFIM 200MG GEL B 12",
+      "cm_price": 5799
+    },
+    {
+      "id": 667,
+      "name": "CEFIM 200MG GEL B 12",
+      "cm_price": 8975
+    },
+    {
+      "id": 668,
+      "name": "CEFIM 400MG GEL B 6",
+      "cm_price": 5935
+    },
+    {
+      "id": 669,
+      "name": "CEFIXIME SP 100MG 5ML PDRE SUS",
+      "cm_price": 4510
+    },
+    {
+      "id": 670,
+      "name": "CEFIXIME SP 200MG CPR PELL SEC",
+      "cm_price": 4495
+    },
+    {
+      "id": 671,
+      "name": "CEFIXIME SP 50MG 5ML PDRE SUSP",
+      "cm_price": 2610
+    },
+    {
+      "id": 672,
+      "name": "CEFLAMOX 1,5G SOL INJ B 1",
+      "cm_price": 7095
+    },
+    {
+      "id": 673,
+      "name": "CEFLAMOX 750MG SOL INJ B 1",
+      "cm_price": 4435
+    },
+    {
+      "id": 674,
+      "name": "CEFOTAX T3A 1G IM IV INJ",
+      "cm_price": 5055
+    },
+    {
+      "id": 675,
+      "name": "CEFOTAXIME 1G IM IV INJ B 1",
+      "cm_price": 2745
+    },
+    {
+      "id": 676,
+      "name": "CEFOTRIX T3A 0,25G IV INJ B 1",
+      "cm_price": 2980
+    },
+    {
+      "id": 677,
+      "name": "CEFOTRIX T3A 1G IV INJ",
+      "cm_price": 6600
+    },
+    {
+      "id": 678,
+      "name": "CEFTAZIDIME SP 1G IM IV PDRE+S",
+      "cm_price": 9050
+    },
+    {
+      "id": 679,
+      "name": "CEFTRIAXONE 1G INJ B 1",
+      "cm_price": 1260
+    },
+    {
+      "id": 680,
+      "name": "CEFTRIAXONE 1G INJ IM IV B 1",
+      "cm_price": 1440
+    },
+    {
+      "id": 681,
+      "name": "CEFTRIAXONE SP 1G IM IV PDRE+S",
+      "cm_price": 4165
+    },
+    {
+      "id": 682,
+      "name": "CEFTRIAXONE SP 500MG IM IV PDR",
+      "cm_price": 2910
+    },
+    {
+      "id": 683,
+      "name": "CEFUROXIME SP 1,5G IM IV PDR+S",
+      "cm_price": 5520
+    },
+    {
+      "id": 684,
+      "name": "CEFUROXIME SP 250MG CPR PELL B",
+      "cm_price": 4795
+    },
+    {
+      "id": 685,
+      "name": "CEFUROXIME SP 500MG CPR PELL B",
+      "cm_price": 6550
+    },
+    {
+      "id": 686,
+      "name": "CEFUROXIME SP 750MG IM IV PDR+",
+      "cm_price": 3065
+    },
+    {
+      "id": 687,
+      "name": "CELEBID 100MG CPR B 20",
+      "cm_price": 4360
+    },
+    {
+      "id": 688,
+      "name": "CELEBREX 100MG GEL B 20",
+      "cm_price": 7535
+    },
+    {
+      "id": 689,
+      "name": "CELEBREX 200MG GEL B 10",
+      "cm_price": 7525
+    },
+    {
+      "id": 690,
+      "name": "CELECOXIB SP 200MG GEL B 20",
+      "cm_price": 6955
+    },
+    {
+      "id": 691,
+      "name": "CELESTAMINE 0.25MG CPR B 30",
+      "cm_price": 1750
+    },
+    {
+      "id": 692,
+      "name": "CELESTENE 0,05% SOL BUV GTTE F",
+      "cm_price": 2795
+    },
+    {
+      "id": 693,
+      "name": "CELESTENE 2MG CPR DISP SEC B 2",
+      "cm_price": 2795
+    },
+    {
+      "id": 694,
+      "name": "CELESTENE 4MG INJ AMP 1ML B 25",
+      "cm_price": 21020
+    },
+    {
+      "id": 695,
+      "name": "CELESTENE 4MG ML SOL INJ AMP 1",
+      "cm_price": 3110
+    },
+    {
+      "id": 696,
+      "name": "CELESTENE 8MG INJ SER 2ML B 1",
+      "cm_price": 2100
+    },
+    {
+      "id": 697,
+      "name": "CELESTENE CHRONOD AMP+SERG B 1",
+      "cm_price": 1945
+    },
+    {
+      "id": 698,
+      "name": "CELESTODERM CREME RELAIS TB25G",
+      "cm_price": 1760
+    },
+    {
+      "id": 699,
+      "name": "CELLTRIAXON 1G AMP INJ B 1",
+      "cm_price": 3060
+    },
+    {
+      "id": 700,
+      "name": "CEPODEM 100MG CPR B 10",
+      "cm_price": 3995
+    },
+    {
+      "id": 701,
+      "name": "CEPODEM 200MG CPR B 10",
+      "cm_price": 6845
+    },
+    {
+      "id": 702,
+      "name": "CEPODEM 40MG 5ML SUSP BUV F 10",
+      "cm_price": 4720
+    },
+    {
+      "id": 703,
+      "name": "CEROXIME 750MG SOL INJ B 1",
+      "cm_price": 2480
+    },
+    {
+      "id": 704,
+      "name": "CERULYSE GTTE AURICUL FL 10ML",
+      "cm_price": 1770
+    },
+    {
+      "id": 705,
+      "name": "CETA IBU 100MG 125MG SUSP BUV",
+      "cm_price": 1165
+    },
+    {
+      "id": 706,
+      "name": "CETAFOR 0,5G IV PDRE INJ AMP 5",
+      "cm_price": 2555
+    },
+    {
+      "id": 707,
+      "name": "CETAFOR 0,5MG IM PDRE INJ AMP ",
+      "cm_price": 2550
+    },
+    {
+      "id": 708,
+      "name": "CETAFOR 1G IM PDRE INJ AMP 4ML",
+      "cm_price": 3015
+    },
+    {
+      "id": 709,
+      "name": "CETAFOR 1G IV PDRE INJ AMP 10M",
+      "cm_price": 3035
+    },
+    {
+      "id": 710,
+      "name": "CETAVLON CREME DERM TB 80G",
+      "cm_price": 1920
+    },
+    {
+      "id": 711,
+      "name": "CETAZONE 1G INJ",
+      "cm_price": 2920
+    },
+    {
+      "id": 712,
+      "name": "CETAZONE 250MG INJ B 1",
+      "cm_price": 1305
+    },
+    {
+      "id": 713,
+      "name": "CETAZONE 500MG AMP INJ B 1",
+      "cm_price": 2330
+    },
+    {
+      "id": 714,
+      "name": "CETRAXAL 500MG CPR BTE 10",
+      "cm_price": 6265
+    },
+    {
+      "id": 715,
+      "name": "CETRAXAL 750MG CPR B 10",
+      "cm_price": 7295
+    },
+    {
+      "id": 716,
+      "name": "CETRAXAL OTICO GTTE AUR F 10ML",
+      "cm_price": 4000
+    },
+    {
+      "id": 717,
+      "name": "CETRAXAL+ 3MG 0,25MG GTTE AURI",
+      "cm_price": 4555
+    },
+    {
+      "id": 718,
+      "name": "CEXOLAN 50MCG ML COLL F 2,5ML",
+      "cm_price": 11530
+    },
+    {
+      "id": 719,
+      "name": "CHERICOF NF SP F 100ML",
+      "cm_price": 1755
+    },
+    {
+      "id": 720,
+      "name": "CHIBRO-CADRON COLLYRE FL 5ML",
+      "cm_price": 1685
+    },
+    {
+      "id": 721,
+      "name": "CHIBRO-PROSCAR 5MG CPR BT 28",
+      "cm_price": 26635
+    },
+    {
+      "id": 722,
+      "name": "CHIBROXINE COLLYRE FL 5ML",
+      "cm_price": 2590
+    },
+    {
+      "id": 723,
+      "name": "CHINTHER 20 120MG CPR B 24",
+      "cm_price": 2005
+    },
+    {
+      "id": 724,
+      "name": "CHINTHER 40 240MG CPR B 12",
+      "cm_price": 2425
+    },
+    {
+      "id": 725,
+      "name": "CHINTHER 80MG 480MG CPR B 6",
+      "cm_price": 2495
+    },
+    {
+      "id": 726,
+      "name": "CHOPHYTOL 200MG CPR ENR B 60",
+      "cm_price": 1445
+    },
+    {
+      "id": 727,
+      "name": "CHOPHYTOL AD CPR ENR B 2X30",
+      "cm_price": 1440
+    },
+    {
+      "id": 728,
+      "name": "CHOPHYTOL BUV GTTE FL 120ML",
+      "cm_price": 2035
+    },
+    {
+      "id": 729,
+      "name": "CHOPHYTOL CPR DRG BT 180",
+      "cm_price": 2700
+    },
+    {
+      "id": 730,
+      "name": "CHOPHYTOL CPR DRG BT 60",
+      "cm_price": 1395
+    },
+    {
+      "id": 731,
+      "name": "CHOPHYTOL CPR ENR B 180",
+      "cm_price": 2780
+    },
+    {
+      "id": 732,
+      "name": "CHOPHYTOL CPR ENR B 6x30",
+      "cm_price": 2780
+    },
+    {
+      "id": 733,
+      "name": "CHRONO-ADALATE LP 30MG CP BT30",
+      "cm_price": 10240
+    },
+    {
+      "id": 734,
+      "name": "CIELCEF 100MG 5ML PDRE SUSP BU",
+      "cm_price": 6295
+    },
+    {
+      "id": 735,
+      "name": "CIELCEF 200MG CPR B 10",
+      "cm_price": 5695
+    },
+    {
+      "id": 736,
+      "name": "CIELCEF-O 200MG 500MG CPR B 10",
+      "cm_price": 6835
+    },
+    {
+      "id": 737,
+      "name": "CIELNAC 100MG 500MG CPR B 10",
+      "cm_price": 2290
+    },
+    {
+      "id": 738,
+      "name": "CIELPRAZ 40MG CPR B 10",
+      "cm_price": 2060
+    },
+    {
+      "id": 739,
+      "name": "CIELPRAZ 40MG PDRE PPI F 10ML",
+      "cm_price": 3470
+    },
+    {
+      "id": 740,
+      "name": "CIFRAN 500MG CPR BTE 10",
+      "cm_price": 5910
+    },
+    {
+      "id": 741,
+      "name": "CIFRAN CT CPR B 10",
+      "cm_price": 8765
+    },
+    {
+      "id": 742,
+      "name": "CIFRAN OD 1G CPR B 10",
+      "cm_price": 7760
+    },
+    {
+      "id": 743,
+      "name": "CIFRAN OD 500MG CPR B 10",
+      "cm_price": 5690
+    },
+    {
+      "id": 744,
+      "name": "CILOXAN 0,3% COLL F 5ML",
+      "cm_price": 3620
+    },
+    {
+      "id": 745,
+      "name": "CILOXAN 0,3% PDE OPHT T 3,5G",
+      "cm_price": 4010
+    },
+    {
+      "id": 746,
+      "name": "CINABAC 500MG CPR B 10",
+      "cm_price": 4125
+    },
+    {
+      "id": 747,
+      "name": "CINAMOX 125MG SP F 60ML",
+      "cm_price": 610
+    },
+    {
+      "id": 748,
+      "name": "CINAMOX 250MG SP F 60ML",
+      "cm_price": 1100
+    },
+    {
+      "id": 749,
+      "name": "CINAMOX 500MG GEL B 12",
+      "cm_price": 1150
+    },
+    {
+      "id": 750,
+      "name": "CINAMOX 500MG GEL B 120",
+      "cm_price": 5360
+    },
+    {
+      "id": 751,
+      "name": "CINAMOX 500MG GEL B 1200",
+      "cm_price": 36745
+    },
+    {
+      "id": 752,
+      "name": "CINCLAMOX 875 125MG CPR PELL B",
+      "cm_price": 19895
+    },
+    {
+      "id": 753,
+      "name": "CINCOTRIM 240MG SUSP BUV F 100",
+      "cm_price": 1225
+    },
+    {
+      "id": 754,
+      "name": "CINCOTRIM 480MG CPR B 100",
+      "cm_price": 2755
+    },
+    {
+      "id": 755,
+      "name": "CINCOTRIM 480MG CPR B 1000",
+      "cm_price": 9180
+    },
+    {
+      "id": 756,
+      "name": "CINCOTRIM 480MG CPR B 20",
+      "cm_price": 1530
+    },
+    {
+      "id": 757,
+      "name": "CINET 10MG CPR DISP B 40",
+      "cm_price": 3365
+    },
+    {
+      "id": 758,
+      "name": "CINET 1MG ML SUSP BUV F 200ML",
+      "cm_price": 2775
+    },
+    {
+      "id": 759,
+      "name": "CINFENAC LP CPR B 10",
+      "cm_price": 3620
+    },
+    {
+      "id": 760,
+      "name": "CINFLAM 100MG 5ML SUSP BUV F 1",
+      "cm_price": 1225
+    },
+    {
+      "id": 761,
+      "name": "CINFLAM 400MG CPR B 100",
+      "cm_price": 6310
+    },
+    {
+      "id": 762,
+      "name": "CINFLAM 400MG CPR B 1000",
+      "cm_price": 12250
+    },
+    {
+      "id": 763,
+      "name": "CINFLAM 400MG CPR B 30",
+      "cm_price": 1915
+    },
+    {
+      "id": 764,
+      "name": "CINFLAM+  CPR B 10",
+      "cm_price": 880
+    },
+    {
+      "id": 765,
+      "name": "CINTAZOL 250MG CPR B 100",
+      "cm_price": 3215
+    },
+    {
+      "id": 766,
+      "name": "CINTAZOL 250MG CPR B 1000",
+      "cm_price": 5360
+    },
+    {
+      "id": 767,
+      "name": "CINTAZOL 250MG CPR B 20",
+      "cm_price": 1610
+    },
+    {
+      "id": 768,
+      "name": "CIPEX 500MG CPR 10BL10",
+      "cm_price": 6585
+    },
+    {
+      "id": 769,
+      "name": "CIPEX 500MG CPR B 10",
+      "cm_price": 1070
+    },
+    {
+      "id": 770,
+      "name": "CIPLACEF 1MG INJ B 1",
+      "cm_price": 1530
+    },
+    {
+      "id": 771,
+      "name": "CIPLOX 500MG CPR B 10",
+      "cm_price": 1530
+    },
+    {
+      "id": 772,
+      "name": "CIPRO 0,3% COLL 5ML",
+      "cm_price": 3870
+    },
+    {
+      "id": 773,
+      "name": "CIPRO DENK 500MG CPR B 10",
+      "cm_price": 3460
+    },
+    {
+      "id": 774,
+      "name": "CIPRO TRO 500MG CPR PELL B 10",
+      "cm_price": 1150
+    },
+    {
+      "id": 775,
+      "name": "CIPRODAC 500MG CPR B 10",
+      "cm_price": 4660
+    },
+    {
+      "id": 776,
+      "name": "CIPRODYNE 250MG CPR B 10",
+      "cm_price": 3355
+    },
+    {
+      "id": 777,
+      "name": "CIPRODYNE 500MG CPR B 10",
+      "cm_price": 5500
+    },
+    {
+      "id": 778,
+      "name": "CIPROFLOXACINE 500MG CPR B 10",
+      "cm_price": 1785
+    },
+    {
+      "id": 779,
+      "name": "CIPROFLOXACINE UBI 100MG SOL I",
+      "cm_price": 1600
+    },
+    {
+      "id": 780,
+      "name": "CIPROFLOXACINE UBI 750MG CPR 1",
+      "cm_price": 9665
+    },
+    {
+      "id": 781,
+      "name": "CIPROL 750MG CPR B 10",
+      "cm_price": 5875
+    },
+    {
+      "id": 782,
+      "name": "CIPROMED 500MG CPR B 10",
+      "cm_price": 2005
+    },
+    {
+      "id": 783,
+      "name": "CIPROMED TZ CPR B 10",
+      "cm_price": 2530
+    },
+    {
+      "id": 784,
+      "name": "CIPRONAT 200MG SOL INJ IV F 10",
+      "cm_price": 7165
+    },
+    {
+      "id": 785,
+      "name": "CIPRONAT 250MG CPR B 14",
+      "cm_price": 2750
+    },
+    {
+      "id": 786,
+      "name": "CIPRONAT 500MG CPR B 14",
+      "cm_price": 3440
+    },
+    {
+      "id": 787,
+      "name": "CIPRONAT 750MG CPR B 14",
+      "cm_price": 6280
+    },
+    {
+      "id": 788,
+      "name": "CIPRORIV 500MG CPR B 10",
+      "cm_price": 4435
+    },
+    {
+      "id": 789,
+      "name": "CIPROXINE 100MG INJ FL 50ML",
+      "cm_price": 8010
+    },
+    {
+      "id": 790,
+      "name": "CIPROXINE 250MG CRP BT 10",
+      "cm_price": 8075
+    },
+    {
+      "id": 791,
+      "name": "CIPROXINE 500 MG CPR BT 10",
+      "cm_price": 7470
+    },
+    {
+      "id": 792,
+      "name": "CIPROZED 750MG CPR B 10",
+      "cm_price": 4640
+    },
+    {
+      "id": 793,
+      "name": "CIPROZOLE 250 300MG CPR B 10",
+      "cm_price": 5650
+    },
+    {
+      "id": 794,
+      "name": "CIPROZOLE FORTE500 600MG CPR10",
+      "cm_price": 6845
+    },
+    {
+      "id": 795,
+      "name": "CISPLATINE 10MG 10ML INJ B 1",
+      "cm_price": 6030
+    },
+    {
+      "id": 796,
+      "name": "CISPLATINE 25MG 25ML INJ B 1",
+      "cm_price": 8575
+    },
+    {
+      "id": 797,
+      "name": "CISPLATINE 50MG 50ML INJ B 1",
+      "cm_price": 14545
+    },
+    {
+      "id": 798,
+      "name": "CIVASTINE 10MG CPR B 28",
+      "cm_price": 5350
+    },
+    {
+      "id": 799,
+      "name": "CIVASTINE 20MG CPR B 28",
+      "cm_price": 10100
+    },
+    {
+      "id": 800,
+      "name": "CIVASTINE 40MG CPR B 28",
+      "cm_price": 16180
+    },
+    {
+      "id": 801,
+      "name": "CLAFORAN 0,5G IV IM FL+AMP BT1",
+      "cm_price": 4638
+    },
+    {
+      "id": 802,
+      "name": "CLAFORAN 1G IM FL+AMP BT 1",
+      "cm_price": 7310
+    },
+    {
+      "id": 803,
+      "name": "CLAFORAN 1G IV FL+AMP BT 1",
+      "cm_price": 7305
+    },
+    {
+      "id": 804,
+      "name": "CLAMOXYL 125MG PDR SIR FL 60ML",
+      "cm_price": 866
+    },
+    {
+      "id": 805,
+      "name": "CLAMOXYL 1G CPR DISP B 12",
+      "cm_price": 3105
+    },
+    {
+      "id": 806,
+      "name": "CLAMOXYL 1G IM INJ FL+AMP BT 1",
+      "cm_price": 1030
+    },
+    {
+      "id": 807,
+      "name": "CLAMOXYL 1GR TROPICAL CPR BT 6",
+      "cm_price": 2030
+    },
+    {
+      "id": 808,
+      "name": "CLAMOXYL 250MG PDR SIR FL 60ML",
+      "cm_price": 1188
+    },
+    {
+      "id": 809,
+      "name": "CLAMOXYL 500MG GELULE BT 12",
+      "cm_price": 1330
+    },
+    {
+      "id": 810,
+      "name": "CLAMOXYL 500MG IM FL+AMP BT 1",
+      "cm_price": 760
+    },
+    {
+      "id": 811,
+      "name": "CLAMOXYL 500MG PDR SIR FL 60ML",
+      "cm_price": 1625
+    },
+    {
+      "id": 812,
+      "name": "CLAMP OMBILICAL",
+      "cm_price": 250
+    },
+    {
+      "id": 813,
+      "name": "CLARADOL 500MG CPR EFFV B 16",
+      "cm_price": 1190
+    },
+    {
+      "id": 814,
+      "name": "CLARICIN 500MG CPR B 10",
+      "cm_price": 5130
+    },
+    {
+      "id": 815,
+      "name": "CLARITRON 500MG CPR B 10",
+      "cm_price": 6770
+    },
+    {
+      "id": 816,
+      "name": "CLARITYNE 10MG CPR B 10",
+      "cm_price": 3640
+    },
+    {
+      "id": 817,
+      "name": "CLARITYNE 10MG CPR B 15",
+      "cm_price": 5350
+    },
+    {
+      "id": 818,
+      "name": "CLARITYNE SIROP FL60ML",
+      "cm_price": 2295
+    },
+    {
+      "id": 819,
+      "name": "CLARIVA 500MG CPR B 14",
+      "cm_price": 6135
+    },
+    {
+      "id": 820,
+      "name": "CLARIWIN 500MG CPR B 10",
+      "cm_price": 6930
+    },
+    {
+      "id": 821,
+      "name": "CLARTEC 10MG CPR B 15",
+      "cm_price": 2710
+    },
+    {
+      "id": 822,
+      "name": "CLARTEC 5MG 5ML SP F 120ML",
+      "cm_price": 3245
+    },
+    {
+      "id": 823,
+      "name": "CLAVAM 1125MG CPR PELL B 12",
+      "cm_price": 5240
+    },
+    {
+      "id": 824,
+      "name": "CLAVAM 1200MG PDRE INJ IV PERF",
+      "cm_price": 1985
+    },
+    {
+      "id": 825,
+      "name": "CLAVAM 281,25MG PDRE SUSP BUV",
+      "cm_price": 2750
+    },
+    {
+      "id": 826,
+      "name": "CLAVAM 562,5MG CPR PELL B 16",
+      "cm_price": 4400
+    },
+    {
+      "id": 827,
+      "name": "CLAVAM 600MG PDRE INJ IV PERF",
+      "cm_price": 1695
+    },
+    {
+      "id": 828,
+      "name": "CLAVICIN 1,2G PDRE INJ B 1",
+      "cm_price": 2105
+    },
+    {
+      "id": 829,
+      "name": "CLAVICIN XR 1G CPR B 10",
+      "cm_price": 4030
+    },
+    {
+      "id": 830,
+      "name": "CLAVOR 1G 125MG PDRE SUSP ORAL",
+      "cm_price": 5740
+    },
+    {
+      "id": 831,
+      "name": "CLAVUJECT 1,2G INJ B 1",
+      "cm_price": 2035
+    },
+    {
+      "id": 832,
+      "name": "CLAVULIN 100MG ENF SUSP F 60ML",
+      "cm_price": 3207
+    },
+    {
+      "id": 833,
+      "name": "CLAVULIN 1GR IV INJ BT 1",
+      "cm_price": 2490
+    },
+    {
+      "id": 834,
+      "name": "CLAVULIN 500MG 62,5MG CPR B 16",
+      "cm_price": 4193
+    },
+    {
+      "id": 835,
+      "name": "CLAVUMOCCID 125MG SUSP F 60ML",
+      "cm_price": 4245
+    },
+    {
+      "id": 836,
+      "name": "CLAVUMOCCID 1G CPR B 10",
+      "cm_price": 4885
+    },
+    {
+      "id": 837,
+      "name": "CLAVUMOCCID 250MG SUSP F 60ML",
+      "cm_price": 4875
+    },
+    {
+      "id": 838,
+      "name": "CLAVUMOCCID 500MG CPR B 12",
+      "cm_price": 3675
+    },
+    {
+      "id": 839,
+      "name": "CLEDOMOX 1G 125MG CPR PELL B 1",
+      "cm_price": 6305
+    },
+    {
+      "id": 840,
+      "name": "CLIPTOL GEL T 50G",
+      "cm_price": 3835
+    },
+    {
+      "id": 841,
+      "name": "CLOFAINS 500MG 50MG CPR B 10",
+      "cm_price": 950
+    },
+    {
+      "id": 842,
+      "name": "CLOFEN FORTE CPR B 10",
+      "cm_price": 950
+    },
+    {
+      "id": 843,
+      "name": "CLOPI-DENK 75MG CPR B 30",
+      "cm_price": 11375
+    },
+    {
+      "id": 844,
+      "name": "CLOPRAME SIROP FL 130ML",
+      "cm_price": 1495
+    },
+    {
+      "id": 845,
+      "name": "CLOTRI DENK 1% CR T 20G",
+      "cm_price": 2035
+    },
+    {
+      "id": 846,
+      "name": "CLOTRI DENK 100MG CPR VAG B 6",
+      "cm_price": 2300
+    },
+    {
+      "id": 847,
+      "name": "CLOXACILLINE 500MG CAPS 10BL10",
+      "cm_price": 8640
+    },
+    {
+      "id": 848,
+      "name": "CLOXACILLINE 500MG GEL B 1000",
+      "cm_price": 17115
+    },
+    {
+      "id": 849,
+      "name": "CO ARINATE FDC AD CPR B 3",
+      "cm_price": 3740
+    },
+    {
+      "id": 850,
+      "name": "CO ARINATE FDC ENF CPR B 3",
+      "cm_price": 2435
+    }
+]
