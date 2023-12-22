@@ -1,6 +1,4 @@
-// const nodemailer = require('nodemailer');
-// const sendEmail = require('./js/sendEmail.js');
-
+// Description: This file contains the logic for the chatbox
 let chatBox = document.querySelector(".chatbox__support");
 let sendButton = document.querySelector(".chatbox__send__button");
 let restartChatButton = document.querySelector(".chatbox__restart");
