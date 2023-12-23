@@ -275,5 +275,9 @@ a{
         border-top-right-radius: 0px;
     }
     
+    .messages__item {
+        max-width: 90%;
+        padding: 5px 10px;
+    }
     
 }

@@ -3,12 +3,22 @@ let chatBox = document.querySelector(".chatbox__support");
 let sendButton = document.querySelector(".chatbox__send__button");
 let restartChatButton = document.querySelector(".chatbox__restart");
 
+// this is the list of messages in the chatbox
 let messages = [];
+// this is the drug list loaded from the json file
 let drugList = [];
+// this is the list of drugs the user has typed
 let userPrompts = [];
+// this is the list of drugs the user wants to order
 let userDrugs = [];
+// this is the step of the conversation
 let currentStep = 0;
 let isMessagesLoaded = false;
+// this is the list of drugs and their weights
+let userDrugPlusWeight = [];
+// this is the total cost of the order
+let updatedDrugObjects = [];
+
 
 let userInfo = {
   "phone" : "",
@@ -199,21 +209,13 @@ async function onStart(chatbox) {
     { 
       name: "SOS Pharma", 
       message: `
-        Which medications do you want to order, \n 
-        Please enter the name of the drug you want to order as it was prescribed without the grams.
+        Please list the medications you want to order as prescribed by your medical doctor.\n
       `
     },
-    { 
-      name: "SOS Pharma", 
-      message: `
-        Please list the medications you want to order, \n
-      `
-    },
-  ]
 
-  if(!isMessagesLoaded){
-    processGreetingMessage(msgs, chatBox)
-  }
+  ]
+  
+  processGreetingMessage(msgs, chatBox)
 
 }
 
@@ -226,11 +228,14 @@ async function onSendButton(chatbox) {
   const userPromptLowerCase = userPrompt.toLowerCase().trim();
   const clearText = 'clear';
   const completeText = 'complete';
+  const replyYes = 'yes';
+  const replyNo = 'no';
+
 
   switch (currentStep) {
+
     case 0:
       const userPrompts = userPrompt.split(/\s+|,/);
-      console.log(userPrompts)
       matchUserDrugs(drugList, userPrompts);
       const medicationTableHtml = prepareMedicationTable(userDrugs);
 
@@ -255,6 +260,7 @@ async function onSendButton(chatbox) {
       break;
 
     case 1:
+
       pushUserMessage(userPrompt);
 
       if (userPromptLowerCase === clearText) {
@@ -263,7 +269,7 @@ async function onSendButton(chatbox) {
         userDrugs = [];
       } else if (userPromptLowerCase === completeText) {
         currentStep++;
-        pushPharmaMessage("Where do you live ? (Town, Address) ");
+        pushPharmaMessage("Provide the grams or milligrams of each medication as it's found on the table above e.g 20g, 50mg, 100mg, etc");
       } else {
         pushPharmaMessage("Please reply with the above specified keywords");
         clearTextField(textField);
@@ -271,7 +277,76 @@ async function onSendButton(chatbox) {
 
       break;
 
-    case 2:
+    case 2: 
+
+      pushUserMessage(userPrompt);
+      const drugWeights = userPrompt.split(/,/);
+
+      for (let i = 0; i < userDrugs.length && i < drugWeights.length; i++) {
+        const drugObject = {
+          name: userDrugs[i]['name'],
+          price: userDrugs[i]['cm_price'],
+          weight: drugWeights[i],
+        };
+        userDrugPlusWeight.push(drugObject);
+      }
+
+      // console.log(userDrugPlusWeight)
+      pushPharmaMessage("What is the quantity of each medication you want to order, enter in order of the table above e.g 2, 3, 4, etc ");
+      currentStep++;
+      clearTextField(textField);
+      break;
+
+    case 3:
+
+      pushUserMessage(userPrompt);
+      const drugQtn = userPrompt.split(/,/);
+      let totalCost = 0;
+
+      for (let i = 0; i < userDrugPlusWeight.length && i < drugQtn.length; i++) {
+
+        const drugObject = userDrugPlusWeight[i];
+        const quantity = drugQtn[i];
+        const cost = quantity * drugObject['price'];
+        totalCost += cost;
+
+        // Create an updated object with quantity and cost
+        const updatedObject = {
+          name: drugObject.name,
+          weight: drugObject.weight,
+          price: drugObject.price,
+          quantity: quantity,
+        };
+
+        updatedDrugObjects.push(updatedObject);
+      }
+
+      const statsHtml = prepareMedicationDataTable(updatedDrugObjects, totalCost)
+      if (statsHtml !== '') {
+        pushPharmaMessage(statsHtml);
+      }
+
+      pushPharmaMessage("Do you want to continue ? if yes, type YES, if no, type NO");
+      currentStep ++ ;
+      clearTextField(textField);
+      break;
+
+    case 4:
+      pushUserMessage(userPrompt);
+
+      if (userPromptLowerCase === replyNo) {
+        currentStep--;
+        currentStep--;
+      } else if (userPromptLowerCase === replyYes) {
+        currentStep++;
+        pushPharmaMessage("Where do you live ? (Town, Address) ");
+      } else {
+        pushPharmaMessage("Please reply with the above specified keywords");
+        clearTextField(textField);
+      }
+
+    case 4:
+
       userInfo['location'] = userPrompt;
       pushUserMessage(userPrompt);
       await delay(500);
@@ -280,7 +355,7 @@ async function onSendButton(chatbox) {
       currentStep++;
       break;
 
-    case 3:
+    case 5:
       pushUserMessage(userPrompt);
       await delay(500);
 
@@ -289,7 +364,6 @@ async function onSendButton(chatbox) {
         return;
       }
 
-      userInfo['phone'] = userPrompt;
       const replyMessages = [
         { name: "SOS Pharma", message: "Please confirm your payment on your phone via mobile money, when you do, write CONFIRMED" },
         { name: "SOS Pharma", message: "Please note that this payment will be verified and your order will only be made if you confirm," },
@@ -301,7 +375,7 @@ async function onSendButton(chatbox) {
       clearTextField(textField);
       break;
 
-    case 4:
+    case 6:
       pushUserMessage(userPrompt);
       await delay(500);
 
@@ -325,7 +399,7 @@ async function onSendButton(chatbox) {
       }
 
       break;
-    case 5:
+    case 7:
       restartConversation();
       break;
   }
@@ -390,6 +464,13 @@ function restartConversation() {
   chatmessage.innerHTML = "";
   messages = [];
   currentStep = 0;
+  userDrugs = [];
+  userPrompts = [];
+  userDrugPlusWeight = [];
+  updatedDrugObjects = [];
+
+
+  
   onStart();
 }
 
@@ -439,10 +520,9 @@ window.addEventListener('load', function() {
 
 function prepareMedicationTable(medications) {
 
-  let totalPrice = 0;
   let tableHtml = `
-    <table id="medication-table">
-      <thead>
+    <table id="table table-striped medication-table">
+      <thead class="thead-dark">
         <tr>
           <th>Medication Name</th>
           <th>Price</th>
@@ -454,25 +534,66 @@ function prepareMedicationTable(medications) {
   medications.forEach((medication) => {
     const medicationName = medication.name;
     const medicationPrice = medication.cm_price;
-    totalPrice += medicationPrice;
 
     tableHtml += `
-      <tr>
-        <td>${medicationName}</td>
-        <td>XAF${medicationPrice}</td>
-      </tr>
+        <tr>
+          <td>${medicationName}</td>
+          <td>XAF${medicationPrice}</td>
+        </tr>
     `;
   });
 
+  // Close the tbody and table tags outside the loop
   tableHtml += `
       </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="2" id="total-price">Total Price: ${totalPrice}</td>
-        </tr>
-      </tfoot>
     </table>
   `;
 
   return tableHtml;
 }
+
+
+function prepareMedicationDataTable(medications, totalCost) {
+
+  let tableHtml = `
+    <table id="table table-striped medication-table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Medication Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Cost</th>
+        </tr>
+      </thead>
+      <tbody class="table-striped">
+  `;
+
+  medications.forEach((medication) => {
+    const medicationName = medication.name;
+    const medicationPrice = medication.price;
+    const quantity = medication.quantity;
+    const cost = quantity * medicationPrice;
+
+    tableHtml += `
+      <tr>
+        <td>${medicationName}</td>
+        <td>XAF${medicationPrice}</td>
+        <td>${quantity}</td>
+        <td>XAF${cost}</td>
+      </tr>
+    `;
+  });
+
+  // Add the total cost row at the bottom of the table
+  tableHtml += `
+      <tr>
+        <td colspan="3">Total Cost:</td>
+        <td>XAF${totalCost}</td>
+      </tr>
+    </tbody>
+  </table>
+  `;
+
+  return tableHtml;
+}
+
