@@ -25,8 +25,7 @@ a{
 .chatbox__support {
     display: flex;
     flex-direction: column;
-    background: #eee;
-    background: #f9f9f9;
+    background: #fff;
     height: 95vh;
     width: 80%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -51,21 +50,17 @@ a{
 
 .chatbox__send__button {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: end;
+    justify-content: end;
     margin: auto;
-    padding: 6px;
     background: transparent;
     border: none;
     outline: none;
     cursor: pointer;
     color: #fff;
-    padding: 13.5px 20px;
-    border-radius: 10px;
-    margin: 0 5px;
-    background-color: #006400;
-    width: 15%;
     box-sizing: border-box;
+    cursor: pointer;
+    z-index: 999;
 }
 
 
@@ -83,11 +78,13 @@ a{
     display: flex;
     overflow-y: scroll;
     flex-direction: column-reverse;
+    background-color: white;
+    padding: 10px 0;
 }
 
 
 .messages__item {
-    max-width: 60.6%;
+    max-width: 75%;
     height: auto;
     width: fit-content;
     word-wrap: break-word;
@@ -96,31 +93,17 @@ a{
 
 .messages__item--operator {
     margin-left: auto;
-    background: #006400 !important;
+    background: #43b75d !important;
     color: #fff !important;
-}
-
-
-.messages__item--visitor {
-    margin-right: auto;
-    background: grey !important;
-    color: #fff !important;
-}
-
-
-/* FOOTER */
-.chatbox__footer {
-    position: sticky;
-    bottom: 0;
 }
 
 
 /* HEADER */
 .chatbox__header {
-    background: #006400;
+    background: #43b75d;
     display: flex;
     flex-direction: row;
-    align-items: start;
+    align-items: center;
     justify-content: space-between;
     padding: 10px 15px;
     border-top-left-radius: 10px;
@@ -150,13 +133,6 @@ a{
     color: white;
 }
 
-.actions{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-}
-
 /* Messages */
 .chatbox__messages {
     padding: 0 20px;
@@ -164,23 +140,21 @@ a{
 
 .messages__item {
     margin-top: 10px;
-    background: #E0E0E0;
-    padding: 8px 12px;
-    max-width: 70%;
+    padding: 10px 15px;
+    max-width: 85%;
+    font-weight: 400;
 }
 
 .messages__item--visitor,
 .messages__item--typing {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 20px;
+    background: #f6f3f3 !important ;
+    color: #202020 !important;
+
 }
 
 .messages__item--operator {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    background: var(--primary);
+    border-radius: 50px;
     color: white;
 }
 
@@ -190,21 +164,22 @@ a{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 20px;
-    background: var(--secondaryGradient);
-    box-shadow: var(--secondaryBoxShadow);
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
     margin-top: 20px;
-    background-color: #eee;
+    background-color: #fff;
+    padding: 15px ;
+    border-top: 1.5px solid #ccc;
+    position: sticky;
+    bottom: 0;
 }
 
 .chatbox__message__input{
-    color: #006400;
-    outline-width: 1px;
-    outline-color: #006400;
-    outline-style: solid;
-    width: 85%;
+    color: #43b75d;
+    width: 95%;
+    outline: none;
+    outline-color: none;
+    outline-width: 0;
     max-width: 85%;
     border: none;
     padding: 10px 10px;
@@ -216,38 +191,27 @@ a{
     min-height: 50px;
     height: auto;
     resize:none;
+    font-weight: 500;
 }
 
-.chatbox__send--footer {
-    color: white;
+.chatbox__message__input__container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #43b75d;
+    border-radius: 5px;
+    flex: 1;
+    background: #fff;
+    margin-right: 10px;
 }
 
-.chatbox__button button,
-.chatbox__button button:focus,
-.chatbox__button button:visited {
-    padding: 10px;
-    background: white;
-    border: none;
-    outline: none;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-    border-bottom-left-radius: 50px;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+.chatbox__send__button img {
+    height: 25px;
+    width: 25px;
 }
 
-.start-button > .spinner {
-    display: none;
-    width: 20px; 
-    height: 20px;
-    margin-right: 1rem;
-    animation: spinSpinner 1s cubic-bezier(0.66, 0.21, 0.33, 1) infinite;
-    border-width: 2px;
-    border-radius: 50%;
-    border-style: solid;
-    border-color: transparent;
-    border-top-color: white;
-}
+
+/* end of footer new styles  */
+
 
 @keyframes spinSpinner {
     from { transform: rotate(0deg); }
@@ -279,5 +243,7 @@ a{
         max-width: 90%;
         padding: 5px 10px;
     }
+
+    
     
 }

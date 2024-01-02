@@ -18,14 +18,7 @@ let isMessagesLoaded = false;
 let userDrugPlusWeight = [];
 // this is the total cost of the order
 let updatedDrugObjects = [];
-
-
-let userInfo = {
-  "phone" : "",
-  "location": "",
-  "medication": []
-}
-
+// some standard order keywords to filter out when the user places their order request.
 const orderKeywords = [
   "i",
   "want",
@@ -155,18 +148,19 @@ const orderKeywords = [
   "well",
 ];
 
+// get refrence to the html elements relevant to the js file
 sendButton.addEventListener("click", () => onSendButton(chatBox));
-
 restartChatButton.addEventListener("click", () => restartConversation());
-
 const inputBox = chatBox.querySelector(".chatbox__message__input");
 
+// tracks the enter key on the input box so as to submit the text inside
 inputBox.addEventListener("keyup", ({ key }) => {
   if (key === "Enter") {
     onSendButton(chatBox);
   }
 });
 
+// onload drugs method loads the drugs from the product.json file or the test.json file
 function onLoadDrugs(){
 
   fetch('../data/test.json')
@@ -179,22 +173,10 @@ function onLoadDrugs(){
   });
 }
 
-async function processGreetingMessage(msgs, chatBox) {
-  for (const msg of msgs) {
-    messages.push(msg);
-    updateChatText(chatBox, messages);
-    await delay(500);
-  }
-}
-
-function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
+// this fuction starts the conversation, 
 async function onStart(chatbox) {
   onLoadDrugs()
   let msgs = [ 
-
     { 
       name: "SOS Pharma", 
       message: `Hello !!`
@@ -214,11 +196,24 @@ async function onStart(chatbox) {
     },
 
   ]
-  
   processGreetingMessage(msgs, chatBox)
-
 }
 
+// helper function to push user message on the chatbox
+function pushUserMessage(message) {
+  messages.push({ name: "User", message });
+  updateChatText(chatBox, messages);
+}
+
+// proccesses the greeting message and other subsequent messages if its more than one
+async function processGreetingMessage(msgs, chatBox) {
+  for (const msg of msgs) {
+    messages.push(msg);
+    updateChatText(chatBox, messages);
+  }
+}
+
+// this function handles all the user request like when ever the user submits a message
 async function onSendButton(chatbox) {
 
   let textField = chatbox.querySelector("textarea");
@@ -231,48 +226,66 @@ async function onSendButton(chatbox) {
   const replyYes = 'yes';
   const replyNo = 'no';
 
-
   switch (currentStep) {
 
+    // this case handles the user medication input.
     case 0:
-      const userPrompts = userPrompt.split(/\s+|,/);
-      matchUserDrugs(drugList, userPrompts);
-      const medicationTableHtml = prepareMedicationTable(userDrugs);
 
       pushUserMessage(userPrompt);
-      clearTextField(textField);
+      clearTextField(textField)
 
-      if (userDrugs.length === 0) {
-        const msg = { name: "SOS Pharma", message: " No Medication identified, please provide the list of medications you wish to order as specified by your medical personnel" };
-        messages.push(msg);
-        updateChatText(chatbox, messages);
-        clearTextField(textField);
+      if(userPrompt == 'done' && userDrugs.length == 0){
+        pushPharmaFeedbackMessages("medications")
         return;
       }
 
-      if (medicationTableHtml !== '') {
-        pushPharmaMessage(medicationTableHtml);
+      const userPrompts = userPrompt.split(/\s+|,/);
+      matchUserDrugs(drugList, userPrompts, orderKeywords);
+      console.log(userDrugs)
+
+      while (userPrompt !== 'done') {
+        pushPharmaFeedbackMessages('medications')
+        break;
+        
+        const medicationTableHtml = prepareMedicationTable(userDrugs);
+        pushUserMessage(userPrompt);
+        clearTextField(textField);
+
+        if (userDrugs.length === 0) {
+          pushPharmaFeedbackMessages('no-medication')
+          return;
+        }
+  
+        // if (medicationTableHtml !== '') {
+        //   pushPharmaMessage(medicationTableHtml);
+        // }
+
+        // userDrugs.push(userPrompt);
+        // console.log("user drugs",userDrugs);
+        // console.log("inside while loop");
+        
       }
 
-      pushPharmaMessage("Are your medications correct and complete ??  if not, please type CLEAR, if yes, type COMPLETE");
-      await delay(500);
+      pushPharmaFeedbackMessages('medications-complete')      
       currentStep++;
       break;
 
     case 1:
 
       pushUserMessage(userPrompt);
+      clearTextField(textField);
 
       if (userPromptLowerCase === clearText) {
+
         currentStep--;
-        pushClearMedicationsMessage();
+        pushPharmaFeedbackMessages('medications')
         userDrugs = [];
+        
       } else if (userPromptLowerCase === completeText) {
         currentStep++;
         pushPharmaMessage("Provide the grams or milligrams of each medication as it's found on the table above e.g 20g, 50mg, 100mg, etc");
       } else {
-        pushPharmaMessage("Please reply with the above specified keywords");
-        clearTextField(textField);
+        pushPharmaFeedbackMessages('keywords')
       }
 
       break;
@@ -290,8 +303,7 @@ async function onSendButton(chatbox) {
         };
         userDrugPlusWeight.push(drugObject);
       }
-
-      // console.log(userDrugPlusWeight)
+      
       pushPharmaMessage("What is the quantity of each medication you want to order, enter in order of the table above e.g 2, 3, 4, etc ");
       currentStep++;
       clearTextField(textField);
@@ -333,6 +345,7 @@ async function onSendButton(chatbox) {
 
     case 4:
       pushUserMessage(userPrompt);
+      clearTextField(textField);
 
       if (userPromptLowerCase === replyNo) {
         currentStep--;
@@ -341,26 +354,24 @@ async function onSendButton(chatbox) {
         currentStep++;
         pushPharmaMessage("Where do you live ? (Town, Address) ");
       } else {
-        pushPharmaMessage("Please reply with the above specified keywords");
-        clearTextField(textField);
+        pushPharmaFeedbackMessages('keywords')
       }
 
     case 4:
 
-      userInfo['location'] = userPrompt;
       pushUserMessage(userPrompt);
-      await delay(500);
       clearTextField(textField);
+
       pushPharmaMessage("What is your phone number");
       currentStep++;
       break;
 
     case 5:
       pushUserMessage(userPrompt);
-      await delay(500);
-
-      if (!validateCameroonianPhoneNumber(userPrompt.trim())) {
-        pushPhoneNumberValidationMessage();
+      
+      const isValid = validateCameroonianPhoneNumber(userPrompt.trim())
+      if (!isValid['isValid']) {
+        pushPharmaFeedbackMessages('phone')
         return;
       }
 
@@ -377,11 +388,10 @@ async function onSendButton(chatbox) {
 
     case 6:
       pushUserMessage(userPrompt);
-      await delay(500);
+      clearTextField(textField);
 
       if (userPromptLowerCase === 'resend') {
-        pushResendBillingRequestMessage();
-        clearTextField(textField);
+        pushPharmaFeedbackMessages('resend-billing-request')
         return;
       } else if (userPromptLowerCase === 'confirmed') {
         const replyMessages = [
@@ -389,13 +399,14 @@ async function onSendButton(chatbox) {
           { name: "SOS Pharma", message: "Thank you so much for using and trusting SOS Pharma with your health." },
         ];
         processGreetingMessage(replyMessages, chatBox);
-        clearTextField(textField);
+        // clearTextField(textField);
         currentStep++;
-        sendEmail();
+        // sendEmail();
         
       } else {
-        pushPharmaMessage("Please reply with the above specified keywords");
-        clearTextField(textField);
+        pushPharmaFeedbackMessages('keywords')
+        // pushPharmaMessage("Please reply with the above specified keywords");
+        // clearTextField(textField);
       }
 
       break;
@@ -407,58 +418,6 @@ async function onSendButton(chatbox) {
   clearTextField(textField);
 }
 
-
-function pushUserMessage(message) {
-  messages.push({ name: "User", message });
-  updateChatText(chatBox, messages);
-}
-
-function pushPharmaMessage(reply) {
-  messages.push({ name: "SOS Pharma", message: reply });
-  updateChatText(chatBox, messages);
-}
-
-function pushClearMedicationsMessage() {
-  pushPharmaMessage("Please retype your list of medications, write only the name as prescribed by your medical doctor");
-  userDrugs = [];
-}
-
-function pushPhoneNumberValidationMessage() {
-  pushPharmaMessage("Please enter a valid Cameroonian phone number, it must begin with the digits 6, 2, 3, etc");
-}
-
-function pushResendBillingRequestMessage() {
-  pushPharmaMessage("Billing request has been resent, please confirm");
-}
-
-function clearTextField(textField) {
-  textField.value = "";
-}
-
-function updateChatText(chatbox, messages) {
-  var html = "";
-  messages
-    .slice()
-    .reverse()
-    .forEach(function (item, index) {
-      if (item.name === "SOS Pharma") {
-        html +=
-          '<div class="messages__item messages__item--visitor">' +
-          item.message +
-          "</div>";
-      } else {
-        html +=
-          '<div class="messages__item messages__item--operator">' +
-          item.message +
-          "</div>";
-      }
-    });
-
-  const chatmessage = chatbox.querySelector(".chatbox__messages");
-  chatmessage.innerHTML = html;
-  
-} 
-
 function restartConversation() {
   const chatmessage = chatBox.querySelector(".chatbox__messages");
   chatmessage.innerHTML = "";
@@ -468,38 +427,7 @@ function restartConversation() {
   userPrompts = [];
   userDrugPlusWeight = [];
   updatedDrugObjects = [];
-
-
-  
   onStart();
-}
-
-function matchUserDrugs(drugs, userPrompts) {
-  console.log(userPrompts)
-  if (userPrompts.length === 0 || !userPrompts.some(prompt => prompt.trim() !== "")) {
-    return;
-  }
-
-  for (const prompt of userPrompts) {
-    if (prompt.trim() === "" || orderKeywords.includes(prompt)) {
-      continue;
-    }
-
-    for (const drug of drugs) {
-      const medicationName = drug.name.toLowerCase().trim();
-      const searchString = prompt.toLowerCase().trim();
-
-      if (medicationName.includes(searchString)) {
-        userDrugs.push(drug);
-        break;
-      }
-    }
-  }
-}
-
-function validateCameroonianPhoneNumber(phoneNumber) {
-  const cameroonianPhoneNumberPattern = /^(6|2|3)\d{8}$/;
-  return cameroonianPhoneNumberPattern.test(phoneNumber);
 }
 
 onStart();
@@ -518,82 +446,40 @@ window.addEventListener('load', function() {
   }
 });
 
-function prepareMedicationTable(medications) {
-
-  let tableHtml = `
-    <table id="table table-striped medication-table">
-      <thead class="thead-dark">
-        <tr>
-          <th>Medication Name</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
-
-  medications.forEach((medication) => {
-    const medicationName = medication.name;
-    const medicationPrice = medication.cm_price;
-
-    tableHtml += `
-        <tr>
-          <td>${medicationName}</td>
-          <td>XAF${medicationPrice}</td>
-        </tr>
-    `;
-  });
-
-  // Close the tbody and table tags outside the loop
-  tableHtml += `
-      </tbody>
-    </table>
-  `;
-
-  return tableHtml;
+// helper function to push pharma message on the chatbox
+function pushPharmaMessage(reply) {
+  messages.push({ name: "SOS Pharma", message: reply });
+  updateChatText(chatBox, messages);
 }
 
+// helper function to help display bot feedback messages, 
+function pushPharmaFeedbackMessages(currentCase) {
+  switch(currentCase){
+      case "phone":
+          pushPharmaMessage("Please enter a valid Cameroonian phone number, it must begin with the digits 6, 2, 3, etc");
+          break;
+      case "medications":
+          pushPharmaMessage("Please retype your list of medications, write only the name as prescribed by your medical doctor");
+          break;
+      case "medications-complete":
+          pushPharmaMessage("Are your medications correct and complete ??  if not, please type CLEAR, if yes, type COMPLETE");
+          break;
+      case "resend-billing-request":
+          pushPharmaMessage("Billing request has been resend, please confirm");
+          break;
+      case "no-medication": 
+          pushPharmaMessage("No Medication identified, please provide the list of medications you wish to order as specified by your medical personnel")
+          break;
+      case "keywords": 
+          pushPharmaMessage("Please reply with the above specified keywords")
+          break;
+      case "input": 
+          pushPharmaMessage("Please reply with the above specified keywords")
+          break;
+      default:
+          pushPharmaMessage("Invalid input, please retype your request");
+          break;
+  }
 
-function prepareMedicationDataTable(medications, totalCost) {
-
-  let tableHtml = `
-    <table id="table table-striped medication-table">
-      <thead class="thead-dark">
-        <tr>
-          <th>Medication Name</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Cost</th>
-        </tr>
-      </thead>
-      <tbody class="table-striped">
-  `;
-
-  medications.forEach((medication) => {
-    const medicationName = medication.name;
-    const medicationPrice = medication.price;
-    const quantity = medication.quantity;
-    const cost = quantity * medicationPrice;
-
-    tableHtml += `
-      <tr>
-        <td>${medicationName}</td>
-        <td>XAF${medicationPrice}</td>
-        <td>${quantity}</td>
-        <td>XAF${cost}</td>
-      </tr>
-    `;
-  });
-
-  // Add the total cost row at the bottom of the table
-  tableHtml += `
-      <tr>
-        <td colspan="3">Total Cost:</td>
-        <td>XAF${totalCost}</td>
-      </tr>
-    </tbody>
-  </table>
-  `;
-
-  return tableHtml;
 }
 

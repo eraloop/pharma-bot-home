@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json" />
+    <title> Order | SOS Pharma</title>
+
+    <link rel="stylesheet" href="/css/chat.css">
+    <link rel="stylesheet" href="/css/table.css">
+    <link rel="stylesheet" href="/css/helpers.css">
+
+
+    <script defer src="/js/generateChatTables.js"></script>
+    <script defer src="/js/helpers.js"></script>
+    <script defer src="/js/sendEmail.js"></script>
+
+</head>
+<body>
+    <div class="chatbox">
+        <div class="chatbox__support">
+            
+          <div class="chatbox__header">
+
+            <div class="chatbox__header--title d-flex align-items-center justify-content-start">
+              <img src="/images/new_logo.jpg" alt="SOS Pharma logo" height="50" class="chatbox__image--header--image " />
+              <div class="chatbox__content--header">
+                  <h4 class="chatbox__heading--header">SOS Pharma</h4>
+              </div>
+            </div>
+
+              <button 
+                onclick="goBack()"
+                class="btn chatbox__close">
+                <img src="/images/close.svg" alt="close" height="27" />
+              </button>
+
+          </div>
+
+          <div class="chatbox__messages">
+            <div></div>
+          </div>
+
+          <div class="chatbox__footer">
+
+            <div class="chatbox__message__input__container">
+                <textarea class="chatbox__message__input" placeholder="What's your order" rows="1"></textarea>
+                <button class="chatbox__send--footer chatbox__send__button">
+                    <img src="/images/send.svg" alt="send" height="10" />
+                </button>
+            </div>
+
+            <button class="btn chatbox__restart">
+              <img src="/images/restart.svg" alt="close" height="27" />
+            </button>
+
+          </div>
+
+        </div>
+      </div>
+      
+      <script type="module" src="/server.js"></script>
+      <script>
+        function goBack() {
+          window.history.back();
+        }
+      </script>
+</body>
+</html>

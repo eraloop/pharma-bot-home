@@ -1,0 +1,35 @@
+.btn {
+  border: none;
+  outline: none;
+  color: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* Define the styles for the scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+/* Define the track (background) of the scrollbar */
+::-webkit-scrollbar-track {
+  background: #fff; /* Background color of the track */
+}
+
+/* Define the thumb (the draggable part) of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: red !important; /* Color of the thumb */
+  border-radius: 5px; /* Rounded corners for the thumb */
+}
+
+/* Define the corner of the scrollbar */
+::-webkit-scrollbar-corner {
+  background: #fff; /* Background color of the corner */
+}

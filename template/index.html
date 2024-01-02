@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SOS Pharma : Livraison de médicaments online</title>
+    <meta name="description" content="Rapide, sécurisé, et efficace, SOS Pharma est un service de livraison de medicaments en ligne."/>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="manifest" href="manifest.json" />
+    <meta name="application-name" content="SOS Pharma" />
+
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/helpers.css" />
+
+
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="SOS Pharma : Livraison de médicaments online"
+    />
+    <meta
+      property="og:description"
+      content="SOS Pharma est un service de livraison de medicaments en ligne."
+    />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="SOS Pharma" />
+    <meta property="og:image" content="images/logo.jpg" />
+
+    <script defer src="/js/generateChatTables.js"></script>
+    <script defer src="/js/helpers.js"></script>
+    <script defer src="/js/sendEmail.js"></script>
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-2BXJ70XZ48"
+    ></script>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-2BXJ70XZ48");
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-58924RN");
+    </script>
+    <!-- End Google Tag Manager -->
+
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="page-content">
+        
+        <div class="content">
+
+          <div class="topnav">
+            <div class="logo">
+              <img src="/images/new_logo.jpg" alt="SOS Pharma logo" />
+            </div>
+            <h1 class="name">SOS <br>Pharma</h1>
+          </div>
+
+          <h1>
+            Faites-vous <br />
+            <span>livrer vos médicaments</span>
+          </h1>
+          <p>
+            Rapide, sécurisé, et efficace, <b>SOS Pharma</b> est un service de
+            livraison de medicaments en ligne. Passez une commande et
+            faites-vous livrer dans de brefs delais.
+          </p>
+
+          <div class="buttons">
+            <a
+              href="/template/chat.html"
+              id="start"
+              class="start-button button loading chatbox__button"
+              name="startBot"
+              onclick="gtag('send','event','start_chat', 'hello','entree du chat');"
+            >
+              <span class="text">Commander maintenant</span>
+            </a>
+
+            <a
+              href="tel:+237653080072"
+              id="callCenter"
+              class="call-center-button button"
+              >Infoline Santé: (+237) 653 080 072</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
