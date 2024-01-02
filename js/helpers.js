@@ -23,28 +23,35 @@ function clearTextField(textField) {
 }
   
 function updateChatText(chatbox, messages) {
-    var html = "";
-    messages
-      .slice()
-      .reverse()
-      .forEach(function (item, index) {
-        if (item.name === "SOS Pharma") {
-          html +=
+  var html = "";
+  messages
+    .slice()
+    .reverse()
+    .forEach(function (item, index) {
+      if (item.name === "SOS Pharma") {
+        html +=
+
+          '<div class="sos-pharma-message"> ' +
+            '<div class="profile-icon">' +
+              '<img src="/images/new_logo.jpg" alt="Profile Icon" height="25">' + 
+            '</div>' +
+
             '<div class="messages__item messages__item--visitor">' +
-            item.message +
-            "</div>";
-        } else {
-          html +=
-            '<div class="messages__item messages__item--operator">' +
-            item.message +
-            "</div>";
-        }
-      });
-  
-    const chatmessage = chatbox.querySelector(".chatbox__messages");
-    chatmessage.innerHTML = html;
-    
-} 
+              '<div class="message-bubble">' + item.message + '</div>' +
+            "</div>" +
+
+          "</div>";
+
+      } else {
+        html +=
+          '<div class="messages__item messages__item--operator">' + item.message + "</div>";
+      }
+    });
+
+  const chatmessage = chatbox.querySelector(".chatbox__messages");
+  chatmessage.innerHTML = html;
+}
+
 
 function validateCameroonianPhoneNumber(phoneNumber) {
   // Regular expressions for each network provider
@@ -97,16 +104,10 @@ function matchUserDrugs(drugs, userPrompts, orderKeywords) {
       const medicationName = cleanMedicationName(drug.name.toLowerCase().trim());
       const searchString = prompt.toLowerCase().trim();
 
-      if(levenshteinDistance(medicationName, searchString) <= 10 ){
-        
-      }
-
       if (medicationName.includes(searchString)) {
         const distance = levenshteinDistance(medicationName, searchString);
-        console.log(medicationName, searchString, distance);
-        // if (distance <= (searchString.length) ) {
         userDrugs.push(drug);
-        // }
+        isDrugFound = true;
       }
     
     }
@@ -117,12 +118,11 @@ function matchUserDrugs(drugs, userPrompts, orderKeywords) {
 
 
 async function onLoadDrugs() {
+
   try{
     let response = await fetch('../data/test.json')
     let drugs = await response.json();
-    console.log(drugs)
     return drugs;
-
   }catch(e) {
     console.log(e);
     return [];

@@ -41,7 +41,6 @@ a{
     opacity: 1;
 }
 
-
 /* BUTTON */
 .chatbox__button {
     text-align: right;
@@ -90,6 +89,9 @@ a{
     word-wrap: break-word;
 }
 
+.sos-pharma-message , .messages__item{
+    margin-top: 10px;
+}
 
 .messages__item--operator {
     margin-left: auto;
@@ -138,10 +140,24 @@ a{
     padding: 0 20px;
 }
 
+.sos-pharma-message{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+}
+
+.profile-icon img{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    margin-right: 5px;
+    border: 1px solid #43b75d;
+}
+
 .messages__item {
-    margin-top: 10px;
     padding: 10px 15px;
-    max-width: 85%;
+    max-width: 75%;
     font-weight: 400;
 }
 
@@ -150,11 +166,10 @@ a{
     border-radius: 20px;
     background: #f6f3f3 !important ;
     color: #202020 !important;
-
 }
 
 .messages__item--operator {
-    border-radius: 50px;
+    border-radius: 20px;
     color: white;
 }
 

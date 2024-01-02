@@ -163,7 +163,6 @@ inputBox.addEventListener("keyup", ({ key }) => {
   }
 });
 
-
 // this fuction starts the conversation, 
 async function onStart(chatbox) {
     drugList =  await onLoadDrugs()
