@@ -192,51 +192,70 @@ async function onSendButton(chatbox) {
     const completeText = 'complete';
     const replyYes = 'yes';
     const replyNo = 'no';
+    let drugSearchComplaint = false;
+    let searchResults = {}
+    steps = 1;
 
-    // prompt the user to enter done again to close the conversation
-    // if(userPrompt != 'done' &&  userDrugs.length === 0){
-    // }
+    pushUserMessage(userPrompt);
+    clearTextField(textField)
 
-  
+    console.log(userPrompt !== 'done')
+    console.log(userDrugs.length == 0)
+    console.log(typeof userDrugs.length)
+
     switch (currentStep) {
 
         case 0:
+            if(userPrompt !== 'done' && userDrugs.length === 0){
 
-            pushUserMessage(userPrompt);
-            clearTextField(textField)
-            
-            if(userPrompt != 'done'){
-
+              if(steps == 1){
+                // splits user input and searches for user drug in the drugs array.
                 isDrugFound = false;
                 const userPrompts = userPrompt.split(/\s+|,/);
-                userDrugs = matchUserDrugs(drugList, userPrompts, orderKeywords);
-                console.log(userDrugs.length)
-                console.log(userDrugs)
-                console.log(isDrugFound)
-
+                searchResults = matchUserDrugs(drugList, userPrompts, orderKeywords);
+                userDrugs = searchResults['userDrugs'];
+                isDrugFound = searchResults['isDrugFound']
+                drugSearchComplaint = searchResults['drugSearchComplaint'];
+                // checks if any drug is found,  
                 if(!isDrugFound){
-                    pushPharmaFeedbackMessages("drug-found")
-                    return;
+                  pushPharmaFeedbackMessages("drug-found")
+                  return;
                 }
 
+                // displays the drug options found on a table for the user to select the right one.
                 const medicationTableHtml = prepareMedicationTable(userDrugs);
                 pushPharmaMessage(medicationTableHtml);
                 pushPharmaFeedbackMessages("choose-drug");
                 clearTextField(textField);
+                // shows the user a complaint if during the search process, the amount of drugs matching his input pass a certain number
+                // Hence the displayed drugs might contain the user desired drug.
+                if(drugSearchComplaint){
+                  pushPharmaFeedbackMessages("drug-search-complaint")
+                  return;
+                }
+                
+              }else if(steps ==2 ){
 
-            }else{
-                currentStep++;
+                steps++
+                return;
+
+              }else if(steps ==3) {
+
+                steps ++
+                return;
+              }
+            }else if(userPrompt == 'done' && userDrugs.length == 0){
+              pushPharmaFeedbackMessages("meds-empty")
+              return;
+
+            }else {
+              currentStep ++
             }
-           
-            // pushPharmaFeedbackMessages("medications");
+
             break;
 
         case 1:
 
-            
-
-
-    
 
     }
 
@@ -310,11 +329,19 @@ function pushPharmaFeedbackMessages(currentCase) {
         case "choose-drug": 
             pushPharmaMessage("Please select your medication from the list above, reply with the index e.g 1, 2, 3, etc")
             break;
+        case "drug-search-complaint": 
+            pushPharmaMessage("The amount of drugs matching this name is alot, please if your required drug isnt found on this list, check the spelling and search again.")
+            break;
+        case "meds-empty": 
+            pushPharmaMessage("Please choose a medication before proceeding to the next stage of your purchase.")
+            break;
         default:
             pushPharmaMessage("Invalid input, please retype your request");
             break;
     }
   
 }
+
+
   
 onStart();

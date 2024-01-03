@@ -79,7 +79,7 @@ function validateCameroonianPhoneNumber(phoneNumber) {
 }
 
 function cleanMedicationName(medicationName) {
-  const abbreviationsToFilter = ['cpr', 'sol', 'inj', 'amp', 'sp', 'gel', 'pdr', 'susp', 'supp', 'pomm', 'pommade', 'pomma', 'pdre', 'pell', 'EG', 'FORT' ,  ];
+  const abbreviationsToFilter = ['cpr', 'sol', 'inj', 'amp', 'sp', 'gel', 'pdr', 'susp', 'supp', 'pomm', 'pommade', 'pomma', 'pdre', 'pell', 'EG', 'FORT', 'teva', 'inf', '/', 'BT', 'FL', 'MG', 'IV', 'UBI', 'BUV', 'COLL', 'BU', ];
   const numberPattern = /\b\d+\b|\b\w*\d\w*\b/g;
   const abbreviationPattern = new RegExp(`\\b(${abbreviationsToFilter.join('|')})\\b`, 'gi');
   let cleanedMedicationName = medicationName.replace(numberPattern, '').trim();
@@ -90,12 +90,16 @@ function cleanMedicationName(medicationName) {
 
 function matchUserDrugs(drugs, userPrompts, orderKeywords) {
   let userDrugs = [];
+  let drugmatch = false;
+  let drugSearchComplaint = false;
+  let isDrugFound = false;
 
   if (userPrompts.length === 0 || !userPrompts.some(prompt => prompt.trim() !== "")) {
     return userDrugs; 
   }
 
   for (const prompt of userPrompts) {
+
     if (prompt.trim() === "" || orderKeywords.includes(prompt)) {
       continue;
     }
@@ -104,21 +108,36 @@ function matchUserDrugs(drugs, userPrompts, orderKeywords) {
       const medicationName = cleanMedicationName(drug.name.toLowerCase().trim());
       const searchString = prompt.toLowerCase().trim();
 
-      if (medicationName.includes(searchString)) {
-        const distance = levenshteinDistance(medicationName, searchString);
-        userDrugs.push(drug);
-        isDrugFound = true;
+      if(userDrugs.length == 10){
+        drugSearchComplaint = true;
+        break;
+      }
+
+      if(medicationName[0] == searchString[0]){
+        console.log(medicationName, searchString)
+        drugmatch = stringSearch(medicationName, searchString)
+        if(!drugmatch){
+          drugmatch = levenshteinSearch(medicationName, searchString)
+        }
+  
+        if(drugmatch){
+          userDrugs.push(drug)
+          isDrugFound = true;
+        }
       }
     
     }
   }
 
-  return userDrugs;
+  return {
+    drugSearchComplaint,
+    userDrugs,
+    isDrugFound
+  };
 }
 
 
 async function onLoadDrugs() {
-
   try{
     let response = await fetch('../data/test.json')
     let drugs = await response.json();
@@ -128,4 +147,16 @@ async function onLoadDrugs() {
     return [];
   }
 
+}
+
+function stringSearch(medicationName, searchString){
+  return (medicationName.includes(searchString))
+}
+
+function levenshteinSearch(medicationName, searchString){
+  return levenshteinDistance(medicationName, searchString) <= searchString.length + 2 ? true : false ;
+}
+
+function filterDumpSearches(){
+    return 
 }
