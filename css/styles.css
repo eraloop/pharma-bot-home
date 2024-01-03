@@ -15,9 +15,7 @@ body {
   font-family: "Rubik", sans-serif;
   display: flex;
   flex-direction: column;
-  /* margin: auto; */
   align-items: start;
-  /* justify-content: center; */
   align-self: start;
   font-weight: 400;
   background: #f1f1f1;
@@ -25,6 +23,8 @@ body {
 
 .container{
     padding: 0 20px;
+    height: 100%;
+    width: 100%;
 }
 
 .navbar{
@@ -114,7 +114,7 @@ body {
 .content p {
   width: 100%;
   width: clamp(250px, 100%, 600px);
-  padding: 3rem 0;
+  padding: 1rem 0;
   font-size: clamp(16px, 1.2em, 18px);
   line-height: 2rem;
 }
@@ -135,26 +135,8 @@ body {
   transition: 300ms;
 }
 
-.start-button > .spinner {
-  display: none;
-  width: 20px;
-  height: 20px;
-  margin-right: 1rem;
-  animation: spinSpinner 1s cubic-bezier(0.66, 0.21, 0.33, 1) infinite;
-
-  border-width: 2px;
-  border-radius: 50%;
-  border-style: solid;
-  border-color: transparent;
-  border-top-color: white;
-}
-
-.start-button > .spinner.--visible {
-  display: block;
-}
-
 .call-center-button {
-  display: block;
+  display: block ;
   background-color: rgba(0, 128, 0, 0.192);
   color: #43b75d;
   padding: 1rem 1.4rem;
@@ -163,6 +145,10 @@ body {
   font-weight: bold;
   border-radius: 10px;
   transition: background-color 200ms;
+}
+
+.call-center-button {
+    display: none !important;
 }
 
 .call-center-button:hover {
@@ -181,15 +167,6 @@ body {
   margin: 1rem 0;
 }
 
-@keyframes spinSpinner {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .start-button:hover {
   background-color: #43b75d;
 }
@@ -198,6 +175,7 @@ body {
   cursor: wait;
   background-color: rgb(142, 165, 142);
 }
+
 
 @media screen and (max-width: 700px) {
   html,
@@ -215,10 +193,17 @@ body {
     background: #f1f1f1;
   }
 
+  .page-content{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    }
+
   .topnav {
     width: 10%;
     padding: 1rem 0;
-    /* flex-basis: 50px; */
     transition: 300ms;
     display: flex;
     align-items: center;
@@ -226,6 +211,10 @@ body {
     align-self: center;
     align-content: centers;
     margin: auto;
+  }
+
+  .hide-on-dk {
+    display: block !important;
   }
 
   .topnav .logo img {

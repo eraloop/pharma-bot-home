@@ -10,7 +10,7 @@ let messages = [];
 let drugList =  [];
 // this is the list of drugs the user has typed
 let userPrompts = [];
-// this is the list of drugs the user wants to order
+// this is the list of drugs the user search result returned
 let userDrugs = [];
 // this is the step of the conversation
 let currentStep = 0;
@@ -150,6 +150,8 @@ const orderKeywords = [
 ];
 // tracks if a user drug is found
 let isDrugFound = false;
+// this is a list of drugs the user have selected from the search
+let selectedSearchedDrugs = [];
 
 // get refrence to the html elements relevant to the js file
 sendButton.addEventListener("click", () => onSendButton(chatBox));
@@ -180,6 +182,8 @@ function pushUserMessage(message) {
   updateChatText(chatBox, messages);
 }
 
+let isWaitingForOptions = false;
+let steps = 1;
 
 async function onSendButton(chatbox) {
 
@@ -194,14 +198,13 @@ async function onSendButton(chatbox) {
     const replyNo = 'no';
     let drugSearchComplaint = false;
     let searchResults = {}
-    steps = 1;
+  
 
     pushUserMessage(userPrompt);
     clearTextField(textField)
 
-    console.log(userPrompt !== 'done')
-    console.log(userDrugs.length == 0)
-    console.log(typeof userDrugs.length)
+    console.log(steps)
+    console.log(isWaitingForOptions)
 
     switch (currentStep) {
 
@@ -209,31 +212,46 @@ async function onSendButton(chatbox) {
             if(userPrompt !== 'done' && userDrugs.length === 0){
 
               if(steps == 1){
-                // splits user input and searches for user drug in the drugs array.
-                isDrugFound = false;
-                const userPrompts = userPrompt.split(/\s+|,/);
-                searchResults = matchUserDrugs(drugList, userPrompts, orderKeywords);
-                userDrugs = searchResults['userDrugs'];
-                isDrugFound = searchResults['isDrugFound']
-                drugSearchComplaint = searchResults['drugSearchComplaint'];
-                // checks if any drug is found,  
-                if(!isDrugFound){
-                  pushPharmaFeedbackMessages("drug-found")
+
+                if(!isWaitingForOptions){
+                  // splits user input and searches for user drug in the drugs array.
+                  isDrugFound = false;
+                  const userPrompts = userPrompt.split(/\s+|,/);
+                  searchResults = matchUserDrugs(drugList, userPrompts, orderKeywords);
+                  userDrugs = searchResults['userDrugs'];
+                  isDrugFound = searchResults['isDrugFound']
+                  drugSearchComplaint = searchResults['drugSearchComplaint'];
+                  // checks if any drug is found,  
+                  if(!isDrugFound){
+                    pushPharmaFeedbackMessages("drug-found")
+                    return;
+                  }
+
+                  // displays the drug options found on a table for the user to select the right one.
+                  const medicationTableHtml = prepareMedicationTable(userDrugs);
+                  pushPharmaMessage(medicationTableHtml);
+                  pushPharmaFeedbackMessages("choose-drug");
+                  clearTextField(textField);
+                  isWaitingForOptions = true;
+                  // shows the user a complaint if during the search process, the amount of drugs matching his input pass a certain number
+                  // Hence the displayed drugs might contain the user desired drug.
+                  if(drugSearchComplaint){
+                    pushPharmaFeedbackMessages("drug-search-complaint")
+                    return;
+                  }
+
+                  return;
+
+                }else if(isWaitingForOptions){
+                  let selectedDrug = userDrugs[userPrompt];
+                  selectedSearchedDrugs.push(selectedDrug);
+                  console.log(selectedSearchedDrugs)
+                  isWaitingForOptions = false;
+                  
                   return;
                 }
 
-                // displays the drug options found on a table for the user to select the right one.
-                const medicationTableHtml = prepareMedicationTable(userDrugs);
-                pushPharmaMessage(medicationTableHtml);
-                pushPharmaFeedbackMessages("choose-drug");
-                clearTextField(textField);
-                // shows the user a complaint if during the search process, the amount of drugs matching his input pass a certain number
-                // Hence the displayed drugs might contain the user desired drug.
-                if(drugSearchComplaint){
-                  pushPharmaFeedbackMessages("drug-search-complaint")
-                  return;
-                }
-                
+                return;
               }else if(steps ==2 ){
 
                 steps++
