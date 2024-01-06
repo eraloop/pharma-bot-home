@@ -25,8 +25,8 @@ a{
 
 /* Define the thumb (the draggable part) of the scrollbar */
 ::-webkit-scrollbar-thumb {
-  background: red !important; /* Color of the thumb */
-  border-radius: 5px; /* Rounded corners for the thumb */
+  background: #43b75d !important; /* Color of the thumb */
+  border-radius: 2px; /* Rounded corners for the thumb */
 }
 
 /* Define the corner of the scrollbar */
