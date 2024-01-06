@@ -15,7 +15,7 @@ a{
 
 /* Define the styles for the scrollbar */
 ::-webkit-scrollbar {
-  width: 10px; /* Width of the scrollbar */
+  width: 2px; /* Width of the scrollbar */
 }
 
 /* Define the track (background) of the scrollbar */
@@ -26,7 +26,7 @@ a{
 /* Define the thumb (the draggable part) of the scrollbar */
 ::-webkit-scrollbar-thumb {
   background: #43b75d !important; /* Color of the thumb */
-  border-radius: 2px; /* Rounded corners for the thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
 }
 
 /* Define the corner of the scrollbar */
