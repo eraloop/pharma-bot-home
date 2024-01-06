@@ -87,18 +87,26 @@ a{
     height: auto;
     width: fit-content;
     word-wrap: break-word;
+    padding: 10px 15px;
+    max-width: 75%;
+    font-weight: 400;
 }
+
 
 .sos-pharma-message , .messages__item{
     margin-top: 10px;
 }
 
 .messages__item--operator {
+    font-size: 14px !important;
     margin-left: auto;
     background: #43b75d !important;
     color: #fff !important;
 }
 
+.messages__item--visitor{
+    font-size: 14px !important;
+}
 
 /* HEADER */
 .chatbox__header {
@@ -153,12 +161,6 @@ a{
     border-radius: 100%;
     margin-right: 5px;
     border: 1px solid #43b75d;
-}
-
-.messages__item {
-    padding: 10px 15px;
-    max-width: 75%;
-    font-weight: 400;
 }
 
 .messages__item--visitor,
@@ -225,13 +227,74 @@ a{
 }
 
 
-/* end of footer new styles  */
-
-
-@keyframes spinSpinner {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
+.loading-dots{
+    color: #202020 !important;
 }
+.loading-dots:after {
+    content: ' . . . ';
+    animation: dots 1s steps(5, end) infinite;
+}
+  
+@keyframes dots {
+    0%, 20% {
+      color: rgba(0,0,0,0);
+      text-shadow:
+        .25em 0 0 rgba(0,0,0,0),
+        .5em 0 0 rgba(0,0,0,0);}
+    40% {
+      color: white;
+      text-shadow:
+        .25em 0 0 rgba(0,0,0,0),
+        .5em 0 0 rgba(0,0,0,0);}
+    60% {
+      text-shadow:
+        .25em 0 0 white,
+        .5em 0 0 rgba(0,0,0,0);}
+    80%, 100% {
+      text-shadow:
+        .25em 0 0 white,
+        .5em 0 0 white;}
+}
+  
+
+/* .loading-dots {
+    font-size: 24px; 
+    display: inline-block;
+    animation: wave 2s infinite ease-in-out;
+} */
+
+/* .loading-dots span {
+    display: inline-block;
+    transform: translateY(0);
+    animation: bounce 2s infinite ease-in-out;
+    animation-delay: 0.2s; 
+} */
+
+/* @keyframes wave {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(10px);
+    }
+} */
+
+/* @keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+} */
+
+
 
 
 @media screen and (max-width: 600px) {

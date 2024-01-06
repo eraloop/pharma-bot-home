@@ -14,13 +14,13 @@ function prepareMedicationTable(medications) {
 
   medications.forEach((medication, index) => {
     const medicationName = medication.name;
-    const medicationPrice = medication.cm_price;
+    const medicationPrice = medication.price;
 
     tableHtml += `
           <tr>
             <td>${index}</td>
             <td>${medicationName}</td>
-            <td>XAF${medicationPrice}</td>
+            <td>XAF ${medicationPrice.toLocaleString()}</td>
           </tr>
       `;
   });
@@ -43,8 +43,6 @@ function prepareMedicationDataTable(medications, totalCost) {
           <tr>
             <th>Medication Name</th>
             <th>Price</th>
-            <th>Quantity</th>
-            <th>Cost</th>
           </tr>
         </thead>
         <tbody class="table-striped">
@@ -53,15 +51,11 @@ function prepareMedicationDataTable(medications, totalCost) {
   medications.forEach((medication) => {
     const medicationName = medication.name;
     const medicationPrice = medication.price;
-    const quantity = medication.quantity;
-    const cost = quantity * medicationPrice;
 
     tableHtml += `
         <tr>
           <td>${medicationName}</td>
-          <td>XAF${medicationPrice}</td>
-          <td>${quantity}</td>
-          <td>XAF${cost}</td>
+          <td>XAF ${medicationPrice.toLocaleString()}</td>
         </tr>
       `;
   });
@@ -69,8 +63,8 @@ function prepareMedicationDataTable(medications, totalCost) {
   // Add the total cost row at the bottom of the table
   tableHtml += `
         <tr>
-          <td colspan="3">Total Cost:</td>
-          <td>XAF${totalCost}</td>
+          <td>Total Cost:</td>
+          <td>XAF ${totalCost.toLocaleString()}</td>
         </tr>
       </tbody>
     </table>
