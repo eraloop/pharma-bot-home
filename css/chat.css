@@ -255,44 +255,50 @@ a{
         .25em 0 0 white,
         .5em 0 0 white;}
 }
+
+.btn-close{
+    outline: none !important;
+    border: none !important;
+    background: transparent !important;
+    cursor: pointer;
+  }
   
+  
+.btn{
+    display: block !important;
+    border: none;
+    outline: none;
+    padding: 5px 10px !important;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: 300ms;
+    margin: 0 5px;
+}
 
-/* .loading-dots {
-    font-size: 24px; 
-    display: inline-block;
-    animation: wave 2s infinite ease-in-out;
-} */
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin: auto;
+}
 
-/* .loading-dots span {
-    display: inline-block;
-    transform: translateY(0);
-    animation: bounce 2s infinite ease-in-out;
-    animation-delay: 0.2s; 
-} */
+.btn-success{
+    background-color: #43b75d !important;
+    color: white !important;
+}
 
-/* @keyframes wave {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    25% {
-        transform: translateY(-10px);
-    }
-    50% {
-        transform: translateY(0);
-    }
-    75% {
-        transform: translateY(10px);
-    }
-} */
+/* #f2e46a */
+.btn-warning{
+    background-color: #f2e46a !important;
+    color: grey !important;
+}
 
-/* @keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-} */
+.btn-info{
+    background-color: grey !important;
+    color: white !important;
+}
 
 
 

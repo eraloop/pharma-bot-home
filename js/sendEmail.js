@@ -1,27 +1,33 @@
-async function sendOrderEmail(drugs) {
-    try {
-      const transporter = nodemailer.createTransport({
-        host: "smtp.mailtrap.io",
-        port: 2525,
-        auth: {
-          user: "903b6673456697",
-          pass: "fe41a227ec230a",
-        },
-      });
-  
-      const mailOptions = {
-        from: "sospharma@pharma.co",
-        to: "recipient@example.com",
-        subject: "Medication Order",
-        text: `This is a test email sent from Node.js using Nodemailer with Mailtrap. \n\nList of drugs:\n${drugs.join('\n')}`,
-      };
-  
-      const info = await transporter.sendMail(mailOptions);
-      console.log("Email sent successfully:", info.response);
-      return true;
-    } catch (error) {
-      console.error("Error sending email:", error);
-      return false;
-    }
+async function sendMail(selectedSearchedDrugs, userInfo) {
+  const serviceID = "service_g2s6tai";
+  const templateID = "template_vcdmecb";
+
+  let medicationsList = ``;
+
+  selectedSearchedDrugs.forEach((medication) => {
+    medicationsList += `
+          ${medication.name} \n
+      `;
+  });
+
+  try {
+    let response = await emailjs.send(serviceID, templateID, {
+      name: "SOS Pharma BOT",
+      email: "sospharma@order.com",
+      message: `
+        Order Details. 
+        \nList of drugs \n${medicationsList}
+        User Details
+        \n
+        name: ${JSON.stringify(userInfo["name"])}
+        address: ${JSON.stringify(userInfo["address"])}
+        phone: ${JSON.stringify(userInfo["phone"])}
+      `,
+    });
+    console.log(response);
+    return true;
+  } catch (e) {
+    console.log(e);
+    return false;
   }
-  
+}

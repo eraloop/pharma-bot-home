@@ -2,23 +2,17 @@
 let chatBox = document.querySelector(".chatbox__support");
 let sendButton = document.querySelector(".chatbox__send__button");
 let restartChatButton = document.querySelector(".chatbox__restart");
+// butttons for chat interaction.
+let doneButton = document.querySelector(".done-button");
+let paymentConfirmButton = document.querySelector(".payment-confirm-button");
+let resendButton = document.querySelector(".chatbox__restart");
+let completeButton = document.querySelector(".chatbox__restart");
+let clearButton = document.querySelector(".chatbox__restart");
 
-// this is the list of messages in the chatbox
-let messages = [];
-// this is the drug list loaded from the json file
-// onload drugs method loads the drugs from the product.json file or the test.json file
-let drugList = [];
-// this is the list of drugs the user has typed
-let userPrompts = [];
-// this is the list of drugs the user search result returned
-let userDrugs = [];
+let messages  = [], drugList = [], userPrompts = [], userDrugs  = [], userDrugPlusWeight = [], updatedDrugObjects = [], selectedSearchedDrugs = [];
 // this is the step of the conversation
 let currentStep = 0;
 let isMessagesLoaded = false;
-// this is the list of drugs and their weights
-let userDrugPlusWeight = [];
-// this is the total cost of the order
-let updatedDrugObjects = [];
 // some standard order keywords to filter out when the user places their order request.
 const orderKeywords = [
   "i",
@@ -150,19 +144,34 @@ const orderKeywords = [
 ];
 // tracks if a user drug is found
 let isDrugFound = false;
-// this is a list of drugs the user have selected from the search
-let selectedSearchedDrugs = [];
 // payment info data
-let paymentInfo = {};
+let paymentInfo = {}, userInfo = {};
 // this variable tracks if the user is supposed ti select a drug from a suggested list
 let isWaitingForOptions = false;
-
-let steps = 1;
-
 // get refrence to the html elements relevant to the js file
 sendButton.addEventListener("click", () => onSendButton(chatBox));
 restartChatButton.addEventListener("click", () => restartConversation());
 const inputBox = chatBox.querySelector(".chatbox__message__input");
+const messageContainer = document.getElementById("chatbox__messages");
+
+messageContainer.addEventListener('click', function(event) {
+
+  const target = event.target;
+  if (target.classList.contains('med-complete-button')) {
+    completeMedList()
+  }else if(target.classList.contains('med-clear-button')){
+    clearMedicationList()
+  }else if(target.classList.contains('list-clear-button')){
+    restartConversation();
+  }else if(target.classList.contains('payment-confirmed-button')){
+    confirmedPayment();
+  }else if(target.classList.contains('payment-resend-button')){
+    resendPayment();
+  }else if(target.classList.contains('med-done-button')){
+    medicationDone();
+  }
+
+});
 
 // tracks the enter key on the input box so as to submit the text inside
 inputBox.addEventListener("keyup", ({ key }) => {
@@ -170,6 +179,53 @@ inputBox.addEventListener("keyup", ({ key }) => {
     onSendButton(chatBox);
   }
 });
+
+function medicationDone(){
+  let totalCost = 0;
+  selectedSearchedDrugs.forEach((currentDrug) => {
+    totalCost += currentDrug.price;
+  });
+  const medicationTableHtml = prepareMedicationDataTable(
+    selectedSearchedDrugs,
+    totalCost
+  );
+  pushPharmaMessage(medicationTableHtml);
+  pushPharmaFeedbackMessages("medications-complete");
+  currentStep++;
+}
+
+function clearMedicationList(){
+  selectedSearchedDrugs = [];
+  pushPharmaFeedbackMessages("medications");
+  currentStep = 0;
+}
+
+function completeMedList(){
+  pushPharmaFeedbackMessages("identity");
+  currentStep++;
+}
+
+async function confirmedPayment(){
+  pushPharmaFeedbackMessages("placing-order");
+  disableTextarea(inputBox);
+
+  let response = await sendMail(selectedSearchedDrugs, userInfo);
+  if (!response) {
+    pushPharmaFeedbackMessages("order-failed");
+    enableTextarea(inputBox);
+    return;
+  }else{
+    pushPharmaFeedbackMessages("order-sent");
+    pushPharmaMessage("Your drugs will ne delivered to you in the next one hour.")
+    return;
+  }
+
+}
+
+function resendPayment(){
+  pushPharmaFeedbackMessages("resend-billing-request");
+  pushPharmaFeedbackMessages("billing-request-followup");
+}
 
 async function onStart(chatbox) {
   response = await loadExcel();
@@ -202,9 +258,11 @@ async function onStart(chatbox) {
 function pushUserMessage(message) {
   messages.push({ name: "User", message });
   updateChatText(chatBox, messages);
+  inputBox.focus();
 }
 
 async function onSendButton(chatbox) {
+
   let textField = chatbox.querySelector("textarea");
   let userPrompt = textField.value.toLowerCase().trim();
   if (userPrompt === "") return;
@@ -245,9 +303,9 @@ async function onSendButton(chatbox) {
             return;
           }
         } else {
+
           const number = parseInt(userPrompt, 10);
           if (!isNaN(number) && number >= 0 && number <= userDrugs.length - 1) {
-            console.log("adding selected drug");
             selectedSearchedDrugs.push(userDrugs[userPrompt]);
             isWaitingForOptions = false;
 
@@ -266,118 +324,103 @@ async function onSendButton(chatbox) {
       } else if (userPrompt == "done" && selectedSearchedDrugs.length === 0) {
         pushPharmaFeedbackMessages("meds-empty");
       } else if (userPrompt == "done" && selectedSearchedDrugs.length !== 0) {
-        console.log("changed case");
-
-        let totalCost = 0;
-        selectedSearchedDrugs.forEach((currentDrug) => {
-          totalCost += currentDrug.price;
-        });
-        const medicationTableHtml = prepareMedicationDataTable(
-          selectedSearchedDrugs,
-          totalCost
-        );
-        pushPharmaMessage(medicationTableHtml);
-        pushPharmaFeedbackMessages("medications-complete");
-        currentStep++;
+        medicationDone();
       }
 
       break;
 
     case 1:
 
+      console.log("case one")
       if (userPrompt == "clear") {
-        selectedSearchedDrugs = [];
-        pushPharmaFeedbackMessages("medications");
-        currentStep = 0;
+        clearMedicationList()
         return;
       } else if (userPrompt == "complete") {
-        pushPharmaFeedbackMessages("address");
-        currentStep++;
+        completeMedList()
       } else {
         pushPharmaFeedbackMessages("keywords");
         return;
       }
 
       break;
+    case 2: 
 
-    case 2:
-      pushPharmaFeedbackMessages("phone-enter");
-      currentStep++;
+      console.log("case two")
+      userInfo['name'] = userPrompt; 
+      pushPharmaFeedbackMessages("address");
+      currentStep ++;
       break;
-    case 3:
-      const isValid = validateCameroonianPhoneNumber(userPrompt.trim());
-      if (!isValid["isValid"]) {
-        pushPharmaFeedbackMessages("phone");
-        return;
-      }
-      pushPharmaFeedbackMessages("confirm-payment");
-      pushPharmaFeedbackMessages("billing-request-followup");
 
+    case 3:
+
+      userInfo['address'] = userPrompt; 
+      pushPharmaFeedbackMessages("phone-enter");
       currentStep++;
       break;
 
     case 4:
 
-      if (userPrompt == "confirmed") {
-        pushPharmaFeedbackMessages("placing-order");
-        disableTextarea(inputBox);
-
-        let response = await sendOrderEmail(selectedSearchedDrugs);
-        if (!response) {
-          pushPharmaFeedbackMessages("order-failed");
-          enableTextarea(inputBox);
-          return;
-        }else{
-          pushPharmaFeedbackMessages("order-sent");
-          pushPharmaMessage("Your drugs will ne delivered to you in the next one hour.")
-          return;
-        }
-        
-
-      } else if (userPrompt == "resend") {
-        pushPharmaFeedbackMessages("resend-billing-request");
-        pushPharmaFeedbackMessages("billing-request-followup");
+      const isValid = validateCameroonianPhoneNumber(userPrompt.trim());
+      if (!isValid["isValid"]) {
+        pushPharmaFeedbackMessages("phone");
         return;
-        
+      }
+
+      userInfo['phone'] = userPrompt; 
+      pushPharmaFeedbackMessages("confirm-payment");
+      pushPharmaFeedbackMessages("billing-request-followup");
+
+      currentStep ++;
+      break;
+
+    case 5:
+
+      //   let body = {
+      //     amount: 1,
+      //     phone_number: "237673572533",
+      //     description: "testing the api service",
+      //   };
+
+      //   let accesstoken = getAccessToken(
+      //     paymentInfo["AppUserName"],
+      //     paymentInfo["AppPassword"]
+      //   );
+      //   if (accesstoken["success"]) {
+      //     let payment = mobilePayment(response["token"], body);
+      //     if (payment["success"]) {
+      //       console.log(response["data"]);
+      //     } else {
+      //       console.log("failed to make payment");
+      //       pushPharmaFeedbackMessages("resend-billing-request");
+      //     }
+      //   } else {
+      //     console.log("failed to get access token.");
+      //   }
+      // order is supposed to be placed here 
+      // then user input waiting for the user confirmation
+
+      if (userPrompt == "confirmed") {
+        confirmedPayment();
+        return;
+      } else if (userPrompt == "resend") {
+        resendPayment();
+        return;
       } else {
         pushPharmaFeedbackMessages("keywords");
-        return;
+        
       }
 
       break;
     // case 4:
 
-    //   let body = {
-    //     amount: 1,
-    //     phone_number: "237673572533",
-    //     description: "testing the api service",
-    //   };
-
-    //   let accesstoken = getAccessToken(
-    //     paymentInfo["AppUserName"],
-    //     paymentInfo["AppPassword"]
-    //   );
-    //   if (accesstoken["success"]) {
-    //     let payment = mobilePayment(response["token"], body);
-    //     if (payment["success"]) {
-    //       console.log(response["data"]);
-    //     } else {
-    //       console.log("failed to make payment");
-    //       pushPharmaFeedbackMessages("resend-billing-request");
-    //     }
-    //   } else {
-    //     console.log("failed to get access token.");
-    //   }
-    //   break;
-
-    case 5:
+    case 6:
 
       console.log("placing order case");
       if (userPrompt == "resend") {
         pushPharmaFeedbackMessages("placing-order");
-        await sendOrderEmail(selectedSearchedDrugs);
+        await sendMail(selectedSearchedDrugs, userInfo);
       }
-      let response = await sendOrderEmail(selectedSearchedDrugs);
+      let response = await sendMail(selectedSearchedDrugs, userInfo);
       if (!response) {
         pushPharmaFeedbackMessages("order-failed");
         return;
@@ -402,24 +445,25 @@ function restartConversation() {
   onStart();
 }
 
-window.addEventListener("beforeunload", function () {
-  localStorage.setItem("messages", JSON.stringify(messages));
-});
+// window.addEventListener("beforeunload", function () {
+//   localStorage.setItem("messages", JSON.stringify(messages));
+// });
 
-window.addEventListener("load", function () {
-  let messages = JSON.parse(localStorage.getItem("messages"));
-  if (Array.isArray(messages)) {
-    isMessagesLoaded = true;
-    messages = messages;
-  } else {
-    isMessagesLoaded = false;
-  }
-});
+// window.addEventListener("load", function () {
+//   let messages = JSON.parse(localStorage.getItem("messages"));
+//   if (Array.isArray(messages)) {
+//     isMessagesLoaded = true;
+//     messages = messages;
+//   } else {
+//     isMessagesLoaded = false;
+//   }
+// });
 
 // helper function to push pharma message on the chatbox
 function pushPharmaMessage(reply) {
   messages.push({ name: "SOS Pharma", message: reply });
   updateChatText(chatBox, messages);
+  inputBox.focus();
 }
 
 async function pushThinkingMessage() {
@@ -456,7 +500,13 @@ function pushPharmaFeedbackMessages(currentCase) {
       break;
     case "medications-complete":
       pushPharmaMessage(
-        "Are your medications correct and complete ??  if not, please type CLEAR, if yes, type COMPLETE"
+        ` <p> Are your medications correct and complete ??</p><br>
+          <div class="buttons"> 
+            <button class="btn btn-warning med-clear-button">CLEAR SELECTED LIST</button>
+            <button class="btn btn-success med-complete-button">COMPLETE</button>
+          </div>
+        `
+          
       );
       break;
     case "resend-billing-request":
@@ -465,7 +515,12 @@ function pushPharmaFeedbackMessages(currentCase) {
 
     case "billing-request-followup":
       pushPharmaMessage(
-        "if comfirmed, type CONFIRMED, if you ddnt receive the billing request, type RESEND"
+        ` <p> Have you confirmed the payment ?? or you didnt receive the billing request ?</p> <br>
+          <div class="buttons"> 
+            <button class="btn btn-info payment-resend-button">RESEND BILLING</button>
+            <button class="btn btn-success payment-confirmed-button">CONFIRMED BILLING</button>
+          </div>
+        `
       );
       break;
     case "no-medication":
@@ -481,7 +536,9 @@ function pushPharmaFeedbackMessages(currentCase) {
       break;
     case "more-meds":
       pushPharmaMessage(
-        "Do you wish to order any other medication, if yes, please type the name of the medication, if no, please type DONE"
+        ` <p> Do you wish to order any other medication, if yes, please type the name of the medication, if no, please click on the done button</p>
+          <br> <button class="btn btn-success med-done-button"> DONE SELECTING </button>
+        `
       );
       break;
     case "drug-found":
@@ -491,7 +548,9 @@ function pushPharmaFeedbackMessages(currentCase) {
       break;
     case "choose-drug":
       pushPharmaMessage(
-        "Please select your medication from the list above, reply with the index e.g 1, 2, 3, etc or type CLEAR if you wish to clear your list and start over"
+        `
+        <p>Please select your medication from the list above, reply with the index e.g 1, 2, 3,  if you wish to clear your list and start over</p> 
+        <br><button class="btn btn-warning list-clear-button"> CLEAR LIST </button>`
       );
       break;
     case "drug-search-complaint":
@@ -506,7 +565,10 @@ function pushPharmaFeedbackMessages(currentCase) {
       break;
     case "order-failed":
       pushPharmaMessage(
-        "Failed to place your order, please type RESEND to resend your order"
+        `
+          <p> Failed to place your order </p> 
+          <br> <button class="btn btn-info order-resend-button"> RESEND ORDER </button>
+         `
       );
       break;
     case "placing-order":
@@ -522,10 +584,17 @@ function pushPharmaFeedbackMessages(currentCase) {
         "A payment request has been send to this device, please confirm the payment for your order tobe placed."
       );
       break;
+    case "identity":
+        pushPharmaMessage(
+          "Please whats your name ?"
+        );
+        break;
     default:
       pushPharmaMessage("Invalid input, please retype your request");
       break;
   }
 }
+
+
 
 onStart();
