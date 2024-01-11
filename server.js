@@ -8,152 +8,18 @@ let paymentConfirmButton = document.querySelector(".payment-confirm-button");
 let resendButton = document.querySelector(".chatbox__restart");
 let completeButton = document.querySelector(".chatbox__restart");
 let clearButton = document.querySelector(".chatbox__restart");
+let closeButton = document.querySelector(".chatbox__close");
+let inputBox = chatBox.querySelector(".chatbox__message__input");
+let messageContainer = document.getElementById("chatbox__messages");
 
-let messages  = [], drugList = [], userPrompts = [], userDrugs  = [], userDrugPlusWeight = [], updatedDrugObjects = [], selectedSearchedDrugs = [];
-// this is the step of the conversation
-let currentStep = 0;
-let isMessagesLoaded = false;
-// some standard order keywords to filter out when the user places their order request.
-const orderKeywords = [
-  "i",
-  "want",
-  "to",
-  "order",
-  "buy",
-  "purchase",
-  "get",
-  "acquire",
-  "please",
-  "can",
-  "may",
-  "need",
-  "would",
-  "like",
-  "add",
-  "place",
-  "an",
-  "the",
-  "some",
-  "a",
-  "one",
-  "two",
-  "three",
-  "four",
-  "five",
-  "six",
-  "seven",
-  "eight",
-  "nine",
-  "ten",
-  "give me",
-  "send me",
-  "get me",
-  "provide me",
-  "deliver",
-  "send",
-  "supply",
-  "fetch",
-  "bring",
-  "deliver",
-  "send over",
-  "ship",
-  "forward",
-  "transfer",
-  "dispatch",
-  "hand over",
-  "serve",
-  "procure",
-  "obtain",
-  "secure",
-  "receive",
-  "drop off",
-  "place an order for",
-  "request",
-  "buy me",
-  "purchase",
-  "order",
-  "buy",
-  "some",
-  "purchase",
-  "get",
-  "acquire",
-  "up",
-  "pick",
-  "select",
-  "choose",
-  "reserve",
-  "book",
-  "for",
-  "me",
-  "order",
-  "buy",
-  "get",
-  "purchase",
-  "bring",
-  "behalf",
-  "my",
-  "on",
-  "order",
-  "dosage",
-  "pill",
-  "tablet",
-  "capsule",
-  "syrup",
-  "liquid",
-  "injection",
-  "ointment",
-  "ointment",
-  "supplement",
-  "vitamin",
-  "antibiotic",
-  "painkiller",
-  "antacid",
-  "antihistamine",
-  "antiviral",
-  "insulin",
-  "inhaler",
-  "blood pressure",
-  "antidepressant",
-  "anxiety",
-  "allergy",
-  "cough",
-  "cold",
-  "flu",
-  "fever",
-  "headache",
-  "pain",
-  "relief",
-  "health",
-  "wellness",
-  "prescribe",
-  "treatment",
-  "hello",
-  "hi",
-  "hey",
-  "good",
-  "morning",
-  "afternoon",
-  "evening",
-  "night",
-  "how",
-  "are",
-  "you",
-  "doing",
-  "fine",
-  "well",
-];
-// tracks if a user drug is found
-let isDrugFound = false;
-// payment info data
+let locale = "en-US", city = "", selectedPickupLocation = "";
+let messages  = [], drugList = [], userPrompts = [], userDrugs  = [], userDrugPlusWeight = [], updatedDrugObjects = [], selectedSearchedDrugs = [], orderKeywords = [], locations = [];
+let isDrugFound = false, isMessagesLoaded = false, isWaitingForOptions = false;
 let paymentInfo = {}, userInfo = {};
-// this variable tracks if the user is supposed ti select a drug from a suggested list
-let isWaitingForOptions = false;
+
 // get refrence to the html elements relevant to the js file
 sendButton.addEventListener("click", () => onSendButton(chatBox));
 restartChatButton.addEventListener("click", () => restartConversation());
-const inputBox = chatBox.querySelector(".chatbox__message__input");
-const messageContainer = document.getElementById("chatbox__messages");
-
 messageContainer.addEventListener('click', function(event) {
 
   const target = event.target;
@@ -172,14 +38,29 @@ messageContainer.addEventListener('click', function(event) {
   }
 
 });
-
 // tracks the enter key on the input box so as to submit the text inside
 inputBox.addEventListener("keyup", ({ key }) => {
   if (key === "Enter") {
     onSendButton(chatBox);
   }
 });
-
+// loads messages from local storage when  the user returns to the page
+// window.addEventListener("load", async function() {
+//   try {
+//     messages = await getConversationData();
+//     console.log("messages" + JSON.stringify(messages))
+//   } catch (error) {
+//     console.error("Error fetching messages:", error);
+//   }
+// });
+// saves messages to local storage when the user leaves the page
+window.addEventListener("beforeunload", function() {
+  saveConversationData(messages)
+});
+closeButton.addEventListener('click', (e) => {
+  saveConversationData(messages)
+})
+// interactives chat buttons
 function medicationDone(){
   let totalCost = 0;
   selectedSearchedDrugs.forEach((currentDrug) => {
@@ -193,18 +74,15 @@ function medicationDone(){
   pushPharmaFeedbackMessages("medications-complete");
   currentStep++;
 }
-
 function clearMedicationList(){
   selectedSearchedDrugs = [];
   pushPharmaFeedbackMessages("medications");
   currentStep = 0;
 }
-
 function completeMedList(){
   pushPharmaFeedbackMessages("identity");
   currentStep++;
 }
-
 async function confirmedPayment(){
   pushPharmaFeedbackMessages("placing-order");
   disableTextarea(inputBox);
@@ -216,18 +94,59 @@ async function confirmedPayment(){
     return;
   }else{
     pushPharmaFeedbackMessages("order-sent");
-    pushPharmaMessage("Your drugs will ne delivered to you in the next one hour.")
+    pushPharmaMessage(
+      locale === 'en-US' ? "Your drugs will ne delivered to you in the next one hour."
+       : "Vos médicaments vous seront livrés dans l'heure qui suit."  
+      )
     return;
   }
 
 }
-
 function resendPayment(){
   pushPharmaFeedbackMessages("resend-billing-request");
   pushPharmaFeedbackMessages("billing-request-followup");
 }
 
-async function onStart(chatbox) {
+function onDisplayCityDropDown(){
+  let locationDropdown = document.querySelector(".location-dropdown");
+
+  locationDropdown.innerHTML = "";
+  locations.forEach((optionText) => {
+    const option = document.createElement("option");
+    option.value = optionText["id"];
+    option.text = optionText["name"]; 
+    locationDropdown.appendChild(option); 
+  });
+
+  locationDropdown.addEventListener("change", function() {
+    city = this.value;
+    currentStep ++;
+  });
+
+}
+
+function onDisplayLocationDropDown(){
+  let pickupLocationDropdown = document.querySelector(".pickup-location-dropdown");
+
+  pickupLocationDropdown.innerHTML = "";
+  locations.forEach((optionText) => {
+    const option = document.createElement("option");
+    option.value = optionText["id"];
+    option.text = optionText["name"]; 
+    pickupLocationDropdown.appendChild(option); 
+  });
+
+  pickupLocationDropdown.addEventListener("change", function() {
+    selectedPickupLocation = this.value;
+    currentStep ++;
+  });
+
+}
+
+async function onStart() {
+  locale = navigator.language
+  orderKeywords = getOrderKeywords(locale);
+  locations = await onLoadCities();
   response = await loadExcel();
   drugList = response["drugs"];
   let drugLoaded = response["isLoaded"];
@@ -239,7 +158,8 @@ async function onStart(chatbox) {
   if (!drugLoaded) {
     let greeting = {
       name: "SOS Pharma",
-      message: `Network error <br> Failed to load required resources <br>Please check your internet connection and refresh the page`,
+      message: locale === 'en-US' ? `Network error <br> Failed to load required resources <br>Please check your internet connection and refresh the page` 
+      : `Erreur réseau <br> Impossible de charger les ressources requises <br>Veuillez vérifier votre connexion Internet et actualiser la page`,
     };
     messages.push(greeting);
     updateChatText(chatBox, messages);
@@ -248,11 +168,19 @@ async function onStart(chatbox) {
   }
   let greeting = {
     name: "SOS Pharma",
-    message: `Hello <br> Welcome to SOS Pharma <br> Please which medications would you like to order today?`,
+    message: locale === 'en-US' ? `Hello <br> Welcome to SOS Pharma <br> Please which medications would you like to order today?` 
+    : `Bonjour <br> Bienvenue chez SOS Pharma <br> Quels médicaments souhaitez-vous commander aujourd'hui?`,
   };
-  messages.push(greeting);
-  updateChatText(chatBox, messages);
+
+  if(messages.length === 0 ){
+    messages.push(greeting);
+    updateChatText(chatBox, messages);
+  }else{
+    updateChatText(chatBox, messages);
+  }
+  
 }
+
 
 // helper function to push user message on the chatbox
 function pushUserMessage(message) {
@@ -261,6 +189,7 @@ function pushUserMessage(message) {
   inputBox.focus();
 }
 
+let currentStep = 0;
 async function onSendButton(chatbox) {
 
   let textField = chatbox.querySelector("textarea");
@@ -305,7 +234,8 @@ async function onSendButton(chatbox) {
         } else {
 
           const number = parseInt(userPrompt, 10);
-          if (!isNaN(number) && number >= 0 && number <= userDrugs.length - 1) {
+          console.log(!isNaN(number))
+          if (!isNaN(number) && (number >= 0) && number <= (userDrugs.length - 1)) {
             selectedSearchedDrugs.push(userDrugs[userPrompt]);
             isWaitingForOptions = false;
 
@@ -315,10 +245,12 @@ async function onSendButton(chatbox) {
             );
             pushPharmaFeedbackMessages("more-meds");
             currentStep = 0;
+
           } else {
             pushPharmaFeedbackMessages("keywords");
-            isWaitingForOptions = false;
+            isWaitingForOptions = true;
             currentStep = 0;
+            
           }
         }
       } else if (userPrompt == "done" && selectedSearchedDrugs.length === 0) {
@@ -345,14 +277,28 @@ async function onSendButton(chatbox) {
       break;
     case 2: 
 
-      console.log("case two")
       userInfo['name'] = userPrompt; 
       pushPharmaFeedbackMessages("address");
+      onDisplayCityDropDown();
       currentStep ++;
+
+      break;
+    case 3: 
+
+      const location = locations.find((location) => location.id === city);
+      console.log(location)
+      if(location['deliveryPoints'].length === 0){
+        currentStep ++;
+        return;
+      }
+      pushPharmaFeedbackMessages("pickup-location");
+      onDisplayLocationDropDown();
+
       break;
 
-    case 3:
+    case 4:
 
+     
       userInfo['address'] = userPrompt; 
       pushPharmaFeedbackMessages("phone-enter");
       currentStep++;
@@ -442,22 +388,9 @@ function restartConversation() {
   userDrugPlusWeight = [];
   updatedDrugObjects = [];
   selectedSearchedDrugs = [];
+  enableTextarea(inputBox);
   onStart();
 }
-
-// window.addEventListener("beforeunload", function () {
-//   localStorage.setItem("messages", JSON.stringify(messages));
-// });
-
-// window.addEventListener("load", function () {
-//   let messages = JSON.parse(localStorage.getItem("messages"));
-//   if (Array.isArray(messages)) {
-//     isMessagesLoaded = true;
-//     messages = messages;
-//   } else {
-//     isMessagesLoaded = false;
-//   }
-// });
 
 // helper function to push pharma message on the chatbox
 function pushPharmaMessage(reply) {
@@ -467,9 +400,14 @@ function pushPharmaMessage(reply) {
 }
 
 async function pushThinkingMessage() {
+
+  if(messages.length !== 0){
+    return;
+  }
   messages.push({
     name: "SOS Pharma",
-    message: "<p class='loading-dots'> Processing </p>",
+    message: locale === 'en-US' ? "<p class='loading-dots'> Setting up, Please wait  </p>" 
+      : "<p class='loading-dots'> Configuration, veuillez patienter  </p>" ,
   });
   updateChatText(chatBox, messages);
   await new Promise((resolve) => setTimeout(resolve, 2000));
@@ -481,120 +419,191 @@ function pushPharmaFeedbackMessages(currentCase) {
   switch (currentCase) {
     case "phone":
       pushPharmaMessage(
-        "Please enter a valid Cameroonian phone number, it must begin with the digits 6, 2, 3, etc"
+        locale === 'en-US' ? "Please enter a valid Cameroonian phone number, it must begin with the digits 6, 2, 3, etc" 
+        : "Veuillez saisir un numéro de téléphone camerounais valide, il doit commencer par les chiffres 6, 2, 3, etc"
       );
       break;
 
     case "phone-enter":
-      pushPharmaMessage("Please your number you wish to pay with.");
+      pushPharmaMessage(
+        locale === 'en-US' ? "Please your number you wish to pay with." : "Veuillez saisir votre numéro de téléphone que vous souhaitez payer avec."
+        );
       break;
     case "address":
       pushPharmaMessage(
-        "Please where do you live, Town and location e.g (Buea, Malingo)"
+        locale === 'en-US' ? `
+          <p> Please enter your address, street name, city and location for example (Buea, Malingo) </p><b>
+          <select class="location-dropdown" aria-label="Default select example">
+          </select>
+        `
+        : "Veuillez indiquer où vous vivez, ville et emplacement par exemple (Buea, Malingo)"
       );
       break;
+    
+    case "pickup-location":
+      pushPharmaMessage(
+        locale === 'en-US' ? `
+          <p> Please select your pickup location </p><b>
+          <select class="pickup-location-dropdown" aria-label="Default select example">
+          </select>
+        `
+        : "Veuillez indiquer où vous vivez, ville et emplacement par exemple (Buea, Malingo)"
+      );
+      break;
+
     case "medications":
       pushPharmaMessage(
-        "Please retype the name of your medication as prescribed by your medical doctor"
+        locale === 'en-US' ? "Please retype the name of your medication as prescribed by your medical doctor" 
+        : "Veuillez retaper le nom de votre médicament tel que prescrit par votre médecin"
       );
       break;
     case "medications-complete":
       pushPharmaMessage(
+        locale === 'en-US' ? 
         ` <p> Are your medications correct and complete ??</p><br>
           <div class="buttons"> 
             <button class="btn btn-warning med-clear-button">CLEAR SELECTED LIST</button>
             <button class="btn btn-success med-complete-button">COMPLETE</button>
           </div>
         `
+        : 
+        ` <p> Vos médicaments sont-ils corrects et complets ??</p><br>
+          <div class="buttons"> 
+            <button class="btn btn-warning med-clear-button">EFFACER LA LISTE SÉLECTIONNÉE</button>
+            <button class="btn btn-success med-complete-button">COMPLET</button>
+          </div>
+        `
           
       );
       break;
     case "resend-billing-request":
-      pushPharmaMessage("Billing request has been resend, please confirm");
+      pushPharmaMessage(
+        locale === 'en-US' ? "Billing request has been resend, please confirm" 
+        : "La demande de facturation a été renvoyée, veuillez confirmer"
+        );
       break;
 
     case "billing-request-followup":
       pushPharmaMessage(
+        locale === 'en-US' ? 
         ` <p> Have you confirmed the payment ?? or you didnt receive the billing request ?</p> <br>
           <div class="buttons"> 
             <button class="btn btn-info payment-resend-button">RESEND BILLING</button>
             <button class="btn btn-success payment-confirmed-button">CONFIRMED BILLING</button>
           </div>
         `
+        : 
+        ` <p> Avez-vous confirmé le paiement ?? ou vous n'avez pas reçu la demande de facturation ?</p> <br>
+          <div class="buttons"> 
+            <button class="btn btn-info payment-resend-button">RENVOYER LA FACTURATION</button>
+            <button class="btn btn-success payment-confirmed-button">FACTURATION CONFIRMÉE</button>
+          </div>
+        `
       );
       break;
     case "no-medication":
       pushPharmaMessage(
-        "No Medication identified, please provide the list of medications you wish to order as specified by your medical personnel"
+        locale === 'en-US' ? "No Medication identified, please provide the list of medications you wish to order as specified by your medical personnel" 
+        : "Aucun médicament identifié, veuillez fournir la liste des médicaments que vous souhaitez commander comme indiqué par votre personnel médical"
       );
       break;
     case "keywords":
-      pushPharmaMessage("Please reply with the above specified keywords");
+      pushPharmaMessage(
+        locale === 'en-US' ? "Please reply with the above specified keywords" : "Veuillez répondre avec les mots clés spécifiés ci-dessus"
+        );
       break;
     case "input":
-      pushPharmaMessage("Please reply with the above specified keywords");
+      pushPharmaMessage(
+        locale === 'en-US' ? "Please reply with the above specified keywords" : "Veuillez répondre avec les mots clés spécifiés ci-dessus"
+        );
       break;
     case "more-meds":
       pushPharmaMessage(
+        locale === 'en-US' ?
         ` <p> Do you wish to order any other medication, if yes, please type the name of the medication, if no, please click on the done button</p>
           <br> <button class="btn btn-success med-done-button"> DONE SELECTING </button>
+        `
+        : 
+        ` <p> Voulez-vous commander un autre médicament, si oui, veuillez saisir le nom du médicament, sinon, veuillez cliquer sur le bouton Terminé</p>
+          <br> <button class="btn btn-success med-done-button"> FAIT DE SÉLECTION </button>
         `
       );
       break;
     case "drug-found":
       pushPharmaMessage(
-        "The requested drug isnt available, Please make sure the spelling is correct and try again"
+        locale === 'en-US' ? "The requested drug isnt available, Please make sure the spelling is correct and try again" : "Le médicament demandé n'est pas disponible, veuillez vous assurer que l'orthographe est correcte et réessayez"
       );
       break;
     case "choose-drug":
       pushPharmaMessage(
+        locale === 'en-US' ?
         `
-        <p>Please select your medication from the list above, reply with the index e.g 1, 2, 3,  if you wish to clear your list and start over</p> 
-        <br><button class="btn btn-warning list-clear-button"> CLEAR LIST </button>`
+          <p>Please select your medication from the list above, reply with the index e.g 1, 2, 3,  if you wish to clear your list and start over</p> 
+          <br><button class="btn btn-warning list-clear-button"> CLEAR LIST </button>
+        `
+        :
+        `
+          <p>Veuillez sélectionner votre médicament dans la liste ci-dessus, répondez avec l'index par exemple 1, 2, 3, si vous souhaitez effacer votre liste et recommencer</p> 
+          <br><button class="btn btn-warning list-clear-button"> EFFACER LA LISTE </button>
+        `
       );
       break;
     case "drug-search-complaint":
       pushPharmaMessage(
-        "The amount of drugs matching this name is alot, please if your required drug isnt found on this list, check the spelling and search again."
+        locale === 'en-US' ? "The amount of drugs matching this name is alot, please if your required drug isnt found on this list, check the spelling and search again." 
+        : "Le nombre de médicaments correspondant à ce nom est important, veuillez vérifier l'orthographe et rechercher à nouveau."
       );
       break;
     case "meds-empty":
       pushPharmaMessage(
-        "Please choose a medication before proceeding to the next stage of your purchase."
+        locale === 'en-US' ? "Please choose a medication before proceeding to the next stage of your purchase." 
+        : "Veuillez choisir un médicament avant de passer à l'étape suivante de votre achat."
       );
       break;
     case "order-failed":
       pushPharmaMessage(
+        locale === 'en-US' ?
         `
           <p> Failed to place your order </p> 
           <br> <button class="btn btn-info order-resend-button"> RESEND ORDER </button>
          `
+         :
+          `
+            <p> Impossible de passer votre commande </p> 
+            <br> <button class="btn btn-info order-resend-button"> REENVOYER LA COMMANDE </button>
+          `
       );
       break;
     case "placing-order":
-      pushPharmaMessage("Your order is being placed, please wait a moment");
+      pushPharmaMessage(
+        locale === 'en-US' ? "Your order is being placed, please wait a moment" : "Votre commande est en cours de traitement, veuillez patienter un instant"
+        );
       break;
     case "order-sent":
       pushPharmaMessage(
-        "Your order has been placed, Thanks for using and trusting SOS Pharma"
+        locale === 'en-US' ? "Your order has been placed, Thanks for using and trusting SOS Pharma" 
+        : "Votre commande a été passée, merci d'utiliser et de faire confiance à SOS Pharma"
       );
       break;
     case "confirm-payment":
       pushPharmaMessage(
-        "A payment request has been send to this device, please confirm the payment for your order tobe placed."
+        locale === 'en-US' ? "A payment request has been send to this device, please confirm the payment for your order tobe placed." 
+        : "Une demande de paiement a été envoyée à cet appareil, veuillez confirmer le paiement pour que votre commande soit passée."
       );
       break;
     case "identity":
         pushPharmaMessage(
-          "Please whats your name ?"
+          locale === 'en-US' ? "Please whats your name ?" : "Quel est votre nom ?"
         );
-        break;
+      break;
+
     default:
-      pushPharmaMessage("Invalid input, please retype your request");
+      pushPharmaMessage(
+        locale === 'en-US' ? "Invalid input, please retype your request" 
+        : "Entrée invalide, veuillez retaper votre demande"
+        );
       break;
   }
 }
-
-
 
 onStart();

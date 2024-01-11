@@ -300,6 +300,25 @@ a{
     color: white !important;
 }
 
+.location-dropdown{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    width: 100%;
+    border: none;
+    background-color: #43b75d;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: 300ms;
+    margin: 0 5px;
+    
+}
 
 
 

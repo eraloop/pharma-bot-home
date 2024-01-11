@@ -1,0 +1,2391 @@
+{
+    "countryCode": "CM",
+    "countryName": "Cameroun",
+    "currency": "CFA",
+    "isActive": "true",
+    "cities": [
+        {
+            "id": 1,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Abong Mbang",
+            "deliveryPoints": []
+        },
+        {
+            "id": 2,
+            "cityCode": "AKM",
+            "isActive": true,
+            "name": "Akom II",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Efoulan"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "cityCode": "AKO",
+            "isActive": true,
+            "name": "Akono",
+            "deliveryPoints": [
+                {
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Oyak"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Akonolinga",
+            "deliveryPoints": []
+        },
+        {
+            "id": 5,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Ambam",
+            "deliveryPoints": []
+        },
+        {
+            "id": 6,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Babanki",
+            "deliveryPoints": []
+        },
+        {
+            "id": 7,
+            "cityCode": "BAG",
+            "isActive": true,
+            "name": "Bafang",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Villa Boutanga"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "cityCode": "BAA",
+            "isActive": false,
+            "name": "Bafia",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Ngomo"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "cityCode": "BAF",
+            "isActive": true,
+            "name": "Bafoussam",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Kamkop"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Bamenda",
+            "deliveryPoints": []
+        },
+        {
+            "id": 11,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Bamendjou",
+            "deliveryPoints": []
+        },
+        {
+            "id": 12,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Bamusso",
+            "deliveryPoints": []
+        },
+        {
+            "id": 13,
+            "cityCode": "BAN",
+            "isActive": true,
+            "name": "Bana",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Col de Bana"
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "cityCode": "BAD",
+            "isActive": true,
+            "name": "Bandjoun",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Dembou"
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "cityCode": "BAT",
+            "isActive": true,
+            "name": "Bangangté",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Babou"
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Bankim",
+            "deliveryPoints": []
+        },
+        {
+            "id": 17,
+            "cityCode": "BAS",
+            "isActive": true,
+            "name": "Bansoa",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Chefferie de Bansoa"
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Banyo",
+            "deliveryPoints": []
+        },
+        {
+            "id": 19,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Batibo",
+            "deliveryPoints": []
+        },
+        {
+            "id": 20,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Batouri",
+            "deliveryPoints": []
+        },
+        {
+            "id": 21,
+            "cityCode": "BAZ",
+            "isActive": true,
+            "name": "Bazou",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Djipta 1"
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Bekondo",
+            "deliveryPoints": []
+        },
+        {
+            "id": 23,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Bélabo",
+            "deliveryPoints": []
+        },
+        {
+            "id": 24,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Bélel",
+            "deliveryPoints": []
+        },
+        {
+            "id": 25,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Belo",
+            "deliveryPoints": []
+        },
+        {
+            "id": 26,
+            "cityCode": "BEA",
+            "isActive": true,
+            "name": "Bertoua",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Osidimbea"
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Bétaré Oya",
+            "deliveryPoints": []
+        },
+        {
+            "id": 28,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Bogo",
+            "deliveryPoints": []
+        },
+        {
+            "id": 29,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Bonabéri",
+            "deliveryPoints": []
+        },
+        {
+            "id": 30,
+            "cityCode": "BUA",
+            "isActive": true,
+            "name": "Buea",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 1500,
+                    "isActive": true,
+                    "name": "Bomaka"
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Diang",
+            "deliveryPoints": []
+        },
+        {
+            "id": 32,
+            "cityCode": "DII",
+            "isActive": true,
+            "name": "Dibombari",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 1500,
+                    "isActive": true,
+                    "name": "Yapaki"
+                }
+            ]
+        },
+        {
+            "id": 33,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Dimako",
+            "deliveryPoints": []
+        },
+        {
+            "id": 34,
+            "cityCode": "DIE",
+            "isActive": true,
+            "name": "Dizangué",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 1500,
+                    "isActive": true,
+                    "name": "Mbanda"
+                }
+            ]
+        },
+        {
+            "id": 35,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Djohong",
+            "deliveryPoints": []
+        },
+        {
+            "id": 36,
+            "cityCode": "DLA",
+            "isActive": true,
+            "name": "Douala",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Aéroport"
+                },
+                {
+                    "id": 2,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Akra Kombo"
+                },
+                {
+                    "id": 3,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Akwa"
+                },
+                {
+                    "id": 4,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Akwa Nord"
+                },
+                {
+                    "id": 5,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ange Raphael"
+                },
+                {
+                    "id": 6,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "AXE-LOURD DLA-YDE"
+                },
+                {
+                    "id": 7,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Babylone I"
+                },
+                {
+                    "id": 8,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Babylone II"
+                },
+                {
+                    "id": 9,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bali"
+                },
+                {
+                    "id": 10,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bangue"
+                },
+                {
+                    "id": 11,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "BASE ELF"
+                },
+                {
+                    "id": 12,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "BASE NAVALE"
+                },
+                {
+                    "id": 13,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bassa"
+                },
+                {
+                    "id": 14,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "BASSA Z.I"
+                },
+                {
+                    "id": 15,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "BASSA-CCC"
+                },
+                {
+                    "id": 16,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Beedi"
+                },
+                {
+                    "id": 17,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bepanda"
+                },
+                {
+                    "id": 18,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "BEPANDA AXE-LOURD"
+                },
+                {
+                    "id": 19,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "BEPANDA-OMNISPORT"
+                },
+                {
+                    "id": 20,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Besseke"
+                },
+                {
+                    "id": 21,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bessengue"
+                },
+                {
+                    "id": 22,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bikoro"
+                },
+                {
+                    "id": 23,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bilingue"
+                },
+                {
+                    "id": 24,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bilongue"
+                },
+                {
+                    "id": 25,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bobongo"
+                },
+                {
+                    "id": 26,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bojongo"
+                },
+                {
+                    "id": 27,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Boko"
+                },
+                {
+                    "id": 28,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bomkul"
+                },
+                {
+                    "id": 29,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bona Bekombo"
+                },
+                {
+                    "id": 30,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonaberi"
+                },
+                {
+                    "id": 31,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "BONABERI-BEKOKO"
+                },
+                {
+                    "id": 32,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonabeyike"
+                },
+                {
+                    "id": 33,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonadibong"
+                },
+                {
+                    "id": 34,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonadiwoto"
+                },
+                {
+                    "id": 35,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonadouma"
+                },
+                {
+                    "id": 36,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonadoumbé"
+                },
+                {
+                    "id": 37,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonajang"
+                },
+                {
+                    "id": 38,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonajinjo"
+                },
+                {
+                    "id": 39,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonakouamouang"
+                },
+                {
+                    "id": 40,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonalembe"
+                },
+                {
+                    "id": 41,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonamatoumbe"
+                },
+                {
+                    "id": 42,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonambappe"
+                },
+                {
+                    "id": 43,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonamikengue"
+                },
+                {
+                    "id": 44,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonaminkano"
+                },
+                {
+                    "id": 45,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonamoudourou"
+                },
+                {
+                    "id": 46,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonamoussadi"
+                },
+                {
+                    "id": 47,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonamouti"
+                },
+                {
+                    "id": 48,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonamouti Akwa 2"
+                },
+                {
+                    "id": 49,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonamoutongo"
+                },
+                {
+                    "id": 50,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonandale"
+                },
+                {
+                    "id": 51,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonangando"
+                },
+                {
+                    "id": 52,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonangang"
+                },
+                {
+                    "id": 53,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonanjo"
+                },
+                {
+                    "id": 54,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonanloka"
+                },
+                {
+                    "id": 55,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonantone"
+                },
+                {
+                    "id": 56,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonapriso"
+                },
+                {
+                    "id": 57,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonassama"
+                },
+                {
+                    "id": 58,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonateki"
+                },
+                {
+                    "id": 59,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonatene"
+                },
+                {
+                    "id": 60,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonelang"
+                },
+                {
+                    "id": 61,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bonoleke"
+                },
+                {
+                    "id": 62,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Borne 10"
+                },
+                {
+                    "id": 63,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bouma"
+                },
+                {
+                    "id": 64,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Brazzaville"
+                },
+                {
+                    "id": 65,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "BuBessoukoudou"
+                },
+                {
+                    "id": 66,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Bwapé"
+                },
+                {
+                    "id": 67,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "C.C.C."
+                },
+                {
+                    "id": 68,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Cacao-Barry"
+                },
+                {
+                    "id": 69,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Camp YABASSI"
+                },
+                {
+                    "id": 70,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Cap Cameroun"
+                },
+                {
+                    "id": 71,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Cite Berge"
+                },
+                {
+                    "id": 72,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "CITE CICAM"
+                },
+                {
+                    "id": 73,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Cite de la Paix"
+                },
+                {
+                    "id": 74,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Cite des palmiers"
+                },
+                {
+                    "id": 75,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Cite Sic"
+                },
+                {
+                    "id": 76,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Congo"
+                },
+                {
+                    "id": 77,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Dahomey"
+                },
+                {
+                    "id": 78,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Dakar"
+                },
+                {
+                    "id": 79,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Deido"
+                },
+                {
+                    "id": 80,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Deïdo"
+                },
+                {
+                    "id": 81,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Dibom"
+                },
+                {
+                    "id": 82,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Dikahe"
+                },
+                {
+                    "id": 83,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Emene City"
+                },
+                {
+                    "id": 84,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Epaka I"
+                },
+                {
+                    "id": 85,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Epaka II"
+                },
+                {
+                    "id": 86,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "ESSEC"
+                },
+                {
+                    "id": 87,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Gentil"
+                },
+                {
+                    "id": 88,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Grand Moulin"
+                },
+                {
+                    "id": 89,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Hydrocarbures"
+                },
+                {
+                    "id": 90,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Japoma"
+                },
+                {
+                    "id": 91,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Joss"
+                },
+                {
+                    "id": 92,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Jourdain"
+                },
+                {
+                    "id": 93,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Kassalafam"
+                },
+                {
+                    "id": 94,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "KM5 TERMINUS"
+                },
+                {
+                    "id": 95,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Kombo"
+                },
+                {
+                    "id": 96,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Kombo Moukoko"
+                },
+                {
+                    "id": 97,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Kondi"
+                },
+                {
+                    "id": 98,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Koo"
+                },
+                {
+                    "id": 99,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Kotto"
+                },
+                {
+                    "id": 100,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Koumassi"
+                },
+                {
+                    "id": 101,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Lagos Market"
+                },
+                {
+                    "id": 102,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Lendi"
+                },
+                {
+                    "id": 103,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Logbaba"
+                },
+                {
+                    "id": 104,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Logbessou"
+                },
+                {
+                    "id": 105,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Logpom"
+                },
+                {
+                    "id": 106,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Mabanda"
+                },
+                {
+                    "id": 107,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Madiba"
+                },
+                {
+                    "id": 108,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Makepe"
+                },
+                {
+                    "id": 109,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Malangue"
+                },
+                {
+                    "id": 110,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Mambanda"
+                },
+                {
+                    "id": 111,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Manike"
+                },
+                {
+                    "id": 112,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Manoka"
+                },
+                {
+                    "id": 113,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "MARCHE CONGO"
+                },
+                {
+                    "id": 114,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Matanda Massadi"
+                },
+                {
+                    "id": 115,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Mbam Ewondo"
+                },
+                {
+                    "id": 116,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Mbanga Bakoko"
+                },
+                {
+                    "id": 117,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "MBANYA & SABLE"
+                },
+                {
+                    "id": 118,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Mbénadikoumé"
+                },
+                {
+                    "id": 119,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Mbengue City"
+                },
+                {
+                    "id": 120,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Misoke"
+                },
+                {
+                    "id": 121,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Missipi"
+                },
+                {
+                    "id": 122,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Moukala Tanda"
+                },
+                {
+                    "id": 123,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Moungangué"
+                },
+                {
+                    "id": 124,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ndjong-Mebi"
+                },
+                {
+                    "id": 125,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ndobo"
+                },
+                {
+                    "id": 126,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ndogbati"
+                },
+                {
+                    "id": 127,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ndogbong"
+                },
+                {
+                    "id": 128,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ndoghem"
+                },
+                {
+                    "id": 129,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ndoghem II"
+                },
+                {
+                    "id": 130,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ndogmbe"
+                },
+                {
+                    "id": 131,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ndogpassi"
+                },
+                {
+                    "id": 132,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ndogpassi 2"
+                },
+                {
+                    "id": 133,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ndogpassi 3"
+                },
+                {
+                    "id": 134,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ndogsimbi"
+                },
+                {
+                    "id": 135,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ndokoti"
+                },
+                {
+                    "id": 136,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "New Bell"
+                },
+                {
+                    "id": 137,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "New Deido"
+                },
+                {
+                    "id": 138,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "New-Bell"
+                },
+                {
+                    "id": 139,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "New-Deido"
+                },
+                {
+                    "id": 140,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ngangue"
+                },
+                {
+                    "id": 141,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ngodi"
+                },
+                {
+                    "id": 142,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ngoma"
+                },
+                {
+                    "id": 143,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Nguereck"
+                },
+                {
+                    "id": 144,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Nguibassal"
+                },
+                {
+                    "id": 145,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Ngwele"
+                },
+                {
+                    "id": 146,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Nkololoun"
+                },
+                {
+                    "id": 147,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Nkomba"
+                },
+                {
+                    "id": 148,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "NKondi"
+                },
+                {
+                    "id": 149,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Nkongmondo"
+                },
+                {
+                    "id": 150,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Nkongui"
+                },
+                {
+                    "id": 151,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Nkoulouloun"
+                },
+                {
+                    "id": 152,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Number One Creek"
+                },
+                {
+                    "id": 153,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Nyalla"
+                },
+                {
+                    "id": 154,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Nyangadou"
+                },
+                {
+                    "id": 155,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Nylon"
+                },
+                {
+                    "id": 156,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Oyack"
+                },
+                {
+                    "id": 157,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Petit Toubé"
+                },
+                {
+                    "id": 158,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "PK10"
+                },
+                {
+                    "id": 159,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "PK11"
+                },
+                {
+                    "id": 160,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Pk12"
+                },
+                {
+                    "id": 161,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Pk13"
+                },
+                {
+                    "id": 162,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Pk14"
+                },
+                {
+                    "id": 163,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Pk15"
+                },
+                {
+                    "id": 164,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Pk16"
+                },
+                {
+                    "id": 165,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "PK17"
+                },
+                {
+                    "id": 166,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Pk18"
+                },
+                {
+                    "id": 167,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "pk19"
+                },
+                {
+                    "id": 168,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "PK21"
+                },
+                {
+                    "id": 169,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "pk23"
+                },
+                {
+                    "id": 170,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Pk25"
+                },
+                {
+                    "id": 171,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "PK7"
+                },
+                {
+                    "id": 172,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Pk8"
+                },
+                {
+                    "id": 173,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "PK9"
+                },
+                {
+                    "id": 174,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Poka I"
+                },
+                {
+                    "id": 175,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Pom Lien"
+                },
+                {
+                    "id": 176,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Prison"
+                },
+                {
+                    "id": 177,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "ROND-POINT DEIDO"
+                },
+                {
+                    "id": 178,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Sabenjongo"
+                },
+                {
+                    "id": 179,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Sincatex"
+                },
+                {
+                    "id": 180,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "So-Boum"
+                },
+                {
+                    "id": 181,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Sobikago"
+                },
+                {
+                    "id": 182,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Sodiko"
+                },
+                {
+                    "id": 183,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Sodikombo"
+                },
+                {
+                    "id": 184,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Song-Mahop"
+                },
+                {
+                    "id": 185,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Song-Ngongag"
+                },
+                {
+                    "id": 186,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Sopom"
+                },
+                {
+                    "id": 187,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Source"
+                },
+                {
+                    "id": 188,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "T.S.F"
+                },
+                {
+                    "id": 189,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Tergal"
+                },
+                {
+                    "id": 190,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "village"
+                },
+                {
+                    "id": 191,
+                    "deliveryCost": 1000,
+                    "isActive": true,
+                    "name": "Yassa"
+                }
+            ]
+        },
+        {
+            "id": 37,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Doumé",
+            "deliveryPoints": []
+        },
+        {
+            "id": 38,
+            "cityCode": "DSA",
+            "isActive": true,
+            "name": "Dschang",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Université de Dschang"
+                }
+            ]
+        },
+        {
+            "id": 39,
+            "cityCode": "EBW",
+            "isActive": true,
+            "name": "Ebolowa",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Mekalat"
+                }
+            ]
+        },
+        {
+            "id": 40,
+            "cityCode": "EDA",
+            "isActive": true,
+            "name": "Edéa",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 1500,
+                    "isActive": true,
+                    "name": "Malimba 1"
+                }
+            ]
+        },
+        {
+            "id": 41,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Eséka",
+            "deliveryPoints": []
+        },
+        {
+            "id": 42,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Essé",
+            "deliveryPoints": []
+        },
+        {
+            "id": 43,
+            "cityCode": "FOM",
+            "isActive": true,
+            "name": "Fontem",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Lebang"
+                }
+            ]
+        },
+        {
+            "id": 44,
+            "cityCode": "FON",
+            "isActive": true,
+            "name": "Foumban",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Mayap"
+                }
+            ]
+        },
+        {
+            "id": 45,
+            "cityCode": "FOT",
+            "isActive": true,
+            "name": "Foumbot",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Momoe"
+                }
+            ]
+        },
+        {
+            "id": 46,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Fundong",
+            "deliveryPoints": []
+        },
+        {
+            "id": 47,
+            "cityCode": "GAA",
+            "isActive": true,
+            "name": "Garoua",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Pitoa"
+                }
+            ]
+        },
+        {
+            "id": 48,
+            "cityCode": "GAI",
+            "isActive": true,
+            "name": "Garoua Boulaï",
+            "deliveryPoints": [
+                {
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Badan"
+                }
+            ]
+        },
+        {
+            "id": 49,
+            "cityCode": "GUR",
+            "isActive": true,
+            "name": "Guider",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Baiga"
+                }
+            ]
+        },
+        {
+            "id": 50,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Idenao",
+            "deliveryPoints": []
+        },
+        {
+            "id": 51,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Jakiri",
+            "deliveryPoints": []
+        },
+        {
+            "id": 52,
+            "cityCode": "KAE",
+            "isActive": true,
+            "name": "Kaélé",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Boboyo"
+                }
+            ]
+        },
+        {
+            "id": 53,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Kontcha",
+            "deliveryPoints": []
+        },
+        {
+            "id": 54,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Kousséri",
+            "deliveryPoints": []
+        },
+        {
+            "id": 55,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Koza",
+            "deliveryPoints": []
+        },
+        {
+            "id": 56,
+            "cityCode": "KRI",
+            "isActive": true,
+            "name": "Kribi",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "New Town 1"
+                }
+            ]
+        },
+        {
+            "id": 57,
+            "cityCode": "KUA",
+            "isActive": true,
+            "name": "Kumba",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Chefferie Bafaw"
+                }
+            ]
+        },
+        {
+            "id": 58,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Kumbo",
+            "deliveryPoints": []
+        },
+        {
+            "id": 59,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Lagdo",
+            "deliveryPoints": []
+        },
+        {
+            "id": 60,
+            "cityCode": "LIB",
+            "isActive": true,
+            "name": "Limbe",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 1500,
+                    "isActive": true,
+                    "name": "Bota land"
+                }
+            ]
+        },
+        {
+            "id": 61,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Lolodorf",
+            "deliveryPoints": []
+        },
+        {
+            "id": 62,
+            "cityCode": "LOM",
+            "isActive": true,
+            "name": "Loum",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Bonalebe"
+                }
+            ]
+        },
+        {
+            "id": 63,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Makary",
+            "deliveryPoints": []
+        },
+        {
+            "id": 64,
+            "cityCode": "MAE",
+            "isActive": true,
+            "name": "Mamfe",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2500,
+                    "isActive": true,
+                    "name": "Okoyong"
+                }
+            ]
+        },
+        {
+            "id": 65,
+            "cityCode": "MAN",
+            "isActive": true,
+            "name": "Manjo",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2500,
+                    "isActive": true,
+                    "name": "Kola"
+                }
+            ]
+        },
+        {
+            "id": 66,
+            "cityCode": "MAR",
+            "isActive": true,
+            "name": "Maroua",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 5000,
+                    "isActive": true,
+                    "name": "Emen"
+                }
+            ]
+        },
+        {
+            "id": 67,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Mbalmayo",
+            "deliveryPoints": []
+        },
+        {
+            "id": 68,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Mbandjok",
+            "deliveryPoints": []
+        },
+        {
+            "id": 69,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Mbang",
+            "deliveryPoints": []
+        },
+        {
+            "id": 70,
+            "cityCode": "MBG",
+            "isActive": true,
+            "name": "Mbanga",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Fiko"
+                }
+            ]
+        },
+        {
+            "id": 71,
+            "cityCode": "MBO",
+            "isActive": true,
+            "name": "Mbankomo",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Byan"
+                }
+            ]
+        },
+        {
+            "id": 72,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Mbengwi",
+            "deliveryPoints": []
+        },
+        {
+            "id": 73,
+            "cityCode": "MBA",
+            "isActive": true,
+            "name": "Mbouda",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Station  Total"
+                }
+            ]
+        },
+        {
+            "id": 74,
+            "cityCode": "MEA",
+            "isActive": true,
+            "name": "Meïganga",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Babongo"
+                }
+            ]
+        },
+        {
+            "id": 75,
+            "cityCode": "MEL",
+            "isActive": true,
+            "name": "Melong",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2500,
+                    "isActive": true,
+                    "name": "Ninong"
+                }
+            ]
+        },
+        {
+            "id": 76,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Mindif",
+            "deliveryPoints": []
+        },
+        {
+            "id": 77,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Minta",
+            "deliveryPoints": []
+        },
+        {
+            "id": 78,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Mme-Bafumen",
+            "deliveryPoints": []
+        },
+        {
+            "id": 79,
+            "cityCode": "MOO",
+            "isActive": true,
+            "name": "Mokolo",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Abbe"
+                }
+            ]
+        },
+        {
+            "id": 80,
+            "cityCode": "KOI",
+            "isActive": true,
+            "name": "Mora",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Kourgi"
+                }
+            ]
+        },
+        {
+            "id": 81,
+            "cityCode": "MOO",
+            "isActive": true,
+            "name": "Mouanko",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Houfel"
+                }
+            ]
+        },
+        {
+            "id": 82,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Mundemba",
+            "deliveryPoints": []
+        },
+        {
+            "id": 83,
+            "cityCode": "MUE",
+            "isActive": true,
+            "name": "Mutengene",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Chefferie Mutengene"
+                }
+            ]
+        },
+        {
+            "id": 84,
+            "cityCode": "MUA",
+            "isActive": true,
+            "name": "Muyuka",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Bavenka"
+                }
+            ]
+        },
+        {
+            "id": 85,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Mvangué",
+            "deliveryPoints": []
+        },
+        {
+            "id": 86,
+            "cityCode": "NEO",
+            "isActive": true,
+            "name": "Nanga Eboko",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Ambam"
+                }
+            ]
+        },
+        {
+            "id": 87,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Ndelele",
+            "deliveryPoints": []
+        },
+        {
+            "id": 88,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Ndikiniméki",
+            "deliveryPoints": []
+        },
+        {
+            "id": 89,
+            "cityCode": "NDO",
+            "isActive": true,
+            "name": "Ndom",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Lelo"
+                }
+            ]
+        },
+        {
+            "id": 90,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Ngambé",
+            "deliveryPoints": []
+        },
+        {
+            "id": 91,
+            "cityCode": "NGE",
+            "isActive": true,
+            "name": "Ngaoundéré",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Kantalan"
+                }
+            ]
+        },
+        {
+            "id": 92,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Ngomedzap",
+            "deliveryPoints": []
+        },
+        {
+            "id": 93,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Ngoro",
+            "deliveryPoints": []
+        },
+        {
+            "id": 94,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Ngou",
+            "deliveryPoints": []
+        },
+        {
+            "id": 95,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Nguti",
+            "deliveryPoints": []
+        },
+        {
+            "id": 96,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Njinikom",
+            "deliveryPoints": []
+        },
+        {
+            "id": 97,
+            "cityCode": "NKA",
+            "isActive": true,
+            "name": "Nkongsamba",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Barehock"
+                }
+            ]
+        },
+        {
+            "id": 98,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Nkoteng",
+            "deliveryPoints": []
+        },
+        {
+            "id": 99,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Ntui",
+            "deliveryPoints": []
+        },
+        {
+            "id": 100,
+            "cityCode": "OBA",
+            "isActive": true,
+            "name": "Obala",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Elig Ngomo"
+                }
+            ]
+        },
+        {
+            "id": 101,
+            "cityCode": "OKA",
+            "isActive": false,
+            "name": "Okoa",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": ""
+                }
+            ]
+        },
+        {
+            "id": 102,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Okola",
+            "deliveryPoints": []
+        },
+        {
+            "id": 103,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Ombésa",
+            "deliveryPoints": []
+        },
+        {
+            "id": 104,
+            "cityCode": "PEA",
+            "isActive": true,
+            "name": "Penja",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Bonandam"
+                }
+            ]
+        },
+        {
+            "id": 105,
+            "cityCode": "PIA",
+            "isActive": true,
+            "name": "Pitoa",
+            "deliveryPoints": [
+                {
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Babai"
+                }
+            ]
+        },
+        {
+            "id": 106,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Poli",
+            "deliveryPoints": []
+        },
+        {
+            "id": 107,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Rey Bouba",
+            "deliveryPoints": []
+        },
+        {
+            "id": 108,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Saa",
+            "deliveryPoints": []
+        },
+        {
+            "id": 109,
+            "cityCode": "SAA",
+            "isActive": true,
+            "name": "Sangmélima",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Kombe"
+                }
+            ]
+        },
+        {
+            "id": 110,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Somié",
+            "deliveryPoints": []
+        },
+        {
+            "id": 111,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Tcholliré",
+            "deliveryPoints": []
+        },
+        {
+            "id": 112,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Tibati",
+            "deliveryPoints": []
+        },
+        {
+            "id": 113,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Tignère",
+            "deliveryPoints": []
+        },
+        {
+            "id": 114,
+            "cityCode": "TIO",
+            "isActive": true,
+            "name": "Tiko",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Misaka"
+                }
+            ]
+        },
+        {
+            "id": 115,
+            "cityCode": "TOA",
+            "isActive": true,
+            "name": "Tonga",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "Baloua"
+                }
+            ]
+        },
+        {
+            "id": 116,
+            "cityCode": "",
+            "isActive": false,
+            "name": "vodoula",
+            "deliveryPoints": []
+        },
+        {
+            "id": 117,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Wum",
+            "deliveryPoints": []
+        },
+        {
+            "id": 118,
+            "cityCode": "YAB",
+            "isActive": true,
+            "name": "Yabassi",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Bakem"
+                }
+            ]
+        },
+        {
+            "id": 119,
+            "cityCode": "YAG",
+            "isActive": true,
+            "name": "Yagoua",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 2000,
+                    "isActive": true,
+                    "name": "Bakem"
+                }
+            ]
+        },
+        {
+            "id": 120,
+            "cityCode": "YDE",
+            "isActive": true,
+            "name": "Yaoundé",
+            "deliveryPoints": [
+                {
+                    "id": 1,
+                    "deliveryCost": 3000,
+                    "isActive": true,
+                    "name": "MVAN"
+                }
+            ]
+        },
+        {
+            "id": 121,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Yokadouma",
+            "deliveryPoints": []
+        },
+        {
+            "id": 122,
+            "cityCode": "",
+            "isActive": false,
+            "name": "Yoko",
+            "deliveryPoints": []
+        }
+    ]
+}
