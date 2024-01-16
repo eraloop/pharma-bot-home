@@ -13,15 +13,16 @@ let inputBox = chatBox.querySelector(".chatbox__message__input");
 let messageContainer = document.getElementById("chatbox__messages");
 
 let locale = "en-US", city = "", selectedPickupLocation = "";
-let messages  = [], drugList = [], userPrompts = [], userDrugs  = [], userDrugPlusWeight = [], updatedDrugObjects = [], selectedSearchedDrugs = [], orderKeywords = [], locations = [];
+let messages  = [], drugList = [], userPrompts = [], userDrugs  = [], userDrugPlusWeight = [], updatedDrugObjects = [], selectedSearchedDrugs = [], orderKeywords = [], locations = [], quarters = [];
 let isDrugFound = false, isMessagesLoaded = false, isWaitingForOptions = false;
 let paymentInfo = {}, userInfo = {};
+let message = "";
 
 // get refrence to the html elements relevant to the js file
 sendButton.addEventListener("click", () => onSendButton(chatBox));
 restartChatButton.addEventListener("click", () => restartConversation());
-messageContainer.addEventListener('click', function(event) {
 
+messageContainer.addEventListener('click', function(event) {
   const target = event.target;
   if (target.classList.contains('med-complete-button')) {
     completeMedList()
@@ -35,9 +36,27 @@ messageContainer.addEventListener('click', function(event) {
     resendPayment();
   }else if(target.classList.contains('med-done-button')){
     medicationDone();
+  }else if(target.classList.contains('select-medication-option')){
+    console.log("edication has been seleceted")
   }
-
 });
+
+
+function addMedicationToCart(index) {
+  selectedSearchedDrugs.push(userDrugs[index]);
+  pushPharmaMessage(
+    JSON.stringify(userDrugs[index]["name"]) + " added to your list"
+  );
+  pushPharmaFeedbackMessages("more-meds");
+}
+
+function selectDrugQuantity(drugIndex, quantity) {
+  userDrugs[drugIndex]["quantity"] = quantity;
+
+  selectedSearchedDrugs.push(userDrugs[drugIndex]);
+  pushPharmaFeedbackMessages("more-meds");
+}
+
 // tracks the enter key on the input box so as to submit the text inside
 inputBox.addEventListener("keyup", ({ key }) => {
   if (key === "Enter") {
@@ -57,9 +76,11 @@ inputBox.addEventListener("keyup", ({ key }) => {
 window.addEventListener("beforeunload", function() {
   saveConversationData(messages)
 });
+
 closeButton.addEventListener('click', (e) => {
   saveConversationData(messages)
 })
+
 // interactives chat buttons
 function medicationDone(){
   let totalCost = 0;
@@ -74,15 +95,18 @@ function medicationDone(){
   pushPharmaFeedbackMessages("medications-complete");
   currentStep++;
 }
+
 function clearMedicationList(){
   selectedSearchedDrugs = [];
   pushPharmaFeedbackMessages("medications");
   currentStep = 0;
 }
+
 function completeMedList(){
   pushPharmaFeedbackMessages("identity");
   currentStep++;
 }
+
 async function confirmedPayment(){
   pushPharmaFeedbackMessages("placing-order");
   disableTextarea(inputBox);
@@ -102,6 +126,7 @@ async function confirmedPayment(){
   }
 
 }
+
 function resendPayment(){
   pushPharmaFeedbackMessages("resend-billing-request");
   pushPharmaFeedbackMessages("billing-request-followup");
@@ -109,38 +134,93 @@ function resendPayment(){
 
 function onDisplayCityDropDown(){
   let locationDropdown = document.querySelector(".location-dropdown");
-
   locationDropdown.innerHTML = "";
+
   locations.forEach((optionText) => {
     const option = document.createElement("option");
-    option.value = optionText["id"];
+    option.value = JSON.stringify(optionText);
     option.text = optionText["name"]; 
     locationDropdown.appendChild(option); 
   });
 
   locationDropdown.addEventListener("change", function() {
-    city = this.value;
-    currentStep ++;
+    onSelectCity(this.value);
   });
 
 }
 
-function onDisplayLocationDropDown(){
-  let pickupLocationDropdown = document.querySelector(".pickup-location-dropdown");
+function onSelectCity(city){
+  city = JSON.parse(city);
+  userInfo['city'] = city['name'];
+  quarters = city['quarters'];
+  if(quarters.length == 0 ){
+      let address =  locale === 'en-US' ? `
+      <div>
+        <p>Address Information</p>
+        <p> City : ${userInfo['city']} </p>
+      </div>
+    ` : 
+    `
+      <div>
+        <p> Informations sur l'adresse </p>
+        <p> Ville : ${userInfo['city']} </p>
+      </div>
+    `;
+    message =  locale === 'en-US' ? `Which medication do you wish to order ?` 
+    : `Quel médicament souhaitez-vous commander ?`,
 
+    pushPharmaMessage(address)
+    pushPharmaMessage(message)
+    enableTextarea(inputBox);
+    return;
+  }else{
+    pushPharmaFeedbackMessages("quarter");
+    onDisplayLocationDropDown()
+  }
+ 
+}
+
+function onDisplayLocationDropDown(){
+
+  let pickupLocationDropdown = document.querySelector(".pickup-location-dropdown");
   pickupLocationDropdown.innerHTML = "";
-  locations.forEach((optionText) => {
+
+  quarters.forEach((optionText) => {
     const option = document.createElement("option");
-    option.value = optionText["id"];
+    option.value = JSON.stringify(optionText);
     option.text = optionText["name"]; 
     pickupLocationDropdown.appendChild(option); 
   });
 
   pickupLocationDropdown.addEventListener("change", function() {
-    selectedPickupLocation = this.value;
-    currentStep ++;
+    onSelectQuarter(this.value)
   });
 
+}
+
+function onSelectQuarter(quarter){
+  quarter = JSON.parse(quarter);
+  userInfo['quarter'] = quarter['name'];
+  let address =  locale === 'en-US' ? `
+    <div>
+      <p>Is your address information correct ?</p>
+      <p> City : ${userInfo['city']} </p>
+      <p> Quarter : ${userInfo['quarter']} </p>
+    </div>
+  ` : 
+  `
+    <div>
+      <p>Vos informations d'adresse sont-elles correctes ?</p>
+      <p> Ville : ${userInfo['city']} </p>
+      <p> Quartier : ${userInfo['quarter']} </p>
+    </div>
+  `;
+  message =  locale === 'en-US' ? `Which medication do you wish to order ?` 
+  : `Quel médicament souhaitez-vous commander ?`,
+
+  pushPharmaMessage(address)
+  pushPharmaMessage(message)
+  enableTextarea(inputBox);
 }
 
 async function onStart() {
@@ -148,37 +228,33 @@ async function onStart() {
   orderKeywords = getOrderKeywords(locale);
   locations = await onLoadCities();
   response = await loadExcel();
+
   drugList = response["drugs"];
   let drugLoaded = response["isLoaded"];
-  console.log(drugList);
-  console.log(drugLoaded);
   paymentInfo = await onLoadPaymentDetails();
   await pushThinkingMessage();
 
   if (!drugLoaded) {
-    let greeting = {
-      name: "SOS Pharma",
-      message: locale === 'en-US' ? `Network error <br> Failed to load required resources <br>Please check your internet connection and refresh the page` 
+    message =  locale === 'en-US' ? `Network error <br> Failed to load required resources <br>Please check your internet connection and refresh the page` 
       : `Erreur réseau <br> Impossible de charger les ressources requises <br>Veuillez vérifier votre connexion Internet et actualiser la page`,
-    };
-    messages.push(greeting);
-    updateChatText(chatBox, messages);
+    pushPharmaMessage(message)
     disableTextarea(inputBox);
     return;
   }
-  let greeting = {
-    name: "SOS Pharma",
-    message: locale === 'en-US' ? `Hello <br> Welcome to SOS Pharma <br> Please which medications would you like to order today?` 
-    : `Bonjour <br> Bienvenue chez SOS Pharma <br> Quels médicaments souhaitez-vous commander aujourd'hui?`,
-  };
+
+  message = locale === 'en-US' ? `Hello <br> Welcome to SOS Pharma` 
+            : `Bonjour <br> Bienvenue chez SOS Pharma`
 
   if(messages.length === 0 ){
-    messages.push(greeting);
-    updateChatText(chatBox, messages);
+    pushPharmaMessage(message)
   }else{
     updateChatText(chatBox, messages);
   }
-  
+
+  pushPharmaFeedbackMessages("address");
+  onDisplayCityDropDown();
+  disableTextarea(inputBox);
+
 }
 
 
@@ -203,6 +279,7 @@ async function onSendButton(chatbox) {
   clearTextField(textField);
 
   switch (currentStep) {
+
     case 0:
       if (userPrompt !== "done") {
         if (!isWaitingForOptions) {
@@ -275,36 +352,14 @@ async function onSendButton(chatbox) {
       }
 
       break;
-    case 2: 
-
-      userInfo['name'] = userPrompt; 
-      pushPharmaFeedbackMessages("address");
-      onDisplayCityDropDown();
-      currentStep ++;
-
-      break;
-    case 3: 
-
-      const location = locations.find((location) => location.id === city);
-      console.log(location)
-      if(location['deliveryPoints'].length === 0){
-        currentStep ++;
-        return;
-      }
-      pushPharmaFeedbackMessages("pickup-location");
-      onDisplayLocationDropDown();
-
-      break;
-
-    case 4:
-
+    case 2:
      
       userInfo['address'] = userPrompt; 
       pushPharmaFeedbackMessages("phone-enter");
       currentStep++;
-      break;
 
-    case 4:
+      break;
+    case 3:
 
       const isValid = validateCameroonianPhoneNumber(userPrompt.trim());
       if (!isValid["isValid"]) {
@@ -319,7 +374,7 @@ async function onSendButton(chatbox) {
       currentStep ++;
       break;
 
-    case 5:
+    case 4:
 
       //   let body = {
       //     amount: 1,
@@ -359,7 +414,7 @@ async function onSendButton(chatbox) {
       break;
     // case 4:
 
-    case 6:
+    case 5:
 
       console.log("placing order case");
       if (userPrompt == "resend") {
@@ -439,18 +494,18 @@ function pushPharmaFeedbackMessages(currentCase) {
         : "Veuillez indiquer où vous vivez, ville et emplacement par exemple (Buea, Malingo)"
       );
       break;
-    
-    case "pickup-location":
+
+    case "quarter":
       pushPharmaMessage(
         locale === 'en-US' ? `
-          <p> Please select your pickup location </p><b>
+          <p> Please select which quarter you live in your city </p><b>
           <select class="pickup-location-dropdown" aria-label="Default select example">
           </select>
         `
         : "Veuillez indiquer où vous vivez, ville et emplacement par exemple (Buea, Malingo)"
       );
-      break;
 
+      break;
     case "medications":
       pushPharmaMessage(
         locale === 'en-US' ? "Please retype the name of your medication as prescribed by your medical doctor" 

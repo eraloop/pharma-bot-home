@@ -7,6 +7,7 @@ function prepareMedicationTable(medications) {
             <th>No.</th>
             <th>Medication Name</th>
             <th>Price</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -21,6 +22,7 @@ function prepareMedicationTable(medications) {
             <td>${index}</td>
             <td>${medicationName}</td>
             <td>XAF ${medicationPrice.toLocaleString()}</td>
+            <td><button class="btn btn-success btn-sm select-medication-option" onclick="addMedicationToCart(${index})">Select</button></td>
           </tr>
       `;
   });

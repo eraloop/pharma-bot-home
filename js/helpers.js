@@ -36,7 +36,7 @@ function updateChatText(chatbox, messages) {
           "</div>" +
           '<div class="messages__item messages__item--visitor">' +
           '<div class="message-bubble">' +
-          item.message +
+            item.message +
           "</div>" +
           "</div>" +
           "</div>";
@@ -262,10 +262,14 @@ async function loadExcel() {
 
 function disableTextarea(textarea) {
   textarea.disabled = true;
+  textarea.classList.add("disabled");
+  textarea.parentNode.classList.add("disabled-parent");
 }
 
 function enableTextarea(textarea) {
   textarea.disabled = false;
+  textarea.classList.remove("disabled");
+  textarea.parentNode.classList.remove("disabled-parent");
 }
 
 function generateWhatsAppLink(message) {

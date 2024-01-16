@@ -300,7 +300,7 @@ a{
     color: white !important;
 }
 
-.location-dropdown{
+.location-dropdown, .pickup-location-dropdown{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -316,10 +316,20 @@ a{
     font-weight: 500;
     font-size: 14px;
     transition: 300ms;
-    margin: 0 5px;
-    
+    margin: 0 5px; 
 }
 
+.disabled{
+    background-color: transparent !important;
+    cursor: not-allowed;
+    color: grey !important;
+}
+
+.disabled-parent{
+    background: #eee !important;
+    color: grey !important;
+    border: 1px solid grey;
+}
 
 
 @media screen and (max-width: 600px) {
