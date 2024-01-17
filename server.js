@@ -13,48 +13,103 @@ let inputBox = chatBox.querySelector(".chatbox__message__input");
 let messageContainer = document.getElementById("chatbox__messages");
 
 let locale = "en-US", city = "", selectedPickupLocation = "";
-let messages  = [], drugList = [], userPrompts = [], userDrugs  = [], userDrugPlusWeight = [], updatedDrugObjects = [], selectedSearchedDrugs = [], orderKeywords = [], locations = [], quarters = [];
+let messages  = [], drugList = [], userPrompts = [], userDrugs  = [], userDrugPlusWeight = [], updatedDrugObjects = [], selectedSearchedDrugs = [], orderKeywords = [], locations = [], quarters = [], drugQuantity = [1,2,3,4,5,6,7,8,9], prescriptionType = locale === 'en-US' ? ["Prescribed Drug", "Unprescribed Drug"] : ["Ordonnance", 'Auto Medication'];
 let isDrugFound = false, isMessagesLoaded = false, isWaitingForOptions = false;
 let paymentInfo = {}, userInfo = {};
-let message = "";
+let message = "", currentDrug = 0;
 
 // get refrence to the html elements relevant to the js file
 sendButton.addEventListener("click", () => onSendButton(chatBox));
 restartChatButton.addEventListener("click", () => restartConversation());
 
-messageContainer.addEventListener('click', function(event) {
-  const target = event.target;
-  if (target.classList.contains('med-complete-button')) {
-    completeMedList()
-  }else if(target.classList.contains('med-clear-button')){
-    clearMedicationList()
-  }else if(target.classList.contains('list-clear-button')){
-    restartConversation();
-  }else if(target.classList.contains('payment-confirmed-button')){
-    confirmedPayment();
-  }else if(target.classList.contains('payment-resend-button')){
-    resendPayment();
-  }else if(target.classList.contains('med-done-button')){
-    medicationDone();
-  }else if(target.classList.contains('select-medication-option')){
-    console.log("edication has been seleceted")
-  }
-});
-
-
 function addMedicationToCart(index) {
-  selectedSearchedDrugs.push(userDrugs[index]);
-  pushPharmaMessage(
-    JSON.stringify(userDrugs[index]["name"]) + " added to your list"
-  );
-  pushPharmaFeedbackMessages("more-meds");
+  currentDrug = userDrugs[index];  
+  pushPharmaFeedbackMessages("drug-quantity");
+  selectDrugQuantity()
 }
 
-function selectDrugQuantity(drugIndex, quantity) {
-  userDrugs[drugIndex]["quantity"] = quantity;
 
-  selectedSearchedDrugs.push(userDrugs[drugIndex]);
+function selectDrugQuantity() {
+
+  let locationDropdown = document.querySelector(".drug-quantity-dropdown");
+  locationDropdown.innerHTML = "";
+
+  drugQuantity.forEach((optionText) => {
+    const option = document.createElement("option");
+    option.value = JSON.stringify(optionText);
+    option.text = optionText; 
+    locationDropdown.appendChild(option); 
+  });
+
+  locationDropdown.addEventListener("change", function() {
+    onSelectDrugQuantity(this.value);
+  });
+
+ 
+}
+
+function onSelectDrugQuantity(quantity){
+
+  currentDrug['quantity'] = quantity;
+  selectedSearchedDrugs.push(currentDrug);
+  pushPharmaMessage(JSON.stringify(currentDrug["name"]) + " added to your list");
   pushPharmaFeedbackMessages("more-meds");
+
+  // const buttons = document.querySelectorAll(".select-medication-option");
+  // buttons.forEach(function(button) {
+  //   disableButton(button); 
+  // });
+
+}
+
+
+function selectPrescriptionType() {
+
+  let locationDropdown = document.querySelector(".prescription-type");
+  locationDropdown.innerHTML = "";
+
+  prescriptionType.forEach((optionText) => {
+    const option = document.createElement("option");
+    option.value = JSON.stringify(optionText);
+    option.text = optionText; 
+    locationDropdown.appendChild(option); 
+  });
+
+  locationDropdown.addEventListener("change", function() {
+    onSelectPrescriptionType(this.value);
+  });
+
+}
+
+function onSelectPrescriptionType(response){
+  userInfo['prescriptionType'] = response
+
+  let totalCost = 0;
+  let deliveryCost = 500, sosPharmaCost = 1000;
+  selectedSearchedDrugs.forEach((currentDrug) => {
+    totalCost += currentDrug.price * currentDrug.quantity;
+  });
+  totalCost += deliveryCost + sosPharmaCost;
+  const medicationTableHtml = prepareMedicationDataTable(
+    selectedSearchedDrugs,
+    totalCost,
+    deliveryCost,
+    sosPharmaCost
+  );
+  pushPharmaMessage(medicationTableHtml);
+  pushPharmaFeedbackMessages("medications-complete");
+  currentStep++;
+}
+
+function reselectAddress(){
+  messages.pop();messages.pop(); messages.pop()
+  if(userInfo['quarter'] !== undefined){
+    messages.pop();
+  }
+  updateChatText(chatBox, messages)
+  pushPharmaFeedbackMessages("city");
+  onDisplayCityDropDown();
+  disableTextarea(inputBox);
 }
 
 // tracks the enter key on the input box so as to submit the text inside
@@ -83,28 +138,24 @@ closeButton.addEventListener('click', (e) => {
 
 // interactives chat buttons
 function medicationDone(){
-  let totalCost = 0;
-  selectedSearchedDrugs.forEach((currentDrug) => {
-    totalCost += currentDrug.price;
-  });
-  const medicationTableHtml = prepareMedicationDataTable(
-    selectedSearchedDrugs,
-    totalCost
-  );
-  pushPharmaMessage(medicationTableHtml);
-  pushPharmaFeedbackMessages("medications-complete");
-  currentStep++;
+
+  pushPharmaFeedbackMessages("prescribtion-type");
+  selectPrescriptionType()
+  disableTextarea(inputBox);
 }
 
 function clearMedicationList(){
   selectedSearchedDrugs = [];
   pushPharmaFeedbackMessages("medications");
   currentStep = 0;
+  enableTextarea(inputBox);
 }
 
 function completeMedList(){
+  console.log("complete button")
   pushPharmaFeedbackMessages("identity");
-  currentStep++;
+  enableTextarea(inputBox);
+  currentStep  = 1;
 }
 
 async function confirmedPayment(){
@@ -125,6 +176,12 @@ async function confirmedPayment(){
     return;
   }
 
+}
+
+function continueSelecting(){
+  pushPharmaFeedbackMessages("medications");
+  enableTextarea(inputBox)
+  currentStep = 0;
 }
 
 function resendPayment(){
@@ -158,12 +215,14 @@ function onSelectCity(city){
       <div>
         <p>Address Information</p>
         <p> City : ${userInfo['city']} </p>
+        <button class="btn btn-warning " onclick="reselectAddress()">NO, RESELECT</button>
       </div>
     ` : 
     `
       <div>
         <p> Informations sur l'adresse </p>
         <p> Ville : ${userInfo['city']} </p>
+        <button class="btn btn-warning " onclick="reselectAddress()">NON, RESELECT</button>
       </div>
     `;
     message =  locale === 'en-US' ? `Which medication do you wish to order ?` 
@@ -203,16 +262,18 @@ function onSelectQuarter(quarter){
   userInfo['quarter'] = quarter['name'];
   let address =  locale === 'en-US' ? `
     <div>
-      <p>Is your address information correct ?</p>
+      <p>Is your address information correct ? If yes , continue</p>
       <p> City : ${userInfo['city']} </p>
       <p> Quarter : ${userInfo['quarter']} </p>
+      <button class="btn btn-warning " onclick="reselectAddress()">NO, RESELECT</button>
     </div>
   ` : 
   `
     <div>
-      <p>Vos informations d'adresse sont-elles correctes ?</p>
+      <p>Votre adresse est-elle correcte ? Si oui, continuer</p>
       <p> Ville : ${userInfo['city']} </p>
       <p> Quartier : ${userInfo['quarter']} </p>
+      <button class="btn btn-warning " onclick="reselectAddress()">NON, RESELECT</button>
     </div>
   `;
   message =  locale === 'en-US' ? `Which medication do you wish to order ?` 
@@ -222,6 +283,7 @@ function onSelectQuarter(quarter){
   pushPharmaMessage(message)
   enableTextarea(inputBox);
 }
+
 
 async function onStart() {
   locale = navigator.language
@@ -251,7 +313,7 @@ async function onStart() {
     updateChatText(chatBox, messages);
   }
 
-  pushPharmaFeedbackMessages("address");
+  pushPharmaFeedbackMessages("city");
   onDisplayCityDropDown();
   disableTextarea(inputBox);
 
@@ -282,7 +344,6 @@ async function onSendButton(chatbox) {
 
     case 0:
       if (userPrompt !== "done") {
-        if (!isWaitingForOptions) {
           // splits user input and searches for user drug in the drugs array.
           isDrugFound = false;
           const userPrompts = userPrompt.split(/\s+|,/);
@@ -299,37 +360,16 @@ async function onSendButton(chatbox) {
           // displays the drug options found on a table for the user to select the right one.
           const medicationTableHtml = prepareMedicationTable(userDrugs);
           pushPharmaMessage(medicationTableHtml);
+          disableTextarea(inputBox);
           pushPharmaFeedbackMessages("choose-drug");
-          clearTextField(textField);
-          isWaitingForOptions = true;
+        
           // shows the user a complaint if during the search process, the amount of drugs matching his input pass a certain number
           // Hence the displayed drugs might contain the user desired drug.
           if (drugSearchComplaint) {
             pushPharmaFeedbackMessages("drug-search-complaint");
             return;
           }
-        } else {
 
-          const number = parseInt(userPrompt, 10);
-          console.log(!isNaN(number))
-          if (!isNaN(number) && (number >= 0) && number <= (userDrugs.length - 1)) {
-            selectedSearchedDrugs.push(userDrugs[userPrompt]);
-            isWaitingForOptions = false;
-
-            pushPharmaMessage(
-              JSON.stringify(userDrugs[userPrompt]["name"]) +
-                " added to your list"
-            );
-            pushPharmaFeedbackMessages("more-meds");
-            currentStep = 0;
-
-          } else {
-            pushPharmaFeedbackMessages("keywords");
-            isWaitingForOptions = true;
-            currentStep = 0;
-            
-          }
-        }
       } else if (userPrompt == "done" && selectedSearchedDrugs.length === 0) {
         pushPharmaFeedbackMessages("meds-empty");
       } else if (userPrompt == "done" && selectedSearchedDrugs.length !== 0) {
@@ -340,26 +380,12 @@ async function onSendButton(chatbox) {
 
     case 1:
 
-      console.log("case one")
-      if (userPrompt == "clear") {
-        clearMedicationList()
-        return;
-      } else if (userPrompt == "complete") {
-        completeMedList()
-      } else {
-        pushPharmaFeedbackMessages("keywords");
-        return;
-      }
+      userInfo['name'] = userPrompt;
+      pushPharmaFeedbackMessages("phone-enter");
+      currentStep ++;
 
       break;
     case 2:
-     
-      userInfo['address'] = userPrompt; 
-      pushPharmaFeedbackMessages("phone-enter");
-      currentStep++;
-
-      break;
-    case 3:
 
       const isValid = validateCameroonianPhoneNumber(userPrompt.trim());
       if (!isValid["isValid"]) {
@@ -374,7 +400,7 @@ async function onSendButton(chatbox) {
       currentStep ++;
       break;
 
-    case 4:
+    case 3:
 
       //   let body = {
       //     amount: 1,
@@ -443,8 +469,11 @@ function restartConversation() {
   userDrugPlusWeight = [];
   updatedDrugObjects = [];
   selectedSearchedDrugs = [];
+  isWaitingForOptions = false;
+  isDrugFound = false;
   enableTextarea(inputBox);
   onStart();
+
 }
 
 // helper function to push pharma message on the chatbox
@@ -459,12 +488,11 @@ async function pushThinkingMessage() {
   if(messages.length !== 0){
     return;
   }
-  messages.push({
-    name: "SOS Pharma",
-    message: locale === 'en-US' ? "<p class='loading-dots'> Setting up, Please wait  </p>" 
-      : "<p class='loading-dots'> Configuration, veuillez patienter  </p>" ,
-  });
-  updateChatText(chatBox, messages);
+
+  message =  locale === 'en-US' ? "<p class='loading-dots'> Setting up, Please wait  </p>" 
+      : "<p class='loading-dots'> Configuration, veuillez patienter </p>" ,
+
+  pushPharmaMessage(message)
   await new Promise((resolve) => setTimeout(resolve, 2000));
   messages.pop();
 }
@@ -484,48 +512,84 @@ function pushPharmaFeedbackMessages(currentCase) {
         locale === 'en-US' ? "Please your number you wish to pay with." : "Veuillez saisir votre numéro de téléphone que vous souhaitez payer avec."
         );
       break;
-    case "address":
-      pushPharmaMessage(
-        locale === 'en-US' ? `
-          <p> Please enter your address, street name, city and location for example (Buea, Malingo) </p><b>
-          <select class="location-dropdown" aria-label="Default select example">
-          </select>
-        `
-        : "Veuillez indiquer où vous vivez, ville et emplacement par exemple (Buea, Malingo)"
-      );
-      break;
 
+    case "drug-quantity":
+        pushPharmaMessage(
+          locale === 'en-US' ? `
+            <p> What quantity of this drug you wish to order </p>
+            <select class="drug-quantity-dropdown" aria-label="Default select example">
+            </select>
+          `
+          : `
+            <p>Quantité de ce médicament que vous souhaitez commander</p>
+            <select class="drug-quantity-dropdown" aria-label="Default select example">
+            </select>
+          `
+        );
+        break;
+      case "city":
+        pushPharmaMessage(
+          locale === 'en-US' ? `
+            <p> Which city do you live in ? </p><b>
+            <select class="location-dropdown" aria-label="Default select example">
+            </select>
+          `
+          : `
+            Dans quelle ville habitez-vous ?
+            <select class="location-dropdown" aria-label="Default select example">
+            </select>
+          `
+        );
+  
+        break;
     case "quarter":
       pushPharmaMessage(
         locale === 'en-US' ? `
-          <p> Please select which quarter you live in your city </p><b>
+          <p> Where do you live in this city ? </p>
           <select class="pickup-location-dropdown" aria-label="Default select example">
           </select>
         `
-        : "Veuillez indiquer où vous vivez, ville et emplacement par exemple (Buea, Malingo)"
+        : `
+          <p>Où habitez-vous dans cette ville ?</p>
+          <select class="pickup-location-dropdown" aria-label="Default select example">
+          </select>
+        `
       );
-
       break;
+    case "prescribtion-type":
+        pushPharmaMessage(
+          locale === 'en-US' ? `
+            <p> Are this medications Prescribed or Unprescribed </p>
+            <select class="prescription-type" aria-label="Default select example">
+            </select>
+          `
+          : `
+            <p>Ces médicaments sont-ils prescrits ou non prescrits ?</p>
+            <select class="prescription-type" aria-label="Default select example">
+            </select>
+          `
+        );
+        break;
     case "medications":
       pushPharmaMessage(
-        locale === 'en-US' ? "Please retype the name of your medication as prescribed by your medical doctor" 
-        : "Veuillez retaper le nom de votre médicament tel que prescrit par votre médecin"
+        locale === 'en-US' ? "Which other medication do you wish to order" 
+        : "Quel autre médicament souhaitez-vous commander"
       );
       break;
     case "medications-complete":
       pushPharmaMessage(
         locale === 'en-US' ? 
-        ` <p> Are your medications correct and complete ??</p><br>
+        ` <p> Are your medications correct and complete ??</p>
           <div class="buttons"> 
-            <button class="btn btn-warning med-clear-button">CLEAR SELECTED LIST</button>
-            <button class="btn btn-success med-complete-button">COMPLETE</button>
+            <button class="btn btn-warning med-clear-button" onclick="clearMedicationList()">CLEAR SELECTED LIST</button>
+            <button class="btn btn-success med-complete-button" onclick="completeMedList()">COMPLETE</button>
           </div>
         `
         : 
-        ` <p> Vos médicaments sont-ils corrects et complets ??</p><br>
+        ` <p> Vos médicaments sont-ils corrects et complets ??</p>
           <div class="buttons"> 
-            <button class="btn btn-warning med-clear-button">EFFACER LA LISTE SÉLECTIONNÉE</button>
-            <button class="btn btn-success med-complete-button">COMPLET</button>
+            <button class="btn btn-warning med-clear-button" onclick="clearMedicationList()">EFFACER LA LISTE SÉLECTIONNÉE</button>
+            <button class="btn btn-success med-complete-button" onclick="completeMedList()">COMPLET</button>
           </div>
         `
           
@@ -541,17 +605,17 @@ function pushPharmaFeedbackMessages(currentCase) {
     case "billing-request-followup":
       pushPharmaMessage(
         locale === 'en-US' ? 
-        ` <p> Have you confirmed the payment ?? or you didnt receive the billing request ?</p> <br>
+        ` <p> Have you confirmed the payment ?? or you didnt receive the billing request ?</p> 
           <div class="buttons"> 
-            <button class="btn btn-info payment-resend-button">RESEND BILLING</button>
-            <button class="btn btn-success payment-confirmed-button">CONFIRMED BILLING</button>
+            <button class="btn btn-info payment-resend-button" onclick="resendPayment()">RESEND BILLING</button>
+            <button class="btn btn-success payment-confirmed-button" onclick="confirmedPayment()">CONFIRMED BILLING</button>
           </div>
         `
         : 
-        ` <p> Avez-vous confirmé le paiement ?? ou vous n'avez pas reçu la demande de facturation ?</p> <br>
+        ` <p> Avez-vous confirmé le paiement ?? ou vous n'avez pas reçu la demande de facturation ?</p> 
           <div class="buttons"> 
-            <button class="btn btn-info payment-resend-button">RENVOYER LA FACTURATION</button>
-            <button class="btn btn-success payment-confirmed-button">FACTURATION CONFIRMÉE</button>
+            <button class="btn btn-info payment-resend-button" onclick="resendPayment()">RENVOYER LA FACTURATION</button>
+            <button class="btn btn-success payment-confirmed-button" onclick="confirmedPayment()">FACTURATION CONFIRMÉE</button>
           </div>
         `
       );
@@ -575,12 +639,18 @@ function pushPharmaFeedbackMessages(currentCase) {
     case "more-meds":
       pushPharmaMessage(
         locale === 'en-US' ?
-        ` <p> Do you wish to order any other medication, if yes, please type the name of the medication, if no, please click on the done button</p>
-          <br> <button class="btn btn-success med-done-button"> DONE SELECTING </button>
+        ` <p> Do you wish to order any other medication ?</p>
+            <div class="buttons">
+              <button class="btn btn-info" onclick="continueSelecting()"> CONTINUE </button>
+              <button class="btn btn-success med-done-button" onclick="medicationDone()"> DONE SELECTING </button>
+            </div>
         `
         : 
-        ` <p> Voulez-vous commander un autre médicament, si oui, veuillez saisir le nom du médicament, sinon, veuillez cliquer sur le bouton Terminé</p>
-          <br> <button class="btn btn-success med-done-button"> FAIT DE SÉLECTION </button>
+        ` <p> Souhaitez-vous commander d'autres médicaments ? </p>
+          <div class="buttons">
+            <button class="btn btn-info med-done-button" onclick="continueSelecting()"> CONTINUER </button>
+            <button class="btn btn-success med-done-button" onclick="medicationDone()"> SÉLECTION TERMINÉE </button>
+          </div>
         `
       );
       break;
@@ -593,13 +663,13 @@ function pushPharmaFeedbackMessages(currentCase) {
       pushPharmaMessage(
         locale === 'en-US' ?
         `
-          <p>Please select your medication from the list above, reply with the index e.g 1, 2, 3,  if you wish to clear your list and start over</p> 
-          <br><button class="btn btn-warning list-clear-button"> CLEAR LIST </button>
+          <p>Please select your desired medication from the list above, if your intended medication is not included, click the button below</p> 
+          <button class="btn btn-warning list-clear-button" onclick="restartConversation()"> CLEAR LIST </button>
         `
         :
         `
-          <p>Veuillez sélectionner votre médicament dans la liste ci-dessus, répondez avec l'index par exemple 1, 2, 3, si vous souhaitez effacer votre liste et recommencer</p> 
-          <br><button class="btn btn-warning list-clear-button"> EFFACER LA LISTE </button>
+          <p>Veuillez sélectionner le médicament souhaité dans la liste ci-dessus. Si le médicament souhaité n'est pas inclus, cliquez sur le bouton ci-dessous.</p> 
+          <button class="btn btn-warning list-clear-button" onclick="restartConversation()"> EFFACER LA LISTE </button>
         `
       );
       break;
@@ -620,12 +690,12 @@ function pushPharmaFeedbackMessages(currentCase) {
         locale === 'en-US' ?
         `
           <p> Failed to place your order </p> 
-          <br> <button class="btn btn-info order-resend-button"> RESEND ORDER </button>
+          <button class="btn btn-info order-resend-button" onclick="confirmedPayment()"> RESEND ORDER </button>
          `
          :
           `
             <p> Impossible de passer votre commande </p> 
-            <br> <button class="btn btn-info order-resend-button"> REENVOYER LA COMMANDE </button>
+             <button class="btn btn-info order-resend-button" onclick="confirmedPayment()"> REENVOYER LA COMMANDE </button>
           `
       );
       break;
@@ -646,6 +716,7 @@ function pushPharmaFeedbackMessages(currentCase) {
         : "Une demande de paiement a été envoyée à cet appareil, veuillez confirmer le paiement pour que votre commande soit passée."
       );
       break;
+
     case "identity":
         pushPharmaMessage(
           locale === 'en-US' ? "Please whats your name ?" : "Quel est votre nom ?"

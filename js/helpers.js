@@ -233,8 +233,6 @@ async function loadExcel() {
             };
             drugs.push(drugObject);
           });
-
-          console.log("Drugs loaded successfully.");
           resolve();
         } else {
           console.error("Failed to load the Excel file.");
@@ -270,6 +268,14 @@ function enableTextarea(textarea) {
   textarea.disabled = false;
   textarea.classList.remove("disabled");
   textarea.parentNode.classList.remove("disabled-parent");
+}
+
+function disableButton(button) {
+  button.classList.remove("btn-success", "btn-sm");
+  button.classList.add("disabled-button");
+  button.innerHTML = "Selected";
+  button.disabled = true;
+  console.log(button)
 }
 
 function generateWhatsAppLink(message) {

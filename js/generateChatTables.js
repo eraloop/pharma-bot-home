@@ -38,13 +38,15 @@ function prepareMedicationTable(medications) {
 
 // generates table for user medication to after user selected their qauntity and weights, it also shows them their total cost
 // and cost per medication based on the unit price and quantity
-function prepareMedicationDataTable(medications, totalCost) {
+function prepareMedicationDataTable(medications, totalCost, deliveryCost, sosPharmaCost) {
   let tableHtml = `
       <table id="table table-striped medication-table">
         <thead class="thead-dark">
           <tr>
             <th>Medication Name</th>
+            <th>Quantity</th>
             <th>Price</th>
+            <th>Cost</th>
           </tr>
         </thead>
         <tbody class="table-striped">
@@ -53,11 +55,14 @@ function prepareMedicationDataTable(medications, totalCost) {
   medications.forEach((medication) => {
     const medicationName = medication.name;
     const medicationPrice = medication.price;
+    const cost = medicationPrice * medication.quantity;
 
     tableHtml += `
         <tr>
           <td>${medicationName}</td>
+          <td>${medication.quantity}</td>
           <td>XAF ${medicationPrice.toLocaleString()}</td>
+          <td>XAF ${cost.toLocaleString()}</td>
         </tr>
       `;
   });
@@ -65,7 +70,15 @@ function prepareMedicationDataTable(medications, totalCost) {
   // Add the total cost row at the bottom of the table
   tableHtml += `
         <tr>
-          <td>Total Cost:</td>
+          <td colspan="3"> Delivery Cost</td>
+          <td>XAF ${deliveryCost.toLocaleString()}</td>
+        </tr>
+        <tr>
+          <td colspan="3">Delivery Cost</td>
+          <td>XAF ${sosPharmaCost.toLocaleString()}</td>
+        </tr>
+        <tr>
+          <td colspan="3">Total Cost:</td>
           <td>XAF ${totalCost.toLocaleString()}</td>
         </tr>
       </tbody>

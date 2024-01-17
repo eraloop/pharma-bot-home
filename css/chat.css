@@ -87,10 +87,12 @@ a{
     height: auto;
     width: fit-content;
     word-wrap: break-word;
-    padding: 10px 15px;
+    padding: 10px ;
     max-width: 75%;
     font-weight: 400;
 }
+
+
 
 
 .sos-pharma-message , .messages__item{
@@ -102,10 +104,12 @@ a{
     margin-left: auto;
     background: #43b75d !important;
     color: #fff !important;
+    padding: 10px 15px;
 }
 
 .messages__item--visitor{
     font-size: 14px !important;
+    padding: 10px 15px;
 }
 
 /* HEADER */
@@ -226,10 +230,10 @@ a{
     width: 25px;
 }
 
-
 .loading-dots{
     color: #202020 !important;
 }
+
 .loading-dots:after {
     content: ' . . . ';
     animation: dots 1s steps(5, end) infinite;
@@ -273,8 +277,8 @@ a{
     cursor: pointer;
     font-weight: 500;
     font-size: 14px;
+    margin: 0 5px ;
     transition: 300ms;
-    margin: 0 5px;
 }
 
 .buttons{
@@ -292,15 +296,15 @@ a{
 /* #f2e46a */
 .btn-warning{
     background-color: #f2e46a !important;
-    color: grey !important;
+    color: #a9a9a9 !important;
 }
 
 .btn-info{
-    background-color: grey !important;
+    background-color: #0096FF !important;
     color: white !important;
 }
 
-.location-dropdown, .pickup-location-dropdown{
+.location-dropdown, .pickup-location-dropdown, .drug-quantity-dropdown, .prescription-type{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -325,6 +329,13 @@ a{
     color: grey !important;
 }
 
+.disabled-button{
+    background-color: #eee !important;
+    color: #fff !important; 
+    border: none !important;
+    outline: none !important;
+    cursor: not-allowed;
+}
 .disabled-parent{
     background: #eee !important;
     color: grey !important;
