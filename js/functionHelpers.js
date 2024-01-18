@@ -29,12 +29,15 @@ async function confirmedPayment() {
     enableTextarea(inputBox);
     return;
   } else {
+    
     pushPharmaFeedbackMessages("order-sent");
-    pushPharmaMessage(
-      locale === "en-US"
-        ? "Your drugs will ne delivered to you in the next one hour."
-        : "Vos médicaments vous seront livrés dans l'heure qui suit."
-    );
+    pushPharmaMessage(getTranslation("order-delivery"));
+
+    let orderId = "orderId " + Date.now().toString(36) + Math.random().toString(16).slice(2)
+    const waLink = generateWhatsAppLink(orderId, userInfo)
+    pushPharmaMessage(waLink)
+    pushPharmaMessage(getTranslation("waMessage"));
+
     return;
   }
 }

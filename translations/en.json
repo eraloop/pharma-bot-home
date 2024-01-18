@@ -34,7 +34,10 @@
     "order-sent": "Your order has been placed, Thanks for using and trusting SOS Pharma",
     "confirm-payment": "A payment request has been send to this device, please confirm the payment for your order tobe placed.",
     "identity": "Please whats your name ?",
+    "order-delivery" : "Your drugs will ne delivered to you in the next one hour.",
 
-    "default": "Invalid input, please retype your request"
+    "default": "Invalid input, please retype your request",
+
+    "waMessage": "Please click on the link above to get your order invoice. Thanks for using SOS Pharma"
 
 }

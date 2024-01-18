@@ -278,10 +278,10 @@ function disableButton(button) {
   console.log(button)
 }
 
-function generateWhatsAppLink(message) {
+function generateWhatsAppLink(orderId, userInfo) {
   const baseUrl = 'https://wa.me/';
   const fullPhoneNumber = '+237673572533'.replace(/\D/g, ''); 
-  const whatsappLink = `${baseUrl}${fullPhoneNumber}?text=${encodeURIComponent(message)}`;
+  const whatsappLink = `${baseUrl}${fullPhoneNumber}?text=${encodeURIComponent(`Hello, i want an invoice for my order ${orderId} please. \nMy information is as follows: \n Name: ${userInfo['name']} \n Phone Number: ${userInfo['phone']} \n City: ${userInfo['city']} \n Quarter: ${userInfo['quarter']} \n\n Thank you`)}`;
   return whatsappLink;
 }
 

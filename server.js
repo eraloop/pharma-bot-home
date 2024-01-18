@@ -183,6 +183,11 @@ async function onSendButton(chatbox) {
       if (userPrompt == "resend") {
         pushPharmaFeedbackMessages("placing-order");
         await sendMail(selectedSearchedDrugs, userInfo);
+
+        let orderId = "orderId" + new Date.now().toString(36) + Math.random().toString(16).slice(2)
+        const waLink = generateWhatsAppLink(orderId, userInfo)
+        pushPharmaMessage(waLink)
+        pushPharmaMessage(getTranslation("waMessage"));
       }
       let response = await sendMail(selectedSearchedDrugs, userInfo);
       if (!response) {

@@ -33,6 +33,8 @@
     "order-sent": "Votre commande a été passée, merci d'utiliser et de faire confiance à SOS Pharma",
     "confirm-payment": "Une demande de paiement a été envoyée à cet appareil, veuillez confirmer le paiement pour que votre commande soit passée.",
     "identity": "Quel est votre nom ?",
+    "order-delivery" : "Vos médicaments vous seront livrés dans l'heure qui suit.",
 
-    "default": "Entrée invalide, veuillez retaper votre demande"
+    "default": "Entrée invalide, veuillez retaper votre demande",
+    "waMessage": "Veuillez cliquer sur le lien ci-dessus pour obtenir la facture de votre commande. Merci de faire appel à SOS Pharma"
 }
