@@ -1,4 +1,4 @@
-const levenshteinDistance = (s, t) => {
+function levenshteinDistance(s, t){
   if (!s.length) return t.length;
   if (!t.length) return s.length;
   const arr = [];
@@ -550,12 +550,11 @@ function getOrderKeywords(locale){
   
 }
 
-function saveConversationData(conversation){
-  localStorage.setItem('conversation', JSON.stringify(conversation));
-  goBack()
-}
-
-async function getConversationData(){
-  return await JSON.parse(localStorage.getItem('conversation'));
+function getUserLocale() {
+  const userLocale = navigator.language || navigator.userLanguage;
+  if(userLocale !== 'fr' || userLocale !== 'fr-FR' || userLocale !== 'en-US' || userLocale !== 'en'){
+    return 'en-US'
+  }
+  return userLocale;
 }
 

@@ -1,0 +1,37 @@
+{
+    "home-main-header-one" : "Faites-vous",
+    "home-main-header-two" : "livrer vos médicaments",
+    "home-main-content" : "Rapide, sécurisé, et efficace, SOS Pharma est un service de livraison de medicaments en ligne. Passez une commande et faites-vous livrer dans de brefs delais. ",
+    "home-chatbutton-text": "Commande de médicaments",
+    "home-callbutton-text": "Infoline Santé: (+237) 653 080 072",
+
+    "greeting-text": "<p class='font-weight-bold'>Bonjour!!.</p> <p>Bienvenue chez SOS Pharma</p>",
+    "network-error": "<p class='font-weight-bold'>Erreur réseau!!.</p> <p>Impossible de charger les ressources requises <br>Veuillez vérifier votre connexion Internet et actualiser la page</p>",
+    "loading-message": "Configuration, veuillez patienter ",
+
+    "phone" : "Veuillez saisir un numéro de téléphone camerounais valide, il doit commencer par les chiffres 6, 2, 3, etc",
+    "phone-enter" : "Veuillez indiquer le numéro avec lequel vous voulez payer." ,
+    "drug-quantity": "<p>Quelle quantité de ce médicament souhaitez-vous commander ? </p> <select class='drug-quantity-dropdown'></select>",
+    "city": " Dans quelle ville habitez-vous ?<select class='location-dropdown'></select>",
+    "quarter": "<p>Où habitez-vous dans cette ville ?</p> <select class='pickup-location-dropdown'></select>",
+    "prescribtion-type": "<p>Ces médicaments sont-ils prescrits ou non prescrits ?</p><select class='prescription-type'></select>",
+    "medications": "Quels autres médicaments souhaitez-vous commander ?",
+    "medications-complete": "<p> Vos médicaments sont-ils corrects et complets ??</p><div class='buttons'> <button class='btn btn-warning med-clear-button' onclick='clearMedicationList()'>EFFACER LA LISTE SÉLECTIONNÉE</button><button class='btn btn-success med-complete-button' onclick='completeMedList()'>COMPLET</button></div>",
+    "resend-billing-request": "La demande de facturation a été renvoyée, veuillez confirmer",
+    "billing-request-followup": "<p> Avez-vous confirmé le paiement ?? ou vous n'avez pas reçu la demande de facturation ?</p> <div class='buttons'> <button class='btn btn-info payment-resend-button' onclick='resendPayment()'>RENVOYER LA FACTURATION</button><button class='btn btn-success payment-confirmed-button' onclick='confirmedPayment()'>FACTURATION CONFIRMÉE</button></div>",
+    "no-medication": "Aucun médicament identifié, veuillez fournir la liste des médicaments que vous souhaitez commander comme indiqué par votre personnel médical",
+    "keywords": "Veuillez répondre avec les mots clés spécifiés ci-dessus",
+    "input": "Veuillez répondre avec les mots clés spécifiés ci-dessus",
+    "more-meds": "<p> Souhaitez-vous commander d'autres médicaments ? </p> <div class='buttons'><button class='btn btn-info med-done-button' onclick='continueSelecting()'> CONTINUER </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> SÉLECTION TERMINÉE </button></div>",
+    "drug-found": "Le médicament demandé n'est pas disponible, veuillez vous assurer que l'orthographe est correcte et réessayez",
+    "choose-drug": "<p>Veuillez sélectionner le médicament souhaité dans la liste ci-dessus. Si le médicament souhaité n'est pas inclus, cliquez sur le bouton ci-dessous.</p> <button class='btn btn-warning list-clear-button' onclick='restartConversation()'> EFFACER LA LISTE </button>",
+    "drug-search-complaint": "Le nombre de médicaments correspondant à ce nom est important, veuillez vérifier l'orthographe et rechercher à nouveau.",
+    "meds-empty": "Veuillez choisir un médicament avant de passer à l'étape suivante de votre achat.",
+    "order-failed": " <p> Impossible de passer votre commande </p> <button class='btn btn-info order-resend-button' onclick='confirmedPayment()'> REENVOYER LA COMMANDE </button>",
+    "placing-order": "Votre commande est en cours de traitement, veuillez patienter un instant",
+    "order-sent": "Votre commande a été passée, merci d'utiliser et de faire confiance à SOS Pharma",
+    "confirm-payment": "Une demande de paiement a été envoyée à cet appareil, veuillez confirmer le paiement pour que votre commande soit passée.",
+    "identity": "Quel est votre nom ?",
+
+    "default": "Entrée invalide, veuillez retaper votre demande"
+}

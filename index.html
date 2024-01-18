@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -31,12 +31,12 @@
     <script defer src="/js/helpers.js"></script>
     <script defer src="/js/sendEmail.js"></script>
 
-    <script
+    <!-- <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-2BXJ70XZ48"
-    ></script>
+    ></script> -->
 
-    <script>
+    <!-- <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -44,10 +44,10 @@
       gtag("js", new Date());
 
       gtag("config", "G-2BXJ70XZ48");
-    </script>
+    </script> -->
 
     <!-- Google Tag Manager -->
-    <script>
+    <!-- <script>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({
@@ -61,7 +61,7 @@
         j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
         f.parentNode.insertBefore(j, f);
       })(window, document, "script", "dataLayer", "GTM-58924RN");
-    </script>
+    </script> -->
     <!-- End Google Tag Manager -->
 
   </head>
@@ -78,11 +78,11 @@
         </div>
 
         <a
-              href="tel:+237653080072"
-              id="callCenter"
-              class="call-center-button button "
-              >Infoline Santé: (+237) 653 080 072</a
-            >
+          href="tel:+237653080072"
+          id="callCenter"
+          class="call-center-button button "
+          >Infoline Santé: (+237) 653 080 072</a
+        >
 
       </div>
 
@@ -90,12 +90,12 @@
         
         <div class="content">
 
-          <h1>
-            Faites-vous <br />
-            <span>livrer vos médicaments</span>
+          <h1 data-i18n-key="home-main-header-one">
+            Faites-vous
           </h1>
+          <h1 class="header" data-i18n-key="home-main-header-two">livrer vos médicaments</h1>
 
-          <p>
+          <p data-i18n-key="home-main-content">
             Rapide, sécurisé, et efficace, <b>SOS Pharma</b> est un service de
             livraison de medicaments en ligne. Passez une commande et
             faites-vous livrer dans de brefs delais.
@@ -109,10 +109,11 @@
               name="startBot"
               onclick="gtag('send','event','start_chat', 'hello','entree du chat');"
             >
-              <span class="text">Commander maintenant</span>
+              <span data-i18n-key="home-chatbutton-text" class="text">Commander maintenant</span>
             </a>
 
             <a
+              data-i18n-key="home-callbutton-text"
               href="tel:+237653080072"
               id="callCenter"
               class="call-center-button button hide-on-dk"
@@ -128,6 +129,8 @@
         </div>
       </div>
     </div>
+
+    <script src="/js/translation.js"></script>
 
   </body>
 </html>

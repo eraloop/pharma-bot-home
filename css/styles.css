@@ -23,12 +23,10 @@ body {
   overflow-x: hidden;
 }
 
-
 .container{
     height: 100vh;
     width: 100%;
 }
-
 
 .navbar{
     height: 15vh;
@@ -108,7 +106,7 @@ body {
   line-height: 5rem;
 }
 
-.content h1 span {
+.content .header {
   color: #43b75d;
   font-weight: 700;
 }
