@@ -12,8 +12,8 @@ const inputBox = chatBox.querySelector(".chatbox__message__input");
 const messageContainer = document.getElementById("chatbox__messages");
 
 // user variables
-let locale = "en-US", city = "", selectedPickupLocation = "";
-let messages  = [], drugList = [], userPrompts = [], userDrugs  = [], userDrugPlusWeight = [], updatedDrugObjects = [], selectedSearchedDrugs = [], orderKeywords = [], locations = [], quarters = [], drugQuantity = [1,2,3,4,5,6,7,8,9], prescriptionType = locale === 'en-US' ? ["Prescribed Drug", "Unprescribed Drug"] : ["Ordonnance", 'Auto Medication'];
+let city = "", selectedPickupLocation = "";
+let messages  = [], drugList = [], userPrompts = [], userDrugs  = [], userDrugPlusWeight = [], updatedDrugObjects = [], selectedSearchedDrugs = [], orderKeywords = [], locations = [], quarters = [], drugQuantity = [0,1,2,3,4,5,6,7,8,9], prescriptionType = (locale === 'en-US' || locale === 'en') ? ["Select Below","Prescribed Drug", "Unprescribed Drug"] : ["Sélectionnez ci-dessous", "Ordonnance", 'Auto Medication'];
 let isDrugFound = false, isMessagesLoaded = false, isWaitingForOptions = false;
 let paymentInfo = {}, userInfo = {};
 let message = "", currentDrug = 0, currentStep = 0;

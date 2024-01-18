@@ -9,6 +9,8 @@
     "network-error": "<p class='font-weight-bold'>Network error!!.</p>  <p>Failed to load required resources <br>Please check your internet connection and refresh the page</p>",
     "loading-message": "Setting up, Please wait",
 
+    "drug": "Which medication do you wish to order ?",
+    "address": "",
     "phone": "Please enter a valid Cameroonian phone number, it must begin with the digits 6, 2, 3, etc",
     "phone-enter": "Please provide the number you want to pay with." ,
     "drug-quantity": "<p> What quantity of this drug you wish to order </p> <select class='drug-quantity-dropdown'></select>",

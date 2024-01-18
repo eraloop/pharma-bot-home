@@ -550,11 +550,3 @@ function getOrderKeywords(locale){
   
 }
 
-function getUserLocale() {
-  const userLocale = navigator.language || navigator.userLanguage;
-  if(userLocale !== 'fr' || userLocale !== 'fr-FR' || userLocale !== 'en-US' || userLocale !== 'en'){
-    return 'en-US'
-  }
-  return userLocale;
-}
-

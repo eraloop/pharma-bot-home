@@ -72,7 +72,7 @@ function onSelectCity(city) {
   quarters = city["quarters"];
   if (quarters.length == 0) {
     let address =
-      locale === "en-US"
+      locale === "en-US" || locale === "en"
         ? `
         <div>
           <p>Address Information</p>
@@ -87,12 +87,9 @@ function onSelectCity(city) {
           <button class="btn btn-warning " onclick="reselectAddress()">NON, RESELECT</button>
         </div>
       `;
-    (message =
-      locale === "en-US"
-        ? `Which medication do you wish to order ?`
-        : `Quel médicament souhaitez-vous commander ?`),
-      pushPharmaMessage(address);
-    pushPharmaMessage(message);
+
+    pushPharmaMessage(address);
+    pushPharmaMessage(getTranslation("drug"));
     enableTextarea(inputBox);
     return;
   } else {
@@ -123,7 +120,7 @@ function onSelectQuarter(quarter) {
   quarter = JSON.parse(quarter);
   userInfo["quarter"] = quarter["name"];
   let address =
-    locale === "en-US"
+    locale === "en-US" || locale === "en"
       ? `
       <div>
         <p>Is your address information correct ? If yes , continue</p>
@@ -140,13 +137,9 @@ function onSelectQuarter(quarter) {
         <button class="btn btn-warning " onclick="reselectAddress()">NON, RESELECT</button>
       </div>
     `;
-  (message =
-    locale === "en-US"
-      ? `Which medication do you wish to order ?`
-      : `Quel médicament souhaitez-vous commander ?`),
     pushPharmaMessage(address);
-  pushPharmaMessage(message);
-  enableTextarea(inputBox);
+    pushPharmaMessage(getTranslation("drug"));
+    enableTextarea(inputBox);
 }
 
 function selectDrugQuantity() {

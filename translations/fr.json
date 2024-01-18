@@ -9,6 +9,7 @@
     "network-error": "<p class='font-weight-bold'>Erreur réseau!!.</p> <p>Impossible de charger les ressources requises <br>Veuillez vérifier votre connexion Internet et actualiser la page</p>",
     "loading-message": "Configuration, veuillez patienter ",
 
+    "drug": "Quel médicament souhaitez-vous commander?",
     "phone" : "Veuillez saisir un numéro de téléphone camerounais valide, il doit commencer par les chiffres 6, 2, 3, etc",
     "phone-enter" : "Veuillez indiquer le numéro avec lequel vous voulez payer." ,
     "drug-quantity": "<p>Quelle quantité de ce médicament souhaitez-vous commander ? </p> <select class='drug-quantity-dropdown'></select>",

@@ -5,17 +5,10 @@ function pushPharmaMessage(reply) {
 }
   
 async function pushThinkingMessage() {
-
-if(messages.length !== 0){
-    return;
-}
-
-// message =  locale === 'en-US' ? "<p class='loading-dots'> Setting up, Please wait  </p>" 
-//     : "<p class='loading-dots'> Configuration, veuillez patienter </p>" ,
-
-pushPharmaMessage(getTranslation("loading-message"))
-await new Promise((resolve) => setTimeout(resolve, 2000));
-messages.pop();
+  if(messages.length !== 0) return;
+  pushPharmaMessage(getTranslation("loading-message"))
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  messages.pop();
 }
 
 function pushUserMessage(message) {
