@@ -1,12 +1,13 @@
+
 function pushPharmaMessage(reply) {
-    messages.push({ name: "SOS Pharma", message: reply });
-    updateChatText(chatBox, messages);
-    inputBox.focus();
+  messages.push({ name: "SOS Pharma", message: reply });
+  updateChatText(chatBox, messages);
+  inputBox.focus();
 }
   
-async function pushThinkingMessage() {
+async function pushThinkingMessage(message) {
   if(messages.length !== 0) return;
-  pushPharmaMessage(getTranslation("loading-message"))
+  pushPharmaMessage(getTranslation(message))
   await new Promise((resolve) => setTimeout(resolve, 2000));
   messages.pop();
 }
@@ -38,8 +39,8 @@ function pushPharmaFeedbackMessages(currentCase) {
         pushPharmaMessage(getTranslation("quarter"));
         break;
       case "prescribtion-type":
-          pushPharmaMessage(getTranslation("prescribtion-type"));
-          break;
+        pushPharmaMessage(getTranslation("prescribtion-type"));
+        break;
       case "medications":
         pushPharmaMessage(getTranslation("medications"));
         break;
@@ -90,6 +91,9 @@ function pushPharmaFeedbackMessages(currentCase) {
         break;
       case 'identity':
           pushPharmaMessage(getTranslation("identity"));
+        break;
+      case 'proccessing-payment':
+          pushPharmaMessage(getTranslation("billing"));
         break;
       default:
         pushPharmaMessage(getTranslation("default"));

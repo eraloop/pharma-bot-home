@@ -31,39 +31,6 @@
     <script defer src="/js/helpers.js"></script>
     <script defer src="/js/sendEmail.js"></script>
 
-    <!-- <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-2BXJ70XZ48"
-    ></script> -->
-
-    <!-- <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-2BXJ70XZ48");
-    </script> -->
-
-    <!-- Google Tag Manager -->
-    <!-- <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({
-          "gtm.start": new Date().getTime(),
-          event: "gtm.js",
-        });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-58924RN");
-    </script> -->
-    <!-- End Google Tag Manager -->
-
   </head>
 
   <body>
@@ -104,10 +71,7 @@
           <div class="buttons">
             <a
               href="./chat.html"
-              id="start"
               class="start-button button loading chatbox__button"
-              name="startBot"
-              onclick="gtag('send','event','start_chat', 'hello','entree du chat');"
             >
               <span data-i18n-key="home-chatbutton-text" class="text">Commander maintenant</span>
             </a>
@@ -130,7 +94,14 @@
       </div>
     </div>
 
-    <script src="/js/translation.js"></script>
+    <script defer src="/js/translation.js"></script>
+    <script defer src="/js/functionHelpers.js"></script>
+    <script defer src="/js/messageHelpers.js"></script>
+    <script defer src="/js/helpers.js"></script>
+    <script defer src="/js/sendEmail.js"></script>
+    <script defer src="/js/payments.js"></script>
+    <script defer src="/server.js"></script>
+    <script defer src="./js/payments.js"></script>
 
   </body>
 </html>

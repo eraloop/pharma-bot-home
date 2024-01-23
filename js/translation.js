@@ -26,7 +26,6 @@ async function setLocale(newLocale) {
   locale = newLocale;
   translations = newTranslations;
   translatePage();
-
 }
 
 async function fetchTranslationsFor(newLocale) {

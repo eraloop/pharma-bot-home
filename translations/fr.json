@@ -36,5 +36,6 @@
     "order-delivery" : "Vos médicaments vous seront livrés dans l'heure qui suit.",
 
     "default": "Entrée invalide, veuillez retaper votre demande",
+    "billing": "Facturation en cours, veuillez patienter",
     "waMessage": "Veuillez cliquer sur le lien ci-dessus pour obtenir la facture de votre commande. Merci de faire appel à SOS Pharma"
 }

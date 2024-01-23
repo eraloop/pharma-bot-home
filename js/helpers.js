@@ -152,8 +152,7 @@ function matchUserDrugs(drugs, userPrompts, orderKeywords) {
         break;
       }
 
-      if (medicationName.substring(0, 3) == searchString.substring(0, 3)) {
-        // console.log(medicationName, searchString);
+      if (medicationName.substring(0, 2) == searchString.substring(0, 2)) {
         drugmatch = stringSearch(medicationName, searchString);
         if (!drugmatch) {
           drugmatch = levenshteinSearch(medicationName, searchString);
@@ -259,6 +258,7 @@ async function loadExcel() {
 }
 
 function disableTextarea(textarea) {
+  clearTextField(textarea);
   textarea.disabled = true;
   textarea.classList.add("disabled");
   textarea.parentNode.classList.add("disabled-parent");
@@ -281,7 +281,7 @@ function disableButton(button) {
 function generateWhatsAppLink(orderId, userInfo) {
   const baseUrl = 'https://wa.me/';
   const fullPhoneNumber = '+237673572533'.replace(/\D/g, ''); 
-  const whatsappLink = `${baseUrl}${fullPhoneNumber}?text=${encodeURIComponent(`Hello, i want an invoice for my order ${orderId} please. \nMy information is as follows: \n Name: ${userInfo['name']} \n Phone Number: ${userInfo['phone']} \n City: ${userInfo['city']} \n Quarter: ${userInfo['quarter']} \n\n Thank you`)}`;
+  const whatsappLink = `<a href="${baseUrl}${fullPhoneNumber}?text=${encodeURIComponent(`Hello, i want an invoice for my order ${orderId} please. \nMy information is as follows: \n Name: ${userInfo['name']} \n Phone Number: ${userInfo['phone']} \n City: ${userInfo['city']} \n Quarter: ${userInfo['quarter']} \n\n Thank you`)}"> </a>`;
   return whatsappLink;
 }
 

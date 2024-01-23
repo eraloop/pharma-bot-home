@@ -13,10 +13,13 @@ const messageContainer = document.getElementById("chatbox__messages");
 
 // user variables
 let city = "", selectedPickupLocation = "";
-let messages  = [], drugList = [], userPrompts = [], userDrugs  = [], userDrugPlusWeight = [], updatedDrugObjects = [], selectedSearchedDrugs = [], orderKeywords = [], locations = [], quarters = [], drugQuantity = [0,1,2,3,4,5,6,7,8,9], prescriptionType = (locale === 'en-US' || locale === 'en') ? ["Select Below","Prescribed Drug", "Unprescribed Drug"] : ["Sélectionnez ci-dessous", "Ordonnance", 'Auto Medication'];
+let messages  = [], drugList = [], userPrompts = [], userDrugs  = [], userDrugPlusWeight = [], updatedDrugObjects = [], selectedSearchedDrugs = [], orderKeywords = [], locations = [], quarters = [], drugQuantity = [0,1,2,3,4,5,6,7,8,9];
 let isDrugFound = false, isMessagesLoaded = false, isWaitingForOptions = false;
-let paymentInfo = {}, userInfo = {};
-let message = "", currentDrug = 0, currentStep = 0;
+let paymentInfo = {}, userInfo = {}, user = {};
+let message = "", currentDrug = 0, currentStep = 0, totalCost = 0;
+
+// payment information
+let token = "", transactionId = "";
 
 // get refrence to the html elements relevant to the js file
 sendButton.addEventListener("click", () => onSendButton(chatBox));
@@ -29,28 +32,25 @@ closeButton.addEventListener('click', (e) => {
   goBack()
 })
 
-
 async function onStart() {
+  disableTextarea(inputBox);
   locale = getUserLocale()
   orderKeywords = getOrderKeywords(locale);
   locations = await onLoadCities();
   response = await loadExcel();
-
+  user = await getUserFromLocalStorage();
+  user = JSON.parse(JSON.parse(user));
+  
   drugList = response["drugs"];
   let drugLoaded = response["isLoaded"];
   paymentInfo = await onLoadPaymentDetails();
-  await pushThinkingMessage();
+  await pushThinkingMessage("loading-message");
 
   if (!drugLoaded) {
-    // message =  locale === 'en-US' ? `Network error <br> Failed to load required resources <br>Please check your internet connection and refresh the page` 
-    //   : `Erreur réseau <br> Impossible de charger les ressources requises <br>Veuillez vérifier votre connexion Internet et actualiser la page`,
     pushPharmaMessage(getTranslation("network-error"));
     disableTextarea(inputBox);
     return;
   }
-
-  // message = locale === 'en-US' ? `Hello <br> Welcome to SOS Pharma` 
-  //           : `Bonjour <br> Bienvenue chez SOS Pharma`
 
   if(messages.length === 0 ){
     pushPharmaMessage(getTranslation("greeting-text"));
@@ -58,12 +58,41 @@ async function onStart() {
     updateChatText(chatBox, messages);
   }
 
-  pushPharmaFeedbackMessages("city");
-  onDisplayCityDropDown();
-  disableTextarea(inputBox);
+  if(user !== null){
+    userInfo = user;
+    let address =
+    locale === "en-US" || locale === "en"
+      ? `
+      <div>
+        <p>Is your address information correct ? If yes , continue</p>
+        <p> City : ${userInfo["city"]} </p>
+        <p> Quarter : ${userInfo["quarter"]} </p>
+        <div class="buttons"> 
+          <button class="btn btn-warning " onclick="reselectAddress()">NO, RESELECT</button>
+          <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
+        </div>
+        
+      </div>
+    `
+      : `
+      <div>
+        <p>Votre adresse est-elle correcte ? Si oui, continuer</p>
+        <p> Ville : ${userInfo["city"]} </p>
+        <p> Quartier : ${userInfo["quarter"]} </p>
+        <div class="buttons"> 
+          <button class="btn btn-warning " onclick="reselectAddress()">NO, RESELECT</button>
+          <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
+        </div>
+      </div>
+    `;
+    pushPharmaMessage(address);
+  }else{
+    pushPharmaFeedbackMessages("city");
+    onDisplayCityDropDown();
+    enableTextarea(inputBox);
+  }
 
 }
-
 
 async function onSendButton(chatbox) {
 
@@ -94,14 +123,11 @@ async function onSendButton(chatbox) {
             return;
           }
 
-          // displays the drug options found on a table for the user to select the right one.
           const medicationTableHtml = prepareMedicationTable(userDrugs);
           pushPharmaMessage(medicationTableHtml);
           disableTextarea(inputBox);
           pushPharmaFeedbackMessages("choose-drug");
         
-          // shows the user a complaint if during the search process, the amount of drugs matching his input pass a certain number
-          // Hence the displayed drugs might contain the user desired drug.
           if (drugSearchComplaint) {
             pushPharmaFeedbackMessages("drug-search-complaint");
             return;
@@ -130,56 +156,57 @@ async function onSendButton(chatbox) {
         return;
       }
 
-      userInfo['phone'] = userPrompt; 
-      pushPharmaFeedbackMessages("confirm-payment");
-      pushPharmaFeedbackMessages("billing-request-followup");
+      userInfo['phone'] = userPrompt;
+      pushPharmaMessage(getTranslation("billing"))
+      messages.pop();
+
+      let accesstoken = await getAccessToken(
+        paymentInfo["username"],
+        paymentInfo["password"]
+      );
+
+      if (accesstoken["success"] === false) {
+        pushPharmaFeedbackMessages("network-error");
+        return;
+      }
+
+      token = accesstoken["token"];
+
+      let body = {
+        amount: 5,
+        phone: userInfo['phone'],
+        description: `You have received a billing request of ${totalCost} for your order from SOS Pharma. `,
+        reference: "Medication Order",
+      }
+
+      let payment = await mobilePayment(token, body);
+      if (payment["success"] === true) {
+        transactionId = payment["reference"];
+        userInfo['phone'] = userPrompt; 
+        pushPharmaFeedbackMessages("confirm-payment");
+        pushPharmaFeedbackMessages("billing-request-followup");
+      } else {
+        pushPharmaFeedbackMessages("resend-billing-request");
+      }
 
       currentStep ++;
       break;
 
     case 3:
 
-      //   let body = {
-      //     amount: 1,
-      //     phone_number: "237673572533",
-      //     description: "testing the api service",
-      //   };
-
-      //   let accesstoken = getAccessToken(
-      //     paymentInfo["AppUserName"],
-      //     paymentInfo["AppPassword"]
-      //   );
-      //   if (accesstoken["success"]) {
-      //     let payment = mobilePayment(response["token"], body);
-      //     if (payment["success"]) {
-      //       console.log(response["data"]);
-      //     } else {
-      //       console.log("failed to make payment");
-      //       pushPharmaFeedbackMessages("resend-billing-request");
-      //     }
-      //   } else {
-      //     console.log("failed to get access token.");
-      //   }
-      // order is supposed to be placed here 
-      // then user input waiting for the user confirmation
-
       if (userPrompt == "confirmed") {
-        confirmedPayment();
+        confirmedPayment(token, transactionId);
         return;
       } else if (userPrompt == "resend") {
         resendPayment();
         return;
       } else {
-        pushPharmaFeedbackMessages("keywords");
-        
+        pushPharmaFeedbackMessages("keywords"); 
       }
 
       break;
-    // case 4:
+    case 4:
 
-    case 5:
-
-      console.log("placing order case");
       if (userPrompt == "resend") {
         pushPharmaFeedbackMessages("placing-order");
         await sendMail(selectedSearchedDrugs, userInfo);

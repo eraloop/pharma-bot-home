@@ -19,7 +19,28 @@ function completeMedList() {
   currentStep = 1;
 }
 
-async function confirmedPayment() {
+async function checkTransactionStatus(token , transactionId) {
+  
+  let paymentStatus = await requestPaymentStatus(token , transactionId)
+  console.log(paymentStatus)
+  if (!paymentStatus) {
+    pushPharmaFeedbackMessages("order-failed");
+    enableTextarea(inputBox);
+    return;
+  } else {
+    pushPharmaFeedbackMessages("order-placed");
+    pushPharmaFeedbackMessages("order-followup");
+    currentStep++;
+  }
+
+}
+
+async function confirmedPayment(token , transactionId) {
+  console.log("confirmed payment")
+  console.log("token" + token)
+  console.log("transactionId" + transactionId)
+  await checkTransactionStatus(token , transactionId)
+
   pushPharmaFeedbackMessages("placing-order");
   disableTextarea(inputBox);
 
@@ -140,6 +161,8 @@ function onSelectQuarter(quarter) {
         <button class="btn btn-warning " onclick="reselectAddress()">NON, RESELECT</button>
       </div>
     `;
+    removeDataFromLocalStorage()
+    saveUserToLocalStorage(userInfo)
     pushPharmaMessage(address);
     pushPharmaMessage(getTranslation("drug"));
     enableTextarea(inputBox);
@@ -183,6 +206,8 @@ function selectPrescriptionType() {
 let locationDropdown = document.querySelector(".prescription-type");
 locationDropdown.innerHTML = "";
 
+let prescriptionType = (locale === 'en-US' || locale === 'en') ? ["Select Below", "Prescribed Drug", "Unprescribed Drug"] : ["Sélectionnez ci-dessous", "Ordonnance", 'Auto Medication']
+
 prescriptionType.forEach((optionText) => {
     const option = document.createElement("option");
     option.value = JSON.stringify(optionText);
@@ -199,7 +224,7 @@ locationDropdown.addEventListener("change", function() {
 function onSelectPrescriptionType(response){
 userInfo['prescriptionType'] = response
 
-let totalCost = 0;
+totalCost = 0;
 let deliveryCost = 500, sosPharmaCost = 1000;
 selectedSearchedDrugs.forEach((currentDrug) => {
     totalCost += currentDrug.price * currentDrug.quantity;
@@ -217,14 +242,15 @@ currentStep++;
 }
 
 function reselectAddress(){
-messages.pop();messages.pop(); messages.pop()
-if(userInfo['quarter'] !== undefined){
-    messages.pop();
-}
-updateChatText(chatBox, messages)
-pushPharmaFeedbackMessages("city");
-onDisplayCityDropDown();
-disableTextarea(inputBox);
+  messages.pop();messages.pop(); messages.pop()
+  if(userInfo['quarter'] !== undefined){
+      messages.pop();
+  }
+  removeDataFromLocalStorage()
+  updateChatText(chatBox, messages)
+  pushPharmaFeedbackMessages("city");
+  onDisplayCityDropDown();
+  disableTextarea(inputBox);
 }
 
 function addMedicationToCart(index) {
@@ -250,3 +276,19 @@ function restartConversation() {
   
 }
 
+function saveUserToLocalStorage(userInfo){
+  localStorage.setItem("user", userInfo);
+}
+
+function getUserFromLocalStorage(){
+  return JSON.parse(JSON.parse(localStorage.getItem("user")));
+}
+
+function addressCorrect(){
+  pushPharmaMessage(getTranslation("drug"));
+  enableTextarea(inputBox);
+}
+
+function removeDataFromLocalStorage(){
+  localStorage.removeItem("user");
+}

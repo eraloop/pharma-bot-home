@@ -37,6 +37,7 @@
     "order-delivery" : "Your drugs will ne delivered to you in the next one hour.",
 
     "default": "Invalid input, please retype your request",
+    "billing": "Processig billing, Please wait",
 
     "waMessage": "Please click on the link above to get your order invoice. Thanks for using SOS Pharma"
 
