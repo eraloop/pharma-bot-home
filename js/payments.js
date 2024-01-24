@@ -59,7 +59,7 @@ async function mobilePayment(token, data) {
           'Content-Type': 'application/json',
           'Authorization': 'Token ' + token,
           'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-          'Access-Control-Allow-Origin': '*',
+          // 'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'POST',
         },
       }

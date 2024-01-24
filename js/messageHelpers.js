@@ -98,6 +98,9 @@ function pushPharmaFeedbackMessages(currentCase) {
       case 'proccessing-payment':
           pushPharmaMessage(getTranslation("billing"));
         break;
+      case 'drugs-cleared':
+        pushPharmaMessage(getTranslation("drugs-cleared"));
+        break;
       default:
         pushPharmaMessage(getTranslation("default"));
         break;

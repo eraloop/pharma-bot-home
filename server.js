@@ -38,8 +38,8 @@ async function onStart() {
   orderKeywords = getOrderKeywords(locale);
   locations = await onLoadCities();
   response = await loadExcel();
-  user = await getUserFromLocalStorage();
-  user = JSON.parse(JSON.parse(user));
+  user = getUserFromLocalStorage();
+  user = JSON.parse(user);
   
   drugList = response["drugs"];
   let drugLoaded = response["isLoaded"];
@@ -182,8 +182,6 @@ async function onSendButton(chatbox) {
         description: `You have received a billing request of ${totalCost} for your order from SOS Pharma. `,
         reference: "Medication Order",
       }
-
-      console.log("body for payment request ", body)
 
       await makePayment(token, body);
       currentStep ++;

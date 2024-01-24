@@ -38,5 +38,8 @@
 
     "default": "Entrée invalide, veuillez retaper votre demande",
     "billing": "Facturation en cours, veuillez patienter",
+
+    "drugs-cleared": "Drugs cleared \n Please retype the name of your desired drug",
+
     "waMessage": "Veuillez cliquer sur le lien ci-dessus pour obtenir la facture de votre commande. Merci de faire appel à SOS Pharma"
 }

@@ -27,7 +27,7 @@
     "input": "Please reply with the above specified keywords",
     "more-meds": "<p> Do you wish to order any other medication ?</p><div class='buttons'><button class='btn btn-info' onclick='continueSelecting()'> CONTINUE </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> DONE SELECTING </button></div>",
     "drug-found": "The requested drug isnt available, Please make sure the spelling is correct and try again",
-    "choose-drug": "<p>Please select your desired medication from the list above, if your intended medication is not included, click the button below</p> <button class='btn btn-warning list-clear-button' onclick='restartConversation()'> CLEAR LIST </button>",
+    "choose-drug": "<p>Please select your desired medication from the list above, if your intended medication is not included, click the button below</p> <button class='btn btn-warning list-clear-button' onclick='clearDrugList()'> CLEAR LIST </button>",
     "drug-search-complaint": "The amount of drugs matching this name is alot, please if your required drug isnt found on this list, check the spelling and search again.",
     "meds-empty": "Please choose a medication before proceeding to the next stage of your purchase.",
     "order-failed": " <p> Failed to place your order </p> <button class='btn btn-info order-resend-button' onclick='confirmedPayment()'> RESEND ORDER </button>",
@@ -39,6 +39,7 @@
 
     "default": "Invalid input, please retype your request",
     "billing": "Processig billing, Please wait",
+    "drugs-cleared": "Drugs cleared \n Please retype the name of your desired drug",
 
     "waMessage": "Please click on the link above to get your order invoice. Thanks for using SOS Pharma"
 

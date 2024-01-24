@@ -12,6 +12,14 @@ function clearMedicationList() {
   enableTextarea(inputBox);
 }
 
+function clearDrugList() {
+  userDrugs = [];
+  messages.pop(); messages.pop();
+  pushPharmaFeedbackMessages("drugs-cleared");
+  currentStep = 0;
+  enableTextarea(inputBox);
+}
+
 async function makePayment(token, body){
   let payment = await mobilePayment(token, body);
   if (payment["success"] === true) {
@@ -289,11 +297,11 @@ function restartConversation() {
 }
 
 function saveUserToLocalStorage(userInfo){
-  localStorage.setItem("user", userInfo);
+  localStorage.setItem("user", JSON.stringify(userInfo));
 }
 
 function getUserFromLocalStorage(){
-  return JSON.parse(JSON.parse(localStorage.getItem("user")));
+  return localStorage.getItem("user");
 }
 
 function addressCorrect(){
