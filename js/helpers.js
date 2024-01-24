@@ -261,13 +261,19 @@ function disableTextarea(textarea) {
   clearTextField(textarea);
   textarea.disabled = true;
   textarea.classList.add("disabled");
+  textarea.nextElementSibling.children[0].style.filter = 'grayscale(100%)'
+  textarea.nextElementSibling.children[0].style.pointerEvents = 'none'
   textarea.parentNode.classList.add("disabled-parent");
+  
 }
 
 function enableTextarea(textarea) {
   textarea.disabled = false;
   textarea.classList.remove("disabled");
+  textarea.nextElementSibling.children[0].style.filter = ''
+  textarea.nextElementSibling.children[0].style.pointerEvents = 'cursor'
   textarea.parentNode.classList.remove("disabled-parent");
+  textarea.focus();
 }
 
 function disableButton(button) {

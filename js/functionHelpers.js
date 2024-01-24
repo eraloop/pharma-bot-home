@@ -12,6 +12,17 @@ function clearMedicationList() {
   enableTextarea(inputBox);
 }
 
+async function makePayment(token, body){
+  let payment = await mobilePayment(token, body);
+  if (payment["success"] === true) {
+    transactionId = payment["reference"];
+    pushPharmaFeedbackMessages("confirm-payment");
+    pushPharmaFeedbackMessages("billing-request-followup");
+  } else {
+    pushPharmaFeedbackMessages("billing-failed");
+  }
+}
+
 function completeMedList() {
   console.log("complete button");
   pushPharmaFeedbackMessages("identity");
@@ -22,7 +33,7 @@ function completeMedList() {
 async function checkTransactionStatus(token , transactionId) {
   
   let paymentStatus = await requestPaymentStatus(token , transactionId)
-  console.log(paymentStatus)
+  console.log("result from chek transaction status" ,paymentStatus)
   if (!paymentStatus) {
     pushPharmaFeedbackMessages("order-failed");
     enableTextarea(inputBox);
@@ -37,8 +48,8 @@ async function checkTransactionStatus(token , transactionId) {
 
 async function confirmedPayment(token , transactionId) {
   console.log("confirmed payment")
-  console.log("token" + token)
-  console.log("transactionId" + transactionId)
+  console.log("token" , token)
+  console.log("transactionId" , transactionId)
   await checkTransactionStatus(token , transactionId)
 
   pushPharmaFeedbackMessages("placing-order");
@@ -69,7 +80,8 @@ function continueSelecting() {
   currentStep = 0;
 }
 
-function resendPayment() {
+async function resendPayment(token, body) {
+  await makePayment(token, body);
   pushPharmaFeedbackMessages("resend-billing-request");
   pushPharmaFeedbackMessages("billing-request-followup");
 }

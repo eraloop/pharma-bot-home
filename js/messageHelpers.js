@@ -53,6 +53,9 @@ function pushPharmaFeedbackMessages(currentCase) {
       case 'billing-request-followup':
         pushPharmaMessage(getTranslation("billing-request-followup"));
         break;
+      case 'billing-failed':
+          pushPharmaMessage(getTranslation("billing-failed"));
+          break;
       case 'no-medication':
         pushPharmaMessage(getTranslation("no-medication"));
         break;

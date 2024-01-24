@@ -21,6 +21,7 @@
     "medications-complete": "<p> Are your medications correct and complete ??</p><div class='buttons'> <button class='btn btn-warning med-clear-button' onclick='clearMedicationList()'>CLEAR SELECTED LIST</button><button class='btn btn-success med-complete-button' onclick='completeMedList()'>COMPLETE</button></div>",
     "resend-billing-request": "Billing request has been resend, please confirm",
     "billing-request-followup": "<p> Have you confirmed the payment ?? or you didnt receive the billing request ?</p> <div class='buttons'> <button class='btn btn-info payment-resend-button' onclick='resendPayment()'>RESEND BILLING</button><button class='btn btn-success payment-confirmed-button' onclick='confirmedPayment()'>CONFIRMED BILLING</button></div>",
+    "billing-failed": "Failed to send billing request, please try again <button class='btn btn-info payment-resend-button' onclick='resendPayment()'>RESEND BILLING</button>",
     "no-medication": "No Medication identified, please provide the list of medications you wish to order as specified by your medical personnel",
     "keywords": "Please reply with the above specified keywords",
     "input": "Please reply with the above specified keywords",

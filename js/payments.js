@@ -1,38 +1,36 @@
+
 async function getAccessToken(username, password) {
   try {
+    const response = await axios.post(
+      'https://www.campay.net/api/token/',
+      {
+        username: username,
+        password: password,
+      },
+      {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET',
+        },
+      }
+    );
 
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+    const token = response.data.token;
+    console.log("token from accessToken function " + token);
 
-    const raw = JSON.stringify({
-      username: username,
-      password: password,
-    });
-
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    const response = await fetch("https://www.campay.net/api/token/", requestOptions);
-    const result = await response.text();
-    const token  = JSON.parse(result)["token"];
-    console.log("token from accesstoken function " + token)
-
-    if(token === undefined || token === ''){
+    if (!token) {
       return {
         success: false,
       };
-    }else{
+    } else {
       return {
         success: true,
-        token: token
+        token: token,
       };
     }
-    
-
   } catch (error) {
     console.error(error);
     return {
@@ -43,52 +41,49 @@ async function getAccessToken(username, password) {
 
 
 async function mobilePayment(token, data) {
-  console.log("data entering payment function" , data)
-  console.log("token entering payment function" , token)
+  console.log("data entering payment function", data);
+  console.log("token entering payment function", token);
+
   try {
+    const response = await axios.post(
+      'https://www.campay.net/api/collect/',
+      {
+        amount: data['amount'],
+        from: '237' + data['phone'],
+        description: data['description'],
+        external_reference: data['reference'],
+      },
+      {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Token ' + token,
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST',
+        },
+      }
+    );
 
-    let myHeaders = new Headers();
-    myHeaders.append("Accept", "application/json");
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", "Token  " + token);
-    myHeaders.append("Access-Control-Allow-Headers", "*");
+    const result = response.data;
+    console.log("result from payment function " + JSON.stringify(result));
 
-    console.log("headers for my payment function " + JSON.parse(myHeaders))
+    const reference = result.reference;
+    const operator = result.operator;
+    const status = result.status;
 
-    const raw = JSON.stringify({
-      amount: data['amount'],
-      from: '237'+data['phone'],
-      description: data['description'],
-      external_reference: data['reference'],
-    });
-
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    const response = await fetch("https://www.campay.net/api/collect/", requestOptions);
-    const result = await response.text();
-    console.log("result from payment function " + result)
-
-    const refrence = result["reference"];
-    const status = result["status"];
-    console.log("status from my mobile payment " + status)
-    console.log("reference code from my mobile payment " + refrence)
-
-    if(status === 'FAILED'){
+    if (reference === undefined || reference === '' || status === 'FAILED' ) {
       return {
         success: false,
       };
-    }else{
+    } 
+    else {
       return {
         success: true,
-        reference: refrence
+        reference: reference,
+        operator: operator,
       };
     }
-
   } catch (error) {
     console.error(error);
     return {
@@ -99,39 +94,54 @@ async function mobilePayment(token, data) {
 
 
 async function requestPaymentStatus(token, transactionId) {
-
-  console.log("token " + token)
-  console.log("transactionId " + transactionId)
+  console.log("token ", token);
+  console.log("transactionId ", transactionId);
 
   try {
+    const response = await axios.get(`https://www.campay.net/api/transaction/${transactionId}/`, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Token ' + token,
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET',
+      },
+    });
 
-    let myHeaders = new Headers();
-    myHeaders.append("Authorization", "Token " + token);
-    myHeaders.append("Accept", "application/json");
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Access-Control-Allow-Headers", "*");
+    const result = response.data;
+    console.log("result from payment status function ", result);
+    const status = result.status;
+    const reference = result.reference;
 
-    const requestOptions = {
-      method: 'GET',
-      headers: myHeaders,
-      redirect: 'follow'
-    };
+    console.log(status);
 
-    const response = await fetch(`https://www.campay.net/api/transaction/${transactionId}/`, requestOptions);
-    const result = await response.text();
-
-    const status = JSON.parse(result)["status"];
-    console.log(status)
-    
-    return {
-      success: true,
-      status: status
-    };
+    if (status === 'SUCCESSFUL') {
+      return {
+        success: true,
+        status: status,
+        reference: reference,
+      };
+    }else if(status === "PENDING"){
+      return {
+        success: true,
+        status: status,
+        reference: reference,
+      };
+    }else{
+      return {
+        success: false,
+      };
+    }
 
   } catch (error) {
     console.error('Error:', error);
+    return {
+      success: false,
+    };
   }
 }
+
 
 async function getPaymentLink(){
   try {

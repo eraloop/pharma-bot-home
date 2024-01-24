@@ -20,6 +20,7 @@
     "medications-complete": "<p> Vos médicaments sont-ils corrects et complets ??</p><div class='buttons'> <button class='btn btn-warning med-clear-button' onclick='clearMedicationList()'>EFFACER LA LISTE SÉLECTIONNÉE</button><button class='btn btn-success med-complete-button' onclick='completeMedList()'>COMPLET</button></div>",
     "resend-billing-request": "La demande de facturation a été renvoyée, veuillez confirmer",
     "billing-request-followup": "<p> Avez-vous confirmé le paiement ?? ou vous n'avez pas reçu la demande de facturation ?</p> <div class='buttons'> <button class='btn btn-info payment-resend-button' onclick='resendPayment()'>RENVOYER LA FACTURATION</button><button class='btn btn-success payment-confirmed-button' onclick='confirmedPayment()'>FACTURATION CONFIRMÉE</button></div>",
+    "billing-failed": "L'envoi de la demande de facturation a échoué, veuillez réessayer. <button class='btn btn-info payment-resend-button' onclick='resendPayment()'>RENVOYER LA FACTURATION</button>",
     "no-medication": "Aucun médicament identifié, veuillez fournir la liste des médicaments que vous souhaitez commander comme indiqué par votre personnel médical",
     "keywords": "Veuillez répondre avec les mots clés spécifiés ci-dessus",
     "input": "Veuillez répondre avec les mots clés spécifiés ci-dessus",

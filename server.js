@@ -150,6 +150,7 @@ async function onSendButton(chatbox) {
       break;
     case 2:
 
+      disableTextarea(inputBox)
       const isValid = validateCameroonianPhoneNumber(userPrompt.trim());
       if (!isValid["isValid"]) {
         pushPharmaFeedbackMessages("phone");
@@ -160,6 +161,8 @@ async function onSendButton(chatbox) {
       pushPharmaMessage(getTranslation("billing"))
       messages.pop();
 
+      console.log("this is the medication total cost",totalCost)
+ 
       let accesstoken = await getAccessToken(
         paymentInfo["username"],
         paymentInfo["password"]
@@ -171,37 +174,30 @@ async function onSendButton(chatbox) {
       }
 
       token = accesstoken["token"];
-
-      let body = {
+      
+      let body = { 
+        // amount: totalCost,
         amount: 5,
         phone: userInfo['phone'],
         description: `You have received a billing request of ${totalCost} for your order from SOS Pharma. `,
         reference: "Medication Order",
       }
 
-      let payment = await mobilePayment(token, body);
-      if (payment["success"] === true) {
-        transactionId = payment["reference"];
-        userInfo['phone'] = userPrompt; 
-        pushPharmaFeedbackMessages("confirm-payment");
-        pushPharmaFeedbackMessages("billing-request-followup");
-      } else {
-        pushPharmaFeedbackMessages("resend-billing-request");
-      }
+      console.log("body for payment request ", body)
 
+      await makePayment(token, body);
       currentStep ++;
       break;
 
     case 3:
 
+      console.log("current step 3")
       if (userPrompt == "confirmed") {
         confirmedPayment(token, transactionId);
         return;
       } else if (userPrompt == "resend") {
-        resendPayment();
+        resendPayment(token, body);
         return;
-      } else {
-        pushPharmaFeedbackMessages("keywords"); 
       }
 
       break;
