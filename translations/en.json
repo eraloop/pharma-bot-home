@@ -40,6 +40,7 @@
     "default": "Invalid input, please retype your request",
     "billing": "Processig billing, Please wait",
     "drugs-cleared": "Drugs cleared \n Please retype the name of your desired drug",
+    "pay-link": "Please click the payment link below to pay for your medication",
 
     "waMessage": "Please click on the link above to get your order invoice. Thanks for using SOS Pharma"
 

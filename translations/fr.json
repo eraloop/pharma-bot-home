@@ -40,6 +40,7 @@
     "billing": "Facturation en cours, veuillez patienter",
 
     "drugs-cleared": "Drugs cleared \n Please retype the name of your desired drug",
+    "pay-link": "Please click the payment link below to pay for your medication",
 
     "waMessage": "Veuillez cliquer sur le lien ci-dessus pour obtenir la facture de votre commande. Merci de faire appel à SOS Pharma"
 }

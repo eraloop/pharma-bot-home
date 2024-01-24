@@ -48,8 +48,8 @@ async function mobilePayment(token, data) {
     const response = await axios.post(
       'https://www.campay.net/api/collect/',
       {
-        amount: data['amount'],
-        from: '237' + data['phone'],
+        amount: "5",
+        from: "237"+data['phone'],
         description: data['description'],
         external_reference: data['reference'],
       },
@@ -143,28 +143,43 @@ async function requestPaymentStatus(token, transactionId) {
 }
 
 
-async function getPaymentLink(){
+async function getPaymentLink(token){
   try {
     const myHeaders = new Headers();
     myHeaders.append("Authorization", "Token " + token);
     myHeaders.append("Content-Type", "application/json");
 
-    const requestOptions = {
-      method: 'GET',
+    var raw = JSON.stringify({
+      "amount": "5",
+      "currency": "XAF",
+      "description": "Test",
+      "external_reference": "",
+      "redirect_url": "https://taupe-frangollo-a700dd.netlify.app/chat"
+    });
+    
+    var requestOptions = {
+      method: 'POST',
       headers: myHeaders,
+      body: raw,
       redirect: 'follow'
     };
 
-    const response = await fetch(`https://www.campay.net/api/transaction/${transactionId}/`, requestOptions);
+    const response = await fetch(`https://www.campay.net/api/get_payment_link/`, requestOptions);
     const result = await response.text();
 
-    const status = JSON.parse(result)["status"];
-    console.log(status)
-    
-    return {
-      success: true,
-      status: status
-    };
+    const link = JSON.parse(result)["link"];
+
+    if(link === undefined || link === ''){
+      return {
+        success: true,
+        link: link
+      };
+    }else{
+      return {
+        success: true,
+        link: link
+      };
+    }
 
   } catch (error) {
     console.error('Error:', error);

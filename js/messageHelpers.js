@@ -101,6 +101,9 @@ function pushPharmaFeedbackMessages(currentCase) {
       case 'drugs-cleared':
         pushPharmaMessage(getTranslation("drugs-cleared"));
         break;
+      case 'pay-link':
+        pushPharmaMessage(getTranslation("pay-link"));
+        break;
       default:
         pushPharmaMessage(getTranslation("default"));
         break;

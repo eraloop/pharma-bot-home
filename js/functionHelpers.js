@@ -27,7 +27,14 @@ async function makePayment(token, body){
     pushPharmaFeedbackMessages("confirm-payment");
     pushPharmaFeedbackMessages("billing-request-followup");
   } else {
-    pushPharmaFeedbackMessages("billing-failed");
+    pushPharmaFeedbackMessages("pay-link");
+    let response = await getPaymentLink(token);
+    if(response['success']){
+      pushPharmaMessage(`<a class="btn btn-success" target="_blank" href="${response['link']}">Click to Pay</a>`);
+    }else{
+      pushPharmaFeedbackMessages("billing-failed");
+    }
+    
   }
 }
 
