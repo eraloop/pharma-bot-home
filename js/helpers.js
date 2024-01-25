@@ -152,7 +152,7 @@ function matchUserDrugs(drugs, userPrompts, orderKeywords) {
         break;
       }
 
-      if (medicationName.substring(0, 2) == searchString.substring(0, 2)) {
+      if (medicationName.substring(0, 3) == searchString.substring(0, 3)) {
         drugmatch = stringSearch(medicationName, searchString);
         if (!drugmatch) {
           drugmatch = levenshteinSearch(medicationName, searchString);

@@ -30,6 +30,7 @@
       })();
     </script>
 
+  <script src="https://www.campay.net/sdk/js?app-id=VYZPYpuqFkyUUTpDXwayh6tlk9OW19Wj42KZHGuKPCD1oWjdBTuQ1ov73UgTxYsoA7L7G1M6Mpw28ZWl_Zdmzw"></script>
 </head>
 <body>
     <div class="chatbox">
@@ -86,5 +87,25 @@
           window.history.back();
         }
       </script>
+
+<script>
+  campay.options({
+      payButtonId: "payButton", //Required
+      description: "", //Required
+      amount: "", //Optional
+      currency: "XAF", //Required
+      externalReference: "", //Optional
+      redirectUrl: "", //Optional
+  });
+  
+  campay.onSuccess = function (data) { 
+      alert('Status: '+data.status+'\n reference: '+data.reference) 
+  }
+  
+  campay.onFail = function (data) { 
+      alert('Status: '+data.status+'\n reference: '+data.reference) 
+  }
+
+</script>
 </body>
 </html>
