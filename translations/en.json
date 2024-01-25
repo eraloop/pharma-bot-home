@@ -3,7 +3,7 @@
     "home-main-header-two" : "medication delivered",
     "home-main-content" : "Fast, secure and efficient, SOS Pharma is an online drug delivery service. Place an order and have it delivered within a short time.",
     "home-chatbutton-text": "Order Medication",
-    "home-callbutton-text": "Health Infoline: (+237) 653 080 072",
+    "home-callbutton-text": "Infoline: 653 080 072",
 
     "greeting-text": "<p class='font-weight-bold'>Hello!!.</p> <p>Welcome to SOS Pharma</p>",
     "network-error": "<p class='font-weight-bold'>Network error!!.</p>  <p>Failed to load required resources <br>Please check your internet connection and refresh the page</p>",
