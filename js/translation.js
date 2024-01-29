@@ -5,15 +5,15 @@ let translations = {};
 async function getUserLocale() {
   const userLocale = navigator.language || navigator.userLanguage;
   if(userLocale !== 'fr' || userLocale !== 'fr-FR' || userLocale !== 'en-US' || userLocale !== 'en'){
-    return 'en'
+    return 'fr'
   }
   if(userLocale === 'fr' || userLocale === 'fr-FR'){
     return 'fr'
   }
-  if(userLocale === 'en-US' || userLocale === 'en'){
-    return 'en'
-  }
-  return 'en'
+  // if(userLocale === 'en-US' || userLocale === 'en'){
+  //   return 'en'
+  // }
+  return userLocale
 }
 
 document.addEventListener("DOMContentLoaded", async() => {
