@@ -4,10 +4,9 @@ function prepareMedicationTable(medications) {
       <table id="table table-striped medication-table">
         <thead class="thead-dark">
           <tr>
-            <th>No.</th>
-            <th>Medication Name</th>
-            <th>Price</th>
-            <th>Action</th>
+            <th class='p-3'>Medication Name</th>
+            <th class='p-3'>Price</th>
+            <th class='p-3'>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -19,10 +18,9 @@ function prepareMedicationTable(medications) {
 
     tableHtml += `
           <tr>
-            <td>${index}</td>
-            <td>${medicationName}</td>
-            <td>XAF ${medicationPrice.toLocaleString()}</td>
-            <td><button class="btn btn-success btn-sm select-medication-option" onclick="addMedicationToCart(${index})">Select</button></td>
+            <td class='p-2'>${medicationName}</td>
+            <td class='p-2'>XAF ${medicationPrice.toLocaleString()}</td>
+            <td class='p-2'><button class="btn btn-success btn-sm select-medication-option" onclick="addMedicationToCart(${index})">Select</button></td>
           </tr>
       `;
   });
@@ -43,10 +41,10 @@ function prepareMedicationDataTable(medications, totalCost, deliveryCost, sosPha
       <table id="table table-striped medication-table">
         <thead class="thead-dark">
           <tr>
-            <th>Medication Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Cost</th>
+            <th class='p-3'>Medication Name</th>
+            <th class='p-3'>Quantity</th>
+            <th class='p-3'>Price</th>
+            <th class='p-3'>Cost</th>
           </tr>
         </thead>
         <tbody class="table-striped">
@@ -59,10 +57,10 @@ function prepareMedicationDataTable(medications, totalCost, deliveryCost, sosPha
 
     tableHtml += `
         <tr>
-          <td>${medicationName}</td>
-          <td>${medication.quantity}</td>
-          <td>XAF ${medicationPrice.toLocaleString()}</td>
-          <td>XAF ${cost.toLocaleString()}</td>
+          <td class='p-2'>${medicationName}</td>
+          <td class='p-2'>${medication.quantity}</td>
+          <td class='p-2'>XAF ${medicationPrice.toLocaleString()}</td>
+          <td class='p-2'>XAF ${cost.toLocaleString()}</td>
         </tr>
       `;
   });

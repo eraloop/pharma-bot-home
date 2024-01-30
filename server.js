@@ -16,10 +16,17 @@ let city = "", selectedPickupLocation = "";
 let messages  = [], drugList = [], userPrompts = [], userDrugs  = [], userDrugPlusWeight = [], updatedDrugObjects = [], selectedSearchedDrugs = [], orderKeywords = [], locations = [], quarters = [], drugQuantity = [0,1,2,3,4,5,6,7,8,9];
 let isDrugFound = false, isMessagesLoaded = false, isWaitingForOptions = false;
 let paymentInfo = {}, userInfo = {}, user = {};
+
+let orderInfo = {
+  "orderId": '',
+  "paymentReference": "",
+  "paymentPhone": "",
+};
+
 let message = "", currentDrug = 0, currentStep = 0, totalCost = 0;
 
 // payment information
-let token = "", transactionId = "";
+let token = "290ed6ac188a2f1d30baf8533fcaa09e2c77591d", transactionId = "";
 
 // get refrence to the html elements relevant to the js file
 sendButton.addEventListener("click", () => onSendButton(chatBox));
@@ -61,14 +68,14 @@ async function onStart() {
   if(user !== null){
     userInfo = user;
     let address =
-    locale === "en-US" || locale === "en"
+    locale === "fr-FR" || locale === "fr"
       ? `
       <div>
         <p>Is your address information correct ? If yes , continue</p>
         <p> City : ${userInfo["city"]} </p>
         <p> Quarter : ${userInfo["quarter"]} </p>
         <div class="buttons"> 
-          <button class="btn btn-warning " onclick="reselectAddress()">NO, RESELECT</button>
+          <button class="btn btn-danger " onclick="reselectAddress()">NO, RESELECT</button>
           <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
         </div>
         
@@ -80,8 +87,8 @@ async function onStart() {
         <p> Ville : ${userInfo["city"]} </p>
         <p> Quartier : ${userInfo["quarter"]} </p>
         <div class="buttons"> 
-          <button class="btn btn-warning " onclick="reselectAddress()">NO, RESELECT</button>
-          <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
+          <button class="btn btn-danger" onclick="reselectAddress()">NO, RESELECT</button>
+          <button class="btn btn-success" onclick="addressCorrect()">CORRECT</button>
         </div>
       </div>
     `;
@@ -123,10 +130,10 @@ async function onSendButton(chatbox) {
             return;
           }
 
+          pushPharmaFeedbackMessages("choose-drug");
           const medicationTableHtml = prepareMedicationTable(userDrugs);
           pushPharmaMessage(medicationTableHtml);
           disableTextarea(inputBox);
-          pushPharmaFeedbackMessages("choose-drug");
         
           if (drugSearchComplaint) {
             pushPharmaFeedbackMessages("drug-search-complaint");
@@ -154,6 +161,7 @@ async function onSendButton(chatbox) {
       const isValid = validateCameroonianPhoneNumber(userPrompt.trim());
       if (!isValid["isValid"]) {
         pushPharmaFeedbackMessages("phone");
+        enableTextarea(inputBox)
         return;
       }
 
@@ -161,7 +169,7 @@ async function onSendButton(chatbox) {
       pushPharmaMessage(getTranslation("billing"))
       messages.pop();
 
-      console.log("this is the medication total cost",totalCost)
+      // console.log("this is the medication total cost",totalCost)
  
       let accesstoken = await getAccessToken(
         paymentInfo["username"],
@@ -177,13 +185,28 @@ async function onSendButton(chatbox) {
       
       let body = { 
         // amount: totalCost,
-        amount: 5,
+        amount: 2,
         phone: userInfo['phone'],
         description: `You have received a billing request of ${totalCost} for your order from SOS Pharma. `,
         reference: "Medication Order",
       }
 
-      await makePayment(token, body);
+      let paymentResponse = await makePayment(token, body);
+
+      if(paymentResponse == false){
+
+        pushPharmaMessage(getTranslation("payment-button"));
+        let res = await paymentWidget(body);
+        transactionId = res.reference
+
+        orderInfo['paymentReference'] = transactionId,
+        orderInfo['paymentPhone'] = userInfo['phone'],
+        orderInfo['orderId'] = "orderId" + Date.now().toString(36) + Math.random().toString(16).slice(2)
+
+        await sendOrderMail()
+
+      }
+
       currentStep ++;
       break;
 

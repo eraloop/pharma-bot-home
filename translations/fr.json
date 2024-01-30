@@ -17,7 +17,7 @@
     "quarter": "<p>Où habitez-vous dans cette ville ?</p> <select class='pickup-location-dropdown'></select>",
     "prescribtion-type": "<p>Ces médicaments sont-ils prescrits ou non prescrits ?</p><select class='prescription-type'></select>",
     "medications": "Quels autres médicaments souhaitez-vous commander ?",
-    "medications-complete": "<p> Vos médicaments sont-ils corrects et complets ??</p><div class='buttons'> <button class='btn btn-warning med-clear-button' onclick='clearMedicationList()'>EFFACER LA LISTE SÉLECTIONNÉE</button><button class='btn btn-success med-complete-button' onclick='completeMedList()'>COMPLET</button></div>",
+    "medications-complete": "<p> Vos médicaments sont-ils corrects et complets ??</p><div class='buttons'> <button class='btn btn-danger med-clear-button' onclick='clearMedicationList()'>EFFACER LA LISTE SÉLECTIONNÉE</button><button class='btn btn-success med-complete-button' onclick='completeMedList()'>COMPLET</button></div>",
     "resend-billing-request": "La demande de facturation a été renvoyée, veuillez confirmer",
     "billing-request-followup": "<p> Avez-vous confirmé le paiement ?? ou vous n'avez pas reçu la demande de facturation ?</p> <div class='buttons'> <button class='btn btn-info payment-resend-button' onclick='resendPayment()'>RENVOYER LA FACTURATION</button><button class='btn btn-success payment-confirmed-button' onclick='confirmedPayment()'>FACTURATION CONFIRMÉE</button></div>",
     "billing-failed": "L'envoi de la demande de facturation a échoué, veuillez réessayer. <button class='btn btn-info payment-resend-button' onclick='resendPayment()'>RENVOYER LA FACTURATION</button>",
@@ -26,7 +26,7 @@
     "input": "Veuillez répondre avec les mots clés spécifiés ci-dessus",
     "more-meds": "<p> Souhaitez-vous commander d'autres médicaments ? </p> <div class='buttons'><button class='btn btn-info med-done-button' onclick='continueSelecting()'> CONTINUER </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> SÉLECTION TERMINÉE </button></div>",
     "drug-found": "Le médicament demandé n'est pas disponible, veuillez vous assurer que l'orthographe est correcte et réessayez",
-    "choose-drug": "<p>Veuillez sélectionner le médicament souhaité dans la liste ci-dessus. Si le médicament souhaité n'est pas inclus, cliquez sur le bouton ci-dessous.</p> <button class='btn btn-warning list-clear-button' onclick='restartConversation()'> EFFACER LA LISTE </button>",
+    "choose-drug": "<p class='bold-text>Veuillez sélectionner le médicament souhaité dans la liste ci-dessus. Si le médicament souhaité n'est pas inclus, cliquez sur le bouton ci-dessous.</p> <button class='btn btn-danger list-clear-button' onclick='restartConversation()'> EFFACER LA LISTE </button>",
     "drug-search-complaint": "Le nombre de médicaments correspondant à ce nom est important, veuillez vérifier l'orthographe et rechercher à nouveau.",
     "meds-empty": "Veuillez choisir un médicament avant de passer à l'étape suivante de votre achat.",
     "order-failed": " <p> Impossible de passer votre commande </p> <button class='btn btn-info order-resend-button' onclick='confirmedPayment()'> REENVOYER LA COMMANDE </button>",
@@ -42,5 +42,6 @@
     "drugs-cleared": "Drugs cleared \n Please retype the name of your desired drug",
     "pay-link": "Please click the payment link below to pay for your medication",
 
-    "waMessage": "Veuillez cliquer sur le lien ci-dessus pour obtenir la facture de votre commande. Merci de faire appel à SOS Pharma"
+    "waMessage": "Veuillez cliquer sur le lien ci-dessus pour obtenir la facture de votre commande. Merci de faire appel à SOS Pharma",
+    "payment-button": "<button class='btn btn-success' id='payButton' onclick='paymentWidget()'> Click To Pay </button>"
 }

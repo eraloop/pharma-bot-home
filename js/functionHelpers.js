@@ -20,23 +20,23 @@ function clearDrugList() {
   enableTextarea(inputBox);
 }
 
-async function makePayment(token, body){
-  let payment = await mobilePayment(token, body);
-  if (payment["success"] === true) {
-    transactionId = payment["reference"];
-    pushPharmaFeedbackMessages("confirm-payment");
-    pushPharmaFeedbackMessages("billing-request-followup");
-  } else {
-    pushPharmaFeedbackMessages("pay-link");
-    let response = await getPaymentLink(token);
-    if(response['success']){
-      pushPharmaMessage(`<a class="btn btn-success" target="_blank" href="${response['link']}">Click to Pay</a>`);
-    }else{
-      pushPharmaFeedbackMessages("billing-failed");
+async function makePayment(token, body) {
+  try {
+
+    let payment = await mobilePayment(token, body);
+    if (payment["success"] === true) {
+      transactionId = payment["reference"];
+      pushPharmaFeedbackMessages("confirm-payment");
+      pushPharmaFeedbackMessages("billing-request-followup");
+      return true;
+    } else {
+      return false
     }
-    
+  } catch (error) {
+    console.error("Error in makePayment:", error);
   }
 }
+
 
 function completeMedList() {
   console.log("complete button");
@@ -61,32 +61,44 @@ async function checkTransactionStatus(token , transactionId) {
 
 }
 
-async function confirmedPayment(token , transactionId) {
-  console.log("confirmed payment")
-  console.log("token" , token)
-  console.log("transactionId" , transactionId)
-  await checkTransactionStatus(token , transactionId)
+async function sendOrderMail(){
 
+  try{
+
+    let response = await sendMail(selectedSearchedDrugs, userInfo);
+    if (!response) {
+      pushPharmaFeedbackMessages("order-failed");
+      enableTextarea(inputBox);
+      return;
+    } else {
+      
+      pushPharmaFeedbackMessages("order-sent");
+      pushPharmaMessage(getTranslation("order-delivery"));
+
+      let waLink = generateWhatsAppLink(orderInfo, userInfo)
+      pushPharmaMessage(waLink)
+      pushPharmaMessage(getTranslation("waMessage"));
+
+      return;
+    }
+
+  }catch(e){
+    console.log("order mail failed to send")
+  }
+}
+
+async function confirmedPayment() {
+
+  await checkTransactionStatus(token , transactionId)
   pushPharmaFeedbackMessages("placing-order");
   disableTextarea(inputBox);
 
-  let response = await sendMail(selectedSearchedDrugs, userInfo);
-  if (!response) {
-    pushPharmaFeedbackMessages("order-failed");
-    enableTextarea(inputBox);
-    return;
-  } else {
-    
-    pushPharmaFeedbackMessages("order-sent");
-    pushPharmaMessage(getTranslation("order-delivery"));
+  orderInfo['paymentReference'] = transactionId,
+  orderInfo['paymentPhone'] = userInfo['phone'],
+  orderInfo['orderId'] = "orderId" + Date.now().toString(36) + Math.random().toString(16).slice(2)
+        
+  await sendOrderMail()
 
-    let orderId = "orderId " + Date.now().toString(36) + Math.random().toString(16).slice(2)
-    const waLink = generateWhatsAppLink(orderId, userInfo)
-    pushPharmaMessage(waLink)
-    pushPharmaMessage(getTranslation("waMessage"));
-
-    return;
-  }
 }
 
 function continueSelecting() {
@@ -122,37 +134,38 @@ function onSelectCity(city) {
   userInfo["city"] = city["name"];
   quarters = city["quarters"];
   if (quarters.length == 0) {
-    let address =
-      locale === "en-US" || locale === "en"
+    let address = 
+      locale !== "fr-FR" || locale !== "fr"
         ? `
         <div>
           <p>Address Information</p>
           <p> City : ${userInfo["city"]} </p>
-          <button class="btn btn-warning " onclick="reselectAddress()">NO, RESELECT</button>
+          <button class="btn btn-danger " onclick="reselectAddress()">NO, RESELECT</button>
         </div>
       `
         : `
         <div>
           <p> Informations sur l'adresse </p>
           <p> Ville : ${userInfo["city"]} </p>
-          <button class="btn btn-warning " onclick="reselectAddress()">NON, RESELECT</button>
+          <button class="btn btn-danger " onclick="reselectAddress()">NON, RESELECT</button>
         </div>
       `;
 
+    messages.pop();
     pushPharmaMessage(address);
     pushPharmaMessage(getTranslation("drug"));
     enableTextarea(inputBox);
     return;
   } else {
+    messages.pop();
     pushPharmaFeedbackMessages("quarter");
     onDisplayLocationDropDown();
   }
 }
 
+
 function onDisplayLocationDropDown() {
-  let pickupLocationDropdown = document.querySelector(
-    ".pickup-location-dropdown"
-  );
+  let pickupLocationDropdown = document.querySelector(".pickup-location-dropdown");
   pickupLocationDropdown.innerHTML = "";
 
   quarters.forEach((optionText) => {
@@ -164,20 +177,22 @@ function onDisplayLocationDropDown() {
 
   pickupLocationDropdown.addEventListener("change", function () {
     onSelectQuarter(this.value);
+    this.value = this.value;
   });
 }
+
 
 function onSelectQuarter(quarter) {
   quarter = JSON.parse(quarter);
   userInfo["quarter"] = quarter["name"];
-  let address =
-    locale === "en-US" || locale === "en"
+  let address =  
+    locale !== "fr-FR" || locale !== "fr"
       ? `
       <div>
         <p>Is your address information correct ? If yes , continue</p>
         <p> City : ${userInfo["city"]} </p>
         <p> Quarter : ${userInfo["quarter"]} </p>
-        <button class="btn btn-warning " onclick="reselectAddress()">NO, RESELECT</button>
+        <button class="btn btn-danger" onclick="reselectAddress()">NO, RESELECT</button>
       </div>
     `
       : `
@@ -185,11 +200,12 @@ function onSelectQuarter(quarter) {
         <p>Votre adresse est-elle correcte ? Si oui, continuer</p>
         <p> Ville : ${userInfo["city"]} </p>
         <p> Quartier : ${userInfo["quarter"]} </p>
-        <button class="btn btn-warning " onclick="reselectAddress()">NON, RESELECT</button>
+        <button class="btn btn-danger" onclick="reselectAddress()">NON, RESELECT</button>
       </div>
     `;
     removeDataFromLocalStorage()
     saveUserToLocalStorage(userInfo)
+    messages.pop();
     pushPharmaMessage(address);
     pushPharmaMessage(getTranslation("drug"));
     enableTextarea(inputBox);
@@ -209,6 +225,7 @@ function selectDrugQuantity() {
   
     locationDropdown.addEventListener("change", function() {
       onSelectDrugQuantity(this.value);
+      this.value = this.value
     });
   
    
@@ -218,7 +235,7 @@ function onSelectDrugQuantity(quantity){
 
 currentDrug['quantity'] = quantity;
 selectedSearchedDrugs.push(currentDrug);
-pushPharmaMessage(JSON.stringify(currentDrug["name"]) + " added to your list");
+pushPharmaMessage(`<p class='bold-text'> ${JSON.stringify(currentDrug["name"])}  added to your list</p>`);
 pushPharmaFeedbackMessages("more-meds");
 
 // const buttons = document.querySelectorAll(".select-medication-option");

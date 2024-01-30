@@ -299,6 +299,11 @@ a{
     color: #a9a9a9 !important;
 }
 
+.btn-danger{
+    background-color: #FF0000 !important;
+    color: #fff !important;
+}
+
 .btn-info{
     background-color: #0096FF !important;
     color: white !important;
@@ -340,6 +345,10 @@ a{
     background: #eee !important;
     color: grey !important;
     border: 1px solid grey;
+}
+
+.bold-text{
+    font-weight: 600;
 }
 
 

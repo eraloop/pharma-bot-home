@@ -187,4 +187,26 @@ async function getPaymentLink(token){
 }
 
 
+async function paymentWidget(body) {
+  return new Promise((resolve, reject) => {
+    campay.options({
+      payButtonId: "payButton",
+      description: body['description'],
+      amount: body['amount'],
+      currency: "XAF",
+      externalReference: body['reference'],
+      redirectUrl: "",
+    });
 
+    campay.onSuccess = function (data) {
+      console.log("payment success full", data);
+      transactionId = data.reference;
+      resolve(data);
+    };
+
+    campay.onFail = function (data) {
+      console.log("payment failed", data);
+      reject(new Error("Payment failed."));
+    };
+  });
+}
