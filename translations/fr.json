@@ -31,10 +31,9 @@
     "meds-empty": "Veuillez choisir un médicament avant de passer à l'étape suivante de votre achat.",
     "order-failed": " <p> Impossible de passer votre commande </p> <button class='btn btn-info order-resend-button' onclick='confirmedPayment()'> REENVOYER LA COMMANDE </button>",
     "placing-order": "Votre commande est en cours de traitement, veuillez patienter un instant",
-    "order-sent": "Votre commande a été passée, merci d'utiliser et de faire confiance à SOS Pharma",
+    "order-sent": "Votre commande a été passée, merci d'utiliser et de faire confiance à SOS Pharma, Vos médicaments vous seront livrés dans l'heure qui suit.",
     "confirm-payment": "Une demande de paiement a été envoyée à cet appareil, veuillez confirmer le paiement pour que votre commande soit passée.",
     "identity": "Quel est votre nom ?",
-    "order-delivery" : "Vos médicaments vous seront livrés dans l'heure qui suit.",
 
     "default": "Entrée invalide, veuillez retaper votre demande",
     "billing": "Facturation en cours, veuillez patienter",

@@ -181,12 +181,21 @@ async function onSendButton(chatbox) {
       let res = await paymentWidget(body)
       
       if(res.status === "SUCCESSFUL" ){
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth() + 1;
+        const day = currentDate.getDate();
+        const hours = currentDate.getHours();
+        const minutes = currentDate.getMinutes();
+        const seconds = currentDate.getSeconds();
+        const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
         closePaymentWidget();
         transactionId = res.reference
         pushPharmaMessage(getTranslation("placing-order"));
         orderInfo['paymentReference'] = transactionId,
         orderInfo['paymentPhone'] = userInfo['phone'],
-        orderInfo['orderId'] = "orderId" + Date.now().toString(36) + Math.random().toString(16).slice(2)
+        orderInfo['orderId'] = "orderId-" + formattedDateTime + "-" + Math.random().toString(16).slice(2)
         await sendOrderMail()
         currentStep ++;
       }
@@ -198,19 +207,3 @@ async function onSendButton(chatbox) {
 }
 
 onStart();
-
-
-// if (userPrompt == "resend") {
-//   pushPharmaFeedbackMessages("placing-order");
-//   await sendMail(selectedSearchedDrugs, userInfo);
-
-//   let orderId = "orderId" + new Date.now().toString(36) + Math.random().toString(16).slice(2)
-//   const waLink = generateWhatsAppLink(orderId, userInfo)
-//   pushPharmaMessage(waLink)
-//   pushPharmaMessage(getTranslation("waMessage"));
-// }
-// let response = await sendMail(selectedSearchedDrugs, userInfo);
-// if (!response) {
-//   pushPharmaFeedbackMessages("order-failed");
-//   return;
-// }

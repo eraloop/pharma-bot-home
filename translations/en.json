@@ -32,10 +32,9 @@
     "meds-empty": "Please choose a medication before proceeding to the next stage of your purchase.",
     "order-failed": " <p> Failed to place your order </p> <button class='btn btn-info order-resend-button' onclick='confirmedPayment()'> RESEND ORDER </button>",
     "placing-order": "Your order is being placed, please wait a moment",
-    "order-sent": "Your order has been placed, Thanks for using and trusting SOS Pharma",
+    "order-sent": "Your order has been placed, Thanks for using and trusting SOS Pharma, Your drugs will ne delivered to you in the next one hour.",
     "confirm-payment": "A payment request has been send to this device, please confirm the payment for your order tobe placed.",
     "identity": "Please whats your name ?",
-    "order-delivery" : "Your drugs will ne delivered to you in the next one hour.",
 
     "default": "Invalid input, please retype your request",
     "billing": "Processig billing, Please wait",

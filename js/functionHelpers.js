@@ -65,16 +65,16 @@ async function sendOrderMail(){
 
   try{
 
-    let response = await sendMail(selectedSearchedDrugs, userInfo);
+    let response = await sendMail(selectedSearchedDrugs, userInfo, orderInfo);
     if (!response) {
       pushPharmaFeedbackMessages("order-failed");
       enableTextarea(inputBox);
       return;
     } else {
-
       messages.pop();
       pushPharmaFeedbackMessages("order-sent");
-      pushPharmaMessage(getTranslation("order-delivery"));
+      console.log("order information", orderInfo)
+      console.log("user info", userInfo)
       let waLink = generateWhatsAppLink(orderInfo, userInfo)
       console.log("waLink ", waLink)
       pushPharmaMessage(waLink)
@@ -99,24 +99,6 @@ async function confirmedPayment() {
         
   await sendOrderMail()
 
-}
-
-async function redoWidgetPayment(){
-  let body = { 
-    // amount: totalCost,
-    amount: 2,
-    phone: userInfo['phone'],
-    description: `You have received a billing request of ${totalCost} for your order from SOS Pharma. `,
-    reference: "Medication Order",
-  }
-  await paymentWidget(body).then((successData) => {
-    // Handle success
-    console.log("Payment successful in redo ", successData);
-  })
-  .catch((errorData) => {
-    // Handle failure
-    console.error("Payment failed in redo", errorData);
-  });
 }
 
 function continueSelecting() {

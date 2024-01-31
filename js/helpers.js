@@ -284,13 +284,18 @@ function disableButton(button) {
   console.log(button)
 }
 
+
 function generateWhatsAppLink(orderId, userInfo) {
   const baseUrl = 'https://wa.me/';
-  const fullPhoneNumber = '+237673572533'.replace(/\D/g, ''); 
-  const whatsappLink = `<a href="${baseUrl}${fullPhoneNumber}?text=${encodeURIComponent(`Hello, i want an invoice for my order ${orderId}. \n Order Detail: \n ${orderInfo}. \nMy information is as follows: \n Name: ${userInfo['name']} \n Phone Number: ${userInfo['phone']} \n City: ${userInfo['city']} \n Quarter: ${userInfo['quarter']} \n\n Thank you`)}"> </a>`;
-  console.log(whatsappLink)
+  const fullPhoneNumber = '+237673572533'.replace(/\D/g, '');
+  const message = `Hello, I want an invoice for my order id: ${orderId['orderId']}. \nOrder Detail: \nOrder Id: ${orderInfo['orderId']} \nPayment Reference No: ${orderInfo['paymentReference']} \nPayment Phone: ${orderInfo['paymentPhone']}. \nMy information is as follows: \nName: ${userInfo['name']} \nPhone Number: ${userInfo['phone']} \nCity: ${userInfo['city']} \nQuarter: ${userInfo['quarter']} \n\nThank you`;
+  const whatsappLink = `
+    <a class='btn btn-success' href="${baseUrl}${fullPhoneNumber}?text=${encodeURIComponent(message)}" target="_blank"> Get Your Order Invoice</a>
+  `;
+  console.log(whatsappLink);
   return whatsappLink;
 }
+
 
 async function onLoadCities() {
   try {
