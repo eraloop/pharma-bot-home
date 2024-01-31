@@ -287,7 +287,8 @@ function disableButton(button) {
 function generateWhatsAppLink(orderId, userInfo) {
   const baseUrl = 'https://wa.me/';
   const fullPhoneNumber = '+237673572533'.replace(/\D/g, ''); 
-  const whatsappLink = `<a href="${baseUrl}${fullPhoneNumber}?text=${encodeURIComponent(`Hello, i want an invoice for my order ${orderId} please. \nMy information is as follows: \n Name: ${userInfo['name']} \n Phone Number: ${userInfo['phone']} \n City: ${userInfo['city']} \n Quarter: ${userInfo['quarter']} \n\n Thank you`)}"> </a>`;
+  const whatsappLink = `<a href="${baseUrl}${fullPhoneNumber}?text=${encodeURIComponent(`Hello, i want an invoice for my order ${orderId}. \n Order Detail: \n ${orderInfo}. \nMy information is as follows: \n Name: ${userInfo['name']} \n Phone Number: ${userInfo['phone']} \n City: ${userInfo['city']} \n Quarter: ${userInfo['quarter']} \n\n Thank you`)}"> </a>`;
+  console.log(whatsappLink)
   return whatsappLink;
 }
 
@@ -554,5 +555,10 @@ function getOrderKeywords(locale){
   "bien",
   ];
   
+}
+
+function closePaymentWidget() {
+  var widget = document.getElementById('myCamPayModal');
+  widget.style.display = 'none';
 }
 

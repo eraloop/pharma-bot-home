@@ -21,11 +21,11 @@
     "medications-complete": "<p> Are your medications correct and complete ??</p><div class='buttons'> <button class='btn btn-danger med-clear-button' onclick='clearMedicationList()'>CLEAR SELECTED LIST</button><button class='btn btn-success med-complete-button' onclick='completeMedList()'>COMPLETE</button></div>",
     "resend-billing-request": "Billing request has been resend, please confirm",
     "billing-request-followup": "<p> Have you confirmed the payment ?? or you didnt receive the billing request ?</p> <div class='buttons'> <button class='btn btn-info payment-resend-button' onclick='resendPayment()'>RESEND BILLING</button><button class='btn btn-success payment-confirmed-button' onclick='confirmedPayment()'>CONFIRMED BILLING</button></div>",
-    "billing-failed": "Failed to send billing request, please try again <button class='btn btn-info payment-resend-button' onclick='resendPayment()'>RESEND BILLING</button>",
+    "billing-failed": "Failed to send billing request, please try again <button class='btn btn-info payment-resend-button' onclick='paymentWidget()'>RESEND BILLING</button>",
     "no-medication": "No Medication identified, please provide the list of medications you wish to order as specified by your medical personnel",
     "keywords": "Please reply with the above specified keywords",
     "input": "Please reply with the above specified keywords",
-    "more-meds": "<p> Do you wish to order any other medication ?</p><div class='buttons'><button class='btn btn-info' onclick='continueSelecting()'> CONTINUE </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> DONE SELECTING </button></div>",
+    "more-meds": "<p> Do you wish to order any other medication ?</p><div class='buttons'><button class='btn btn-info' onclick='continueSelecting()'> ADD DRUG </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> DONE SELECTING </button></div>",
     "drug-found": "The requested drug isnt available, Please make sure the spelling is correct and try again",
     "choose-drug": "<p class='bold-text'>Veuillez sélectionner le médicament que vous souhaitez dans la liste ci-dessous, si le médicament que vous souhaitez ne figure pas dans la liste, cliquez sur le bouton ci-dessous</p> <button class='btn btn-danger list-clear-button' onclick='clearDrugList()'> CLEAR LIST </button>",
     "drug-search-complaint": "The amount of drugs matching this name is alot, please if your required drug isnt found on this list, check the spelling and search again.",
@@ -43,6 +43,7 @@
     "pay-link": "Please click the payment link below to pay for your medication",
 
     "waMessage": "Please click on the link above to get your order invoice. Thanks for using SOS Pharma",
-    "payment-button": "<button class='btn btn-success' id='payButton' onclick='paymentWidget()'> Click To Pay </button>"
+    "payment-button": "<button class='btn btn-success' id='payButton' onclick='paymentWidget()'> Click To Pay </button>",
+    "resend-billing": "<p> Failed to make payment for your order, Do you wish to redo your payment ? </p> <p class='bold-text'> Please follow the steps </p>"
 
 }

@@ -192,21 +192,30 @@ async function paymentWidget(body) {
     campay.options({
       payButtonId: "payButton",
       description: body['description'],
-      amount: body['amount'],
+      amount: `${body['amount']}`,
       currency: "XAF",
       externalReference: body['reference'],
       redirectUrl: "",
     });
 
-    campay.onSuccess = function (data) {
-      console.log("payment success full", data);
+    const onSuccessHandler = function (data) {
       transactionId = data.reference;
       resolve(data);
     };
 
-    campay.onFail = function (data) {
-      console.log("payment failed", data);
-      reject(new Error("Payment failed."));
+    const onFailHandler = function (data) {
+      campay.onSuccess = null;
+      campay.onFail = null;
+
+      reject(data);
+      closePaymentWidget();
+      messages.pop();
+      pushPharmaMessage(getTranslation("resend-billing"));
+      pushPharmaFeedbackMessages("phone-enter");
+      enableTextarea(inputBox);
     };
+
+    campay.onSuccess = onSuccessHandler;
+    campay.onFail = onFailHandler;
   });
 }

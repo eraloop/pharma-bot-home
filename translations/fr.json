@@ -20,11 +20,11 @@
     "medications-complete": "<p> Vos médicaments sont-ils corrects et complets ??</p><div class='buttons'> <button class='btn btn-danger med-clear-button' onclick='clearMedicationList()'>EFFACER LA LISTE SÉLECTIONNÉE</button><button class='btn btn-success med-complete-button' onclick='completeMedList()'>COMPLET</button></div>",
     "resend-billing-request": "La demande de facturation a été renvoyée, veuillez confirmer",
     "billing-request-followup": "<p> Avez-vous confirmé le paiement ?? ou vous n'avez pas reçu la demande de facturation ?</p> <div class='buttons'> <button class='btn btn-info payment-resend-button' onclick='resendPayment()'>RENVOYER LA FACTURATION</button><button class='btn btn-success payment-confirmed-button' onclick='confirmedPayment()'>FACTURATION CONFIRMÉE</button></div>",
-    "billing-failed": "L'envoi de la demande de facturation a échoué, veuillez réessayer. <button class='btn btn-info payment-resend-button' onclick='resendPayment()'>RENVOYER LA FACTURATION</button>",
+    "billing-failed": "L'envoi de la demande de facturation a échoué, veuillez réessayer. <button class='btn btn-info payment-resend-button' onclick='paymentWidget()'>RENVOYER LA FACTURATION</button>",
     "no-medication": "Aucun médicament identifié, veuillez fournir la liste des médicaments que vous souhaitez commander comme indiqué par votre personnel médical",
     "keywords": "Veuillez répondre avec les mots clés spécifiés ci-dessus",
     "input": "Veuillez répondre avec les mots clés spécifiés ci-dessus",
-    "more-meds": "<p> Souhaitez-vous commander d'autres médicaments ? </p> <div class='buttons'><button class='btn btn-info med-done-button' onclick='continueSelecting()'> CONTINUER </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> SÉLECTION TERMINÉE </button></div>",
+    "more-meds": "<p> Souhaitez-vous commander d'autres médicaments ? </p> <div class='buttons'><button class='btn btn-info med-done-button' onclick='continueSelecting()'> AJOUTER UN MÉDICAMENT </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> SÉLECTION TERMINÉE </button></div>",
     "drug-found": "Le médicament demandé n'est pas disponible, veuillez vous assurer que l'orthographe est correcte et réessayez",
     "choose-drug": "<p class='bold-text>Veuillez sélectionner le médicament souhaité dans la liste ci-dessus. Si le médicament souhaité n'est pas inclus, cliquez sur le bouton ci-dessous.</p> <button class='btn btn-danger list-clear-button' onclick='restartConversation()'> EFFACER LA LISTE </button>",
     "drug-search-complaint": "Le nombre de médicaments correspondant à ce nom est important, veuillez vérifier l'orthographe et rechercher à nouveau.",
@@ -43,5 +43,7 @@
     "pay-link": "Please click the payment link below to pay for your medication",
 
     "waMessage": "Veuillez cliquer sur le lien ci-dessus pour obtenir la facture de votre commande. Merci de faire appel à SOS Pharma",
-    "payment-button": "<button class='btn btn-success' id='payButton' onclick='paymentWidget()'> Click To Pay </button>"
+    "payment-button": "<button class='btn btn-success' id='payButton' onclick='paymentWidget()'> Click To Pay </button>",
+    "resend-billing": "<p> Le paiement de votre commande n'a pas été effectué. Souhaitez-vous effectuer un nouveau paiement ? <p class='bold-text'> Veuillez suivre les étapes suivantes </p>"
+
 }

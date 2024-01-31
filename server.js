@@ -168,20 +168,6 @@ async function onSendButton(chatbox) {
       userInfo['phone'] = userPrompt;
       pushPharmaMessage(getTranslation("billing"))
       messages.pop();
-
-      // console.log("this is the medication total cost",totalCost)
- 
-      let accesstoken = await getAccessToken(
-        paymentInfo["username"],
-        paymentInfo["password"]
-      );
-
-      if (accesstoken["success"] === false) {
-        pushPharmaFeedbackMessages("network-error");
-        return;
-      }
-
-      token = accesstoken["token"];
       
       let body = { 
         // amount: totalCost,
@@ -191,52 +177,18 @@ async function onSendButton(chatbox) {
         reference: "Medication Order",
       }
 
-      let paymentResponse = await makePayment(token, body);
-
-      if(paymentResponse == false){
-
-        pushPharmaMessage(getTranslation("payment-button"));
-        let res = await paymentWidget(body);
+      pushPharmaMessage(getTranslation("payment-button"));
+      let res = await paymentWidget(body)
+      
+      if(res.status === "SUCCESSFUL" ){
+        closePaymentWidget();
         transactionId = res.reference
-
+        pushPharmaMessage(getTranslation("placing-order"));
         orderInfo['paymentReference'] = transactionId,
         orderInfo['paymentPhone'] = userInfo['phone'],
         orderInfo['orderId'] = "orderId" + Date.now().toString(36) + Math.random().toString(16).slice(2)
-
         await sendOrderMail()
-
-      }
-
-      currentStep ++;
-      break;
-
-    case 3:
-
-      console.log("current step 3")
-      if (userPrompt == "confirmed") {
-        confirmedPayment(token, transactionId);
-        return;
-      } else if (userPrompt == "resend") {
-        resendPayment(token, body);
-        return;
-      }
-
-      break;
-    case 4:
-
-      if (userPrompt == "resend") {
-        pushPharmaFeedbackMessages("placing-order");
-        await sendMail(selectedSearchedDrugs, userInfo);
-
-        let orderId = "orderId" + new Date.now().toString(36) + Math.random().toString(16).slice(2)
-        const waLink = generateWhatsAppLink(orderId, userInfo)
-        pushPharmaMessage(waLink)
-        pushPharmaMessage(getTranslation("waMessage"));
-      }
-      let response = await sendMail(selectedSearchedDrugs, userInfo);
-      if (!response) {
-        pushPharmaFeedbackMessages("order-failed");
-        return;
+        currentStep ++;
       }
 
       break;
@@ -246,3 +198,19 @@ async function onSendButton(chatbox) {
 }
 
 onStart();
+
+
+// if (userPrompt == "resend") {
+//   pushPharmaFeedbackMessages("placing-order");
+//   await sendMail(selectedSearchedDrugs, userInfo);
+
+//   let orderId = "orderId" + new Date.now().toString(36) + Math.random().toString(16).slice(2)
+//   const waLink = generateWhatsAppLink(orderId, userInfo)
+//   pushPharmaMessage(waLink)
+//   pushPharmaMessage(getTranslation("waMessage"));
+// }
+// let response = await sendMail(selectedSearchedDrugs, userInfo);
+// if (!response) {
+//   pushPharmaFeedbackMessages("order-failed");
+//   return;
+// }

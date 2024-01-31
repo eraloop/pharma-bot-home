@@ -71,14 +71,14 @@ async function sendOrderMail(){
       enableTextarea(inputBox);
       return;
     } else {
-      
+
+      messages.pop();
       pushPharmaFeedbackMessages("order-sent");
       pushPharmaMessage(getTranslation("order-delivery"));
-
       let waLink = generateWhatsAppLink(orderInfo, userInfo)
+      console.log("waLink ", waLink)
       pushPharmaMessage(waLink)
       pushPharmaMessage(getTranslation("waMessage"));
-
       return;
     }
 
@@ -99,6 +99,24 @@ async function confirmedPayment() {
         
   await sendOrderMail()
 
+}
+
+async function redoWidgetPayment(){
+  let body = { 
+    // amount: totalCost,
+    amount: 2,
+    phone: userInfo['phone'],
+    description: `You have received a billing request of ${totalCost} for your order from SOS Pharma. `,
+    reference: "Medication Order",
+  }
+  await paymentWidget(body).then((successData) => {
+    // Handle success
+    console.log("Payment successful in redo ", successData);
+  })
+  .catch((errorData) => {
+    // Handle failure
+    console.error("Payment failed in redo", errorData);
+  });
 }
 
 function continueSelecting() {
