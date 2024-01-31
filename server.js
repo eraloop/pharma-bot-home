@@ -67,31 +67,41 @@ async function onStart() {
 
   if(user !== null){
     userInfo = user;
-    let address =
-    locale === "fr-FR" || locale === "fr"
-      ? `
-      <div>
-        <p>Is your address information correct ? If yes , continue</p>
-        <p> City : ${userInfo["city"]} </p>
-        <p> Quarter : ${userInfo["quarter"]} </p>
-        <div class="buttons"> 
-          <button class="btn btn-danger " onclick="reselectAddress()">NO, RESELECT</button>
-          <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
-        </div>
-        
-      </div>
-    `
-      : `
+    let address =  `
       <div>
         <p>Votre adresse est-elle correcte ? Si oui, continuer</p>
         <p> Ville : ${userInfo["city"]} </p>
         <p> Quartier : ${userInfo["quarter"]} </p>
         <div class="buttons"> 
-          <button class="btn btn-danger" onclick="reselectAddress()">NO, RESELECT</button>
+          <button class="btn btn-danger" onclick="reselectAddress()">NON,RESELECT</button>
           <button class="btn btn-success" onclick="addressCorrect()">CORRECT</button>
         </div>
       </div>
-    `;
+  `
+    // locale === "fr-FR" || locale === "fr"
+    //   ? `
+    //   <div>
+    //     <p>Is your address information correct ? If yes , continue</p>
+    //     <p> City : ${userInfo["city"]} </p>
+    //     <p> Quarter : ${userInfo["quarter"]} </p>
+    //     <div class="buttons"> 
+    //       <button class="btn btn-danger " onclick="reselectAddress()">NO, RESELECT</button>
+    //       <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
+    //     </div>
+        
+    //   </div>
+    // `
+    //   : `
+    //   <div>
+    //     <p>Votre adresse est-elle correcte ? Si oui, continuer</p>
+    //     <p> Ville : ${userInfo["city"]} </p>
+    //     <p> Quartier : ${userInfo["quarter"]} </p>
+    //     <div class="buttons"> 
+    //       <button class="btn btn-danger" onclick="reselectAddress()">NO, RESELECT</button>
+    //       <button class="btn btn-success" onclick="addressCorrect()">CORRECT</button>
+    //     </div>
+    //   </div>
+    // `;
     pushPharmaMessage(address);
   }else{
     pushPharmaFeedbackMessages("city");
@@ -170,8 +180,7 @@ async function onSendButton(chatbox) {
       messages.pop();
       
       let body = { 
-        // amount: totalCost,
-        amount: 2,
+        amount: totalCost,
         phone: userInfo['phone'],
         description: `You have received a billing request of ${totalCost} for your order from SOS Pharma. `,
         reference: "Medication Order",

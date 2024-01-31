@@ -26,7 +26,7 @@
     "input": "Veuillez répondre avec les mots clés spécifiés ci-dessus",
     "more-meds": "<p> Souhaitez-vous commander d'autres médicaments ? </p> <div class='buttons'><button class='btn btn-info med-done-button' onclick='continueSelecting()'> AJOUTER UN MÉDICAMENT </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> SÉLECTION TERMINÉE </button></div>",
     "drug-found": "Le médicament demandé n'est pas disponible, veuillez vous assurer que l'orthographe est correcte et réessayez",
-    "choose-drug": "<p class='bold-text>Veuillez sélectionner le médicament souhaité dans la liste ci-dessus. Si le médicament souhaité n'est pas inclus, cliquez sur le bouton ci-dessous.</p> <button class='btn btn-danger list-clear-button' onclick='restartConversation()'> EFFACER LA LISTE </button>",
+    "choose-drug": " <p class='bold-text> Veuillez sélectionner le médicament souhaité dans la liste ci-dessus. Si le médicament souhaité n'est pas inclus, cliquez sur le bouton ci-dessous.</p> <button class='btn btn-danger list-clear-button' onclick='clearDrugList()'> EFFACER LA LISTE </button>",
     "drug-search-complaint": "Le nombre de médicaments correspondant à ce nom est important, veuillez vérifier l'orthographe et rechercher à nouveau.",
     "meds-empty": "Veuillez choisir un médicament avant de passer à l'étape suivante de votre achat.",
     "order-failed": " <p> Impossible de passer votre commande </p> <button class='btn btn-info order-resend-button' onclick='confirmedPayment()'> REENVOYER LA COMMANDE </button>",
@@ -38,11 +38,11 @@
     "default": "Entrée invalide, veuillez retaper votre demande",
     "billing": "Facturation en cours, veuillez patienter",
 
-    "drugs-cleared": "Drugs cleared \n Please retype the name of your desired drug",
+    "drugs-cleared": "Médicaments autorisés \nVeuillez retaper le nom du médicament souhaité",
     "pay-link": "Please click the payment link below to pay for your medication",
 
     "waMessage": "Veuillez cliquer sur le lien ci-dessus pour obtenir la facture de votre commande. Merci de faire appel à SOS Pharma",
-    "payment-button": "<button class='btn btn-success' id='payButton' onclick='paymentWidget()'> Click To Pay </button>",
+    "payment-button": "<button class='btn btn-success' id='payButton' onclick='paymentWidget()'> Cliquer pour payer </button>",
     "resend-billing": "<p> Le paiement de votre commande n'a pas été effectué. Souhaitez-vous effectuer un nouveau paiement ? <p class='bold-text'> Veuillez suivre les étapes suivantes </p>"
 
 }
