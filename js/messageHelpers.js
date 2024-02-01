@@ -4,18 +4,17 @@ function pushPharmaMessage(reply) {
   updateChatText(chatBox, messages);
   inputBox.focus();
 }
-  
+
 async function pushThinkingMessage(message) {
-  if(messages.length !== 0) return;
+  if(messages.length != 0) return;
   pushPharmaMessage(getTranslation(message))
-  await new Promise((resolve) => setTimeout(resolve, 2000));
-  messages.pop();
+  messages.pop()
 }
 
 function pushUserMessage(message) {
-    messages.push({ name: "User", message });
-    updateChatText(chatBox, messages);
-    inputBox.focus();
+  messages.push({ name: "User", message });
+  updateChatText(chatBox, messages);
+  inputBox.focus();
 }
 
 // helper function to help display bot feedback messages,
@@ -110,3 +109,37 @@ function pushPharmaFeedbackMessages(currentCase) {
     }
 }
 
+function clearTextField(textField) {
+  textField.value = "";
+}
+
+function updateChatText(chatbox, messages) {
+  var html = "";
+  messages
+    .slice()
+    .reverse()
+    .forEach(function (item, index) {
+      if (item.name === "SOS Pharma") {
+        html +=
+          '<div class="sos-pharma-message"> ' +
+          '<div class="profile-icon">' +
+          '<img src="/images/new_logo.jpg" alt="Profile Icon" height="25">' +
+          "</div>" +
+          '<div class="messages__item messages__item--visitor">' +
+          '<div class="message-bubble">' +
+            item.message +
+          "</div>" +
+          "</div>" +
+          "</div>";
+      } else {
+        html +=
+          '<div class="messages__item messages__item--operator">' +
+          item.message +
+          "</div>";
+      }
+    });
+
+  const chatmessage = chatbox.querySelector(".chatbox__messages");
+  chatmessage.innerHTML = html;
+  
+}

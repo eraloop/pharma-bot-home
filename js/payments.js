@@ -210,9 +210,18 @@ async function paymentWidget(body) {
       reject(data);
       closePaymentWidget();
       messages.pop();
+      currentStep = 1;
+      body = {
+        amount: totalCost,
+        amount: 2,
+        phone: userInfo['phone'],
+        description: `You have received a billing request of ${totalCost} for your order from SOS Pharma. `,
+        reference: stringToBase32("orderId-" + getCurrentFormatedDate() + "-" + Math.random().toString(16).slice(2)),
+      }
       pushPharmaMessage(getTranslation("resend-billing"));
-      pushPharmaFeedbackMessages("phone-enter");
-      enableTextarea(inputBox);
+
+      // pushPharmaMessage(getTranslation("payment-button"));
+      // enableTextarea(inputBox);
     };
 
     campay.onSuccess = onSuccessHandler;

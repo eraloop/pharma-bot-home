@@ -18,41 +18,6 @@ function levenshteinDistance(s, t){
   return arr[t.length][s.length];
 };
 
-function clearTextField(textField) {
-  textField.value = "";
-}
-
-function updateChatText(chatbox, messages) {
-  var html = "";
-  messages
-    .slice()
-    .reverse()
-    .forEach(function (item, index) {
-      if (item.name === "SOS Pharma") {
-        html +=
-          '<div class="sos-pharma-message"> ' +
-          '<div class="profile-icon">' +
-          '<img src="/images/new_logo.jpg" alt="Profile Icon" height="25">' +
-          "</div>" +
-          '<div class="messages__item messages__item--visitor">' +
-          '<div class="message-bubble">' +
-            item.message +
-          "</div>" +
-          "</div>" +
-          "</div>";
-      } else {
-        html +=
-          '<div class="messages__item messages__item--operator">' +
-          item.message +
-          "</div>";
-      }
-    });
-
-  const chatmessage = chatbox.querySelector(".chatbox__messages");
-  chatmessage.innerHTML = html;
-  
-}
-
 function validateCameroonianPhoneNumber(phoneNumber) {
   // Regular expressions for each network provider
   const mtnPattern = /^(67[1-9]|68[0-4]|65[5-9])\d{6}$/;
@@ -187,11 +152,14 @@ async function onLoadDrugs() {
 
 async function onLoadPaymentDetails() {
   try {
-    let response = await fetch("../data/config.json");
-    let payment = await response.json();
+    const response = await fetch("../data/config.json");
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const payment = await response.json();
     return payment;
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    console.error(error);
     return {};
   }
 }
@@ -210,6 +178,14 @@ function levenshteinSearch(medicationName, searchString) {
 async function loadExcel() {
   let drugs = [];
   let drugsLoaded = false;
+
+  let medication  = readMedicationsFromLS('medications');
+  if(medication != null || medication != undefined){
+    return {
+      drugs: medication,
+      isLoaded: true,
+    };
+  }
 
   const fetchExcelData = () => {
     return new Promise((resolve, reject) => {
@@ -247,6 +223,7 @@ async function loadExcel() {
     if (drugs.length > 0) {
       drugsLoaded = true;
     }
+    saveListToLS('medications', drugs)
   } catch (error) {
     console.error("An error occurred while loading drugs:", error);
   }
@@ -284,7 +261,6 @@ function disableButton(button) {
   console.log(button)
 }
 
-
 function generateWhatsAppLink(orderId, userInfo) {
   const baseUrl = 'https://wa.me/';
   const fullPhoneNumber = '+237673572533'.replace(/\D/g, '');
@@ -296,14 +272,19 @@ function generateWhatsAppLink(orderId, userInfo) {
   return whatsappLink;
 }
 
-
 async function onLoadCities() {
   try {
-    let response = await fetch("../data/geolocation.json");
-    let locations = await response.json();
+
+    let cities  = readMedicationsFromLS('cities');
+    if(cities != null || cities != undefined){
+      return cities
+    }
+    const response = await fetch("../data/geolocation.json");
+    const locations = await response.json();
+    saveListToLS('cities', locations['cities'])
     return locations['cities'];
-  } catch (e) {
-    console.log(e);
+  } catch (error) {
+    console.error(error);
     return [];
   }
 }
@@ -567,3 +548,55 @@ function closePaymentWidget() {
   widget.style.display = 'none';
 }
 
+function saveListToLS(key, data) {
+  try {
+    const jsonString = JSON.stringify(data);
+    localStorage.setItem(key, jsonString);
+  } catch (error) {
+    console.error('Error saving data to local storage:', error);
+  }
+}
+
+function readMedicationsFromLS(key) {
+  try {
+    const jsonString = localStorage.getItem(key);
+    const data = JSON.parse(jsonString);
+    return data;
+  } catch (error) {
+    console.error('Error reading data from local storage:', error);
+    return [];
+  }
+}
+
+function stringToBase32(inputString) {
+  const base32Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+  const bytes = [];
+  for (let i = 0; i < inputString.length; i++) {
+    bytes.push(inputString.charCodeAt(i));
+  }
+  let bits = '';
+  for (const byte of bytes) {
+    bits += byte.toString(2).padStart(8, '0');
+  }
+  while (bits.length % 5 !== 0) {
+    bits += '0';
+  }
+  let base32String = '';
+  for (let i = 0; i < bits.length; i += 5) {
+    const chunk = bits.substr(i, 5);
+    base32String += base32Chars[parseInt(chunk, 2)];
+  }
+  base32String = base32String.slice(0, 6);
+  return base32String;
+}
+
+function getCurrentFormatedDate(){
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1;
+  const day = currentDate.getDate();
+  const hours = currentDate.getHours();
+  const minutes = currentDate.getMinutes();
+  const formattedDateTime = `${day}/${month}/${year}-${hours}:${minutes}`;
+  return formattedDateTime;
+}

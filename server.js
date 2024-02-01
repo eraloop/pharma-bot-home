@@ -23,6 +23,14 @@ let orderInfo = {
   "paymentPhone": "",
 };
 
+let body = { 
+  // amount: totalCost,
+  amount: '',
+  phone: '',
+  description: '',
+  reference: '',
+}
+
 let message = "", currentDrug = 0, currentStep = 0, totalCost = 0;
 
 // payment information
@@ -35,13 +43,16 @@ inputBox.addEventListener("keyup", ({ key }) => {
   if (key === "Enter") {
     onSendButton(chatBox);
 }});
-closeButton.addEventListener('click', (e) => {
-  goBack()
-})
+closeButton.addEventListener('click', (e) => {goBack()})
+
+window.addEventListener("DOMContentLoaded", async() => {
+  onStart();
+});
 
 async function onStart() {
   disableTextarea(inputBox);
-  locale = getUserLocale()
+  // pushPharmaMessage("Mise en place, veuillez patienter un instant..");
+  await pushThinkingMessage("loading-message");
   orderKeywords = getOrderKeywords(locale);
   locations = await onLoadCities();
   response = await loadExcel();
@@ -51,15 +62,15 @@ async function onStart() {
   drugList = response["drugs"];
   let drugLoaded = response["isLoaded"];
   paymentInfo = await onLoadPaymentDetails();
-  await pushThinkingMessage("loading-message");
 
   if (!drugLoaded) {
+    messages.pop()
     pushPharmaMessage(getTranslation("network-error"));
     disableTextarea(inputBox);
     return;
   }
 
-  if(messages.length === 0 ){
+  if(messages.length <= 1 ){
     pushPharmaMessage(getTranslation("greeting-text"));
   }else{
     updateChatText(chatBox, messages);
@@ -67,41 +78,31 @@ async function onStart() {
 
   if(user !== null){
     userInfo = user;
-    let address =  `
+    let address = 
+    locale === "en"
+      ? `
+      <div>
+        <p>Is your address information correct ? If yes , continue</p>
+        <p> City : ${userInfo["city"]} </p>
+        <p> Quarter : ${userInfo["quarter"]} </p>
+        <div class="buttons"> 
+          <button class="btn btn-danger " onclick="reselectAddress()">NO, RESELECT</button>
+          <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
+        </div>
+        
+      </div>
+    `
+      : `
       <div>
         <p>Votre adresse est-elle correcte ? Si oui, continuer</p>
         <p> Ville : ${userInfo["city"]} </p>
         <p> Quartier : ${userInfo["quarter"]} </p>
         <div class="buttons"> 
-          <button class="btn btn-danger" onclick="reselectAddress()">NON,RESELECT</button>
+          <button class="btn btn-danger" onclick="reselectAddress()">NO, RESELECT</button>
           <button class="btn btn-success" onclick="addressCorrect()">CORRECT</button>
         </div>
       </div>
-  `
-    // locale === "fr-FR" || locale === "fr"
-    //   ? `
-    //   <div>
-    //     <p>Is your address information correct ? If yes , continue</p>
-    //     <p> City : ${userInfo["city"]} </p>
-    //     <p> Quarter : ${userInfo["quarter"]} </p>
-    //     <div class="buttons"> 
-    //       <button class="btn btn-danger " onclick="reselectAddress()">NO, RESELECT</button>
-    //       <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
-    //     </div>
-        
-    //   </div>
-    // `
-    //   : `
-    //   <div>
-    //     <p>Votre adresse est-elle correcte ? Si oui, continuer</p>
-    //     <p> Ville : ${userInfo["city"]} </p>
-    //     <p> Quartier : ${userInfo["quarter"]} </p>
-    //     <div class="buttons"> 
-    //       <button class="btn btn-danger" onclick="reselectAddress()">NO, RESELECT</button>
-    //       <button class="btn btn-success" onclick="addressCorrect()">CORRECT</button>
-    //     </div>
-    //   </div>
-    // `;
+    `;
     pushPharmaMessage(address);
   }else{
     pushPharmaFeedbackMessages("city");
@@ -161,52 +162,32 @@ async function onSendButton(chatbox) {
     case 1:
 
       userInfo['name'] = userPrompt;
-      pushPharmaFeedbackMessages("phone-enter");
-      currentStep ++;
-
-      break;
-    case 2:
-
-      disableTextarea(inputBox)
-      const isValid = validateCameroonianPhoneNumber(userPrompt.trim());
-      if (!isValid["isValid"]) {
-        pushPharmaFeedbackMessages("phone");
-        enableTextarea(inputBox)
-        return;
-      }
-
-      userInfo['phone'] = userPrompt;
       pushPharmaMessage(getTranslation("billing"))
       messages.pop();
       
-      let body = { 
+      body = {
         amount: totalCost,
+        amount: 2,
         phone: userInfo['phone'],
         description: `You have received a billing request of ${totalCost} for your order from SOS Pharma. `,
-        reference: "Medication Order",
+        reference: stringToBase32("orderId-" + getCurrentFormatedDate() + "-" + Math.random().toString(16).slice(2)),
       }
 
       pushPharmaMessage(getTranslation("payment-button"));
+
       let res = await paymentWidget(body)
-      
+
       if(res.status === "SUCCESSFUL" ){
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = currentDate.getMonth() + 1;
-        const day = currentDate.getDate();
-        const hours = currentDate.getHours();
-        const minutes = currentDate.getMinutes();
-        const seconds = currentDate.getSeconds();
-        const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
         closePaymentWidget();
         transactionId = res.reference
         pushPharmaMessage(getTranslation("placing-order"));
         orderInfo['paymentReference'] = transactionId,
         orderInfo['paymentPhone'] = userInfo['phone'],
-        orderInfo['orderId'] = "orderId-" + formattedDateTime + "-" + Math.random().toString(16).slice(2)
+        orderInfo['orderId'] =  ` ${res['external_reference']} '-' ${getCurrentFormatedDate()}`
         await sendOrderMail()
         currentStep ++;
+
       }
 
       break;
@@ -215,4 +196,3 @@ async function onSendButton(chatbox) {
   }
 }
 
-onStart();

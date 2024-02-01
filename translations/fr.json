@@ -7,7 +7,7 @@
 
     "greeting-text": "<p class='font-weight-bold'>Bonjour!!.</p> <p>Bienvenue chez SOS Pharma</p>",
     "network-error": "<p class='font-weight-bold'>Erreur réseau!!.</p> <p>Impossible de charger les ressources requises <br>Veuillez vérifier votre connexion Internet et actualiser la page</p>",
-    "loading-message": "Configuration, veuillez patienter ",
+    "loading-message": "Mise en place, veuillez patienter un instant..",
 
     "drug": "Quel médicament souhaitez-vous commander?",
     "phone" : "Veuillez saisir un numéro de téléphone camerounais valide, il doit commencer par les chiffres 6, 2, 3, etc",
@@ -24,7 +24,7 @@
     "no-medication": "Aucun médicament identifié, veuillez fournir la liste des médicaments que vous souhaitez commander comme indiqué par votre personnel médical",
     "keywords": "Veuillez répondre avec les mots clés spécifiés ci-dessus",
     "input": "Veuillez répondre avec les mots clés spécifiés ci-dessus",
-    "more-meds": "<p> Souhaitez-vous commander d'autres médicaments ? </p> <div class='buttons'><button class='btn btn-info med-done-button' onclick='continueSelecting()'> AJOUTER UN MÉDICAMENT </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> SÉLECTION TERMINÉE </button></div>",
+    "more-meds": "<p> Souhaitez-vous commander d'autres médicaments ? </p> <div class='buttons'><button class='btn btn-info' onclick='continueSelecting()'> AJOUTER UN AUTRE MÉDICAMENT </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> SELECTION TERMINEE </button></div>",
     "drug-found": "Le médicament demandé n'est pas disponible, veuillez vous assurer que l'orthographe est correcte et réessayez",
     "choose-drug": " <p class='bold-text> Veuillez sélectionner le médicament souhaité dans la liste ci-dessus. Si le médicament souhaité n'est pas inclus, cliquez sur le bouton ci-dessous.</p> <button class='btn btn-danger list-clear-button' onclick='clearDrugList()'> EFFACER LA LISTE </button>",
     "drug-search-complaint": "Le nombre de médicaments correspondant à ce nom est important, veuillez vérifier l'orthographe et rechercher à nouveau.",
@@ -43,6 +43,8 @@
 
     "waMessage": "Veuillez cliquer sur le lien ci-dessus pour obtenir la facture de votre commande. Merci de faire appel à SOS Pharma",
     "payment-button": "<button class='btn btn-success' id='payButton' onclick='paymentWidget()'> Cliquer pour payer </button>",
-    "resend-billing": "<p> Le paiement de votre commande n'a pas été effectué. Souhaitez-vous effectuer un nouveau paiement ? <p class='bold-text'> Veuillez suivre les étapes suivantes </p>"
+    "resend-billing": "<p> Le paiement de votre commande n'a pas été effectué. Souhaitez-vous effectuer un nouveau paiement ?</p>",
+    "order-again": "<p>  Souhaitez-vous commander à nouveau ? </p> <div class='buttons'> <button class='btn btn-success' onclick='orderAgain()'> COMMANDER À NOUVEAU </button> <button class='btn btn-danger' onclick='goBack()'> FIN DE LA DISCUSSION </button> </div>"
+
 
 }

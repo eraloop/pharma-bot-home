@@ -7,7 +7,7 @@
 
     "greeting-text": "<p class='font-weight-bold'>Hello!!.</p> <p>Welcome to SOS Pharma</p>",
     "network-error": "<p class='font-weight-bold'>Network error!!.</p>  <p>Failed to load required resources <br>Please check your internet connection and refresh the page</p>",
-    "loading-message": "Setting up, Please wait",
+    "loading-message": "Setting up, Please wait a moment..",
 
     "drug": "Which medication do you wish to order ?",
     "address": "",
@@ -25,7 +25,7 @@
     "no-medication": "No Medication identified, please provide the list of medications you wish to order as specified by your medical personnel",
     "keywords": "Please reply with the above specified keywords",
     "input": "Please reply with the above specified keywords",
-    "more-meds": "<p> Do you wish to order any other medication ?</p><div class='buttons'><button class='btn btn-info' onclick='continueSelecting()'> ADD DRUG </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> DONE SELECTING </button></div>",
+    "more-meds": "<p> Do you wish to order any other medication ?</p><div class='buttons'><button class='btn btn-info' onclick='continueSelecting()'> ADD ANOTHER DRUG </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> DONE SELECTING DRUGS </button></div>",
     "drug-found": "The requested drug isnt available, Please make sure the spelling is correct and try again",
     "choose-drug": "<p class='bold-text'>Please select the drug you want from the list below. If the drug you want is not in the list, click on the button below.</p> <button class='btn btn-danger list-clear-button' onclick='clearDrugList()'> CLEAR LIST </button>",
     "drug-search-complaint": "The amount of drugs matching this name is alot, please if your required drug isnt found on this list, check the spelling and search again.",
@@ -43,6 +43,7 @@
 
     "waMessage": "Please click on the link above to get your order invoice. Thanks for using SOS Pharma",
     "payment-button": "<button class='btn btn-success' id='payButton' onclick='paymentWidget()'> Click To Pay </button>",
-    "resend-billing": "<p> Failed to make payment for your order, Do you wish to redo your payment ? </p> <p class='bold-text'> Please follow the steps </p>"
+    "resend-billing": "<p> Failed to make payment for your order, Do you wish to redo your payment ? </p>",
+    "order-again": "<p> Do you wish to order again ? </p> <div class='buttons'> <button class='btn btn-success' onclick='orderAgain()'> ORDER AGAIN </button> <button class='btn btn-danger' onclick='goBack()'> END CHAT </button> </div>"
 
 }

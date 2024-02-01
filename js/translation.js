@@ -3,25 +3,29 @@ let locale;
 let translations = {};
 
 async function getUserLocale() {
+
   const userLocale = navigator.language || navigator.userLanguage;
-  if(userLocale !== 'fr' || userLocale !== 'fr-FR' || userLocale !== 'en-US' || userLocale !== 'en'){
-    return 'fr'
+  const lowerCaseLocale = userLocale.toLowerCase();
+  if (lowerCaseLocale.startsWith('fr')) {
+    return 'fr';
   }
-  if(userLocale === 'fr' || userLocale === 'fr-FR'){
-    return 'fr'
+  if (lowerCaseLocale.startsWith('en')) {
+    return 'en';
   }
-  // if(userLocale === 'en-US' || userLocale === 'en'){
-  //   return 'en'
-  // }
-  return userLocale
+
+  return 'en';
 }
 
-document.addEventListener("DOMContentLoaded", async() => {
+
+window.addEventListener("DOMContentLoaded", async() => {
   locale = await getUserLocale();
   await setLocale(locale);
 });
 
 async function setLocale(newLocale) {
+  if(newLocale === undefined || newLocale === null) {
+    newLocale = 'fr'
+  }
   const newTranslations = await fetchTranslationsFor(newLocale);
   locale = newLocale;
   translations = newTranslations;
@@ -29,6 +33,9 @@ async function setLocale(newLocale) {
 }
 
 async function fetchTranslationsFor(newLocale) {
+  if(newLocale === undefined || newLocale === null) {
+    newLocale = 'fr'
+  }
   const response = await fetch(`../translations/${newLocale}.json`);
   return await response.json();
 }

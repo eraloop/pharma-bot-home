@@ -33,7 +33,6 @@ a{
     border-top-right-radius: 10px;
 }
 
-
 /* CONTENT ISOPEN */
 .chatbox--active {
     transform: translateY(-40px);
@@ -45,7 +44,6 @@ a{
 .chatbox__button {
     text-align: right;
 }
-
 
 .chatbox__send__button {
     display: flex;
@@ -62,14 +60,12 @@ a{
     z-index: 999;
 }
 
-
 /* HEADER */
 .chatbox__header {
     position: sticky;
     top: 0;
     background: orange;
 }
-
 
 /* MESSAGES */
 .chatbox__messages {
@@ -81,7 +77,6 @@ a{
     padding: 10px 0;
 }
 
-
 .messages__item {
     max-width: 75%;
     height: auto;
@@ -91,9 +86,6 @@ a{
     max-width: 75%;
     font-weight: 400;
 }
-
-
-
 
 .sos-pharma-message , .messages__item{
     margin-top: 10px;
@@ -262,9 +254,13 @@ a{
 
 .btn-close{
     outline: none !important;
-    border: none !important;
+    border: 1px solid #eee !important;
     background: transparent !important;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
   }
   
   
@@ -350,6 +346,7 @@ a{
 .bold-text{
     font-weight: 600;
 }
+
 
 
 @media screen and (max-width: 600px) {

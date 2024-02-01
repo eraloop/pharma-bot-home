@@ -1,8 +1,24 @@
 
 function medicationDone() {
-  pushPharmaFeedbackMessages("prescribtion-type");
-  selectPrescriptionType();
-  disableTextarea(inputBox);
+
+  userInfo['prescriptionType'] = response
+
+    totalCost = 0;
+    let deliveryCost = 500, sosPharmaCost = 1000;
+    selectedSearchedDrugs.forEach((currentDrug) => {
+        totalCost += currentDrug.price * currentDrug.quantity;
+    });
+    totalCost += deliveryCost + sosPharmaCost;
+    const medicationTableHtml = prepareMedicationDataTable(
+        selectedSearchedDrugs,
+        totalCost,
+        deliveryCost,
+        sosPharmaCost
+    );
+
+    pushPharmaMessage(medicationTableHtml);
+    pushPharmaMessage(getTranslation("medications-complete"));
+
 }
 
 function clearMedicationList() {
@@ -36,7 +52,6 @@ async function makePayment(token, body) {
     console.error("Error in makePayment:", error);
   }
 }
-
 
 function completeMedList() {
   console.log("complete button");
@@ -73,12 +88,11 @@ async function sendOrderMail(){
     } else {
       messages.pop();
       pushPharmaFeedbackMessages("order-sent");
-      console.log("order information", orderInfo)
-      console.log("user info", userInfo)
       let waLink = generateWhatsAppLink(orderInfo, userInfo)
-      console.log("waLink ", waLink)
       pushPharmaMessage(waLink)
       pushPharmaMessage(getTranslation("waMessage"));
+      pushPharmaMessage(getTranslation("order-again"));
+
       return;
     }
 
@@ -163,7 +177,6 @@ function onSelectCity(city) {
   }
 }
 
-
 function onDisplayLocationDropDown() {
   let pickupLocationDropdown = document.querySelector(".pickup-location-dropdown");
   pickupLocationDropdown.innerHTML = "";
@@ -180,7 +193,6 @@ function onDisplayLocationDropDown() {
     this.value = this.value;
   });
 }
-
 
 function onSelectQuarter(quarter) {
   quarter = JSON.parse(quarter);
@@ -233,15 +245,13 @@ function selectDrugQuantity() {
   
 function onSelectDrugQuantity(quantity){
 
-currentDrug['quantity'] = quantity;
-selectedSearchedDrugs.push(currentDrug);
-pushPharmaMessage(`<p class='bold-text'> ${JSON.stringify(currentDrug["name"])}  added to your list</p>`);
-pushPharmaFeedbackMessages("more-meds");
-
-// const buttons = document.querySelectorAll(".select-medication-option");
-// buttons.forEach(function(button) {
-//   disableButton(button); 
-// });
+  currentDrug['quantity'] = quantity;
+  selectedSearchedDrugs.push(currentDrug);
+  messages.pop();
+  pushPharmaMessage( locale == 'en' ?`<p class='bold-text'> Selected Drug Quantity : ${quantity} </p>` : `<p class='bold-text'> Quantité de médicament sélectionnée : ${quantity} </p>`);
+  pushPharmaFeedbackMessages("prescribtion-type");
+  selectPrescriptionType();
+  disableTextarea(inputBox);
 
 }
 
@@ -265,24 +275,12 @@ locationDropdown.addEventListener("change", function() {
 
 }
 
-function onSelectPrescriptionType(response){
-userInfo['prescriptionType'] = response
-
-totalCost = 0;
-let deliveryCost = 500, sosPharmaCost = 1000;
-selectedSearchedDrugs.forEach((currentDrug) => {
-    totalCost += currentDrug.price * currentDrug.quantity;
-});
-totalCost += deliveryCost + sosPharmaCost;
-const medicationTableHtml = prepareMedicationDataTable(
-    selectedSearchedDrugs,
-    totalCost,
-    deliveryCost,
-    sosPharmaCost
-);
-pushPharmaMessage(medicationTableHtml);
-pushPharmaFeedbackMessages("medications-complete");
-currentStep++;
+function onSelectPrescriptionType(prescriptionType){
+    messages.pop();
+    pushPharmaMessage( locale == 'en' ? `<p class='bold-text'> Selected Drug Quantity : ${prescriptionType} </p>` : `<p class='bold-text'> Quantité de médicament sélectionnée : ${prescriptionType} </p>`);
+    pushPharmaMessage(`<p class='bold-text'> ${JSON.stringify(currentDrug["name"])}  added to your list</p>`);
+    pushPharmaFeedbackMessages("more-meds");
+    currentStep++;
 }
 
 function reselectAddress(){
@@ -317,7 +315,6 @@ function restartConversation() {
     isDrugFound = false;
     enableTextarea(inputBox);
     onStart();
-  
 }
 
 function saveUserToLocalStorage(userInfo){
@@ -335,4 +332,14 @@ function addressCorrect(){
 
 function removeDataFromLocalStorage(){
   localStorage.removeItem("user");
+}
+
+function orderAgain(){
+  userDrugs = [];
+  selectedSearchedDrugs = [];
+
+  pushPharmaFeedbackMessages("medications");
+  enableTextarea(inputBox);
+  currentStep = 0;
+
 }
