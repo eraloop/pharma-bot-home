@@ -3,7 +3,6 @@ let locale;
 let translations = {};
 
 async function getUserLocale() {
-
   const userLocale = navigator.language || navigator.userLanguage;
   const lowerCaseLocale = userLocale.toLowerCase();
   if (lowerCaseLocale.startsWith('fr')) {
