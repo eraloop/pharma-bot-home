@@ -13,7 +13,7 @@ const messageContainer = document.getElementById("chatbox__messages");
 
 // user variables
 let city = "", selectedPickupLocation = "";
-let messages  = [], drugList = [], userPrompts = [], userDrugs  = [], userDrugPlusWeight = [], updatedDrugObjects = [], selectedSearchedDrugs = [], orderKeywords = [], locations = [], quarters = [], drugQuantity = [0,1,2,3,4,5,6,7,8,9];
+let messages  = [], drugList = [], userPrompts = [], userDrugs  = [], userDrugsList = [], updatedDrugObjects = [], selectedSearchedDrugs = [], orderKeywords = [], locations = [], quarters = [], drugQuantity = [0,1,2,3,4,5,6,7,8,9];
 let isDrugFound = false, isMessagesLoaded = false, isWaitingForOptions = false;
 let paymentInfo = {}, userInfo = {}, user = {};
 
@@ -31,7 +31,7 @@ let body = {
   reference: '',
 }
 
-let message = "", currentDrug = 0, currentStep = 0, totalCost = 0;
+let message = "", currentDrug = 0, currentStep = 0, totalCost = 0 , page = 1;
 
 // payment information
 let token = "290ed6ac188a2f1d30baf8533fcaa09e2c77591d", transactionId = "";
@@ -83,8 +83,8 @@ async function onStart() {
       ? `
       <div>
         <p>Is your address information correct ? If yes , continue</p>
-        <p> City : ${userInfo["city"]} </p>
-        <p> Quarter : ${userInfo["quarter"]} </p>
+        <p> <span> City :</span> <span class='bold-text'> ${userInfo["city"]}</span></p> 
+        <p><span> Quarter :</pan> <span class='bold-text'>${userInfo["quarter"]} </span> </p>
         <div class="buttons"> 
           <button class="btn btn-danger " onclick="reselectAddress()">NO, RESELECT</button>
           <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
@@ -95,17 +95,17 @@ async function onStart() {
       : `
       <div>
         <p>Votre adresse est-elle correcte ? Si oui, continuer</p>
-        <p> Ville : ${userInfo["city"]} </p>
-        <p> Quartier : ${userInfo["quarter"]} </p>
+        <p><span> Ville :</span> <span class='bold-text'> ${userInfo["city"]}</span> </p>
+        <p> <span> Quartier :</span> <span class='bold-text'>${userInfo["quarter"]} </span></p>
         <div class="buttons"> 
           <button class="btn btn-danger" onclick="reselectAddress()">NO, RESELECT</button>
-          <button class="btn btn-success" onclick="addressCorrect()">CORRECT</button>
+          <button class="btn btn-success" onclick="addressCorrect()">CORRECTE</button>
         </div>
       </div>
     `;
     pushPharmaMessage(address);
   }else{
-    pushPharmaFeedbackMessages("city");
+    pushPharmaMessage(getTranslation("city"));
     onDisplayCityDropDown();
     enableTextarea(inputBox);
   }
@@ -131,28 +131,29 @@ async function onSendButton(chatbox) {
           // splits user input and searches for user drug in the drugs array.
           isDrugFound = false;
           const userPrompts = userPrompt.split(/\s+|,/);
-          searchResults = matchUserDrugs(drugList, userPrompts, orderKeywords);
-          userDrugs = searchResults["userDrugs"];
+          searchResults = await matchUserDrugs(drugList, userPrompts, orderKeywords);
+          userDrugsList = searchResults['userDrugs'];
+          userDrugs = getItemsByPage(page, 10);
           isDrugFound = searchResults["isDrugFound"];
           drugSearchComplaint = searchResults["drugSearchComplaint"];
           // checks if any drug is found,
           if (!isDrugFound) {
-            pushPharmaFeedbackMessages("drug-found");
+            pushPharmaMessage(getTranslation("drug-found"));
             return;
           }
 
-          pushPharmaFeedbackMessages("choose-drug");
+          pushPharmaMessage(getTranslation("choose-drug"));
           const medicationTableHtml = prepareMedicationTable(userDrugs);
           pushPharmaMessage(medicationTableHtml);
           disableTextarea(inputBox);
         
           if (drugSearchComplaint) {
-            pushPharmaFeedbackMessages("drug-search-complaint");
+            pushPharmaMessage(getTranslation("drug-search-complaint"));
             return;
           }
 
       } else if (userPrompt == "done" && selectedSearchedDrugs.length === 0) {
-        pushPharmaFeedbackMessages("meds-empty");
+        pushPharmaMessage(getTranslation("meds-empty"));
       } else if (userPrompt == "done" && selectedSearchedDrugs.length !== 0) {
         medicationDone();
       }
@@ -192,7 +193,6 @@ async function onSendButton(chatbox) {
 
       break;
     default:
-      console.log("hello");
   }
 }
 

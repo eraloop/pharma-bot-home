@@ -19,7 +19,6 @@ async function getAccessToken(username, password) {
     );
 
     const token = response.data.token;
-    console.log("token from accessToken function " + token);
 
     if (!token) {
       return {
@@ -41,8 +40,6 @@ async function getAccessToken(username, password) {
 
 
 async function mobilePayment(token, data) {
-  console.log("data entering payment function", data);
-  console.log("token entering payment function", token);
 
   try {
     const response = await axios.post(
@@ -66,7 +63,6 @@ async function mobilePayment(token, data) {
     );
 
     const result = response.data;
-    console.log("result from payment function " + JSON.stringify(result));
 
     const reference = result.reference;
     const operator = result.operator;
@@ -94,8 +90,6 @@ async function mobilePayment(token, data) {
 
 
 async function requestPaymentStatus(token, transactionId) {
-  console.log("token ", token);
-  console.log("transactionId ", transactionId);
 
   try {
     const response = await axios.get(`https://www.campay.net/api/transaction/${transactionId}/`, {
@@ -110,11 +104,8 @@ async function requestPaymentStatus(token, transactionId) {
     });
 
     const result = response.data;
-    console.log("result from payment status function ", result);
     const status = result.status;
     const reference = result.reference;
-
-    console.log(status);
 
     if (status === 'SUCCESSFUL') {
       return {

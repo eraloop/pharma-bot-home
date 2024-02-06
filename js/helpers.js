@@ -88,7 +88,7 @@ function cleanMedicationName(medicationName) {
   return cleanedMedicationName;
 }
 
-function matchUserDrugs(drugs, userPrompts, orderKeywords) {
+async function matchUserDrugs(drugs, userPrompts, orderKeywords) {
   let userDrugs = [];
   let drugmatch = false;
   let drugSearchComplaint = false;
@@ -114,7 +114,7 @@ function matchUserDrugs(drugs, userPrompts, orderKeywords) {
 
       if (userDrugs.length == 10) {
         drugSearchComplaint = true;
-        break;
+        // break;
       }
 
       if (medicationName.substring(0, 3) == searchString.substring(0, 3)) {
@@ -599,4 +599,12 @@ function getCurrentFormatedDate(){
   const minutes = currentDate.getMinutes();
   const formattedDateTime = `${day}/${month}/${year}-${hours}:${minutes}`;
   return formattedDateTime;
+}
+
+function getItemsByPage(pageNumber, itemsPerPage) {
+  const startIndex = (pageNumber - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const endIndexWithinBounds = Math.min(endIndex, userDrugsList.length);
+  const pageItems = userDrugsList.slice(startIndex, endIndexWithinBounds);
+  return pageItems;
 }

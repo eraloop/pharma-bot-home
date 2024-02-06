@@ -5,14 +5,14 @@ let translations = {};
 async function getUserLocale() {
   const userLocale = navigator.language || navigator.userLanguage;
   const lowerCaseLocale = userLocale.toLowerCase();
-  if (lowerCaseLocale.startsWith('fr')) {
-    return 'fr';
-  }
-  if (lowerCaseLocale.startsWith('en')) {
-    return 'en';
-  }
+  // if (lowerCaseLocale.startsWith('fr')) {
+  //   return 'fr';
+  // }
+  // if (lowerCaseLocale.startsWith('en')) {
+  //   return 'en';
+  // }
 
-  return 'en';
+  return 'fr';
 }
 
 

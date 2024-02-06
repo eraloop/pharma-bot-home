@@ -11,7 +11,7 @@ async function sendMail(selectedSearchedDrugs, userInfo, orderInfo) {
   });
 
   try {
-    let response = await emailjs.send(serviceID, templateID, {
+    await emailjs.send(serviceID, templateID, {
       name: userInfo["name"],
       email: "sospharma@order.com",
       message: `
@@ -29,10 +29,8 @@ async function sendMail(selectedSearchedDrugs, userInfo, orderInfo) {
         phone: ${JSON.stringify(userInfo["phone"])}
       `,
     });
-    console.log(response);
     return true;
   } catch (e) {
-    console.log(e);
     return false;
   }
 }

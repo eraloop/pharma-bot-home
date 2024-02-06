@@ -23,7 +23,7 @@ function medicationDone() {
 
 function clearMedicationList() {
   selectedSearchedDrugs = [];
-  pushPharmaFeedbackMessages("medications");
+  pushPharmaMessage(getTranslation("medications"));
   currentStep = 0;
   enableTextarea(inputBox);
 }
@@ -31,7 +31,7 @@ function clearMedicationList() {
 function clearDrugList() {
   userDrugs = [];
   messages.pop(); messages.pop();
-  pushPharmaFeedbackMessages("drugs-cleared");
+  pushPharmaMessage(getTranslation("drugs-cleared"));
   currentStep = 0;
   enableTextarea(inputBox);
 }
@@ -42,8 +42,8 @@ async function makePayment(token, body) {
     let payment = await mobilePayment(token, body);
     if (payment["success"] === true) {
       transactionId = payment["reference"];
-      pushPharmaFeedbackMessages("confirm-payment");
-      pushPharmaFeedbackMessages("billing-request-followup");
+      pushPharmaMessage(getTranslation("confirm-payment"));
+      pushPharmaMessage(getTranslation("billing-request-followup"));
       return true;
     } else {
       return false
@@ -55,7 +55,7 @@ async function makePayment(token, body) {
 
 function completeMedList() {
   console.log("complete button");
-  pushPharmaFeedbackMessages("identity");
+  pushPharmaMessage(getTranslation("identity"));
   enableTextarea(inputBox);
   currentStep = 1;
 }
@@ -65,12 +65,12 @@ async function checkTransactionStatus(token , transactionId) {
   let paymentStatus = await requestPaymentStatus(token , transactionId)
   console.log("result from chek transaction status" ,paymentStatus)
   if (!paymentStatus) {
-    pushPharmaFeedbackMessages("order-failed");
+    pushPharmaMessage(getTranslation("order-failed"));
     enableTextarea(inputBox);
     return;
   } else {
-    pushPharmaFeedbackMessages("order-placed");
-    pushPharmaFeedbackMessages("order-followup");
+    pushPharmaMessage(getTranslation("order-placed"));
+    pushPharmaMessage(getTranslation("order-followup"));
     currentStep++;
   }
 
@@ -82,12 +82,12 @@ async function sendOrderMail(){
 
     let response = await sendMail(selectedSearchedDrugs, userInfo, orderInfo);
     if (!response) {
-      pushPharmaFeedbackMessages("order-failed");
+      pushPharmaMessage(getTranslation("order-failed"));
       enableTextarea(inputBox);
       return;
     } else {
       messages.pop();
-      pushPharmaFeedbackMessages("order-sent");
+      pushPharmaMessage(getTranslation("order-sent"));
       let waLink = generateWhatsAppLink(orderInfo, userInfo)
       pushPharmaMessage(waLink)
       pushPharmaMessage(getTranslation("waMessage"));
@@ -104,7 +104,7 @@ async function sendOrderMail(){
 async function confirmedPayment() {
 
   await checkTransactionStatus(token , transactionId)
-  pushPharmaFeedbackMessages("placing-order");
+  pushPharmaMessage(getTranslation("placing-order"));
   disableTextarea(inputBox);
 
   orderInfo['paymentReference'] = transactionId,
@@ -116,27 +116,30 @@ async function confirmedPayment() {
 }
 
 function continueSelecting() {
-  pushPharmaFeedbackMessages("medications");
+  pushPharmaMessage(getTranslation("medications"));
   enableTextarea(inputBox);
   currentStep = 0;
 }
 
 async function resendPayment(token, body) {
   await makePayment(token, body);
-  pushPharmaFeedbackMessages("resend-billing-request");
-  pushPharmaFeedbackMessages("billing-request-followup");
+  pushPharmaMessage(getTranslation("resend-billing-request"));
+  pushPharmaMessage(getTranslation("billing-request-followup"));
 }
 
 function onDisplayCityDropDown() {
   let locationDropdown = document.querySelector(".location-dropdown");
   locationDropdown.innerHTML = "";
 
-  locations.forEach((optionText) => {
+  locations.reverse().forEach((optionText) => {
     const option = document.createElement("option");
     option.value = JSON.stringify(optionText);
     option.text = optionText["name"];
     locationDropdown.appendChild(option);
   });
+
+  locationDropdown.selectedIndex = locationDropdown.options.length - 1;
+  locationDropdown.focus();
 
   locationDropdown.addEventListener("change", function () {
     onSelectCity(this.value);
@@ -172,7 +175,7 @@ function onSelectCity(city) {
     return;
   } else {
     messages.pop();
-    pushPharmaFeedbackMessages("quarter");
+    pushPharmaMessage(getTranslation("quarter"));
     onDisplayLocationDropDown();
   }
 }
@@ -181,12 +184,15 @@ function onDisplayLocationDropDown() {
   let pickupLocationDropdown = document.querySelector(".pickup-location-dropdown");
   pickupLocationDropdown.innerHTML = "";
 
-  quarters.forEach((optionText) => {
+  quarters.reverse().forEach((optionText) => {
     const option = document.createElement("option");
     option.value = JSON.stringify(optionText);
     option.text = optionText["name"];
     pickupLocationDropdown.appendChild(option);
   });
+
+  pickupLocationDropdown.selectedIndex = pickupLocationDropdown.options.length - 1;
+  pickupLocationDropdown.focus();
 
   pickupLocationDropdown.addEventListener("change", function () {
     onSelectQuarter(this.value);
@@ -202,16 +208,16 @@ function onSelectQuarter(quarter) {
       ? `
       <div>
         <p>Is your address information correct ? If yes , continue</p>
-        <p> City : ${userInfo["city"]} </p>
-        <p> Quarter : ${userInfo["quarter"]} </p>
+        <p> <span> City :</span> <span class='bold-text'> ${userInfo["city"]}</pan> </p> 
+        <p> <span> Quarter :</pan> <pan class='bold-text'>${userInfo["quarter"]} </pan> </p>
         <button class="btn btn-danger" onclick="reselectAddress()">NO, RESELECT</button>
       </div>
     `
       : `
       <div>
-        <p>Votre adresse est-elle correcte ? Si oui, continuer</p>
-        <p> Ville : ${userInfo["city"]} </p>
-        <p> Quartier : ${userInfo["quarter"]} </p>
+        <p>V<otre adresse est-elle correcte ? Si oui, continuer</p>
+        <p> <span> Ville :</span> <span class='bold-text'> ${userInfo["city"]}</pan> </p> 
+        <p> <span> Quartier :</span> <span class='bold-text'>${userInfo["quarter"]} </pan> </p>
         <button class="btn btn-danger" onclick="reselectAddress()">NON, RESELECT</button>
       </div>
     `;
@@ -228,13 +234,16 @@ function selectDrugQuantity() {
     let locationDropdown = document.querySelector(".drug-quantity-dropdown");
     locationDropdown.innerHTML = "";
   
-    drugQuantity.forEach((optionText) => {
+    drugQuantity.reverse().forEach((optionText) => {
       const option = document.createElement("option");
       option.value = JSON.stringify(optionText);
       option.text = optionText; 
       locationDropdown.appendChild(option); 
     });
   
+    locationDropdown.selectedIndex = locationDropdown.options.length - 1;
+    locationDropdown.focus();
+
     locationDropdown.addEventListener("change", function() {
       onSelectDrugQuantity(this.value);
       this.value = this.value
@@ -248,8 +257,8 @@ function onSelectDrugQuantity(quantity){
   currentDrug['quantity'] = quantity;
   selectedSearchedDrugs.push(currentDrug);
   messages.pop();
-  pushPharmaMessage( locale == 'en' ?`<p class='bold-text'> Selected Drug Quantity : ${quantity} </p>` : `<p class='bold-text'> Quantité de médicament sélectionnée : ${quantity} </p>`);
-  pushPharmaFeedbackMessages("prescribtion-type");
+  pushPharmaMessage( locale == 'en' ?`<p> Selected Drug Quantity : <span class='bold-text'> ${quantity} </span>  </p>` : `<p class='bold-text'> Quantité médicament sélectionnée : <span class='bold-text'> ${quantity} </span> </p>`);
+  pushPharmaMessage(getTranslation("prescribtion-type"));
   selectPrescriptionType();
   disableTextarea(inputBox);
 
@@ -257,17 +266,20 @@ function onSelectDrugQuantity(quantity){
 
 function selectPrescriptionType() {
 
-let locationDropdown = document.querySelector(".prescription-type");
-locationDropdown.innerHTML = "";
+  let locationDropdown = document.querySelector(".prescription-type");
+  locationDropdown.innerHTML = "";
 
-let prescriptionType = (locale === 'en-US' || locale === 'en') ? ["Select Below", "Prescribed Drug", "Unprescribed Drug"] : ["Sélectionnez ci-dessous", "Ordonnance", 'Auto Medication']
+  let prescriptionType = (locale === 'en-US' || locale === 'en') ? ["Select Below", "Prescribed Drug", "Unprescribed Drug"] : ["Sélectionnez ci-dessous", "Ordonnance", 'Auto Medication']
 
-prescriptionType.forEach((optionText) => {
-    const option = document.createElement("option");
-    option.value = JSON.stringify(optionText);
-    option.text = optionText; 
-    locationDropdown.appendChild(option); 
-});
+  prescriptionType.reverse().forEach((optionText) => {
+      const option = document.createElement("option");
+      option.value = JSON.stringify(optionText);
+      option.text = optionText; 
+      locationDropdown.appendChild(option); 
+  });
+
+  locationDropdown.selectedIndex = locationDropdown.options.length - 1;
+  locationDropdown.focus();
 
 locationDropdown.addEventListener("change", function() {
     onSelectPrescriptionType(this.value);
@@ -277,9 +289,11 @@ locationDropdown.addEventListener("change", function() {
 
 function onSelectPrescriptionType(prescriptionType){
     messages.pop();
-    pushPharmaMessage( locale == 'en' ? `<p class='bold-text'> Selected Drug Quantity : ${prescriptionType} </p>` : `<p class='bold-text'> Quantité de médicament sélectionnée : ${prescriptionType} </p>`);
+    pushPharmaMessage( locale == 'en' ?
+     `<p> Presciption Type : <span class='bold-text'> ${prescriptionType} </span> </p>` : 
+    `<p> Type de prescription : <span class='bold-text'> ${prescriptionType} </span> </p>`);
     pushPharmaMessage(`<p class='bold-text'> ${JSON.stringify(currentDrug["name"])}  added to your list</p>`);
-    pushPharmaFeedbackMessages("more-meds");
+    pushPharmaMessage(getTranslation("more-meds"));
     currentStep++;
 }
 
@@ -290,14 +304,14 @@ function reselectAddress(){
   }
   removeDataFromLocalStorage()
   updateChatText(chatBox, messages)
-  pushPharmaFeedbackMessages("city");
+  pushPharmaMessage(getTranslation("city"));
   onDisplayCityDropDown();
   disableTextarea(inputBox);
 }
 
 function addMedicationToCart(index) {
     currentDrug = userDrugs[index];  
-    pushPharmaFeedbackMessages("drug-quantity");
+    pushPharmaMessage(getTranslation("drug-quantity"));
     selectDrugQuantity()
 }
 
@@ -338,8 +352,37 @@ function orderAgain(){
   userDrugs = [];
   selectedSearchedDrugs = [];
 
-  pushPharmaFeedbackMessages("medications");
+  pushPharmaMessage(getTranslation("medications"));
   enableTextarea(inputBox);
   currentStep = 0;
+
+}
+
+function nextPage(){
+
+  if( ((page - 1) * 10) > userDrugsList.length ) {
+    return;
+  }
+  page ++;
+  messages.pop()
+  messages.pop()
+  userDrugs = getItemsByPage(page, 10);
+  const medicationTableHtml = prepareMedicationTable(userDrugs);
+  pushPharmaMessage(medicationTableHtml);
+  pushPharmaMessage(getTranslation("drug-search-complaint"));
+
+}
+
+function previousPage(){
+  if(page == 1){
+    return;
+  }
+  page --;
+  messages.pop()
+  messages.pop()
+  userDrugs = getItemsByPage(page, 10);
+  const medicationTableHtml = prepareMedicationTable(userDrugs);
+  pushPharmaMessage(medicationTableHtml);
+  pushPharmaMessage(getTranslation("drug-search-complaint"));
 
 }

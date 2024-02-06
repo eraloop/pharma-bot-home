@@ -305,6 +305,11 @@ a{
     color: white !important;
 }
 
+.btn-secondary{
+    background-color: grey;
+    color: #202020;
+}
+
 .location-dropdown, .pickup-location-dropdown, .drug-quantity-dropdown, .prescription-type{
     display: flex;
     flex-direction: row;
