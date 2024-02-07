@@ -57,6 +57,7 @@ async function onStart() {
   response = await loadExcel();
   user = getUserFromLocalStorage();
   user = JSON.parse(user);
+  userInfo = user;
   
   drugList = response["drugs"];
   let drugLoaded = response["isLoaded"];

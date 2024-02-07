@@ -268,7 +268,6 @@ function generateWhatsAppLink(orderId, userInfo) {
   const whatsappLink = `
     <a class='btn btn-success' href="${baseUrl}${fullPhoneNumber}?text=${encodeURIComponent(message)}" target="_blank"> Get Your Order Invoice</a>
   `;
-  console.log(whatsappLink);
   return whatsappLink;
 }
 

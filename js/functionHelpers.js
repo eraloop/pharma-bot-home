@@ -285,9 +285,9 @@ function selectPrescriptionType() {
   locationDropdown.selectedIndex = locationDropdown.options.length - 1;
   locationDropdown.focus();
 
-locationDropdown.addEventListener("change", function() {
-    onSelectPrescriptionType(this.value);
-});
+  locationDropdown.addEventListener("change", function() {
+      onSelectPrescriptionType(this.value);
+  });
 
 }
 
