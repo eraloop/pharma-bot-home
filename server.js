@@ -51,7 +51,6 @@ window.addEventListener("DOMContentLoaded", async() => {
 
 async function onStart() {
   disableTextarea(inputBox);
-  // pushPharmaMessage("Mise en place, veuillez patienter un instant..");
   await pushThinkingMessage("loading-message");
   orderKeywords = getOrderKeywords(locale);
   locations = await onLoadCities();
@@ -94,11 +93,11 @@ async function onStart() {
     `
       : `
       <div>
-        <p>Votre adresse est-elle correcte ? Si oui, continuer</p>
+        <p>Lieu de livraison OK ? Si Oui, saisissez le médicament recherché</p>
         <p><span> Ville :</span> <span class='bold-text'> ${userInfo["city"]}</span> </p>
         <p> <span> Quartier :</span> <span class='bold-text'>${userInfo["quarter"]} </span></p>
         <div class="buttons"> 
-          <button class="btn btn-danger" onclick="reselectAddress()">NO, RESELECT</button>
+          <button class="btn btn-danger" onclick="reselectAddress()">CORRECTION</button>
           <button class="btn btn-success" onclick="addressCorrect()">CORRECTE</button>
         </div>
       </div>
@@ -142,15 +141,15 @@ async function onSendButton(chatbox) {
             return;
           }
 
-          pushPharmaMessage(getTranslation("choose-drug"));
           const medicationTableHtml = prepareMedicationTable(userDrugs);
           pushPharmaMessage(medicationTableHtml);
           disableTextarea(inputBox);
         
           if (drugSearchComplaint) {
             pushPharmaMessage(getTranslation("drug-search-complaint"));
-            return;
+            // return;
           }
+          pushPharmaMessage(getTranslation("choose-drug"));
 
       } else if (userPrompt == "done" && selectedSearchedDrugs.length === 0) {
         pushPharmaMessage(getTranslation("meds-empty"));
@@ -170,7 +169,7 @@ async function onSendButton(chatbox) {
         amount: totalCost,
         amount: 2,
         phone: userInfo['phone'],
-        description: `You have received a billing request of ${totalCost} for your order from SOS Pharma. `,
+        description: `Order: ${orderId} - Price: ${totalCost} - ${getCurrentFormatedDate()} `,
         reference: stringToBase32("orderId-" + getCurrentFormatedDate() + "-" + Math.random().toString(16).slice(2)),
       }
 

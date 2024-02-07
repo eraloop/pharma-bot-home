@@ -14,7 +14,7 @@
     "phone-enter" : "Veuillez indiquer le numéro avec lequel vous voulez payer." ,
     "drug-quantity": "<p>Quelle quantité de ce médicament souhaitez-vous commander ? </p> <select class='drug-quantity-dropdown'></select>",
     "city": " Dans quelle ville habitez-vous ?<select class='location-dropdown'></select>",
-    "quarter": "<p>Où habitez-vous dans cette ville ?</p> <select class='pickup-location-dropdown'></select>",
+    "quarter": "<p>“Lieu de livraison ?</p> <select class='pickup-location-dropdown'></select>",
     "prescribtion-type": "<p>Ces médicaments sont-ils prescrits ou non prescrits ?</p><select class='prescription-type'></select>",
     "medications": "Quels autres médicaments souhaitez-vous commander ?",
     "medications-complete": "<p> Vos médicaments sont-ils corrects et complets ??</p><div class='buttons'> <button class='btn btn-danger med-clear-button' onclick='clearMedicationList()'>EFFACER LA LISTE SÉLECTIONNÉE</button><button class='btn btn-success med-complete-button' onclick='completeMedList()'>COMPLET</button></div>",

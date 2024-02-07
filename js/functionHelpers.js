@@ -30,7 +30,7 @@ function clearMedicationList() {
 
 function clearDrugList() {
   userDrugs = [];
-  messages.pop(); messages.pop();
+  messages.pop(); messages.pop();messages.pop();
   pushPharmaMessage(getTranslation("drugs-cleared"));
   currentStep = 0;
   enableTextarea(inputBox);
@@ -152,19 +152,21 @@ function onSelectCity(city) {
   quarters = city["quarters"];
   if (quarters.length == 0) {
     let address = 
-      locale !== "fr-FR" || locale !== "fr"
+      locale == 'en'
         ? `
         <div>
           <p>Address Information</p>
           <p> City : ${userInfo["city"]} </p>
           <button class="btn btn-danger " onclick="reselectAddress()">NO, RESELECT</button>
+          <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
         </div>
       `
         : `
         <div>
           <p> Informations sur l'adresse </p>
           <p> Ville : ${userInfo["city"]} </p>
-          <button class="btn btn-danger " onclick="reselectAddress()">NON, RESELECT</button>
+          <button class="btn btn-danger " onclick="reselectAddress()">CORRECTION</button>
+          <button class="btn btn-success " onclick="addressCorrect()">CORRECTE</button>
         </div>
       `;
 
@@ -204,13 +206,14 @@ function onSelectQuarter(quarter) {
   quarter = JSON.parse(quarter);
   userInfo["quarter"] = quarter["name"];
   let address =  
-    locale !== "fr-FR" || locale !== "fr"
+    locale == 'en'
       ? `
       <div>
         <p>Is your address information correct ? If yes , continue</p>
         <p> <span> City :</span> <span class='bold-text'> ${userInfo["city"]}</pan> </p> 
         <p> <span> Quarter :</pan> <pan class='bold-text'>${userInfo["quarter"]} </pan> </p>
         <button class="btn btn-danger" onclick="reselectAddress()">NO, RESELECT</button>
+        <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
       </div>
     `
       : `
@@ -218,7 +221,8 @@ function onSelectQuarter(quarter) {
         <p>V<otre adresse est-elle correcte ? Si oui, continuer</p>
         <p> <span> Ville :</span> <span class='bold-text'> ${userInfo["city"]}</pan> </p> 
         <p> <span> Quartier :</span> <span class='bold-text'>${userInfo["quarter"]} </pan> </p>
-        <button class="btn btn-danger" onclick="reselectAddress()">NON, RESELECT</button>
+        <button class="btn btn-danger" onclick="reselectAddress()">CORRECTE</button>
+        <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
       </div>
     `;
     removeDataFromLocalStorage()
@@ -257,7 +261,7 @@ function onSelectDrugQuantity(quantity){
   currentDrug['quantity'] = quantity;
   selectedSearchedDrugs.push(currentDrug);
   messages.pop();
-  pushPharmaMessage( locale == 'en' ?`<p> Selected Drug Quantity : <span class='bold-text'> ${quantity} </span>  </p>` : `<p class='bold-text'> Quantité médicament sélectionnée : <span class='bold-text'> ${quantity} </span> </p>`);
+  pushPharmaMessage( locale == 'en' ?`<p> Selected Drug Quantity : <span class='bold-text'> ${quantity} </span>  </p>` : `<p> Quantité médicament sélectionnée : <span class='bold-text'> ${quantity} </span> </p>`);
   pushPharmaMessage(getTranslation("prescribtion-type"));
   selectPrescriptionType();
   disableTextarea(inputBox);
@@ -292,7 +296,8 @@ function onSelectPrescriptionType(prescriptionType){
     pushPharmaMessage( locale == 'en' ?
      `<p> Presciption Type : <span class='bold-text'> ${prescriptionType} </span> </p>` : 
     `<p> Type de prescription : <span class='bold-text'> ${prescriptionType} </span> </p>`);
-    pushPharmaMessage(`<p class='bold-text'> ${JSON.stringify(currentDrug["name"])}  added to your list</p>`);
+    
+    pushPharmaMessage(`<p class='bold-text'> ${JSON.stringify(currentDrug["name"])}  ${locale == 'en' ? 'added to your list' :  'ajouté à votre liste'} </p>`);
     pushPharmaMessage(getTranslation("more-meds"));
     currentStep++;
 }
@@ -310,6 +315,7 @@ function reselectAddress(){
 }
 
 function addMedicationToCart(index) {
+  messages.pop() ; messages.pop()
     currentDrug = userDrugs[index];  
     pushPharmaMessage(getTranslation("drug-quantity"));
     selectDrugQuantity()
@@ -366,11 +372,12 @@ function nextPage(){
   page ++;
   messages.pop()
   messages.pop()
+  messages.pop()
   userDrugs = getItemsByPage(page, 10);
   const medicationTableHtml = prepareMedicationTable(userDrugs);
   pushPharmaMessage(medicationTableHtml);
   pushPharmaMessage(getTranslation("drug-search-complaint"));
-
+  pushPharmaMessage(getTranslation("choose-drug"));
 }
 
 function previousPage(){
@@ -380,9 +387,11 @@ function previousPage(){
   page --;
   messages.pop()
   messages.pop()
+  messages.pop()
   userDrugs = getItemsByPage(page, 10);
   const medicationTableHtml = prepareMedicationTable(userDrugs);
   pushPharmaMessage(medicationTableHtml);
   pushPharmaMessage(getTranslation("drug-search-complaint"));
+  pushPharmaMessage(getTranslation("choose-drug"));
 
 }
