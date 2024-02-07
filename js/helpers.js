@@ -570,23 +570,27 @@ function readMedicationsFromLS(key) {
 function stringToBase32(inputString) {
   const base32Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
   const bytes = [];
+
   for (let i = 0; i < inputString.length; i++) {
     bytes.push(inputString.charCodeAt(i));
   }
+
   let bits = '';
+
   for (const byte of bytes) {
     bits += byte.toString(2).padStart(8, '0');
   }
   while (bits.length % 5 !== 0) {
     bits += '0';
   }
+
   let base32String = '';
-  for (let i = 0; i < bits.length; i += 5) {
-    const chunk = bits.substr(i, 5);
-    base32String += base32Chars[parseInt(chunk, 2)];
+
+  for (let i = 0; i < 5; i++) {
+    base32String += base32Chars[Math.floor(Math.random() * base32Chars.length)];
   }
-  base32String = base32String.slice(0, 6);
-  return base32String;
+
+  return base32String.substring(0, 5); // Return only the first five characters
 }
 
 function getCurrentFormatedDate(){
@@ -596,7 +600,8 @@ function getCurrentFormatedDate(){
   const day = currentDate.getDate();
   const hours = currentDate.getHours();
   const minutes = currentDate.getMinutes();
-  const formattedDateTime = `${day}/${month}/${year}-${hours}:${minutes}`;
+  const seconds = currentDate.getSeconds();
+  const formattedDateTime = `${year}/${month}/${day}-${hours}:${minutes}:${seconds}`;
   return formattedDateTime;
 }
 

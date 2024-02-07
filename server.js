@@ -164,6 +164,7 @@ async function onSendButton(chatbox) {
 
       userInfo['name'] = userPrompt;
       orderInfo['orderId'] = stringToBase32("orderId-" + getCurrentFormatedDate() + "-" + Math.random().toString(16).slice(2))
+      console.log('order id generated', orderInfo['orderId'])
       pushPharmaMessage(getTranslation("billing"))
       messages.pop();
       

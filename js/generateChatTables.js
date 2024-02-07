@@ -73,8 +73,8 @@ function prepareMedicationDataTable(medications, totalCost, deliveryCost, sosPha
     <table id="table table-striped medication-table">
         <thead class="thead-dark">
           <tr>
-            <th class='p-3'>Nom du médicament</th>
-            <th class='p-3'>Quantité</th>
+            <th class='p-3'>Médicament</th>
+            <th class='p-3'>Qte</th>
             <th class='p-3'>Prix</th>
             <th class='p-3'>Coût</th>
           </tr>
@@ -99,17 +99,17 @@ function prepareMedicationDataTable(medications, totalCost, deliveryCost, sosPha
   });
 
   // Add the total cost row at the bottom of the table
-  tableHtml += locale == 'en' || 'en-US' ? `
+  tableHtml += locale == 'en' ? `
         <tr>
-          <td colspan="3"> Delivery Cost</td>
+          <td colspan="3"> ${ locale == 'en' ? 'Delivery Cost': 'Frais de service'}</td>
           <td>XAF ${deliveryCost.toLocaleString()}</td>
         </tr>
         <tr>
-          <td colspan="3">Delivery Cost</td>
+          <td colspan="3">${ locale == 'en' ? 'SOS Pharma Charges': 'Coût de SOS Pharma'} </td>
           <td>XAF ${sosPharmaCost.toLocaleString()}</td>
         </tr>
         <tr>
-          <td colspan="3">Total Cost:</td>
+          <td class='bold-text' colspan="3">${ locale == 'en' ? 'Total Cost' : 'Montant total'} </td>
           <td>XAF ${totalCost.toLocaleString()}</td>
         </tr>
       </tbody>

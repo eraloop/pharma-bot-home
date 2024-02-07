@@ -207,7 +207,7 @@ async function paymentWidget(body) {
         amount: 2,
         phone: userInfo['phone'],
         description: `You have received a billing request of ${totalCost} for your order from SOS Pharma. `,
-        reference: stringToBase32("orderId-" + getCurrentFormatedDate() + "-" + Math.random().toString(16).slice(2)),
+        reference: orderInfo['orderId'],
       }
       pushPharmaMessage(getTranslation("resend-billing"));
 
