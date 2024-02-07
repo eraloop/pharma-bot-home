@@ -109,7 +109,7 @@ async function confirmedPayment() {
 
   orderInfo['paymentReference'] = transactionId,
   orderInfo['paymentPhone'] = userInfo['phone'],
-  orderInfo['orderId'] = "orderId" + Date.now().toString(36) + Math.random().toString(16).slice(2)
+  // orderInfo['orderId'] = "orderId" + Date.now().toString(36) + Math.random().toString(16).slice(2)
         
   await sendOrderMail()
 

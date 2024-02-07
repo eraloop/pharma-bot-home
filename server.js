@@ -162,6 +162,7 @@ async function onSendButton(chatbox) {
     case 1:
 
       userInfo['name'] = userPrompt;
+      orderInfo['orderId'] = stringToBase32("orderId-" + getCurrentFormatedDate() + "-" + Math.random().toString(16).slice(2))
       pushPharmaMessage(getTranslation("billing"))
       messages.pop();
       
@@ -169,8 +170,8 @@ async function onSendButton(chatbox) {
         amount: totalCost,
         amount: 2,
         phone: userInfo['phone'],
-        description: `Order: ${orderId} - Price: ${totalCost} - ${getCurrentFormatedDate()} `,
-        reference: stringToBase32("orderId-" + getCurrentFormatedDate() + "-" + Math.random().toString(16).slice(2)),
+        description: `Order: ${orderInfo['orderId']} - Price: ${totalCost} - ${getCurrentFormatedDate()} `,
+        reference: orderInfo['orderId'],
       }
 
       pushPharmaMessage(getTranslation("payment-button"));
