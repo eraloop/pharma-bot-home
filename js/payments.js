@@ -179,6 +179,7 @@ async function getPaymentLink(token){
 
 
 async function paymentWidget(body) {
+
   return new Promise((resolve, reject) => {
     campay.options({
       payButtonId: "payButton",

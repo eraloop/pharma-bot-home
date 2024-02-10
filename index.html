@@ -88,9 +88,7 @@
             </a>
 
             <a
-              data-i18n-key="home-callbutton-text"
-              href="tel:+237653080072"
-              id="callCenter"
+            id="payButton"
               class="call-center-button button hide-on-mb"
               >Infoline Santé: (+237) 653 080 072</a
             >
@@ -112,6 +110,37 @@
     <script defer src="/js/payments.js"></script>
     <script defer src="/server.js"></script>
     <script defer src="./js/payments.js"></script>
+
+    <script>
+      campay.options({
+        payButtonId: "payButton",
+        description:'',
+        amount: `2`,
+        currency: "XAF",
+        externalReference: '',
+        redirectUrl: "",
+      });
+
+      const onSuccessHandler = function (data) {
+        transactionId = data.reference;
+        resolve(data);
+      };
+
+      const onFailHandler = function (data) {
+      
+      }
+
+    </script>
+
+    <script>
+
+      document.addEventListener('click', (e)=> {
+        var widget = document.getElementById('myCamPayModal');
+        console.log(widget)
+      })
+      var widget = document.getElementById('myCamPayModal');
+      console.log(widget)
+    </script>
 
 
   </body>

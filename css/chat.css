@@ -7,6 +7,10 @@
     font-weight: 400;
 }
 
+/* #myCamPayModal {
+    margin: auto 20px;
+} */
+
 a{
     text-decoration: none;
     color: inherit;
@@ -78,13 +82,11 @@ a{
 }
 
 .messages__item {
-    max-width: 75%;
     height: auto;
     width: fit-content;
     word-wrap: break-word;
-    padding: 10px ;
-    max-width: 75%;
     font-weight: 400;
+    padding: 15px !important;
 }
 
 .sos-pharma-message , .messages__item{
@@ -96,12 +98,11 @@ a{
     margin-left: auto;
     background: #43b75d !important;
     color: #fff !important;
-    padding: 10px 15px;
+
 }
 
 .messages__item--visitor{
     font-size: 14px !important;
-    padding: 10px 15px;
 }
 
 /* HEADER */
@@ -173,6 +174,7 @@ a{
 
 /* FOOTER */
 .chatbox__footer {
+    height: 100px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -189,11 +191,11 @@ a{
 
 .chatbox__message__input{
     color: #43b75d;
-    width: 95%;
+    width: 90%;
     outline: none;
     outline-color: none;
     outline-width: 0;
-    max-width: 85%;
+    max-width: 90%;
     border: none;
     padding: 10px 10px;
     border-radius: 10px;
@@ -206,6 +208,12 @@ a{
     resize:none;
     font-weight: 500;
 }
+
+.chatbox__message__input::placeholder {
+    font-weight: lighter;
+    font-size: 10 !important;
+}
+
 
 .chatbox__message__input__container {
     display: flex;

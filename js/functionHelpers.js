@@ -218,7 +218,7 @@ function onSelectQuarter(quarter) {
     `
       : `
       <div>
-        <p>V<otre adresse est-elle correcte ? Si oui, continuer</p>
+        <p>Votre adresse est-elle correcte ? Si oui, continuer</p>
         <p> <span> Ville :</span> <span class='bold-text'> ${userInfo["city"]}</pan> </p> 
         <p> <span> Quartier :</span> <span class='bold-text'>${userInfo["quarter"]} </pan> </p>
         <button class="btn btn-danger" onclick="reselectAddress()">CORRECTE</button>
@@ -315,7 +315,7 @@ function reselectAddress(){
 }
 
 function addMedicationToCart(index) {
-  messages.pop() ; messages.pop()
+    messages.pop();
     currentDrug = userDrugs[index];  
     pushPharmaMessage(getTranslation("drug-quantity"));
     selectDrugQuantity()
