@@ -46,6 +46,8 @@ inputBox.addEventListener("keyup", ({ key }) => {
 closeButton.addEventListener('click', (e) => {goBack()})
 
 window.addEventListener("DOMContentLoaded", async() => {
+  locale = await getUserLocale();
+  await setLocale(locale);
   onStart();
 });
 

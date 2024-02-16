@@ -138,7 +138,6 @@ async function matchUserDrugs(drugs, userPrompts, orderKeywords) {
   };
 }
 
-// not in use - used for testing with json drugs 
 async function onLoadDrugs() {
   try {
     let response = await fetch("../data/drugs.json");
@@ -175,66 +174,66 @@ function levenshteinSearch(medicationName, searchString) {
     : false;
 }
 
-async function loadExcel() {
-  let drugs = [];
-  let drugsLoaded = false;
+// async function loadExcel() {
+//   let drugs = [];
+//   let drugsLoaded = false;
 
-  let medication  = readMedicationsFromLS('medications');
-  if(medication != null || medication != undefined){
-    console.log("loading from cache")
-    return {
-      drugs: medication,
-      isLoaded: true,
-    };
-  }
+//   let medication  = readMedicationsFromLS('medications');
+//   if(medication != null || medication != undefined){
+//     console.log("loading from cache")
+//     return {
+//       drugs: medication,
+//       isLoaded: true,
+//     };
+//   }
 
-  const fetchExcelData = () => {
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      const excelUrl = "../data/drugs.xlsx";
-      xhr.open("GET", excelUrl, true);
-      xhr.responseType = "arraybuffer";
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          const data = new Uint8Array(xhr.response);
-          const workbook = XLSX.read(data, { type: "array" });
-          const sheetName = workbook.SheetNames[0];
-          const worksheet = workbook.Sheets[sheetName];
-          const jsonData = XLSX.utils.sheet_to_json(worksheet);
+//   const fetchExcelData = () => {
+//     return new Promise((resolve, reject) => {
+//       const xhr = new XMLHttpRequest();
+//       const excelUrl = "../data/drugs.xlsx";
+//       xhr.open("GET", excelUrl, true);
+//       xhr.responseType = "arraybuffer";
+//       xhr.onload = function () {
+//         if (xhr.status === 200) {
+//           const data = new Uint8Array(xhr.response);
+//           const workbook = XLSX.read(data, { type: "array" });
+//           const sheetName = workbook.SheetNames[0];
+//           const worksheet = workbook.Sheets[sheetName];
+//           const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-          jsonData.forEach((row) => {
-            const drugObject = {
-              name: row["name"],
-              price: row["price"],
-              onPrescription : row["onPrescription"],
-            };
-            drugs.push(drugObject);
-          });
-          resolve();
-        } else {
-          console.error("Failed to load the Excel file.");
-          reject();
-        }
-      };
-      xhr.send();
-    });
-  };
+//           jsonData.forEach((row) => {
+//             const drugObject = {
+//               name: row["name"],
+//               price: row["price"],
+//               onPrescription : row["onPrescription"],
+//             };
+//             drugs.push(drugObject);
+//           });
+//           resolve();
+//         } else {
+//           console.error("Failed to load the Excel file.");
+//           reject();
+//         }
+//       };
+//       xhr.send();
+//     });
+//   };
 
-  try {
-    await fetchExcelData();
-    if (drugs.length > 0) {
-      drugsLoaded = true;
-    }
-    saveListToLS('medications', drugs)
-  } catch (error) {
-    console.error("An error occurred while loading drugs:", error);
-  }
+//   try {
+//     await fetchExcelData();
+//     if (drugs.length > 0) {
+//       drugsLoaded = true;
+//     }
+//     saveListToLS('medications', drugs)
+//   } catch (error) {
+//     console.error("An error occurred while loading drugs:", error);
+//   }
 
-  return {
-    drugs: drugs,
-    isLoaded: drugsLoaded,
-  };
-}
+//   return {
+//     drugs: drugs,
+//     isLoaded: drugsLoaded,
+//   };
+// }
 
 function disableTextarea(textarea) {
   clearTextField(textarea);
@@ -613,39 +612,4 @@ function getItemsByPage(pageNumber, itemsPerPage) {
   const endIndexWithinBounds = Math.min(endIndex, userDrugsList.length);
   const pageItems = userDrugsList.slice(startIndex, endIndexWithinBounds);
   return pageItems;
-}
-
-async function captureImage() {
-  try {
-      // Request permission to use the camera
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-
-      // Display the camera stream in a video element (hidden)
-      const video = document.createElement('video');
-      video.srcObject = stream;
-      video.play();
-
-      // Wait for a few seconds to allow the camera to initialize
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
-      // Capture a frame from the video stream
-      const canvas = document.createElement('canvas');
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      const context = canvas.getContext('2d');
-      context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-      // Stop the camera stream
-      stream.getTracks().forEach(track => track.stop());
-
-      // Convert the captured frame to a data URL
-      const dataURL = canvas.toDataURL('image/png');
-
-      // Display the captured image
-      const capturedImage = document.getElementById('capturedImage');
-      capturedImage.src = dataURL;
-      capturedImage.style.display = 'block';
-  } catch (error) {
-      console.error('Error capturing image:', error);
-  }
 }

@@ -1,8 +1,7 @@
 
 function medicationDone() {
 
-  userInfo['prescriptionType'] = response
-
+    // userInfo['prescriptionType'] = response
     totalCost = 0;
     let deliveryCost = 500, sosPharmaCost = 1000;
     selectedSearchedDrugs.forEach((currentDrug) => {
