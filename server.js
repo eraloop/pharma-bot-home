@@ -54,15 +54,12 @@ async function onStart() {
   await pushThinkingMessage("loading-message");
   orderKeywords = getOrderKeywords(locale);
   locations = await onLoadCities();
-  response = await onLoadDrugs();
+  drugList = await onLoadDrugs();
   user = getUserFromLocalStorage();
   user = JSON.parse(user);
-  
-  drugList = response["drugs"];
-  let drugLoaded = response["isLoaded"];
   paymentInfo = await onLoadPaymentDetails();
 
-  if (!drugLoaded) {
+  if (drugList.length == 0) {
     messages.pop()
     pushPharmaMessage(getTranslation("network-error"));
     disableTextarea(inputBox);
