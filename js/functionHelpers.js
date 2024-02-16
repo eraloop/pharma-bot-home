@@ -116,6 +116,7 @@ async function confirmedPayment() {
 }
 
 function continueSelecting() {
+  currentDrug = {};
   pushPharmaMessage(getTranslation("medications"));
   enableTextarea(inputBox);
   currentStep = 0;
@@ -157,16 +158,20 @@ function onSelectCity(city) {
         <div>
           <p>Address Information</p>
           <p> City : ${userInfo["city"]} </p>
-          <button class="btn btn-danger " onclick="reselectAddress()">NO, RESELECT</button>
-          <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
+          <div class='buttons'>
+            <button class="btn btn-danger " onclick="reselectAddress()">NO, RESELECT</button>
+            <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
+          </div>
         </div>
       `
         : `
         <div>
           <p> Informations sur l'adresse </p>
           <p> Ville : ${userInfo["city"]} </p>
-          <button class="btn btn-danger " onclick="reselectAddress()">CORRECTION</button>
-          <button class="btn btn-success " onclick="addressCorrect()">CORRECTE</button>
+          <div class='buttons'>
+            <button class="btn btn-danger " onclick="reselectAddress()">CORRECTION</button>
+            <button class="btn btn-success " onclick="addressCorrect()">CORRECTE</button>
+          </div>
         </div>
       `;
 
@@ -212,8 +217,12 @@ function onSelectQuarter(quarter) {
         <p>Is your address information correct ? If yes , continue</p>
         <p> <span> City :</span> <span class='bold-text'> ${userInfo["city"]}</pan> </p> 
         <p> <span> Quarter :</pan> <pan class='bold-text'>${userInfo["quarter"]} </pan> </p>
-        <button class="btn btn-danger" onclick="reselectAddress()">NO, RESELECT</button>
-        <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
+        
+        <div class='buttons'>
+          <button class="btn btn-danger" onclick="reselectAddress()">NO, RESELECT</button>
+          <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
+        </div>
+       
       </div>
     `
       : `
@@ -221,8 +230,12 @@ function onSelectQuarter(quarter) {
         <p>Votre adresse est-elle correcte ? Si oui, continuer</p>
         <p> <span> Ville :</span> <span class='bold-text'> ${userInfo["city"]}</pan> </p> 
         <p> <span> Quartier :</span> <span class='bold-text'>${userInfo["quarter"]} </pan> </p>
-        <button class="btn btn-danger" onclick="reselectAddress()">CORRECTE</button>
-        <button class="btn btn-success " onclick="addressCorrect()">CORRECT</button>
+
+        <div class='buttons'>
+          <button class="btn btn-danger" onclick="reselectAddress()">CORRECTION</button>
+          <button class="btn btn-success " onclick="addressCorrect()">CORRECTE</button>
+        </div>
+        
       </div>
     `;
     removeDataFromLocalStorage()
@@ -293,14 +306,33 @@ function selectPrescriptionType() {
 
 function onSelectPrescriptionType(prescriptionType){
     messages.pop();
+    console.log(currentDrug)
+
+    let checker = locale == 'en' ? `"Unprescribed Drug"` : `"Auto Medication"`;
+    if(currentDrug['onPrescription'] == true && prescriptionType == checker){
+  
+      messages.pop();
+      console.log(prescriptionType)
+      pushPharmaMessage( locale == 'en' ?
+      `<p class='text-danger'>This drug is only available with a prescription. SOS Pharma does not sell it at the moment. Please go to a pharmacy to buy it 
+      <div class='buttons'><button class='btn btn-info' onclick='continueSelecting()'> ORDER ANOTHER MEDICATION </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> DONE SELECTING DRUGS </button></div>
+      </p>` : 
+     `<p class='text-danger'> Ce médicament n’est accessible que sous ordonnance. SOS Pharma ne le commercialise pas pour le moment. Merci de vous rendre auprès d’une pharmacie pour l’acheter 
+     <div class='buttons'><button class='btn btn-info' onclick='continueSelecting()'> COMMANDE D'UN AUTRE MÉDICAMENT </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> SELECTION TERMINEE </button></div>
+     
+     </p>`);
+      return;
+    }
+
     pushPharmaMessage( locale == 'en' ?
      `<p> Presciption Type : <span class='bold-text'> ${prescriptionType} </span> </p>` : 
     `<p> Type de prescription : <span class='bold-text'> ${prescriptionType} </span> </p>`);
-    
     pushPharmaMessage(`<p class='bold-text'> ${JSON.stringify(currentDrug["name"])}  ${locale == 'en' ? 'added to your list' :  'ajouté à votre liste'} </p>`);
     pushPharmaMessage(getTranslation("more-meds"));
     currentStep++;
+    
 }
+
 
 function reselectAddress(){
   messages.pop();messages.pop(); messages.pop()

@@ -31,7 +31,7 @@ let body = {
   reference: '',
 }
 
-let message = "", currentDrug = 0, currentStep = 0, totalCost = 0 , page = 1;
+let message = "", currentDrug, currentStep = 0, totalCost = 0 , page = 1;
 
 // payment information
 let token = "290ed6ac188a2f1d30baf8533fcaa09e2c77591d", transactionId = "";
@@ -54,10 +54,9 @@ async function onStart() {
   await pushThinkingMessage("loading-message");
   orderKeywords = getOrderKeywords(locale);
   locations = await onLoadCities();
-  response = await loadExcel();
+  response = await onLoadDrugs();
   user = getUserFromLocalStorage();
   user = JSON.parse(user);
-  userInfo = user;
   
   drugList = response["drugs"];
   let drugLoaded = response["isLoaded"];
@@ -142,6 +141,7 @@ async function onSendButton(chatbox) {
             return;
           }
 
+          console.log(userDrugs)
           const medicationTableHtml = prepareMedicationTable(userDrugs);
           pushPharmaMessage(medicationTableHtml);
           disableTextarea(inputBox);

@@ -141,7 +141,7 @@ async function matchUserDrugs(drugs, userPrompts, orderKeywords) {
 // not in use - used for testing with json drugs 
 async function onLoadDrugs() {
   try {
-    let response = await fetch("../data/test.json");
+    let response = await fetch("../data/drugs.json");
     let drugs = await response.json();
     return drugs;
   } catch (e) {
@@ -181,6 +181,7 @@ async function loadExcel() {
 
   let medication  = readMedicationsFromLS('medications');
   if(medication != null || medication != undefined){
+    console.log("loading from cache")
     return {
       drugs: medication,
       isLoaded: true,
@@ -205,6 +206,7 @@ async function loadExcel() {
             const drugObject = {
               name: row["name"],
               price: row["price"],
+              onPrescription : row["onPrescription"],
             };
             drugs.push(drugObject);
           });
@@ -611,4 +613,39 @@ function getItemsByPage(pageNumber, itemsPerPage) {
   const endIndexWithinBounds = Math.min(endIndex, userDrugsList.length);
   const pageItems = userDrugsList.slice(startIndex, endIndexWithinBounds);
   return pageItems;
+}
+
+async function captureImage() {
+  try {
+      // Request permission to use the camera
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+
+      // Display the camera stream in a video element (hidden)
+      const video = document.createElement('video');
+      video.srcObject = stream;
+      video.play();
+
+      // Wait for a few seconds to allow the camera to initialize
+      await new Promise(resolve => setTimeout(resolve, 2000));
+
+      // Capture a frame from the video stream
+      const canvas = document.createElement('canvas');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const context = canvas.getContext('2d');
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // Stop the camera stream
+      stream.getTracks().forEach(track => track.stop());
+
+      // Convert the captured frame to a data URL
+      const dataURL = canvas.toDataURL('image/png');
+
+      // Display the captured image
+      const capturedImage = document.getElementById('capturedImage');
+      capturedImage.src = dataURL;
+      capturedImage.style.display = 'block';
+  } catch (error) {
+      console.error('Error capturing image:', error);
+  }
 }
