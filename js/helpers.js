@@ -259,7 +259,6 @@ function disableButton(button) {
   button.classList.add("disabled-button");
   button.innerHTML = "Selected";
   button.disabled = true;
-  // console.log(button)
 }
 
 function generateWhatsAppLink(orderId, userInfo) {

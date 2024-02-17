@@ -148,7 +148,6 @@ async function onSendButton(chatbox) {
         
           if (drugSearchComplaint) {
             pushPharmaMessage(getTranslation("drug-search-complaint"));
-            // return;
           }
           pushPharmaMessage(getTranslation("choose-drug"));
 
@@ -175,10 +174,8 @@ async function onSendButton(chatbox) {
       }
 
       userInfo['phone'] = userPrompt;
-
       
       orderInfo['orderId'] = stringToBase32("orderId-" + getCurrentFormatedDate() + "-" + Math.random().toString(16).slice(2))
-      console.log('order id generated', orderInfo['orderId'])
       pushPharmaMessage(getTranslation("billing"))
       messages.pop();
       
