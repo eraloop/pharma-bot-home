@@ -21,6 +21,7 @@ let orderInfo = {
   "orderId": '',
   "paymentReference": "",
   "paymentPhone": "",
+  "external_reference": ""
 };
 
 let body = { 
@@ -113,7 +114,7 @@ async function onStart() {
 async function onSendButton(chatbox) {
 
   let textField = chatbox.querySelector("textarea");
-  let userPrompt = textField.value.toLowerCase().trim();
+  let userPrompt = textField.value.trim();
   if (userPrompt === "") return;
 
   let drugSearchComplaint = false;
@@ -162,6 +163,20 @@ async function onSendButton(chatbox) {
     case 1:
 
       userInfo['name'] = userPrompt;
+      pushPharmaMessage(getTranslation("phone-enter"));
+      currentStep ++;
+      break;
+    case 2:
+
+      const isValid = validateCameroonianPhoneNumber(userPrompt.trim());
+      if (!isValid["isValid"]) {
+        pushPharmaMessage(getTranslation("phone"));
+        return;
+      }
+
+      userInfo['phone'] = userPrompt;
+
+      
       orderInfo['orderId'] = stringToBase32("orderId-" + getCurrentFormatedDate() + "-" + Math.random().toString(16).slice(2))
       console.log('order id generated', orderInfo['orderId'])
       pushPharmaMessage(getTranslation("billing"))
@@ -169,7 +184,6 @@ async function onSendButton(chatbox) {
       
       body = {
         amount: totalCost,
-        amount: 2,
         phone: userInfo['phone'],
         description: `Order: ${orderInfo['orderId']} - Price: ${totalCost} - ${getCurrentFormatedDate()} `,
         reference: orderInfo['orderId'],
@@ -184,9 +198,10 @@ async function onSendButton(chatbox) {
         closePaymentWidget();
         transactionId = res.reference
         pushPharmaMessage(getTranslation("placing-order"));
-        orderInfo['paymentReference'] = transactionId,
-        orderInfo['paymentPhone'] = userInfo['phone'],
-        orderInfo['orderId'] =  ` ${res['external_reference']} '-' ${getCurrentFormatedDate()}`
+        orderInfo['paymentReference'] = transactionId
+        orderInfo['paymentPhone'] = userInfo['phone']
+        orderInfo['external_reference'] = res['external_reference']
+        orderInfo['orderId'] =  ` ${res['external_reference']} - ${getCurrentFormatedDate()}`
         await sendOrderMail()
         currentStep ++;
 

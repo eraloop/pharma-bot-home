@@ -11,7 +11,7 @@
 
     "drug": "Quel médicament souhaitez-vous commander?",
     "phone" : "Veuillez saisir un numéro de téléphone camerounais valide, il doit commencer par les chiffres 6, 2, 3, etc",
-    "phone-enter" : "Veuillez indiquer le numéro avec lequel vous voulez payer." ,
+    "phone-enter" : "Veuillez fournir un numéro de téléphone auquel nous pouvons vous joindre" ,
     "drug-quantity": "<p>Quelle quantité de ce médicament souhaitez-vous commander ? </p> <select class='drug-quantity-dropdown'></select>",
     "city": " Dans quelle ville habitez-vous ?<select class='location-dropdown'></select>",
     "quarter": "<p>“Lieu de livraison ?</p> <select class='pickup-location-dropdown'></select>",

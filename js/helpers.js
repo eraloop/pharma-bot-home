@@ -144,7 +144,7 @@ async function onLoadDrugs() {
     let drugs = await response.json();
     return drugs;
   } catch (e) {
-    console.log(e);
+    // console.log(e);
     return [];
   }
 }
@@ -259,13 +259,13 @@ function disableButton(button) {
   button.classList.add("disabled-button");
   button.innerHTML = "Selected";
   button.disabled = true;
-  console.log(button)
+  // console.log(button)
 }
 
 function generateWhatsAppLink(orderId, userInfo) {
   const baseUrl = 'https://wa.me/';
   const fullPhoneNumber = '+237673572533'.replace(/\D/g, '');
-  const message = `Hello, I want an invoice for my order id: ${orderId['orderId']}. \nOrder Detail: \nOrder Id: ${orderInfo['orderId']} \nPayment Reference No: ${orderInfo['paymentReference']} \nPayment Phone: ${orderInfo['paymentPhone']}. \nMy information is as follows: \nName: ${userInfo['name']} \nPhone Number: ${userInfo['phone']} \nCity: ${userInfo['city']} \nQuarter: ${userInfo['quarter']} \n\nThank you`;
+  const message = `Hello, I want an invoice for my order id: ${orderId['external_reference']}. \nOrder Detail: \nOrder Id: ${orderInfo['orderId']} \nPayment Reference No: ${orderInfo['paymentReference']} \nPayment Phone: ${orderInfo['paymentPhone']}. \nMy information is as follows: \nName: ${userInfo['name']} \nPhone Number: ${userInfo['phone']} \nCity: ${userInfo['city']} \nQuarter: ${userInfo['quarter']} \n\nThank you`;
   const whatsappLink = `
     <a class='btn btn-success' href="${baseUrl}${fullPhoneNumber}?text=${encodeURIComponent(message)}" target="_blank"> Get Your Order Invoice</a>
   `;

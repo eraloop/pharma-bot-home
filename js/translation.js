@@ -15,13 +15,6 @@ async function getUserLocale() {
   return 'fr';
 }
 
-
-// window.addEventListener("DOMContentLoaded", async () => {
-//   locale = await getUserLocale();
-//   await setLocale(locale);
-//   onStart();
-// });
-
 async function setLocale(newLocale) {
   if(newLocale === undefined || newLocale === null) {
     newLocale = 'fr'

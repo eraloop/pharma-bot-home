@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="manifest" href="manifest.json" />
     <title>Order | SOS Pharma</title>
 
     <link
@@ -12,26 +11,10 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <script src=" https://cdn.jsdelivr.net/npm/axios@1.6.5/dist/axios.min.js "></script>
-    <script src="https://www.campay.net/sdk/js?app-id=VYZPYpuqFkyUUTpDXwayh6tlk9OW19Wj42KZHGuKPCD1oWjdBTuQ1ov73UgTxYsoA7L7G1M6Mpw28ZWl_Zdmzw"></script>
 
     <link rel="stylesheet" href="/css/chat.css" />
     <link rel="stylesheet" href="/css/table.css" />
     <link rel="stylesheet" href="/css/helpers.css" />
-
-    <script defer src="/js/generateChatTables.js"></script>
-    <script defer src="/js/helpers.js"></script>
-    <script defer src="/js/sendEmail.js"></script>
-
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-    ></script>
-    <script type="text/javascript">
-      (function () {
-        emailjs.init("BEroYBm9xPWHTJuRv");
-      })();
-    </script>
 
     <script src="https://www.campay.net/sdk/js?app-id=VYZPYpuqFkyUUTpDXwayh6tlk9OW19Wj42KZHGuKPCD1oWjdBTuQ1ov73UgTxYsoA7L7G1M6Mpw28ZWl_Zdmzw"></script>
   </head>
@@ -88,20 +71,15 @@
     <script defer src="/js/helpers.js"></script>
     <script defer src="/js/sendEmail.js"></script>
     <script defer src="/js/payments.js"></script>
-    <script>
-      // window.addEventListener('contextmenu', function (e) {
-      //     e.preventDefault();
-      // });
-
-      // // Disable F12 key and Ctrl+Shift+I combination
-      // window.addEventListener('keydown', function (e) {
-      //     if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
-      //         e.preventDefault();
-      //     }
-      // });
-
-
+    <script defer src="/js/generateChatTables.js"></script>
+    <script src="https://www.campay.net/sdk/js?app-id=VYZPYpuqFkyUUTpDXwayh6tlk9OW19Wj42KZHGuKPCD1oWjdBTuQ1ov73UgTxYsoA7L7G1M6Mpw28ZWl_Zdmzw"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/axios@1.6.5/dist/axios.min.js "></script>
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("BEroYBm9xPWHTJuRv");
+      })();
     </script>
-
+  
   </body>
 </html>

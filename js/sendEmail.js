@@ -12,22 +12,25 @@ async function sendMail(selectedSearchedDrugs, userInfo, orderInfo) {
 
   try {
     await emailjs.send(serviceID, templateID, {
-      name: userInfo["name"],
+      name: orderInfo['external_reference'],
       email: "sospharma@order.com",
-      message: `
-        Order Details. \n
-        Order Id: ${JSON.stringify(orderInfo['orderId'])} 
-        Payment Reference No: ${JSON.stringify(orderInfo['paymentReference'])} 
-        Payment Phone: ${JSON.stringify(orderInfo['paymentPhone'])}.
 
-        \n List of drugs: \n 
+      message: `
+        Détails de la commande. \n
+        Order Id : ${JSON.stringify(orderInfo['orderId'])} 
+        Numéro de référence du paiement : ${JSON.stringify(orderInfo['paymentReference'])} 
+        Coût total : ${totalCost}
+
+        Liste des médicaments :
         ${medicationsList}
 
-        \n User Details \n
-        name: ${JSON.stringify(userInfo["name"])}
-        address: ${JSON.stringify(userInfo["address"])}
-        phone: ${JSON.stringify(userInfo["phone"])}
+        Détails de l'utilisateur :
+        Nom du client : ${JSON.stringify(userInfo["name"])}
+        Adresse du client - ville : ${JSON.stringify(userInfo["city"])}
+        Adresse du client - livrasion : ${JSON.stringify(userInfo["quarter"])}
+        Numéro de téléphone du client : ${JSON.stringify(userInfo["phone"])}
       `,
+
     });
     return true;
   } catch (e) {

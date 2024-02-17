@@ -12,7 +12,7 @@
     "drug": "Which medication do you wish to order ?",
     "address": "",
     "phone": "Please enter a valid Cameroonian phone number, it must begin with the digits 6, 2, 3, etc",
-    "phone-enter": "Please provide the number you want to pay with." ,
+    "phone-enter": "Please provide a number we can call you with" ,
     "drug-quantity": "<p> What quantity of this drug you wish to order </p> <select class='drug-quantity-dropdown'></select>",
     "city": " <p> Which city do you live in ? </p><b> <select class='location-dropdown'></select>",
     "quarter": "<p> Where do you live in this city ? </p><select class='pickup-location-dropdown' ></select>",

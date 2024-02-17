@@ -1,23 +1,49 @@
 
 function medicationDone() {
 
-    // userInfo['prescriptionType'] = response
-    totalCost = 0;
-    let deliveryCost = 500, sosPharmaCost = 1000;
-    selectedSearchedDrugs.forEach((currentDrug) => {
-        totalCost += currentDrug.price * currentDrug.quantity;
-    });
-    totalCost += deliveryCost + sosPharmaCost;
-    const medicationTableHtml = prepareMedicationDataTable(
-        selectedSearchedDrugs,
-        totalCost,
-        deliveryCost,
-        sosPharmaCost
-    );
+  // userInfo['prescriptionType'] = response
+  totalCost = 0;
+  let deliveryCost = 500, sosPharmaCost = 1000;
+  selectedSearchedDrugs.forEach((currentDrug) => {
+      totalCost += currentDrug.price * currentDrug.quantity;
+  });
+  totalCost += deliveryCost + sosPharmaCost;
+  const medicationTableHtml = prepareMedicationDataTable(
+      selectedSearchedDrugs,
+      totalCost,
+      deliveryCost,
+      sosPharmaCost
+  );
 
-    pushPharmaMessage(medicationTableHtml);
-    pushPharmaMessage(getTranslation("medications-complete"));
+  pushPharmaMessage(medicationTableHtml);
+  pushPharmaMessage(getTranslation("medications-complete"));
 
+}
+
+function medicationOnlyOnPrecription() {
+  selectedSearchedDrugs.pop();
+
+  if(selectedSearchedDrugs.length <= 0){
+    pushPharmaMessage(getTranslation("order-again"));
+    return; 
+  }
+
+  totalCost = 0;
+  let deliveryCost = 500, sosPharmaCost = 1000;
+  selectedSearchedDrugs.forEach((currentDrug) => {
+      totalCost += currentDrug.price * currentDrug.quantity;
+  });
+  totalCost += deliveryCost + sosPharmaCost;
+  const medicationTableHtml = prepareMedicationDataTable(
+      selectedSearchedDrugs,
+      totalCost,
+      deliveryCost,
+      sosPharmaCost
+  );
+
+  pushPharmaMessage(medicationTableHtml);
+  pushPharmaMessage(getTranslation("medications-complete"));
+  
 }
 
 function clearMedicationList() {
@@ -53,7 +79,7 @@ async function makePayment(token, body) {
 }
 
 function completeMedList() {
-  console.log("complete button");
+  // console.log("complete button");
   pushPharmaMessage(getTranslation("identity"));
   enableTextarea(inputBox);
   currentStep = 1;
@@ -62,7 +88,7 @@ function completeMedList() {
 async function checkTransactionStatus(token , transactionId) {
   
   let paymentStatus = await requestPaymentStatus(token , transactionId)
-  console.log("result from chek transaction status" ,paymentStatus)
+  // console.log("result from chek transaction status" ,paymentStatus)
   if (!paymentStatus) {
     pushPharmaMessage(getTranslation("order-failed"));
     enableTextarea(inputBox);
@@ -85,7 +111,7 @@ async function sendOrderMail(){
       enableTextarea(inputBox);
       return;
     } else {
-      messages.pop();
+      messages.pop(); messages.pop(); 
       pushPharmaMessage(getTranslation("order-sent"));
       let waLink = generateWhatsAppLink(orderInfo, userInfo)
       pushPharmaMessage(waLink)
@@ -96,7 +122,6 @@ async function sendOrderMail(){
     }
 
   }catch(e){
-    console.log("order mail failed to send")
   }
 }
 
@@ -176,7 +201,7 @@ function onSelectCity(city) {
 
     messages.pop();
     pushPharmaMessage(address);
-    pushPharmaMessage(getTranslation("drug"));
+    // pushPharmaMessage(getTranslation("drug"));
     enableTextarea(inputBox);
     return;
   } else {
@@ -241,7 +266,7 @@ function onSelectQuarter(quarter) {
     saveUserToLocalStorage(userInfo)
     messages.pop();
     pushPharmaMessage(address);
-    pushPharmaMessage(getTranslation("drug"));
+    // pushPharmaMessage(getTranslation("drug"));
     enableTextarea(inputBox);
 }
 
@@ -305,19 +330,16 @@ function selectPrescriptionType() {
 
 function onSelectPrescriptionType(prescriptionType){
     messages.pop();
-    console.log(currentDrug)
-
     let checker = locale == 'en' ? `"Unprescribed Drug"` : `"Auto Medication"`;
     if(currentDrug['onPrescription'] == true && prescriptionType == checker){
   
       messages.pop();
-      console.log(prescriptionType)
       pushPharmaMessage( locale == 'en' ?
       `<p class='text-danger'>This drug is only available with a prescription. SOS Pharma does not sell it at the moment. Please go to a pharmacy to buy it 
-      <div class='buttons'><button class='btn btn-info' onclick='continueSelecting()'> ORDER ANOTHER MEDICATION </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> DONE SELECTING DRUGS </button></div>
+      <div class='buttons'><button class='btn btn-info' onclick='continueSelecting()'> ORDER ANOTHER MEDICATION </button><button class='btn btn-success med-done-button' onclick='medicationOnlyOnPrecription()'> DONE SELECTING DRUGS </button></div>
       </p>` : 
      `<p class='text-danger'> Ce médicament n’est accessible que sous ordonnance. SOS Pharma ne le commercialise pas pour le moment. Merci de vous rendre auprès d’une pharmacie pour l’acheter 
-     <div class='buttons'><button class='btn btn-info' onclick='continueSelecting()'> COMMANDE D'UN AUTRE MÉDICAMENT </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> SELECTION TERMINEE </button></div>
+     <div class='buttons'><button class='btn btn-info' onclick='continueSelecting()'> COMMANDE D'UN AUTRE MÉDICAMENT </button><button class='btn btn-success med-done-button' onclick='medicationOnlyOnPrecription()'> SELECTION TERMINEE </button></div>
      
      </p>`);
       return;
@@ -334,10 +356,7 @@ function onSelectPrescriptionType(prescriptionType){
 
 
 function reselectAddress(){
-  messages.pop();messages.pop(); messages.pop()
-  if(userInfo['quarter'] !== undefined){
-      messages.pop();
-  }
+  messages.pop(); 
   removeDataFromLocalStorage()
   updateChatText(chatBox, messages)
   pushPharmaMessage(getTranslation("city"));
