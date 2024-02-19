@@ -25,6 +25,7 @@ function prepareMedicationTable(medications) {
         <tbody>
   `;;
 
+  medications.length == 0 ?
   medications.forEach((medication, index) => {
     const medicationName = medication.name;
     const medicationPrice = medication.price;
@@ -43,7 +44,13 @@ function prepareMedicationTable(medications) {
             <td class='p-2'><button class="btn btn-success btn-sm select-medication-option" onclick="addMedicationToCart(${index})">Sélectionner</button></td>
           </tr>
       `;
-  });
+  }) : 
+
+  `
+    <tr>
+      <td > <p> Aucun médicament n'est disponible, veuillez retourner à la page précédente. </p> </td>
+    </tr>
+  `;
 
   // Close the tbody and table tags outside the loop
   tableHtml += `

@@ -24,6 +24,19 @@ let orderInfo = {
   "external_reference": ""
 };
 
+let searchFormat = {
+  "username": "",
+  "city": "",
+  "quarter": "",
+  "search": "",
+  "date": ""
+}
+
+let orderF
+
+let userSearch = [];
+let userOrders = [];
+
 let body = { 
   // amount: totalCost,
   amount: '',
@@ -46,11 +59,42 @@ inputBox.addEventListener("keyup", ({ key }) => {
 }});
 closeButton.addEventListener('click', (e) => {goBack()})
 
-window.addEventListener("DOMContentLoaded", async() => {
-  locale = await getUserLocale();
-  await setLocale(locale);
+// window.addEventListener("DOMContentLoaded", async() => {
+//   onStart();
+// });
+
+window.addEventListener("load", async() => {
   onStart();
 });
+
+
+// window.addEventListener('beforeunload', function (event) {
+//   // Your code to save data or perform actions before the page is unloaded
+//   const dataToSave = {
+//       // Your data here
+//   };
+//   // Assuming you want to save data to localStorage
+//   localStorage.setItem('savedData', JSON.stringify(dataToSave));
+//   // The message you return here will be shown to the user in a confirmation dialog
+//   const confirmationMessage = 'Are you sure you want to leave? Your changes may not be saved.';
+//   (event || window.event).returnValue = confirmationMessage; // Standard for most browsers
+//   return confirmationMessage; // For some older browsers
+// });
+
+// window.addEventListener('popstate', function (event) {
+//   // Handle the back button or navigation here
+//   // This event is triggered when the user navigates back or forward
+//   // You can use it to perform additional actions or prevent navigation
+//   // For example, you can check if the user really wants to go back
+//   con
+//   const confirmBack = window.confirm('Are you sure you want to go back? Your changes may not be saved.');
+
+//   if (!confirmBack) {
+//       history.pushState(null, null, window.location.href);
+//       // This prevents the back navigation
+//   }
+// });
+
 
 async function onStart() {
   disableTextarea(inputBox);
@@ -123,6 +167,18 @@ async function onSendButton(chatbox) {
 
   let drugSearchComplaint = false;
   let searchResults = {};
+
+  // if(currentStep == 0){
+  //   console.log('uer search')
+  //   searchFormat = {
+  //     "city": userInfo['city'],
+  //     "quarter": userInfo['quarter'],
+  //     "search": userPrompt ,
+  //     "date": getCurrentFormatedDate()
+  //   }
+    
+  //   downloadCSV([searchFormat], 'userSearch.csv')
+  // }
 
   pushUserMessage(userPrompt);
   clearTextField(textField);

@@ -612,3 +612,29 @@ function getItemsByPage(pageNumber, itemsPerPage) {
   const pageItems = userDrugsList.slice(startIndex, endIndexWithinBounds);
   return pageItems;
 }
+
+
+// working with csv file 
+function convertToCSV(data) {
+  const csvContent = data.map(row => Object.values(row).join(',')).join('\n');
+  return csvContent;
+}
+
+function downloadCSV(data, filename) {
+  const csvContent = convertToCSV(data);
+
+  // Create a Blob with the CSV content
+  const blob = new Blob([csvContent], { type: 'text/csv' });
+
+  // Create a download link
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = filename;
+
+  // Append the link to the document and trigger the click event
+  document.body.appendChild(link);
+  link.click();
+
+  // Remove the link from the document
+  document.body.removeChild(link);
+}
