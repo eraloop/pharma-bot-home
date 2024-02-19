@@ -55,6 +55,7 @@ window.addEventListener("DOMContentLoaded", async() => {
 async function onStart() {
   disableTextarea(inputBox);
   await pushThinkingMessage("loading-message");
+  console.log('pushed thinking message')
   orderKeywords = getOrderKeywords(locale);
   locations = await onLoadCities();
   drugList = await onLoadDrugs();
@@ -65,12 +66,14 @@ async function onStart() {
   if (drugList.length == 0) {
     messages.pop()
     pushPharmaMessage(getTranslation("network-error"));
+    console.log('drug ddnt load ')
     disableTextarea(inputBox);
     return;
   }
 
   if(messages.length <= 1 ){
     pushPharmaMessage(getTranslation("greeting-text"));
+     console.log('pushed greeting message ')
   }else{
     updateChatText(chatBox, messages);
   }
@@ -103,6 +106,7 @@ async function onStart() {
       </div>
     `;
     pushPharmaMessage(address);
+    console.log('pushed city selected')
   }else{
     pushPharmaMessage(getTranslation("city"));
     onDisplayCityDropDown();
