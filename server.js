@@ -59,13 +59,13 @@ inputBox.addEventListener("keyup", ({ key }) => {
 }});
 closeButton.addEventListener('click', (e) => {goBack()})
 
-// window.addEventListener("DOMContentLoaded", async() => {
-//   onStart();
-// });
-
-window.addEventListener("load", async() => {
+window.addEventListener("DOMContentLoaded", async() => {
   onStart();
 });
+
+// window.addEventListener("load", async() => {
+//   onStart();
+// });
 
 
 // window.addEventListener('beforeunload', function (event) {
