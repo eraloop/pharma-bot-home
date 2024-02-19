@@ -25,7 +25,7 @@ function prepareMedicationTable(medications) {
         <tbody>
   `;;
 
-  medications.length == 0 ?
+  medications.length != 0 ?
   medications.forEach((medication, index) => {
     const medicationName = medication.name;
     const medicationPrice = medication.price;
@@ -46,7 +46,7 @@ function prepareMedicationTable(medications) {
       `;
   }) : 
 
-  `
+  tableHtml += `
     <tr>
       <td > <p> Aucun médicament n'est disponible, veuillez retourner à la page précédente. </p> </td>
     </tr>
