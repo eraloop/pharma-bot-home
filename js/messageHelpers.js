@@ -5,7 +5,7 @@ function pushPharmaMessage(reply) {
   inputBox.focus();
 }
 
-async function pushThinkingMessage(message) {
+async function pushSetupMessage() {
   pushPharmaMessage("Mise en place, veuillez patienter un instant..");
   locations = await onLoadCities();
   drugList = await onLoadDrugs();
@@ -13,6 +13,7 @@ async function pushThinkingMessage(message) {
   await setLocale(locale);
   await Promise.all([locations, drugList, locale]);
   await new Promise(resolve => {setTimeout(() => {resolve();}, 2000);});
+  console.log("setup done")
   messages.pop();
 }
 

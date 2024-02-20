@@ -36,7 +36,6 @@ let orderF
 
 let userSearch = [];
 let userOrders = [];
-
 let body = { 
   // amount: totalCost,
   amount: '',
@@ -44,11 +43,9 @@ let body = {
   description: '',
   reference: '',
 }
-
 let message = "", currentDrug, currentStep = 0, totalCost = 0 , page = 1;
-
 // payment information
-let token = "290ed6ac188a2f1d30baf8533fcaa09e2c77591d", transactionId = "";
+let transactionId = "";
 
 // get refrence to the html elements relevant to the js file
 sendButton.addEventListener("click", () => onSendButton(chatBox));
@@ -59,21 +56,9 @@ inputBox.addEventListener("keyup", ({ key }) => {
 }});
 closeButton.addEventListener('click', (e) => {goBack()})
 
-window.addEventListener("load", async() => {
-  // onStart();
-  console.log("server on load state")
-});
-
-window.addEventListener("DOMContentLoaded", async() => {
-  // onStart();
-  console.log("server on DOMContentLoaded")
-});
-
-
 async function onStart() {
-  console.log("server onstart")
   disableTextarea(inputBox);
-  // await pushThinkingMessage("loading-message");
+  await pushSetupMessage();
   user = getUserFromLocalStorage();
   user = JSON.parse(user);
 
@@ -136,18 +121,6 @@ async function onSendButton(chatbox) {
 
   let drugSearchComplaint = false;
   let searchResults = {};
-
-  // if(currentStep == 0){
-  //   console.log('uer search')
-  //   searchFormat = {
-  //     "city": userInfo['city'],
-  //     "quarter": userInfo['quarter'],
-  //     "search": userPrompt ,
-  //     "date": getCurrentFormatedDate()
-  //   }
-    
-  //   downloadCSV([searchFormat], 'userSearch.csv')
-  // }
 
   pushUserMessage(userPrompt);
   clearTextField(textField);
