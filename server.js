@@ -60,9 +60,15 @@ inputBox.addEventListener("keyup", ({ key }) => {
 closeButton.addEventListener('click', (e) => {goBack()})
 
 window.addEventListener("load", async() => {
-  onStart();
+  // onStart();
   console.log("server on load state")
 });
+
+window.addEventListener("DOMContentLoaded", async() => {
+  // onStart();
+  console.log("server on DOMContentLoaded")
+});
+
 
 async function onStart() {
   console.log("server onstart")
@@ -232,4 +238,4 @@ async function onSendButton(chatbox) {
   }
 }
 
-// onStart()
+onStart()
