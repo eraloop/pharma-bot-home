@@ -61,10 +61,11 @@ closeButton.addEventListener('click', (e) => {goBack()})
 
 window.addEventListener("load", async() => {
   onStart();
+  console.log("server on load state")
 });
 
-
 async function onStart() {
+  console.log("server onstart")
   disableTextarea(inputBox);
   await pushThinkingMessage("loading-message");
   user = getUserFromLocalStorage();
