@@ -142,6 +142,7 @@ async function onLoadDrugs() {
   try {
     let response = await fetch("../data/drugs.json");
     let drugs = await response.json();
+    console.log('drugs loaded', drugs)
     return drugs;
   } catch (e) {
     // console.log(e);
@@ -281,6 +282,7 @@ async function onLoadCities() {
     const response = await fetch("../data/geolocation.json");
     const locations = await response.json();
     saveListToLS('cities', locations['cities'])
+    console.log('cities loaded', locations)
     return locations['cities'];
   } catch (error) {
     console.error(error);

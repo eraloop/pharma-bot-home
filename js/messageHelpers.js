@@ -9,12 +9,10 @@ async function pushThinkingMessage(message) {
   pushPharmaMessage("Mise en place, veuillez patienter un instant..");
   locations = await onLoadCities();
   drugList = await onLoadDrugs();
-  await Promise.all([locations, drugList]);
-  await new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, 2000);
-  });
+  locale = await getUserLocale();
+  await setLocale(locale);
+  await Promise.all([locations, drugList, locale]);
+  await new Promise(resolve => {setTimeout(() => {resolve();}, 2000);});
   messages.pop();
 }
 
