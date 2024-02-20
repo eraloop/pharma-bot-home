@@ -73,7 +73,7 @@ window.addEventListener("DOMContentLoaded", async() => {
 async function onStart() {
   console.log("server onstart")
   disableTextarea(inputBox);
-  await pushThinkingMessage("loading-message");
+  // await pushThinkingMessage("loading-message");
   user = getUserFromLocalStorage();
   user = JSON.parse(user);
 
@@ -91,7 +91,7 @@ async function onStart() {
     return;
   }
 
-  if(user !== null){
+  if(user != null){
     userInfo = user;
     let address = 
     locale === "en"
