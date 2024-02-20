@@ -98,14 +98,24 @@ window.addEventListener("DOMContentLoaded", async() => {
 
 async function onStart() {
   disableTextarea(inputBox);
-  await pushThinkingMessage("loading-message");
-  console.log('pushed thinking message')
-  orderKeywords = getOrderKeywords(locale);
-  locations = await onLoadCities();
-  drugList = await onLoadDrugs();
+  // await pushThinkingMessage("loading-message");
+  // pushPharmaMessage(getTranslation(message))
+  // console.log('pushed thinking message')
   user = getUserFromLocalStorage();
   user = JSON.parse(user);
   paymentInfo = await onLoadPaymentDetails();
+
+  if(messages.length <= 1 ){
+    // messages.pop()
+    pushPharmaMessage(getTranslation("greeting-text"));
+     console.log('pushed greeting message ')
+  }else{
+    updateChatText(chatBox, messages);
+  }
+
+  orderKeywords = getOrderKeywords(locale);
+  locations = await onLoadCities();
+  drugList = await onLoadDrugs();
 
   if (drugList.length == 0) {
     messages.pop()
@@ -113,13 +123,6 @@ async function onStart() {
     console.log('drug ddnt load ')
     disableTextarea(inputBox);
     return;
-  }
-
-  if(messages.length <= 1 ){
-    pushPharmaMessage(getTranslation("greeting-text"));
-     console.log('pushed greeting message ')
-  }else{
-    updateChatText(chatBox, messages);
   }
 
   if(user !== null){
