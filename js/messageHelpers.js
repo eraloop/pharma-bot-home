@@ -6,10 +6,18 @@ function pushPharmaMessage(reply) {
 }
 
 async function pushThinkingMessage(message) {
-  if(messages.length != 0) return;
-  pushPharmaMessage(getTranslation(message))
-  messages.pop()
+  pushPharmaMessage("Mise en place, veuillez patienter un instant..");
+  locations = await onLoadCities();
+  drugList = await onLoadDrugs();
+  await Promise.all([locations, drugList]);
+  await new Promise(resolve => {
+    setTimeout(() => {
+      resolve();
+    }, 2000);
+  });
+  messages.pop();
 }
+
 
 function pushUserMessage(message) {
   messages.push({ name: "User", message });

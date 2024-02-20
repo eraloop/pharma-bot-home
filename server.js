@@ -59,54 +59,18 @@ inputBox.addEventListener("keyup", ({ key }) => {
 }});
 closeButton.addEventListener('click', (e) => {goBack()})
 
-window.addEventListener("DOMContentLoaded", async() => {
+window.addEventListener("load", async() => {
   onStart();
 });
-
-// window.addEventListener("load", async() => {
-//   onStart();
-// });
-
-
-// window.addEventListener('beforeunload', function (event) {
-//   // Your code to save data or perform actions before the page is unloaded
-//   const dataToSave = {
-//       // Your data here
-//   };
-//   // Assuming you want to save data to localStorage
-//   localStorage.setItem('savedData', JSON.stringify(dataToSave));
-//   // The message you return here will be shown to the user in a confirmation dialog
-//   const confirmationMessage = 'Are you sure you want to leave? Your changes may not be saved.';
-//   (event || window.event).returnValue = confirmationMessage; // Standard for most browsers
-//   return confirmationMessage; // For some older browsers
-// });
-
-// window.addEventListener('popstate', function (event) {
-//   // Handle the back button or navigation here
-//   // This event is triggered when the user navigates back or forward
-//   // You can use it to perform additional actions or prevent navigation
-//   // For example, you can check if the user really wants to go back
-//   con
-//   const confirmBack = window.confirm('Are you sure you want to go back? Your changes may not be saved.');
-
-//   if (!confirmBack) {
-//       history.pushState(null, null, window.location.href);
-//       // This prevents the back navigation
-//   }
-// });
 
 
 async function onStart() {
   disableTextarea(inputBox);
-  // await pushThinkingMessage("loading-message");
-  // pushPharmaMessage(getTranslation(message))
-  // console.log('pushed thinking message')
+  await pushThinkingMessage("loading-message");
   user = getUserFromLocalStorage();
   user = JSON.parse(user);
-  paymentInfo = await onLoadPaymentDetails();
 
   if(messages.length <= 1 ){
-    // messages.pop()
     pushPharmaMessage(getTranslation("greeting-text"));
      console.log('pushed greeting message ')
   }else{
@@ -114,13 +78,9 @@ async function onStart() {
   }
 
   orderKeywords = getOrderKeywords(locale);
-  locations = await onLoadCities();
-  drugList = await onLoadDrugs();
 
   if (drugList.length == 0) {
-    messages.pop()
     pushPharmaMessage(getTranslation("network-error"));
-    console.log('drug ddnt load ')
     disableTextarea(inputBox);
     return;
   }
@@ -153,11 +113,11 @@ async function onStart() {
       </div>
     `;
     pushPharmaMessage(address);
-    console.log('pushed city selected')
   }else{
     pushPharmaMessage(getTranslation("city"));
     onDisplayCityDropDown();
     enableTextarea(inputBox);
+    paymentInfo = await onLoadPaymentDetails();
   }
 
 }
@@ -272,3 +232,4 @@ async function onSendButton(chatbox) {
   }
 }
 
+// onStart()

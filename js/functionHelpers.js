@@ -88,7 +88,6 @@ function completeMedList() {
 async function checkTransactionStatus(token , transactionId) {
   
   let paymentStatus = await requestPaymentStatus(token , transactionId)
-  // console.log("result from chek transaction status" ,paymentStatus)
   if (!paymentStatus) {
     pushPharmaMessage(getTranslation("order-failed"));
     enableTextarea(inputBox);
@@ -372,8 +371,6 @@ function addMedicationToCart(index) {
 }
 
 function restartConversation() {
-    const chatmessage = chatBox.querySelector(".chatbox__messages");
-    chatmessage.innerHTML = "";
     messages = [];
     currentStep = 0;
     userDrugs = [];
