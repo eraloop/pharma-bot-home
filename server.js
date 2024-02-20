@@ -72,7 +72,6 @@ async function onStart() {
 
   if(messages.length <= 1 ){
     pushPharmaMessage(getTranslation("greeting-text"));
-     console.log('pushed greeting message ')
   }else{
     updateChatText(chatBox, messages);
   }

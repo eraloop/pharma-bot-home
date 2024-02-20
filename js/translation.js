@@ -27,7 +27,6 @@ async function setLocale(newLocale) {
   const newTranslations = await fetchTranslationsFor(newLocale);
   locale = newLocale;
   translations = newTranslations;
-  console.log("translations", translations)
   translatePage();
 }
 
