@@ -61,6 +61,7 @@ closeButton.addEventListener('click', (e) => {goBack()})
 
 window.addEventListener("load", async() => {
   onStart();
+  console.log("code started")
 });
 
 
