@@ -20,7 +20,7 @@ function levenshteinDistance(s, t){
 
 function validateCameroonianPhoneNumber(phoneNumber) {
   const mtnPattern = /^(67[1-9]|68[0-4]|65[5-9])\d{6}$/;
-  const orangePattern = /^(69[1-4]|68[5-9]|65[1-4])\d{6}$/;
+  const orangePattern = /^(69[1-9]|68[5-9]|65[1-4])\d{6}$/;
   const camtelPattern = /^62\d{6}$/;
 
   const isValid =
