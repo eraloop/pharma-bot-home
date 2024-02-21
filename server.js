@@ -167,9 +167,11 @@ async function onSendButton(chatbox) {
       pushPharmaMessage(getTranslation("phone-enter"));
       currentStep ++;
       break;
+
     case 2:
 
-      userPrompt = userPrompt.replace(/\s/g, '');
+      userPrompt = userPrompt.replace(/^(\+|00)?237/, '').replace(/\s/g, '');
+      console.log(userPrompt)
       const isValid = validateCameroonianPhoneNumber(userPrompt.trim());
       if (!isValid["isValid"]) {
         pushPharmaMessage(getTranslation("phone"));
