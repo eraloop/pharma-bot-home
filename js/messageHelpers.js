@@ -13,7 +13,6 @@ async function pushSetupMessage() {
   await setLocale(locale);
   await Promise.all([locations, drugList, locale]);
   await new Promise(resolve => {setTimeout(() => {resolve();}, 2000);});
-  console.log("setup done")
   messages.pop();
 }
 

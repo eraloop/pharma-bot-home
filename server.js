@@ -169,6 +169,7 @@ async function onSendButton(chatbox) {
       break;
     case 2:
 
+      userPrompt = userPrompt.replace(/\s/g, '');
       const isValid = validateCameroonianPhoneNumber(userPrompt.trim());
       if (!isValid["isValid"]) {
         pushPharmaMessage(getTranslation("phone"));
