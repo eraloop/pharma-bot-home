@@ -143,7 +143,6 @@ async function onSendButton(chatbox) {
             return;
           }
 
-          console.log(userDrugs)
           const medicationTableHtml = prepareMedicationTable(userDrugs);
           pushPharmaMessage(medicationTableHtml);
           disableTextarea(inputBox);
@@ -171,7 +170,6 @@ async function onSendButton(chatbox) {
     case 2:
 
       userPrompt = userPrompt.replace(/^(\+|00)?237/, '').replace(/\s/g, '');
-      console.log(userPrompt)
       const isValid = validateCameroonianPhoneNumber(userPrompt.trim());
       if (!isValid["isValid"]) {
         pushPharmaMessage(getTranslation("phone"));
