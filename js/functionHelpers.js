@@ -81,6 +81,7 @@ async function makePayment(token, body) {
 function completeMedList() {
   // console.log("complete button");
   pushPharmaMessage(getTranslation("identity"));
+  document.querySelector(".chatbox__message__input").placeholder = 'Enter your name';
   enableTextarea(inputBox);
   currentStep = 1;
 }

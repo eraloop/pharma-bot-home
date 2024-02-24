@@ -28,7 +28,7 @@
     "more-meds": "<p> Do you wish to order any other medication ?</p><div class='buttons'><button class='btn btn-info' onclick='continueSelecting()'> ADD ANOTHER DRUG </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> DONE SELECTING DRUGS </button></div>",
     "drug-found": "The requested drug isnt available, Please make sure the spelling is correct and try again",
     "choose-drug": "<p class='bold-text'> Please select the drug you want from the list below. If the drug you want is not in the list, click on the button below.</p> <button class='btn btn-danger list-clear-button' onclick='clearDrugList()'> CLEAR LIST </button>",
-    "drug-search-complaint": "The amount of drugs matching this name is alot, please if your required drug isnt found on this list, check the spelling and search again. <div class='buttons'> <button class='btn btn-secondary' onclick='previousPage()'> PREVIOUS PAGE </button> <button class='btn btn-info' onclick='nextPage()'> NEXT PAGE </button></div>",
+    "drug-search-complaint": "<div class='buttons'> <button class='btn btn-secondary' onclick='previousPage()'> PREVIOUS PAGE </button> <button class='btn btn-info' onclick='nextPage()'> NEXT PAGE </button></div>",
     "meds-empty": "Please choose a medication before proceeding to the next stage of your purchase.",
     "order-failed": " <p> Failed to place your order </p> <button class='btn btn-info order-resend-button' onclick='confirmedPayment()'> RESEND ORDER </button>",
     "placing-order": "Your order is being placed, please wait a moment",

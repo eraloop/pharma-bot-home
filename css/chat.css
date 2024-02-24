@@ -74,6 +74,8 @@ a{
     display: flex;
     overflow-y: scroll;
     flex-direction: column-reverse;
+    position: relative;
+    overflow-anchor: auto !important;
     background-color: white;
     padding: 10px 0;
 }
@@ -91,7 +93,7 @@ a{
 }
 
 .messages__item--operator {
-    font-size: 14px !important;
+    font-size: 0.8rem !important;
     margin-left: auto;
     background: #43b75d !important;
     color: #fff !important;
@@ -99,8 +101,9 @@ a{
 }
 
 .messages__item--visitor{
-    font-size: 14px !important;
+    font-size: 0.8rem !important;
 }
+
 
 /* HEADER */
 .chatbox__header {
@@ -208,7 +211,7 @@ a{
 
 .chatbox__message__input::placeholder {
     font-weight: lighter;
-    font-size: 10 !important;
+    font-size: 1rem !important;
 }
 
 

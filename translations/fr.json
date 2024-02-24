@@ -27,7 +27,7 @@
     "more-meds": "<p> Souhaitez-vous commander d'autres médicaments ? </p> <div class='buttons'><button class='btn btn-info' onclick='continueSelecting()'> AJOUTER UN AUTRE MÉDICAMENT </button><button class='btn btn-success med-done-button' onclick='medicationDone()'> SELECTION TERMINEE </button></div>",
     "drug-found": "Le médicament demandé n'est pas disponible, veuillez vous assurer que l'orthographe est correcte et réessayez",
     "choose-drug": " <p class='bold-text'> Veuillez sélectionner le médicament souhaité dans la liste ci-dessus. Si le médicament souhaité n'est pas inclus, cliquez sur le bouton ci-dessous.</p> <button class='btn btn-danger list-clear-button' onclick='clearDrugList()'> EFFACER LA LISTE </button>",
-    "drug-search-complaint": "Le nombre de médicaments correspondant à ce nom est important, veuillez vérifier l'orthographe et rechercher à nouveau. <div class='buttons'> <button class='btn btn-secondary' onclick='previousPage()'> PAGE PRÉCÉDENTE </button> <button class='btn btn-info' onclick='nextPage()'> NEXT PAGE </button></div>",
+    "drug-search-complaint": "<div class='buttons'> <button class='btn btn-secondary' onclick='previousPage()'> PAGE PRÉCÉDENTE </button> <button class='btn btn-info' onclick='nextPage()'> NEXT PAGE </button></div>",
     "meds-empty": "Veuillez choisir un médicament avant de passer à l'étape suivante de votre achat.",
     "order-failed": " <p> Impossible de passer votre commande </p> <button class='btn btn-info order-resend-button' onclick='confirmedPayment()'> REENVOYER LA COMMANDE </button>",
     "placing-order": "Votre commande est en cours de traitement, veuillez patienter un instant",

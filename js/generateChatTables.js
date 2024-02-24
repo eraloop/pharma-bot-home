@@ -48,7 +48,7 @@ function prepareMedicationTable(medications) {
 
   tableHtml += `
     <tr>
-      <td > <p> Aucun médicament n'est disponible, veuillez retourner à la page précédente. </p> </td>
+      <td colspan="3" > Aucun médicament n'est disponible, veuillez retourner à la page précédente.</td>
     </tr>
   `;
 

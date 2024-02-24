@@ -8,7 +8,7 @@ const resendButton = document.querySelector(".chatbox__restart");
 const completeButton = document.querySelector(".chatbox__restart");
 const clearButton = document.querySelector(".chatbox__restart");
 const closeButton = document.querySelector(".chatbox__close");
-const inputBox = chatBox.querySelector(".chatbox__message__input");
+const inputBox = chatBox.getElementsByClassName("chatbox__message__input");
 const messageContainer = document.getElementById("chatbox__messages");
 
 // user variables
@@ -57,6 +57,7 @@ inputBox.addEventListener("keyup", ({ key }) => {
 closeButton.addEventListener('click', (e) => {goBack()})
 
 async function onStart() {
+  document.querySelector(".chatbox__message__input").placeholder = 'Welcome to sos pharma';
   disableTextarea(inputBox);
   await pushSetupMessage();
   user = getUserFromLocalStorage();
@@ -114,7 +115,6 @@ async function onStart() {
 }
 
 async function onSendButton(chatbox) {
-
   let textField = chatbox.querySelector("textarea");
   let userPrompt = textField.value.trim();
   if (userPrompt === "") return;
