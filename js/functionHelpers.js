@@ -156,7 +156,7 @@ function onDisplayCityDropDown() {
   let locationDropdown = document.querySelector(".location-dropdown");
   locationDropdown.innerHTML = "";
 
-  locations.reverse().forEach((optionText) => {
+  locations.sort().reverse().forEach((optionText) => {
     const option = document.createElement("option");
     option.value = JSON.stringify(optionText);
     option.text = optionText["name"];
@@ -215,7 +215,7 @@ function onDisplayLocationDropDown() {
   let pickupLocationDropdown = document.querySelector(".pickup-location-dropdown");
   pickupLocationDropdown.innerHTML = "";
 
-  quarters.reverse().forEach((optionText) => {
+  quarters.sort().reverse().forEach((optionText) => {
     const option = document.createElement("option");
     option.value = JSON.stringify(optionText);
     option.text = optionText["name"];
