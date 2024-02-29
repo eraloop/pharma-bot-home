@@ -4,22 +4,14 @@
   "currency": "CFA",
   "isActive": "true",
   "cities": [
-    {
-      "id": 0,
-      "isActive": false,
-      "name": "Ville de livraison"
-    },
+
     {
       "id": 1,
       "cityCode": "BAF",
       "isActive": true,
       "name": "Bafoussam",
       "quarters": [
-        {
-          "id": 0,
-          "isActive": false,
-          "name": "Quartier de livraison"
-        },
+      
         {
           "id": 1,
           "name": "Marche A",
@@ -29,6 +21,11 @@
           "id": 2,
           "name": "Gare Routiere",
           "deliveryCost": 1000
+        },
+        {
+          "id": 3,
+          "isActive": false,
+          "name": "Quartier de livraison"
         }
       ]
     },
@@ -38,15 +35,16 @@
       "isActive": false,
       "name": "Bamenda",
       "quarters": [
-        {
-          "id": 0,
-          "isActive": false,
-          "name": "Quartier de livraison"
-        },
+       
         {
           "id": 1,
           "name": "Center Bamenda",
           "deliveryCost": 1000
+        },
+        {
+          "id": 0,
+          "isActive": false,
+          "name": "Quartier de livraison"
         }
       ]
     },
@@ -56,15 +54,16 @@
       "isActive": true,
       "name": "Buea",
       "quarters": [
-        {
-          "id": 0,
-          "isActive": false,
-          "name": "Quartier de livraison"
-        },
+        
         {
           "id": 1,
           "name": "Center Buea",
           "deliveryCost": 1000
+        },
+        {
+          "id": 2,
+          "isActive": false,
+          "name": "Quartier de livraison"
         }
       ]
     },
@@ -74,11 +73,7 @@
       "isActive": true,
       "name": "Douala",
       "quarters": [
-        {
-          "id": 0,
-          "isActive": false,
-          "name": "Quartier de livraison"
-        },
+       
         { "id": 1, "name": "Akwa", "deliveryCost": 1000 },
         { "id": 2, "name": "Bonaberi", "deliveryCost": 1000 },
         { "id": 3, "name": "Bonanjo", "deliveryCost": 1000 },
@@ -94,7 +89,12 @@
         { "id": 13, "name": "Kotto", "deliveryCost": 1000 },
         { "id": 14, "name": "Yassa", "deliveryCost": 1000 },
         { "id": 15, "name": "Zone Bassa", "deliveryCost": 1000 },
-        { "id": 16, "name": "Japoma", "deliveryCost": 1000 }
+        { "id": 16, "name": "Japoma", "deliveryCost": 1000 },
+        {
+          "id": 15,
+          "isActive": false,
+          "name": "Quartier de livraison"
+        }
       ]
     },
     {
@@ -103,11 +103,7 @@
       "isActive": true,
       "name": "Garoua",
       "quarters": [
-        {
-          "id": 0,
-          "isActive": false,
-          "name": "Quartier de livraison"
-        },
+        
         { "id": 1, "name": "Barmare", "deliveryCost": 1000 },
         { "id": 2, "name": "Boulai", "deliveryCost": 1000 },
         { "id": 3, "name": "Houssa", "deliveryCost": 1000 },
@@ -117,7 +113,12 @@
         { "id": 7, "name": "Sabougari", "deliveryCost": 1000 },
         { "id": 8, "name": "Yelwa", "deliveryCost": 1000 },
         { "id": 9, "name": "Djambotou", "deliveryCost": 1000 },
-        { "id": 10, "name": "Poumpoumré", "deliveryCost": 1000 }
+        { "id": 10, "name": "Poumpoumré", "deliveryCost": 1000 },
+        {
+          "id": 11,
+          "isActive": false,
+          "name": "Quartier de livraison"
+        }
       ]
     },
     {
@@ -126,11 +127,7 @@
       "isActive": true,
       "name": "Maroua",
       "quarters": [
-        {
-          "id": 0,
-          "isActive": false,
-          "name": "Quartier de livraison"
-        },
+       
         { "id": 1, "name": "Damayo", "deliveryCost": 1000 },
         { "id": 2, "name": "Diguiriwo", "deliveryCost": 1000 },
         { "id": 4, "name": "Djarengol", "deliveryCost": 1000 },
@@ -139,7 +136,12 @@
         { "id": 3, "name": "Kongola", "deliveryCost": 1000 },
         { "id": 5, "name": "Kodek", "deliveryCost": 1000 },
         { "id": 6, "name": "Pallar", "deliveryCost": 1000 },
-        { "id": 7, "name": "Zokok", "deliveryCost": 1000 }
+        { "id": 7, "name": "Zokok", "deliveryCost": 1000 },
+        {
+          "id": 8,
+          "isActive": false,
+          "name": "Quartier de livraison"
+        }
       ]
     },
     {
@@ -148,11 +150,7 @@
       "isActive": true,
       "name": "Ngaoundéré",
       "quarters": [
-        {
-          "id": 0,
-          "isActive": false,
-          "name": "Quartier de livraison"
-        },
+      
         { "id": 1, "name": "Dang", "deliveryCost": 1000 },
         { "id": 2, "name": "Hore-Bini", "deliveryCost": 1000 },
         { "id": 3, "name": "Beka-Hossere", "deliveryCost": 1000 },
@@ -160,7 +158,12 @@
         { "id": 5, "name": "Margol", "deliveryCost": 1000 },
         { "id": 6, "name": "Marma", "deliveryCost": 1000 },
         { "id": 7, "name": "Marza", "deliveryCost": 1000 },
-        { "id": 8, "name": "Wakwa", "deliveryCost": 1000 }
+        { "id": 8, "name": "Wakwa", "deliveryCost": 1000 },
+        {
+          "id": 9,
+          "isActive": false,
+          "name": "Quartier de livraison"
+        }
       ]
     },
     {
@@ -169,11 +172,7 @@
       "isActive": true,
       "name": "Yaoundé",
       "quarters": [
-        {
-          "id": 0,
-          "isActive": false,
-          "name": "Quartier de livraison"
-        },
+        
         { "id": 1, "name": "Eleveur", "deliveryCost": 1000 },
         { "id": 2, "name": "Efoulan", "deliveryCost": 1000 },
         { "id": 3, "name": "Elig Essono", "deliveryCost": 1000 },
@@ -199,8 +198,18 @@
         { "id": 23, "name": "Obili", "deliveryCost": 1000 },
         { "id": 24, "name": "Tsinga", "deliveryCost": 1000 },
         { "id": 25, "name": "Nvam", "deliveryCost": 1000 },
-        { "id": 26, "name": "Kondengui", "deliveryCost": 1000 }
+        { "id": 26, "name": "Kondengui", "deliveryCost": 1000 },
+        {
+          "id": 25,
+          "isActive": false,
+          "name": "Quartier de livraison"
+        }
       ]
+    },
+    {
+      "id": 0,
+      "isActive": false,
+      "name": "Ville de livraison"
     }
   ]
 }
