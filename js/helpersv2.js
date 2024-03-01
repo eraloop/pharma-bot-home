@@ -150,7 +150,7 @@ async function onLoadDrugs() {
 
 async function onLoadPaymentDetails() {
   try {
-    const response = await fetch("../data/config.json");
+    const response = await fetch("../data/configv2.json");
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
@@ -172,67 +172,6 @@ function levenshteinSearch(medicationName, searchString) {
     ? true
     : false;
 }
-
-// async function loadExcel() {
-//   let drugs = [];
-//   let drugsLoaded = false;
-
-//   let medication  = readMedicationsFromLS('medications');
-//   if(medication != null || medication != undefined){
-//     console.log("loading from cache")
-//     return {
-//       drugs: medication,
-//       isLoaded: true,
-//     };
-//   }
-
-//   const fetchExcelData = () => {
-//     return new Promise((resolve, reject) => {
-//       const xhr = new XMLHttpRequest();
-//       const excelUrl = "../data/drugs.xlsx";
-//       xhr.open("GET", excelUrl, true);
-//       xhr.responseType = "arraybuffer";
-//       xhr.onload = function () {
-//         if (xhr.status === 200) {
-//           const data = new Uint8Array(xhr.response);
-//           const workbook = XLSX.read(data, { type: "array" });
-//           const sheetName = workbook.SheetNames[0];
-//           const worksheet = workbook.Sheets[sheetName];
-//           const jsonData = XLSX.utils.sheet_to_json(worksheet);
-
-//           jsonData.forEach((row) => {
-//             const drugObject = {
-//               name: row["name"],
-//               price: row["price"],
-//               onPrescription : row["onPrescription"],
-//             };
-//             drugs.push(drugObject);
-//           });
-//           resolve();
-//         } else {
-//           console.error("Failed to load the Excel file.");
-//           reject();
-//         }
-//       };
-//       xhr.send();
-//     });
-//   };
-
-//   try {
-//     await fetchExcelData();
-//     if (drugs.length > 0) {
-//       drugsLoaded = true;
-//     }
-//     saveListToLS('medications', drugs)
-//   } catch (error) {
-//     console.error("An error occurred while loading drugs:", error);
-//   }
-
-//   return {
-//     drugs: drugs,
-//     isLoaded: drugsLoaded,
-//   };
-// }
 
 function disableTextarea(textarea) {
   clearTextField(textarea);
@@ -277,7 +216,7 @@ async function onLoadCities() {
     if(cities != null || cities != undefined){
       return cities
     }
-    const response = await fetch("../data/geolocation.json");
+    const response = await fetch("../data/geolocationv2.json");
     const locations = await response.json();
     saveListToLS('cities', locations['cities'])
     return locations['cities'];
