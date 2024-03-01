@@ -8,7 +8,7 @@ const resendButton = document.querySelector(".chatbox__restart");
 const completeButton = document.querySelector(".chatbox__restart");
 const clearButton = document.querySelector(".chatbox__restart");
 const closeButton = document.querySelector(".chatbox__close");
-const inputBox = chatBox.getElementsByClassName("chatbox__message__input");
+const inputBox = chatBox.querySelector("chatbox__message__input");
 const messageContainer = document.getElementById("chatbox__messages");
 
 // user variables
@@ -32,8 +32,6 @@ let searchFormat = {
   "date": ""
 }
 
-let orderF
-
 let userSearch = [];
 let userOrders = [];
 let body = { 
@@ -43,6 +41,7 @@ let body = {
   description: '',
   reference: '',
 }
+
 let message = "", currentDrug, currentStep = 0, totalCost = 0 , page = 1;
 // payment information
 let transactionId = "";
