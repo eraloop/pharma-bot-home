@@ -139,7 +139,7 @@ async function matchUserDrugs(drugs, userPrompts, orderKeywords) {
 
 async function onLoadDrugs() {
   try {
-    let response = await fetch("../data/drugs.json");
+    let response = await fetch("../data/drugsv2.json");
     let drugs = await response.json();
     return drugs;
   } catch (e) {

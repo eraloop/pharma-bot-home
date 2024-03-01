@@ -53,11 +53,12 @@ restartChatButton.addEventListener("click", () => restartConversation());
 inputBox.addEventListener("keyup", ({ key }) => {
   if (key === "Enter") {
     onSendButton(chatBox);
-}});
+  }
+});
 closeButton.addEventListener('click', (e) => {goBack()})
 
 async function onStart() {
-  document.querySelector(".chatbox__message__input").placeholder = 'Welcome to sos pharma';
+
   disableTextarea(inputBox);
   await pushSetupMessage();
   user = getUserFromLocalStorage();
