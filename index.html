@@ -8,10 +8,10 @@
     <meta name="description" content="Rapide, sécurisé, et efficace, SOS Pharma est un service de livraison de medicaments en ligne."/>
     <meta name="application-name" content="SOS Pharma" />
 
-    <link rel="stylesheet" href="./css/chatv2.css" />
-    <link rel="stylesheet" href="./css/tablev2.css" />
-    <link rel="stylesheet" href="./css/helpersv2.css" />
-    <link rel="stylesheet" href="./css/stylesv2.css" />
+    <link rel="stylesheet" href="./css/chat.css" />
+    <link rel="stylesheet" href="./css/table.css" />
+    <link rel="stylesheet" href="./css/helpers.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
 
     <link rel="icon" type="image/png" href="https://www.sos-pharma.com/images/new_logo.jpg" sizes="196x196" />
     <link rel="icon" type="image/png" href="https://www.sos-pharma.com/images/new_logo.jpg" sizes="96x96" />
@@ -19,14 +19,20 @@
     <link rel="icon" type="image/png" href="https://www.sos-pharma.com/images/new_logo.jpg" sizes="16x16" />
     <link rel="icon" type="image/png" href="https://www.sos-pharma.com/images/new_logo.jpg" sizes="128x128" />
 
-    <link  rel="prefetch"  href="https://www.sos-pharma.com/js/translationv2.js">
-    <link  rel="prefetch"  href="https://www.sos-pharma.com/js/functionHelpersv2.js">
-    <link  rel="prefetch"  href="https://www.sos-pharma.com/js/messageHelpersv2.js">
-    <link  rel="prefetch"  href="https://www.sos-pharma.com/js/helpersv2.js">
-    <link  rel="prefetch"  href="https://www.sos-pharma.com/js/sendEmailv2.js">
-    <link  rel="prefetch"  href="https://www.sos-pharma.com/js/paymentsv2.js">
-    <link  rel="prefetch"  href="https://www.sos-pharma.com/js/generateChatTablesv2.js">
-    <link  rel="prefetch"  href="https://www.sos-pharma.com/serverv2.js">
+    <!-- <link rel="icon" type="image/png" href="./images/new_logo.jpg" sizes="196x196" />
+    <link rel="icon" type="image/png" href="./images/new_logo.jpg" sizes="96x96" />
+    <link rel="icon" type="image/png" href="./images/new_logo.jpg" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./images/new_logo.jpg" sizes="16x16" />
+    <link rel="icon" type="image/png" href="./images/new_logo.jpg" sizes="128x128" /> -->
+
+    
+    <link defer rel="prefetch"  href="https://www.sos-pharma.com/js/functionHelpers.js">
+    <link defer rel="prefetch"  href="https://www.sos-pharma.com/js/messageHelpers.js">
+    <link defer rel="prefetch"  href="https://www.sos-pharma.com/js/helpers.js">
+    <link defer rel="prefetch"  href="https://www.sos-pharma.com/js/sendEmail.js">
+    <link defer rel="prefetch"  href="https://www.sos-pharma.com/js/payments.js">
+    <link defer rel="prefetch"  href="https://www.sos-pharma.com/js/generateChatTables.js">
+    <link defer rel="prefetch"  href="https://www.sos-pharma.com/server.js">
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="SOS Pharma : Livraison de médicaments online"/>
@@ -37,7 +43,8 @@
     <meta property="og:site_name" content="SOS Pharma"/>
     <meta property="og:image" content="images/logo.jpg" />
 
-    <script src="https://www.sos-pharma.com/js/translationv2.js"></script>
+    <script src="https://www.sos-pharma.com/js/translation.js"></script>
+    <!-- <script src="./js/translation.js"></script> -->
 
   </head>
 
@@ -47,7 +54,7 @@
       <div class="navbar">
         <div class="topnav">
           <div class="logo">
-            <img src="/images/new_logo.jpg" alt="SOS Pharma logo" />
+            <img src="./images/new_logo.jpg" alt="SOS Pharma logo" />
           </div>
           <h1 class="name">SOS <br>Pharma</h1>
         </div>
@@ -82,7 +89,7 @@
           <div class="buttons">
 
             <a
-              href="./order-drug-onlinev2.html"
+              href="./order.html"
               class="start-button button loading chatbox__button"
             >
               <span data-i18n-key="home-chatbutton-text" class="text">Commande de médicaments</span>

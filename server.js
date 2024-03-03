@@ -8,7 +8,7 @@ const resendButton = document.querySelector(".chatbox__restart");
 const completeButton = document.querySelector(".chatbox__restart");
 const clearButton = document.querySelector(".chatbox__restart");
 const closeButton = document.querySelector(".chatbox__close");
-const inputBox = chatBox.querySelector("chatbox__message__input");
+const inputBox = chatBox.querySelector(".chatbox__message__input");
 const messageContainer = document.getElementById("chatbox__messages");
 
 // user variables
