@@ -71,6 +71,13 @@ async function onStart() {
 
   orderKeywords = getOrderKeywords(locale);
 
+  if (drugList.length == 0) {
+    console.log("drug list is empty")
+    // pushPharmaMessage(getTranslation("network-error"));
+    // disableTextarea(inputBox);
+    // return;
+  }
+
   if(user != null){
     userInfo = user;
     let address = 

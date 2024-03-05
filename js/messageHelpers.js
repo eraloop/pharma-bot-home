@@ -9,11 +9,7 @@ async function pushSetupMessage() {
   pushPharmaMessage("Mise en place, veuillez patienter un instant..");
   locations = await onLoadCities();
   drugList = await onLoadDrugs();
-  if (drugList.length == 0) {
-    pushPharmaMessage(getTranslation("network-error"));
-    disableTextarea(inputBox);
-    return;
-  }
+  console.log(drugList)
   locale = await getUserLocale();
   await setLocale(locale);
   await Promise.all([locations, drugList, locale]);
