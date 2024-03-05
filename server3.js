@@ -71,12 +71,6 @@ async function onStart() {
 
   orderKeywords = getOrderKeywords(locale);
 
-  if (drugList.length == 0) {
-    pushPharmaMessage(getTranslation("network-error"));
-    disableTextarea(inputBox);
-    return;
-  }
-
   if(user != null){
     userInfo = user;
     let address = 
