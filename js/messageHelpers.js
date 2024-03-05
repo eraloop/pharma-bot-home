@@ -9,7 +9,6 @@ async function pushSetupMessage() {
   pushPharmaMessage("Mise en place, veuillez patienter un instant..");
   locations = await onLoadCities();
   drugList = await onLoadDrugs();
-  console.log(drugList)
   locale = await getUserLocale();
   await setLocale(locale);
   await Promise.all([locations, drugList, locale]);
