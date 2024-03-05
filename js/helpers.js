@@ -139,7 +139,7 @@ async function matchUserDrugs(drugs, userPrompts, orderKeywords) {
 
 async function onLoadDrugs() {
   try {
-    let response = await fetch("../data/drugsv2.json");
+    let response = await fetch("../data/drugs.json");
     let drugs = await response.json();
     return drugs;
   } catch (e) {
@@ -150,7 +150,7 @@ async function onLoadDrugs() {
 
 async function onLoadPaymentDetails() {
   try {
-    const response = await fetch("../data/configv2.json");
+    const response = await fetch("../data/config.json");
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
@@ -216,7 +216,7 @@ async function onLoadCities() {
     if(cities != null || cities != undefined){
       return cities
     }
-    const response = await fetch("../data/geolocationv2.json");
+    const response = await fetch("../data/geolocation.json");
     const locations = await response.json();
     saveListToLS('cities', locations['cities'])
     return locations['cities'];
